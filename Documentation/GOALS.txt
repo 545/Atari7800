@@ -1,0 +1,12 @@
+Project Goals:
+
+1. Fully functioning Atari 7800
+   Robotron will be used as a goal Cartridge. It is one of the most simple 
+   cartridges to run
+2. Fully functioning Atari 2600
+   E.T. used as goal Cartridge
+
+3. Other cartridge functionality (stretch goals):
+   a. POKEY
+   b. RAM on Cart
+   c. Bankswitching? Need to look more into this
