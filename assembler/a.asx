@@ -1,0 +1,9 @@
+	opt f+g-h-l+o+u+
+  org $100
+	ldx #10
+  adc #10
+  org $10
+  ldx #10
+  adc #10
+
+
