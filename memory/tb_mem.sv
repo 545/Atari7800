@@ -1,4 +1,4 @@
-//Author: Ryan Roberts
+//Author: Ryan Roberto
 //Purpose: The purpose of this file is to serve as a makeshift memory module for the purposes of testing
 //         The current test.
 
