@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Mon Sep 28 17:44:56 2015
+# Process ID: 4843
+# Log file: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/vivado.log
+# Journal file: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/afs/ece/support/xilinx/xilinx.release/Vivado/data/ip'.
+open_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 5882.430 ; gain = 90.156 ; free physical = 1939 ; free virtual = 14661
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in '/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.sim/sim_1/behav'
+xvlog -m64 --relax -prj tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb
+INFO: [VRFC 10-311] analyzing module mem_2k
+ERROR: [VRFC 10-1241] port addrW is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:32]
+ERROR: [VRFC 10-1241] port addrR is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:33]
+ERROR: [VRFC 10-1241] port Din is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:34]
+ERROR: [VRFC 10-1241] port clk is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:35]
+ERROR: [VRFC 10-1241] port we is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:36]
+ERROR: [VRFC 10-1241] port enR is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:37]
+ERROR: [VRFC 10-1241] port rstb is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:38]
+ERROR: [VRFC 10-1241] port regceb is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:39]
+ERROR: [VRFC 10-1241] port Dout is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:40]
+ERROR: [VRFC 10-1040] module mem_2k ignored due to previous errors [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:20]
+INFO: [USF-XSim-99] Step results log file:'/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.sim/sim_1/behav/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or '/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.sim/sim_1/behav/xvlog.log' file for more information.
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 28 18:04:39 2015...
