@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../../../ag_6502/trunk/ag_6502/ag_6502.v"
+sv xil_defaultlib  "../../../../tb_mem.sv"
+sv xil_defaultlib  "../../../../tb.sv"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,12 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/ag_6502/trunk/ag_6502/ag_6502.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ag6502_phase_shift
+INFO: [VRFC 10-311] analyzing module ag6502_decimal
+INFO: [VRFC 10-311] analyzing module ag6502_alu
+INFO: [VRFC 10-311] analyzing module ag6502
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/tb_mem.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TB_MEM
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_tb
+INFO: [VRFC 10-311] analyzing module clock
+INFO: [VRFC 10-2263] Analyzing Verilog file "/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/core_1/core_1.sim/sim_2/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
