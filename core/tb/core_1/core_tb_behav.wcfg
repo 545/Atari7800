@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="core_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="core_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="165" />
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/rst_b">
+      <obj_property name="ElementShortName">rst_b</obj_property>
+      <obj_property name="ObjectShortName">rst_b</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/phi1">
+      <obj_property name="ElementShortName">phi1</obj_property>
+      <obj_property name="ObjectShortName">phi1</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/phi2">
+      <obj_property name="ElementShortName">phi2</obj_property>
+      <obj_property name="ObjectShortName">phi2</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/idle_count">
+      <obj_property name="ElementShortName">idle_count[7:0]</obj_property>
+      <obj_property name="ObjectShortName">idle_count[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/pc_save">
+      <obj_property name="ElementShortName">pc_save[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_save[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/addr_bus">
+      <obj_property name="ElementShortName">addr_bus[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_bus[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/re">
+      <obj_property name="ElementShortName">re</obj_property>
+      <obj_property name="ObjectShortName">re</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/data_bus_in">
+      <obj_property name="ElementShortName">data_bus_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/data_bus_out">
+      <obj_property name="ElementShortName">data_bus_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/rdy">
+      <obj_property name="ElementShortName">rdy</obj_property>
+      <obj_property name="ObjectShortName">rdy</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/nmi">
+      <obj_property name="ElementShortName">nmi</obj_property>
+      <obj_property name="ObjectShortName">nmi</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/irq">
+      <obj_property name="ElementShortName">irq</obj_property>
+      <obj_property name="ObjectShortName">irq</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/so">
+      <obj_property name="ElementShortName">so</obj_property>
+      <obj_property name="ObjectShortName">so</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/sync">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/addr">
+      <obj_property name="ElementShortName">addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/data_in">
+      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/mem/read_e">
+      <obj_property name="ElementShortName">read_e</obj_property>
+      <obj_property name="ObjectShortName">read_e</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/mem/phi1">
+      <obj_property name="ElementShortName">phi1</obj_property>
+      <obj_property name="ObjectShortName">phi1</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/mem/phi2">
+      <obj_property name="ElementShortName">phi2</obj_property>
+      <obj_property name="ObjectShortName">phi2</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/mem/rst_b">
+      <obj_property name="ElementShortName">rst_b</obj_property>
+      <obj_property name="ObjectShortName">rst_b</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/data_out">
+      <obj_property name="ElementShortName">data_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/data_saved">
+      <obj_property name="ElementShortName">data_saved[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_saved[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/addr_saved">
+      <obj_property name="ElementShortName">addr_saved[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_saved[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/mem/read_saved">
+      <obj_property name="ElementShortName">read_saved</obj_property>
+      <obj_property name="ObjectShortName">read_saved</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/mem/number_of_words">
+      <obj_property name="ElementShortName">number_of_words[31:0]</obj_property>
+      <obj_property name="ObjectShortName">number_of_words[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/phi_0">
+      <obj_property name="ElementShortName">phi_0</obj_property>
+      <obj_property name="ObjectShortName">phi_0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/phi_1">
+      <obj_property name="ElementShortName">phi_1</obj_property>
+      <obj_property name="ObjectShortName">phi_1</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/phi_2">
+      <obj_property name="ElementShortName">phi_2</obj_property>
+      <obj_property name="ObjectShortName">phi_2</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/ab">
+      <obj_property name="ElementShortName">ab[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ab[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/read">
+      <obj_property name="ElementShortName">read</obj_property>
+      <obj_property name="ObjectShortName">read</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/db_in">
+      <obj_property name="ElementShortName">db_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">db_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/db_out">
+      <obj_property name="ElementShortName">db_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">db_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/rdy">
+      <obj_property name="ElementShortName">rdy</obj_property>
+      <obj_property name="ObjectShortName">rdy</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/irq">
+      <obj_property name="ElementShortName">irq</obj_property>
+      <obj_property name="ObjectShortName">irq</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/nmi">
+      <obj_property name="ElementShortName">nmi</obj_property>
+      <obj_property name="ObjectShortName">nmi</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/so">
+      <obj_property name="ElementShortName">so</obj_property>
+      <obj_property name="ObjectShortName">so</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/sync">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/rdyg">
+      <obj_property name="ElementShortName">rdyg</obj_property>
+      <obj_property name="ObjectShortName">rdyg</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/T">
+      <obj_property name="ElementShortName">T[2:0]</obj_property>
+      <obj_property name="ObjectShortName">T[2:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/IR">
+      <obj_property name="ElementShortName">IR[7:0]</obj_property>
+      <obj_property name="ObjectShortName">IR[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/PC">
+      <obj_property name="ElementShortName">PC[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/PCH">
+      <obj_property name="ElementShortName">PCH[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PCH[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/PCL">
+      <obj_property name="ElementShortName">PCL[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PCL[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/EAL">
+      <obj_property name="ElementShortName">EAL[7:0]</obj_property>
+      <obj_property name="ObjectShortName">EAL[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/EAH">
+      <obj_property name="ElementShortName">EAH[7:0]</obj_property>
+      <obj_property name="ObjectShortName">EAH[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/EA">
+      <obj_property name="ElementShortName">EA[15:0]</obj_property>
+      <obj_property name="ObjectShortName">EA[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_C">
+      <obj_property name="ElementShortName">FLAG_C</obj_property>
+      <obj_property name="ObjectShortName">FLAG_C</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_Z">
+      <obj_property name="ElementShortName">FLAG_Z</obj_property>
+      <obj_property name="ObjectShortName">FLAG_Z</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_I">
+      <obj_property name="ElementShortName">FLAG_I</obj_property>
+      <obj_property name="ObjectShortName">FLAG_I</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_D">
+      <obj_property name="ElementShortName">FLAG_D</obj_property>
+      <obj_property name="ObjectShortName">FLAG_D</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_B">
+      <obj_property name="ElementShortName">FLAG_B</obj_property>
+      <obj_property name="ObjectShortName">FLAG_B</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_V">
+      <obj_property name="ElementShortName">FLAG_V</obj_property>
+      <obj_property name="ObjectShortName">FLAG_V</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/FLAG_N">
+      <obj_property name="ElementShortName">FLAG_N</obj_property>
+      <obj_property name="ObjectShortName">FLAG_N</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/AC">
+      <obj_property name="ElementShortName">AC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">AC[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/X">
+      <obj_property name="ElementShortName">X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">X[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/Y">
+      <obj_property name="ElementShortName">Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Y[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/S">
+      <obj_property name="ElementShortName">S[7:0]</obj_property>
+      <obj_property name="ObjectShortName">S[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/P">
+      <obj_property name="ElementShortName">P[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/SB">
+      <obj_property name="ElementShortName">SB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SB[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/ALU_A">
+      <obj_property name="ElementShortName">ALU_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/ALU_B">
+      <obj_property name="ElementShortName">ALU_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/RES">
+      <obj_property name="ElementShortName">RES[7:0]</obj_property>
+      <obj_property name="ObjectShortName">RES[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/ALU_OP">
+      <obj_property name="ElementShortName">ALU_OP[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU_OP[2:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/eALU">
+      <obj_property name="ElementShortName">eALU[8:0]</obj_property>
+      <obj_property name="ObjectShortName">eALU[8:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/ALU">
+      <obj_property name="ElementShortName">ALU[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/ALU_CF">
+      <obj_property name="ElementShortName">ALU_CF</obj_property>
+      <obj_property name="ObjectShortName">ALU_CF</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/CF_IN">
+      <obj_property name="ElementShortName">CF_IN</obj_property>
+      <obj_property name="ObjectShortName">CF_IN</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/DF_IN">
+      <obj_property name="ElementShortName">DF_IN</obj_property>
+      <obj_property name="ObjectShortName">DF_IN</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/CF_OUT">
+      <obj_property name="ElementShortName">CF_OUT</obj_property>
+      <obj_property name="ObjectShortName">CF_OUT</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/VF_OUT">
+      <obj_property name="ElementShortName">VF_OUT</obj_property>
+      <obj_property name="ObjectShortName">VF_OUT</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/so_prev">
+      <obj_property name="ElementShortName">so_prev</obj_property>
+      <obj_property name="ObjectShortName">so_prev</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/nmi_prev">
+      <obj_property name="ElementShortName">nmi_prev</obj_property>
+      <obj_property name="ObjectShortName">nmi_prev</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/irq_active">
+      <obj_property name="ElementShortName">irq_active</obj_property>
+      <obj_property name="ObjectShortName">irq_active</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/nmi_active">
+      <obj_property name="ElementShortName">nmi_active</obj_property>
+      <obj_property name="ObjectShortName">nmi_active</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/int_active">
+      <obj_property name="ElementShortName">int_active</obj_property>
+      <obj_property name="ObjectShortName">int_active</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/rst_active">
+      <obj_property name="ElementShortName">rst_active</obj_property>
+      <obj_property name="ObjectShortName">rst_active</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/so_active">
+      <obj_property name="ElementShortName">so_active</obj_property>
+      <obj_property name="ObjectShortName">so_active</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/IR_in">
+      <obj_property name="ElementShortName">IR_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">IR_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/vec_bits">
+      <obj_property name="ElementShortName">vec_bits[1:0]</obj_property>
+      <obj_property name="ObjectShortName">vec_bits[1:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/vec_addr">
+      <obj_property name="ElementShortName">vec_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">vec_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/core_tb/core/L">
+      <obj_property name="ElementShortName">L[10:0]</obj_property>
+      <obj_property name="ObjectShortName">L[10:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_AB__PC">
+      <obj_property name="ElementShortName">E_AB__PC</obj_property>
+      <obj_property name="ObjectShortName">E_AB__PC</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_AB__EA">
+      <obj_property name="ElementShortName">E_AB__EA</obj_property>
+      <obj_property name="ObjectShortName">E_AB__EA</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_AB__S">
+      <obj_property name="ElementShortName">E_AB__S</obj_property>
+      <obj_property name="ObjectShortName">E_AB__S</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PC__PC_1">
+      <obj_property name="ElementShortName">E_PC__PC_1</obj_property>
+      <obj_property name="ObjectShortName">E_PC__PC_1</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0">
+      <obj_property name="ElementShortName">E_T__0</obj_property>
+      <obj_property name="ObjectShortName">E_T__0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_N_Z__SB">
+      <obj_property name="ElementShortName">E_N_Z__SB</obj_property>
+      <obj_property name="ObjectShortName">E_N_Z__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_N_Z__RES">
+      <obj_property name="ElementShortName">E_N_Z__RES</obj_property>
+      <obj_property name="ObjectShortName">E_N_Z__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_N_Z__SB_RES">
+      <obj_property name="ElementShortName">E_N_Z__SB_RES</obj_property>
+      <obj_property name="ObjectShortName">E_N_Z__SB_RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_C__RES">
+      <obj_property name="ElementShortName">E_C__RES</obj_property>
+      <obj_property name="ObjectShortName">E_C__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_V__RES">
+      <obj_property name="ElementShortName">E_V__RES</obj_property>
+      <obj_property name="ObjectShortName">E_V__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_V__SB_6_">
+      <obj_property name="ElementShortName">E_V__SB_6_</obj_property>
+      <obj_property name="ObjectShortName">E_V__SB_6_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_CF_0">
+      <obj_property name="ElementShortName">A_ALU_CF_0</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_CF_0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_DF_0">
+      <obj_property name="ElementShortName">A_ALU_DF_0</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_DF_0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_ADC">
+      <obj_property name="ElementShortName">A_ALU_OP_ADC</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_ADC</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_0">
+      <obj_property name="ElementShortName">A_SB_0</obj_property>
+      <obj_property name="ObjectShortName">A_SB_0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_B_SB">
+      <obj_property name="ElementShortName">A_ALU_B_SB</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_B_SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_CF_1">
+      <obj_property name="ElementShortName">A_ALU_CF_1</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_CF_1</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_CF_ALUC">
+      <obj_property name="ElementShortName">A_ALU_CF_ALUC</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_CF_ALUC</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_B_NOTSB">
+      <obj_property name="ElementShortName">A_ALU_B_NOTSB</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_B_NOTSB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_ORA">
+      <obj_property name="ElementShortName">A_ALU_OP_ORA</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_ORA</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_DB">
+      <obj_property name="ElementShortName">A_ALU_A_DB</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_X">
+      <obj_property name="ElementShortName">A_SB_X</obj_property>
+      <obj_property name="ObjectShortName">A_SB_X</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_EAL">
+      <obj_property name="ElementShortName">A_ALU_A_EAL</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_EAL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_PCL">
+      <obj_property name="ElementShortName">A_SB_PCL</obj_property>
+      <obj_property name="ObjectShortName">A_SB_PCL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_Y">
+      <obj_property name="ElementShortName">A_SB_Y</obj_property>
+      <obj_property name="ObjectShortName">A_SB_Y</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_ALU">
+      <obj_property name="ElementShortName">A_ALU_A_ALU</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_S">
+      <obj_property name="ElementShortName">A_ALU_A_S</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_S</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_CF__IR_5_">
+      <obj_property name="ElementShortName">E_CF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_CF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_IF__IR_5_">
+      <obj_property name="ElementShortName">E_IF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_IF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DF__IR_5_">
+      <obj_property name="ElementShortName">E_DF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_DF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_VF__0">
+      <obj_property name="ElementShortName">E_VF__0</obj_property>
+      <obj_property name="ObjectShortName">E_VF__0</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0IFNF__IR_5_">
+      <obj_property name="ElementShortName">E_T__0IFNF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_T__0IFNF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0IFVF__IR_5_">
+      <obj_property name="ElementShortName">E_T__0IFVF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_T__0IFVF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0IFCF__IR_5_">
+      <obj_property name="ElementShortName">E_T__0IFCF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_T__0IFCF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0IFZF__IR_5_">
+      <obj_property name="ElementShortName">E_T__0IFZF__IR_5_</obj_property>
+      <obj_property name="ObjectShortName">E_T__0IFZF__IR_5_</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_EA__DB">
+      <obj_property name="ElementShortName">E_EA__DB</obj_property>
+      <obj_property name="ObjectShortName">E_EA__DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_EAL__DB">
+      <obj_property name="ElementShortName">E_EAL__DB</obj_property>
+      <obj_property name="ObjectShortName">E_EAL__DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PCL__RES">
+      <obj_property name="ElementShortName">E_PCL__RES</obj_property>
+      <obj_property name="ObjectShortName">E_PCL__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__0IF_C7F">
+      <obj_property name="ElementShortName">E_T__0IF_C7F</obj_property>
+      <obj_property name="ObjectShortName">E_T__0IF_C7F</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_SIGN">
+      <obj_property name="ElementShortName">A_ALU_A_SIGN</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_SIGN</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_PCH">
+      <obj_property name="ElementShortName">A_SB_PCH</obj_property>
+      <obj_property name="ObjectShortName">A_SB_PCH</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PCH__RES">
+      <obj_property name="ElementShortName">E_PCH__RES</obj_property>
+      <obj_property name="ObjectShortName">E_PCH__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_EAH__DB">
+      <obj_property name="ElementShortName">E_EAH__DB</obj_property>
+      <obj_property name="ObjectShortName">E_EAH__DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_EAL__ALU">
+      <obj_property name="ElementShortName">E_EAL__ALU</obj_property>
+      <obj_property name="ObjectShortName">E_EAL__ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_T__T_1IF_ALUCZ">
+      <obj_property name="ElementShortName">E_T__T_1IF_ALUCZ</obj_property>
+      <obj_property name="ObjectShortName">E_T__T_1IF_ALUCZ</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_EAH__ALU">
+      <obj_property name="ElementShortName">E_EAH__ALU</obj_property>
+      <obj_property name="ObjectShortName">E_EAH__ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PCL__ALU">
+      <obj_property name="ElementShortName">E_PCL__ALU</obj_property>
+      <obj_property name="ObjectShortName">E_PCL__ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_DB">
+      <obj_property name="ElementShortName">A_SB_DB</obj_property>
+      <obj_property name="ObjectShortName">A_SB_DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_AC__SB">
+      <obj_property name="ElementShortName">E_AC__SB</obj_property>
+      <obj_property name="ObjectShortName">E_AC__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_AC">
+      <obj_property name="ElementShortName">A_ALU_A_AC</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_AC</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_AC__RES">
+      <obj_property name="ElementShortName">E_AC__RES</obj_property>
+      <obj_property name="ObjectShortName">E_AC__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_AND">
+      <obj_property name="ElementShortName">A_ALU_OP_AND</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_AND</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_EOR">
+      <obj_property name="ElementShortName">A_ALU_OP_EOR</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_EOR</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_X">
+      <obj_property name="ElementShortName">A_ALU_A_X</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_X</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_A_Y">
+      <obj_property name="ElementShortName">A_ALU_A_Y</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_A_Y</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_DF_D">
+      <obj_property name="ElementShortName">A_ALU_DF_D</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_DF_D</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_CF_C">
+      <obj_property name="ElementShortName">A_ALU_CF_C</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_CF_C</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_ASL">
+      <obj_property name="ElementShortName">A_ALU_OP_ASL</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_ASL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_RW_W">
+      <obj_property name="ElementShortName">A_RW_W</obj_property>
+      <obj_property name="ObjectShortName">A_RW_W</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_ALU">
+      <obj_property name="ElementShortName">A_SB_ALU</obj_property>
+      <obj_property name="ObjectShortName">A_SB_ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DB__SB">
+      <obj_property name="ElementShortName">E_DB__SB</obj_property>
+      <obj_property name="ObjectShortName">E_DB__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_LSR">
+      <obj_property name="ElementShortName">A_ALU_OP_LSR</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_LSR</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_ROL">
+      <obj_property name="ElementShortName">A_ALU_OP_ROL</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_ROL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_ALU_OP_ROR">
+      <obj_property name="ElementShortName">A_ALU_OP_ROR</obj_property>
+      <obj_property name="ObjectShortName">A_ALU_OP_ROR</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_AC">
+      <obj_property name="ElementShortName">A_SB_AC</obj_property>
+      <obj_property name="ObjectShortName">A_SB_AC</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_X__SB">
+      <obj_property name="ElementShortName">E_X__SB</obj_property>
+      <obj_property name="ObjectShortName">E_X__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_Y__SB">
+      <obj_property name="ElementShortName">E_Y__SB</obj_property>
+      <obj_property name="ObjectShortName">E_Y__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_S">
+      <obj_property name="ElementShortName">A_SB_S</obj_property>
+      <obj_property name="ObjectShortName">A_SB_S</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_S__SB">
+      <obj_property name="ElementShortName">E_S__SB</obj_property>
+      <obj_property name="ObjectShortName">E_S__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PC__EA">
+      <obj_property name="ElementShortName">E_PC__EA</obj_property>
+      <obj_property name="ObjectShortName">E_PC__EA</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_S__ALU">
+      <obj_property name="ElementShortName">E_S__ALU</obj_property>
+      <obj_property name="ObjectShortName">E_S__ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/A_SB_P">
+      <obj_property name="ElementShortName">A_SB_P</obj_property>
+      <obj_property name="ObjectShortName">A_SB_P</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_P__SB">
+      <obj_property name="ElementShortName">E_P__SB</obj_property>
+      <obj_property name="ObjectShortName">E_P__SB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_X__RES">
+      <obj_property name="ElementShortName">E_X__RES</obj_property>
+      <obj_property name="ObjectShortName">E_X__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_Y__RES">
+      <obj_property name="ElementShortName">E_Y__RES</obj_property>
+      <obj_property name="ObjectShortName">E_Y__RES</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DB__ALU">
+      <obj_property name="ElementShortName">E_DB__ALU</obj_property>
+      <obj_property name="ObjectShortName">E_DB__ALU</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DB__PCH">
+      <obj_property name="ElementShortName">E_DB__PCH</obj_property>
+      <obj_property name="ObjectShortName">E_DB__PCH</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PCL__EAL">
+      <obj_property name="ElementShortName">E_PCL__EAL</obj_property>
+      <obj_property name="ObjectShortName">E_PCL__EAL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DB__PCL">
+      <obj_property name="ElementShortName">E_DB__PCL</obj_property>
+      <obj_property name="ObjectShortName">E_DB__PCL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_DB__P">
+      <obj_property name="ElementShortName">E_DB__P</obj_property>
+      <obj_property name="ObjectShortName">E_DB__P</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_P__DB">
+      <obj_property name="ElementShortName">E_P__DB</obj_property>
+      <obj_property name="ObjectShortName">E_P__DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/E_PCL__DB">
+      <obj_property name="ElementShortName">E_PCL__DB</obj_property>
+      <obj_property name="ObjectShortName">E_PCL__DB</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/core_tb/core/cond">
+      <obj_property name="ElementShortName">cond</obj_property>
+      <obj_property name="ObjectShortName">cond</obj_property>
+   </wvobject>
+</wave_config>

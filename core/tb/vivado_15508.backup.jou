@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Mon Sep 28 04:58:22 2015
+# Process ID: 16029
+# Log file: /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/vivado.log
+# Journal file: /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project core_1 /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/core_1 -part xc7z020clg484-1
+set_property board_part em.avnet.com:zed:part0:1.3 [current_project]
+add_files -norecurse {/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/tb.sv /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/ag_6502/trunk/ag_6502/ag_6502.v /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/ag_6502/trunk/ag_6502/states.v /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/tb_mem.sv}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation

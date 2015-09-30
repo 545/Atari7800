@@ -1,0 +1,3 @@
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+$finish called at time : 5670 ns : File "/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/tb/tb.sv" Line 41
