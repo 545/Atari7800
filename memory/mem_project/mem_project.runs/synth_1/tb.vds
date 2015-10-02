@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Wed Sep 30 10:56:11 2015
+# Process ID: 20332
+# Log file: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.runs/synth_1/tb.vds
+# Journal file: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem_project/mem_project.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source tb.tcl -notrace
+Command: synth_design -top tb -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+ERROR: [Synth 8-2715] syntax error near x400 [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:30]
+ERROR: [Synth 8-2715] syntax error near ) [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:30]
+ERROR: [Synth 8-2715] syntax error near x400 [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:38]
+ERROR: [Synth 8-2715] syntax error near ) [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:38]
+INFO: [Synth 8-2350] module tb ignored due to previous errors [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:1]
+ERROR: [Synth 8-1031] enR is not declared [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:50]
+ERROR: [Synth 8-2537] port re is not defined [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:67]
+INFO: [Synth 8-2350] module mem_2k ignored due to previous errors [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv:50]
+Failed to read verilog '/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv'
+INFO: [Common 17-83] Releasing license: Synthesis
+4 Infos, 0 Warnings, 0 Critical Warnings and 7 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Wed Sep 30 10:56:22 2015...

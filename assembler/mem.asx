@@ -1,0 +1,78 @@
+  opt f+g-h+l+o+u+ ;fill mem gaps with ff
+                   ;write to object file
+                   ;give unused label warning
+                   ;no header in byte code
+
+
+five equ 5 ;define constants like this
+
+
+  org $0 ;zero page start
+         ;zero page is used mostly to store local variables
+         ;$0-$3f are TIA and MARIA regs.
+
+
+  org $40 ;Block 0 ram start
+
+label1 ;this is a label
+  dta b(1,2) ;write 2 bytes of mem storing 1 and 2 (addr $40-$41)
+  dta 2,3    ;write 2 bytes of mem storing 2 and 3 (addr $42-$43)
+  dta a($1000) ;write 1 word (2 bytes) of mem storing $1000 (addr $44-$45)
+
+currentLevel
+  dta a($0) ;store current level
+
+
+
+
+  org $100 ;shadow of maria and tia regs
+
+  org $140 ;ram block 2
+           ;store more variables here
+
+  org $200 ;shadowed
+
+  org $400 ;available mem. Not sure exactly where this portion of memory is
+
+
+  org $480 ;dont use
+
+  org $500 ;available mem
+
+  org $1800 ;RAM
+
+  org $2040 ;block zero shadow
+
+  org $2100 ;RAM
+
+  org $2140 ;Block one shadow
+
+
+
+  org $2200 ;RAM
+
+  org $2800 ;shadow of $2000-$27FF
+
+  org $4000 ;available put your code here
+
+  lda #10
+  adc #10
+  adc #30
+  sta $90
+  ldx $90
+  inx
+  inx
+  stx $2000
+
+done jmp *
+
+
+
+
+
+  org $FF7A ;reserved for encryption
+
+  org $FFFA ;vectors
+  dta a($8000) ;NMI vector
+  dta a($4000) ;RESET vector
+  dta a($D568) ;IRQ vector

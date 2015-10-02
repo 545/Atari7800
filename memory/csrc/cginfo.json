@@ -1,0 +1,50 @@
+{
+    "NameTable": {
+        "std": [
+            "std",
+            "reYIK",
+            "module"
+        ],
+        "tb": [
+            "tb",
+            "g7hgQ",
+            "module"
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module"
+        ]
+    },
+    "LVLData": [
+        "SIM"
+    ],
+    "CompileStrategy": "fullobj",
+    "CompileProcesses": [
+        "cgproc.6925.json"
+    ],
+    "CurCompileUdps": {},
+    "SIMBData": {
+        "bytes": 58373,
+        "out": "amcQwB.o"
+    },
+    "CurCompileModules": [
+        "...MASTER...",
+        "std",
+        "tb"
+    ],
+    "PEModules": [],
+    "Misc": {
+        "daidir_abs": "/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/simv.daidir",
+        "csrc_abs": "/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/csrc",
+        "csrc": "csrc",
+        "cwd": "/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory",
+        "daidir": "simv.daidir",
+        "default_output_dir": "csrc",
+        "archive_dir": "archive.0"
+    },
+    "stat": {
+        "nMops": 673
+    },
+    "CompileStatus": "Successful"
+}

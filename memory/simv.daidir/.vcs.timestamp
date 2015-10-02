@@ -1,0 +1,74 @@
+0 
+21
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags=
+-Mobjects= /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/libvirsim.so /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/liberrorinf.so /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/libsnpsmalloc.so
+-Mout=simv
+-Msaverestoreobj=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/include
+-gen_obj
+-picarchive
+-sverilog
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/bin/vcs1
+mem.sv
+41
+sysc_uni_pwd=/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory
+XDG_SESSION_ID=799
+XDG_RUNTIME_DIR=/run/user/28897
+VMR_MODE_FLAG=32
+VCS_TARGET_ARCH=amd64
+VCS_MX_HOME_INTERNAL=1
+VCS_LIC_EXPIRE_WARNING=0
+VCS_HOME=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH_OVERRIDE=linux
+VCS_ARCH=amd64
+UNAME=/bin/uname
+TOOL_HOME=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64
+SYN_DIR=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/synopsys-2007.03-SP5
+SYNOPSYS=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys
+SSH_TTY=/dev/pts/5
+SSH_CONNECTION=71.199.97.120 65254 128.2.58.106 22
+SSH_CLIENT=71.199.97.120 65254 22
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SELINUX_USE_CURRENT_RANGE=
+SELINUX_ROLE_REQUESTED=
+SELINUX_LEVEL_REQUESTED=
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QUARTUS_64BIT=1
+QT_PLUGIN_PATH=/usr/lib64/kde4/plugins:/usr/lib/kde4/plugins
+QT_GRAPHICSSYSTEM_CHECKED=1
+QTLIB=/usr/lib64/qt-3.3/lib
+QTINC=/usr/lib64/qt-3.3/include
+QTDIR=/usr/lib64/qt-3.3
+PYTHONPATH=/afs/ece/class/ece447/bin:
+OVA_UUM=0
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+KRB5CCNAME=KEYRING:persistent:28897
+KDEDIRS=/usr
+HISTCONTROL=ignoredups
+DC_HOME=/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/synopsys-2007.03-SP5/linux/syn
+CVS_RSH=ssh
+AKLOG=/usr/bin/aklog
+0
+1
+1443478436 mem.sv
+4
+0 
+1440744113 /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/libvirsim.so
+1440743874 /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/liberrorinf.so
+1440743866 /afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vJ-2014.12/amd64/lib/libsnpsmalloc.so
+1443478448 simv.daidir

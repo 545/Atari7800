@@ -1,0 +1,19 @@
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+Error: Assertion violation
+Time: 20515 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 23075 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 25635 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 28195 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 30755 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 33315 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 35875 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+Error: Assertion violation
+Time: 38435 ns  Iteration: 0  Process: /tb/Initial21_4  File: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv
+$finish called at time : 40985 ns : File "/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/memory/mem.sv" Line 45
