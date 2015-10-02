@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Fri Oct  2 14:45:03 2015
+# Process ID: 23280
+# Log file: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/synth_1/adau1761_test.vds
+# Journal file: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source adau1761_test.tcl -notrace
