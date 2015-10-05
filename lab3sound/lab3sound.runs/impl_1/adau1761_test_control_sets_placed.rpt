@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Fri Oct  2 14:46:07 2015
+| Date         : Sun Oct  4 22:08:30 2015
 | Host         : cascade.andrew.cmu.edu running 64-bit Red Hat Enterprise Linux Server release 7.1 (Maipo)
 | Command      : report_control_sets -verbose -file adau1761_test_control_sets_placed.rpt
 | Design       : adau1761_test
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |    10 |
-| Minimum Number of register sites lost to control set restrictions |    18 |
+| Number of unique control sets                                     |    14 |
+| Minimum Number of register sites lost to control set restrictions |    38 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,12 +33,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              24 |           12 |
+| No           | No                    | No                     |              37 |           22 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              72 |           24 |
+| No           | Yes                   | No                     |              16 |            8 |
+| Yes          | No                    | No                     |              80 |           27 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              30 |           10 |
+| Yes          | Yes                   | No                     |              77 |           21 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -49,15 +49,19 @@ Table of Contents
 |    Clock Signal    |                            Enable Signal                            |                          Set/Reset Signal                          | Slice Load Count | Bel Load Count |
 +--------------------+---------------------------------------------------------------------+--------------------------------------------------------------------+------------------+----------------+
 |  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/i2c_bits_left[3]_i_1_n_0 |                                                                    |                1 |              4 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/state[3]_i_1_n_0         |                                                                    |                4 |              4 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[2]_i_1_n_0        |                                                                    |                1 |              6 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/i2c_data[8]_i_1_n_0      |                                                                    |                2 |              8 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/bitcount[7]_i_1_n_0      |                                                                    |                5 |              8 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[2]_i_1_n_0        | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[9]_i_1_n_0       |                6 |             14 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2s_data_interface/i2s_lr_last_i_1_n_0 | Inst_adau1761_izedboard/Inst_i2s_data_interface/sr_out[47]_i_1_n_0 |                4 |             16 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/state[3]_i_1_n_0         |                                                                    |                1 |              4 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[2]_i_1_n_0        |                                                                    |                3 |              6 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/bitcount[7]_i_1_n_0      |                                                                    |                4 |              8 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/i2c_data[8]_i_1_n_0      |                                                                    |                3 |              8 |
+|  i_clocking/CLK_48 | file_src/inc[12]_i_2_n_0                                            | file_src/inc[12]_i_1_n_0                                           |                3 |             12 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[2]_i_1_n_0        | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/pcnext[9]_i_1_n_0       |                5 |             14 |
+|  i_clocking/CLK_48 |                                                                     | file_src/sample_out[15]_i_1_n_0                                    |                8 |             16 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2s_data_interface/i2s_lr_last_i_1_n_0 | Inst_adau1761_izedboard/Inst_i2s_data_interface/sr_out[47]_i_1_n_0 |                3 |             16 |
 |  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2c/Inst_i3c2/delay[15]_i_1_n_0        |                                                                    |                6 |             16 |
-|  i_clocking/CLK_48 |                                                                     |                                                                    |               13 |             25 |
-|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2s_data_interface/i2s_lr_last_i_1_n_0 |                                                                    |                5 |             26 |
+|  i_clocking/CLK_48 | file_src/addr0[0]_i_2_n_0                                           | file_src/addr0[0]_i_1_n_0                                          |                5 |             17 |
+|  i_clocking/CLK_48 | file_src/addr1[0]_i_2_n_0                                           | file_src/addr1[0]_i_1_n_0                                          |                5 |             18 |
+|  i_clocking/CLK_48 | Inst_adau1761_izedboard/Inst_i2s_data_interface/i2s_lr_last_i_1_n_0 |                                                                    |                9 |             34 |
+|  i_clocking/CLK_48 |                                                                     |                                                                    |               23 |             38 |
 +--------------------+---------------------------------------------------------------------+--------------------------------------------------------------------+------------------+----------------+
 
 

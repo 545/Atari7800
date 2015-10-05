@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Fri Oct  2 14:46:28 2015
+| Date         : Sun Oct  4 22:08:55 2015
 | Host         : cascade.andrew.cmu.edu running 64-bit Red Hat Enterprise Linux Server release 7.1 (Maipo)
 | Command      : report_timing_summary -warn_on_violation -max_paths 10 -file adau1761_test_timing_summary_routed.rpt -rpx adau1761_test_timing_summary_routed.rpx
 | Design       : adau1761_test
@@ -50,7 +50,7 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 128 register/latch pins with no clock driven by root clock pin: clk_100 (HIGH)
+ There are 378 register/latch pins with no clock driven by root clock pin: clk_100 (HIGH)
 
 
 2. checking constant_clock
@@ -65,14 +65,14 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 270 pins that are not constrained for maximum delay. (HIGH)
+ There are 2646 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
 5. checking no_input_delay
 --------------------------
- There are 5 input ports with no input delay specified. (HIGH)
+ There are 6 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 

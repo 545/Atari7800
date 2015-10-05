@@ -87,7 +87,8 @@ architecture Behavioral of adau1761_test is
    port(
     clk                 : in     std_logic;
     sample_out          : out    STD_LOGIC_VECTOR(15 downto 0);
-    sel                 : in     STD_LOGIC
+    sel                 : in     STD_LOGIC;
+    enable              : in     STD_LOGIC
    );
    end component;
    
@@ -129,7 +130,7 @@ process(clk_48)
    line_in_r_extended <= line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r;
 
    -- source the files
-   file_src: file_gen PORT MAP(clk => clk_48, sample_out => aud_file, sel => sw(0));
+   file_src: file_gen PORT MAP(clk => clk_48, sample_out => aud_file, sel => sw(0), enable => sw(1));
 
    -- filter the extended samples
 lpms1_l: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width =>  8) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_l_extended, sample_out => filter1_l);

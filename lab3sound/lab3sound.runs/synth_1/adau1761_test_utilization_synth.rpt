@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Fri Oct  2 14:45:32 2015
+| Date         : Sun Oct  4 22:07:33 2015
 | Host         : cascade.andrew.cmu.edu running 64-bit Red Hat Enterprise Linux Server release 7.1 (Maipo)
 | Command      : report_utilization -file adau1761_test_utilization_synth.rpt -pb adau1761_test_utilization_synth.pb
 | Design       : adau1761_test
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  154 |     0 |     53200 |  0.29 |
-|   LUT as Logic             |  153 |     0 |     53200 |  0.29 |
+| Slice LUTs*                |  227 |     0 |     53200 |  0.43 |
+|   LUT as Logic             |  226 |     0 |     53200 |  0.42 |
 |   LUT as Memory            |    1 |     0 |     17400 | <0.01 |
 |     LUT as Distributed RAM |    0 |     0 |           |       |
 |     LUT as Shift Register  |    1 |     0 |           |       |
-| Slice Registers            |  124 |     0 |    106400 |  0.12 |
-|   Register as Flip Flop    |  124 |     0 |    106400 |  0.12 |
+| Slice Registers            |  184 |     0 |    106400 |  0.17 |
+|   Register as Flip Flop    |  184 |     0 |    106400 |  0.17 |
 |   Register as Latch        |    0 |     0 |    106400 |  0.00 |
 | F7 Muxes                   |    0 |     0 |     26600 |  0.00 |
 | F8 Muxes                   |    0 |     0 |     13300 |  0.00 |
@@ -59,7 +59,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 124   |          Yes |       Reset |            - |
+| 184   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -93,7 +93,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |   10 |     0 |       200 |  5.00 |
+| Bonded IOB                  |   11 |     0 |       200 |  5.50 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |  0.00 |
@@ -149,16 +149,16 @@ Table of Contents
 +------------+------+---------------------+
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
-| FDRE       |  124 |        Flop & Latch |
-| LUT6       |   71 |                 LUT |
-| LUT4       |   44 |                 LUT |
-| LUT5       |   33 |                 LUT |
-| LUT3       |   22 |                 LUT |
-| LUT1       |   16 |                 LUT |
-| LUT2       |   10 |                 LUT |
+| FDRE       |  184 |        Flop & Latch |
+| LUT6       |   73 |                 LUT |
+| LUT4       |   65 |                 LUT |
+| LUT1       |   63 |                 LUT |
+| LUT5       |   36 |                 LUT |
+| LUT3       |   30 |                 LUT |
+| CARRY4     |   17 |          CarryLogic |
+| LUT2       |   12 |                 LUT |
+| IBUF       |    6 |                  IO |
 | OBUF       |    5 |                  IO |
-| IBUF       |    5 |                  IO |
-| CARRY4     |    4 |          CarryLogic |
 | BUFG       |    2 |               Clock |
 | SRL16E     |    1 |  Distributed Memory |
 | RAMB18E1   |    1 |        Block Memory |
@@ -170,9 +170,12 @@ Table of Contents
 8. Black Boxes
 --------------
 
-+----------+------+
-| Ref Name | Used |
-+----------+------+
++---------------+------+
+|    Ref Name   | Used |
++---------------+------+
+| blk_mem_gen_1 |    1 |
+| blk_mem_gen_0 |    1 |
++---------------+------+
 
 
 9. Instantiated Netlists

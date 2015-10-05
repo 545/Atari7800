@@ -17,20 +17,27 @@ set_property parent.project_path /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:zed:part0:1.3 [current_project]
+add_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/goat.coe
+add_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/new_test.coe
+add_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/new_test2.coe
+add_files -quiet /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp
+set_property used_in_implementation false [get_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp]
+add_files -quiet /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp
+set_property used_in_implementation false [get_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp]
 read_vhdl -library xil_defaultlib {
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/new/file_gen.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/adau1761_configuraiton_data.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/ADAU1761_interface.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/i2c.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/i2s_data_interface.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/clocking.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/adau1761_izedboard.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/i3c2.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/dsp_block.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/low_pass_moving_sum.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/low_pass_moving_average.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/tb_adau1761_test.vhd
-  /afs/ece.cmu.edu/usr/cmbarker/Downloads/dsp_base_project/adau1761_test.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/adau1761_configuraiton_data.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/ADAU1761_interface.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/i2c.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/i2s_data_interface.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/clocking.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/adau1761_izedboard.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/i3c2.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/dsp_block.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/low_pass_moving_sum.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/low_pass_moving_average.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/tb_adau1761_test.vhd
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/sources_1/imports/dsp_base_project/adau1761_test.vhd
 }
 read_xdc /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/constrs_1/new/constraints.xdc
 set_property used_in_implementation false [get_files /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/lab3sound/lab3sound.srcs/constrs_1/new/constraints.xdc]

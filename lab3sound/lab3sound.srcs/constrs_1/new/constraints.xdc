@@ -35,3 +35,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports AC_MCLK]
 set_property IOSTANDARD LVCMOS18 [get_ports AC_SCK]
 set_property IOSTANDARD LVCMOS18 [get_ports AC_SDA]
 set_property IOSTANDARD LVCMOS18 [get_ports clk_100]
+
+
+
+
