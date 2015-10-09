@@ -17,24 +17,33 @@
  **/
 `default_nettype none
 
-module frame_buf_to_vga (
-    input logic                   clk, reset,
-    input logic [639:0][2:0][3:0] lbuffer,
+module uv_to_vga (
+    input logic              clk, reset,
+    input logic [319:0][7:0] lbuffer,
 
-    output logic [8:0]            line_number,
-    output logic [3:0]            RED, GREEN, BLUE,
-    output logic                  HSync, VSync
+    output logic             outputting,
+    output logic [9:0]       line_number,
+    output logic [3:0]       RED, GREEN, BLUE,
+    output logic             HSync, VSync
 );
 
    reg [9:0]                      col_count, row_count;
    logic                          col_clear, row_clear;
    logic                          col_enable, row_enable;
 
-   assign RED   = lbuffer[col_count][0];
-   assign GREEN = lbuffer[col_count][1];
-   assign BLUE  = lbuffer[col_count][2];
+   logic [3:0]                    luminance, chrominance;
 
-   assign line_number = row_count[8:0];
+   // TODO: Figure out proper UV conversion
+   assign {chrominance, luminance} = lbuffer[col_count[9:1]];
+
+   // TODO: This is definitely wrong
+   assign RED   = chrominance[2] ? luminance : 4'b0;
+   assign GREEN = chrominance[1] ? luminance : 4'b0;
+   assign BLUE  = chrominance[0] ? luminance : 4'b0;
+
+   assign line_number = row_count[9:0];
+
+   assign outputting = (row_count < 10'd480) & (col_count < 10'd640);
 
    // Row counter counts from 0 to 520
    //     count of   0 - 479 is display time (row_count == line_number here)
@@ -48,7 +57,7 @@ module frame_buf_to_vga (
      else
        row_count <= row_count + row_enable;
 
-   assign row_clear  = (row_count >= 10'd525);
+   assign row_clear  = (row_count == 10'd524) & row_enable;
    assign row_enable = (col_count == 11'd799);
    assign VSync      = (row_count < 10'd490) | (row_count > 10'd491);
 
