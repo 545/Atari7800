@@ -29,16 +29,16 @@ module memory_map(
 
       //Set output signal for {tia,6532,ram0,ram1} depending on addr
       casex ({AD[15:5],halt}):
-	//6532
-        {11'b0000010x1xx,1'bx}: signals_out = 5'b10110;
-	{11'b0000001x1xx,1'bx}: signals_out = 5'b10110;
+	//6532 + Slow
+        {11'b0000010x1xx,1'bx}: signals_out = 5'b10111;
+	{11'b0000001x1xx,1'bx}: signals_out = 5'b10111;
 
 	//RAM1
 	{11'b00011xxxxxx,1'b1}: signals_out = 5'b11100;
 	{11'b00011xxxxxx,1'b0}: signals_out = 5'b11100;
 
-	//TIA
-	{11'b000000xx000,1'bx}: signals_out = 5'b01110;
+	//TIA + Slow
+	{11'b000000xx000,1'bx}: signals_out = 5'b01111;
 
 	//RAM0
 	{11'b000000xx1xx,1'b1}: signals_out_out = 5'b11010;
@@ -47,14 +47,7 @@ module memory_map(
 	{11'b000000xx01x,1'b0}: signals_out_out = 5'b11010;
 	{11'b00100xxxxxx,1'b1}: signals_out_out = 5'b11010;
 	{11'b00100xxxxxx,1'b0}: signals_out_out = 5'b11010;
-
-	//TIA + Slow
-	{11'b000000xx000,1'bx}: signals_out_out = 5'b01111;
-
-	//6532 + Slow
-	{11'b0000010x1xx,1'bx}: signals_out_out = 5'b10111;
-	{11'b0000001x1xx,1'bx}: signals_out_out = 5'b10111;
-
+	
 	default: signals_out_out = 5'b11110;
       endcase // casex ({AD[15:5],halt})
 
