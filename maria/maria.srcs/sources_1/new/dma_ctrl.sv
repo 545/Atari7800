@@ -3,21 +3,21 @@
   module dma_ctrl(
 		  // Mark
 		  output logic [15:0] AddrB,
-		  output logic	we,
-		  input logic [7:0] 	DataB,
+		  input logic [7:0]   DataB,
 		  //from memory map
-		  input logic [15:0] ZP;
-
-		  output logic	palette_w,input_w,pixels_w,
-		  output logic	wm_w,ind_w,
+		  input logic [15:0]  ZP;
 		  
-		  input logic	zp_dma_start, dp_dma_start,
-		  output logic	zp_dma_done, dp_dma_done,
+		  output logic 	      palette_w,input_w,pixels_w,
+		  output logic 	      wm_w,ind_w,
 		  
-		  input logic	sysclk, reset_b, last_line
+		  input logic 	      zp_dma_start, dp_dma_start,
+		  output logic 	      zp_dma_done, dp_dma_done,
+		  output logic 	      inc_ZP_by_3; 
+		  
+		  input logic 	      sysclk, reset_b, last_line
 		  );
    
-   logic [15:0] 		DP, PP, DP_saved;
+   logic [15:0] 		DP, PP, DP_saved, ZP_saved;
    logic [4:0] 			WIDTH;
    logic [3:0] 			OFFSET;
    
@@ -43,7 +43,6 @@
 	 state <= waiting;
 	 zp_state <= drive_zp_addr;
 	 dp_state <= drive_dp_addr;
-	 we <= 0;
 	 zp_dma_done <= 0;
 	 dp_dma_done <= 0;
 	 five_byte_mode <= 0;
@@ -62,20 +61,20 @@
 		drive_zp_addr: begin //Read zp
 		   zp_state <= w_offset;
 		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   ZP_saved <= ZP+1;
 		end
 		w_offset: begin //write cbits and offset
 		   zp_state <= w_DPL;
 		   {DLIen,A12en,A11en} <= DataB[7:5];
 		   OFFSET <= DataB[3:0];
-		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   AddrB <= ZP_saved;
+		   ZP_saved <= ZP_saved+1;
 		end
 		w_DPL: begin //Write DPL
 		   zp_state <= w_DPH;
 		   DP[7:0] <= DataB;
-		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   AddrB <= ZP_saved;
+		   ZP_saved <= ZP_saved+1;
 		end
 		w_DPH: begin //Write DPH
 		   zp_state <= drive_zp_addr;
@@ -156,21 +155,21 @@
 		//Loading next zp when OFFSET has been decremented to 0
 		drive_next_zp_addr: begin //Read zp
 		   dp_state <= w_next_offset;
-		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   AddrB <= ZP_saved;
+		   ZP_saved <= ZP_saved+1;
 		end
 		w_next_offset: begin //write cbits and offset
 		   dp_state <= w_next_DPL;
 		   {DLIen,A12en,A11en} <= DataB[7:5];
 		   OFFSET <= DataB[3:0];
-		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   AddrB <= ZP_saved;
+		   ZP_saved <= ZP_saved+1;
 		end
 		w_next_DPL: begin //Write DPL
 		   dp_state <= w_next_DPH;
 		   DP[7:0] <= DataB;
-		   AddrB <= ZP;
-		   ZP <= ZP+1;
+		   AddrB <= ZP_saved;
+		   ZP_saved <= ZP_saved+1;
 		end
 		w_next_DPH: begin //Write DPH
 		   dp_state <= drive_dp_addr;
