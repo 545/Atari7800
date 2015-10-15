@@ -1,12 +1,10 @@
 `default_nettype none
   
   module dma_ctrl(
-		  // Mark
 		  output logic [15:0] AddrB,
-		  output logic	we,
-		  input logic [7:0] 	DataB,
+		  input  logic [7:0]  DataB,
 		  //from memory map
-		  input logic [15:0] ZP;
+		  input logic [15:0] ZP,
 
 		  output logic	palette_w,input_w,pixels_w,
 		  output logic	wm_w,ind_w,
@@ -43,7 +41,6 @@
 	 state <= waiting;
 	 zp_state <= drive_zp_addr;
 	 dp_state <= drive_dp_addr;
-	 we <= 0;
 	 zp_dma_done <= 0;
 	 dp_dma_done <= 0;
 	 five_byte_mode <= 0;
