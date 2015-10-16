@@ -1,0 +1,266 @@
+Unsupported Linux kernel (3.10.0-229.14.1.el7.x86_64), will try Linux
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDSUB_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDSUB_MACRO.vhd, 31
+ADDSUB_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDSUB_MACRO.vhd, 62
+analysis-Parsing, "ADDSUB_MACRO"
+  
+  architecture addsub of ADDSUB_MACRO is
+                         ^
+  The compiled design unit for entity 'ADDSUB_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDSUB_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MACC_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MACC_MACRO.vhd, 29
+MACC_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MACC_MACRO.vhd, 58
+analysis-Parsing, "MACC_MACRO"
+  
+  architecture macc of MACC_MACRO is
+                       ^
+  The compiled design unit for entity 'MACC_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MACC_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDMACC_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDMACC_MACRO.vhd, 29
+ADDMACC_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDMACC_MACRO.vhd, 58
+analysis-Parsing, "ADDMACC_MACRO"
+  
+  architecture addmacc of ADDMACC_MACRO is
+                          ^
+  The compiled design unit for entity 'ADDMACC_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/ADDMACC_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhd, 34
+BRAM_SINGLE_MACRO
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhd, 212
+analysis-Parsing, "BRAM_SINGLE_MACRO"
+  
+  architecture bram_V of BRAM_SINGLE_MACRO is
+                         ^
+  The compiled design unit for entity 'BRAM_SINGLE_MACRO' is not found in WORK
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhd, 32
+BRAM_TDP_MACRO
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhd, 225
+analysis-Parsing, "BRAM_TDP_MACRO"
+  
+  architecture bram_V of BRAM_TDP_MACRO is
+                         ^
+  The compiled design unit for entity 'BRAM_TDP_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhd, 29
+COUNTER_LOAD_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhd, 53
+analysis-Parsing, "COUNTER_LOAD_MACRO"
+  
+  architecture counter of COUNTER_LOAD_MACRO is
+                          ^
+  The compiled design unit for entity 'COUNTER_LOAD_MACRO' is not found in 
+  WORK library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhd, 30
+COUNTER_TC_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhd, 55
+analysis-Parsing, "COUNTER_TC_MACRO"
+  
+  architecture count of COUNTER_TC_MACRO is
+                        ^
+  The compiled design unit for entity 'COUNTER_TC_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhd, 29
+FIFO_DUALCLOCK_MACRO
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhd, 68
+analysis-Parsing, "FIFO_DUALCLOCK_MACRO"
+  
+    architecture fifo_V of FIFO_DUALCLOCK_MACRO is
+                           ^
+  The compiled design unit for entity 'FIFO_DUALCLOCK_MACRO' is not found in 
+  WORK library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MULT_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MULT_MACRO.vhd, 30
+MULT_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MULT_MACRO.vhd, 55
+analysis-Parsing, "MULT_MACRO"
+  
+  architecture mult of MULT_MACRO is
+                       ^
+  The compiled design unit for entity 'MULT_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/MULT_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhd, 34
+BRAM_SDP_MACRO
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhd, 218
+analysis-Parsing, "BRAM_SDP_MACRO"
+  
+  architecture bram_V of BRAM_SDP_MACRO is
+                         ^
+  The compiled design unit for entity 'BRAM_SDP_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhd, 29
+EQ_COMPARE_MACRO
+  
+  use UNISIM.vcomponents.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhd, 55
+analysis-Parsing, "EQ_COMPARE_MACRO"
+  
+  architecture compare of EQ_COMPARE_MACRO is
+                          ^
+  The compiled design unit for entity 'EQ_COMPARE_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhd, 29
+FIFO_SYNC_MACRO
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhd, 67
+analysis-Parsing, "FIFO_SYNC_MACRO"
+  
+    architecture fifo_V of FIFO_SYNC_MACRO is
+                           ^
+  The compiled design unit for entity 'FIFO_SYNC_MACRO' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unimacro/unimacro_VCOMP.vhd'

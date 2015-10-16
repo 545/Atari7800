@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 `default_nettype none
 
 // Number of sysclk cycles needed for the halt signal to take on the CPU
@@ -45,7 +46,10 @@ module timing_ctrl (
    output logic       lram_swap,
 
    // VGA Status
-   input  logic [9:0] vga_row, vga_col
+   input  logic [9:0] vga_row, vga_col,
+
+   // Signals from memory map
+   input  logic       deassert_ready
 );
    // Current NTSC row and col
    logic [8:0]        row, col;
@@ -101,7 +105,6 @@ module timing_ctrl (
 
    assign ready_for_lswap = ((enable) & second_vga_line &
                              (vga_col > `VGA_VISIBLE_COLS));
-   assign assert_ready = ready_for_lswap & ~lswap_prev;
 
    assign last_line = (row == (`NTSC_SCANLINE_COUNT - 1));
 
@@ -125,6 +128,7 @@ module timing_ctrl (
          zp_dma_start <= 1'b0;
          dp_dma_start <= 1'b0;
          ready_for_lswap_prev <= 1'b0;
+         ready <= 1'b1;
       end else begin
          // Clock generation
          fast_ctr <= fast_ctr + 2'b01;
@@ -159,6 +163,12 @@ module timing_ctrl (
             else
               row <= row + 1;
          end
+
+         // Ready signal
+         if (deassert_ready)
+            ready <= 1'b0;
+         else if (ready_for_lswap & ~ready_for_lswap_prev)
+            ready <= 1'b1;
 
          // Next state logic
          case (state)

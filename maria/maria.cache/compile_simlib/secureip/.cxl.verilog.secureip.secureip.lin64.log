@@ -1,0 +1,8 @@
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/secureip/gthe2_channel_fast/gthe2_channel_fast_001.vp'
+
+Error-[UC] Unexpected character
+  The character 'v' is illegal in the context. 
+  "/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/secureip/gthe2_channel_fast/gthe2_channel_fast_001.vp",
+  544
+
+1 error

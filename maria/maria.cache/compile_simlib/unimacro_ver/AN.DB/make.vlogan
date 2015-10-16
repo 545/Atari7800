@@ -1,0 +1,66 @@
+
+VLOGAN	= vlogan
+
+all :		_VCSgd_2hMNT_1.db \
+	_VCSgd_XSoqab_1.db \
+	_VCSgd_lqhvhc_1.db \
+	_VCSgd_xayKlc_1.db \
+	_VCSgd_fHBRod_1.db \
+	_VCSgd_2D9pqb_1.db \
+	_VCSgd_xudzad_1.db \
+	_VCSgd_P7cte_1.db \
+	_VCSgd_ISnG2c_1.db \
+	_VCSgd_Ft8iEb_1.db \
+	_VCSgd_hI3Qye_1.db \
+	_VCSgd_yYjxec_1.db \
+
+
+
+_VCSgd_2hMNT_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/COUNTER_LOAD_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/COUNTER_LOAD_MACRO.v
+
+
+_VCSgd_XSoqab_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/ADDSUB_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/ADDSUB_MACRO.v
+
+
+_VCSgd_lqhvhc_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_TDP_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_TDP_MACRO.v
+
+
+_VCSgd_xayKlc_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/COUNTER_TC_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/COUNTER_TC_MACRO.v
+
+
+_VCSgd_fHBRod_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/EQ_COMPARE_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/EQ_COMPARE_MACRO.v
+
+
+_VCSgd_2D9pqb_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/ADDMACC_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/ADDMACC_MACRO.v
+
+
+_VCSgd_xudzad_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_SDP_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_SDP_MACRO.v
+
+
+_VCSgd_P7cte_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v
+
+
+_VCSgd_ISnG2c_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/FIFO_DUALCLOCK_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/FIFO_DUALCLOCK_MACRO.v
+
+
+_VCSgd_Ft8iEb_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/FIFO_SYNC_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/FIFO_SYNC_MACRO.v
+
+
+_VCSgd_hI3Qye_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/MACC_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/MACC_MACRO.v
+
+
+_VCSgd_yYjxec_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/MULT_MACRO.v 
+		${VLOGAN}  +v2k -full64 -work unimacro_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unimacro/MULT_MACRO.v
+
+

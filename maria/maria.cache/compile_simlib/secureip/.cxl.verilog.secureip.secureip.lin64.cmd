@@ -1,0 +1,2 @@
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/bin/vlogan +v2k -nc -full64 -work secureip -f /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.cache/compile_simlib/secureip/.cxl.verilog.secureip.secureip.lin64.cmf
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/bin/vlogan  -full64 -work secureip -f /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.cache/compile_simlib/secureip/.cxl.verilog.axi_bfm.secureip.lin64.cmf

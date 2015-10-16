@@ -1,0 +1,39 @@
+Command: vcs -full64 -debug_pp -t ps -licqueue -l elaborate.log xil_defaultlib.tb \
+xil_defaultlib.glbl -o tb_simv
+Doing common elaboration 
+.                         Chronologic VCS (TM)
+       Version F-2011.12-SP1_Full64 -- Thu Oct 15 23:07:54 2015
+               Copyright (c) 1991-2012 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Top Level Modules:
+       tb
+       glbl
+TimeScale is 1 ps / 1 ps
+Starting vcs inline pass...
+9 modules and 0 UDP read.
+	However, due to incremental compilation, only 2 modules need to be compiled.
+recompiling module tb because:
+	This module or some inlined child module(s) has/have been modified.
+recompiling module dll_img_ram because:
+	Signal dependencies have changed
+	Module parameters have been changed via defparam.
+Both modules done.
+ld -r -o pre_vcsobj_1_1.o --whole-archive pre_vcsobj_1_1.a --no-whole-archive
+ld -r -o pre_vcsobj_1_2.o --whole-archive pre_vcsobj_1_2.a --no-whole-archive
+if [ -x ../tb_simv ]; then chmod -x ../tb_simv; fi
+g++  -o ../tb_simv    -Wl,-whole-archive    -Wl,-no-whole-archive  _vcsobj_1_1.o \
+5NrI_d.o 5NrIB_d.o SIM_l.o    pre_vcsobj_1_1.o pre_vcsobj_1_2.o  rmapats_mop.o rmapats.o \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/liberrorinf.so \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/libsnpsmalloc.so \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/libvcsnew.so \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/libvirsim.so \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/libuclinative.so \
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/suse64/lib/vcs_save_restore_new.o \
+-ldl -lm  -lc -lpthread -ldl 
+../tb_simv up to date
+CPU time: .393 seconds to compile + .068 seconds to elab + .177 seconds to link

@@ -1,0 +1,1 @@
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/bin/vlogan +v2k -nc +define+XIL_TIMING -full64 -work simprims_ver -f /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.cache/compile_simlib/simprims_ver/.cxl.verilog.simprim.simprims_ver.lin64.cmf

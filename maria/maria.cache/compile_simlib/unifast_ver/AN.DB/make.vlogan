@@ -1,0 +1,31 @@
+
+VLOGAN	= vlogan
+
+all :		_VCSgd_YFOAY_1.db \
+	_VCSgd_G0Hbmc_1.db \
+	_VCSgd_zUiJRb_1.db \
+	_VCSgd_Jf3gGd_1.db \
+	_VCSgd_rAVk4d_1.db \
+
+
+
+_VCSgd_YFOAY_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/DSP48E1.v 
+		${VLOGAN}  +v2k -full64 -work unifast_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/DSP48E1.v
+
+
+_VCSgd_G0Hbmc_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/GTHE2_CHANNEL.v 
+		${VLOGAN}  +v2k -full64 -work unifast_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/GTHE2_CHANNEL.v
+
+
+_VCSgd_zUiJRb_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/MMCME2_ADV.v 
+		${VLOGAN}  +v2k -full64 -work unifast_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/MMCME2_ADV.v
+
+
+_VCSgd_Jf3gGd_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/PLLE2_ADV.v 
+		${VLOGAN}  +v2k -full64 -work unifast_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/PLLE2_ADV.v
+
+
+_VCSgd_rAVk4d_1.db :	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/GTXE2_CHANNEL.v 
+		${VLOGAN}  +v2k -full64 -work unifast_ver /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/verilog/src/unifast/GTXE2_CHANNEL.v
+
+

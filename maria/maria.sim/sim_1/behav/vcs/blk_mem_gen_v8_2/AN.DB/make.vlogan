@@ -1,0 +1,11 @@
+
+VLOGAN	= vlogan
+
+all :		_VCSgd_kjAFqb_1.db \
+
+
+
+_VCSgd_kjAFqb_1.db :	./../../../maria.srcs/sources_1/ip/dll_img_ram/blk_mem_gen_v8_2/simulation/blk_mem_gen_v8_2.v 
+		${VLOGAN}  -full64 +v2k -work blk_mem_gen_v8_2 ./../../../maria.srcs/sources_1/ip/dll_img_ram/blk_mem_gen_v8_2/simulation/blk_mem_gen_v8_2.v
+
+

@@ -1,0 +1,3 @@
+OTHERS=/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.cache/compile_simlib/synopsys_sim.setup
+xil_defaultlib : vcs/xil_defaultlib
+blk_mem_gen_v8_2 : vcs/blk_mem_gen_v8_2

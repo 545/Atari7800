@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Oct 15 23:09:42 2015
+# Process ID: 22932
+# Log file: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/dll_img_ram_synth_1/dll_img_ram.vds
+# Journal file: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/dll_img_ram_synth_1/vivado.jou
+#-----------------------------------------------------------
+source dll_img_ram.tcl -notrace
