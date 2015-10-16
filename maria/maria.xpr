@@ -108,7 +108,6 @@
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="tb"/>
-        <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="vcs.simulate.runtime" Val="100000000000000000000ns"/>
       </Config>
@@ -141,6 +140,11 @@
         <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.veo"/>
         <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="sim/dll_img_ram.v"/>
         <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="doc/blk_mem_gen_v8_2_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_funcsim.vhdl"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_funcsim.v"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_stub.v"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.dcp"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="dll_img_ram"/>

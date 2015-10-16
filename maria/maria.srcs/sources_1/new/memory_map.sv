@@ -37,7 +37,7 @@ module memory_map (
    logic [7:0]              wait_sync;
    logic                    pav;
 
-   assign drive_DB = we_b & maria_en & (wr_addr_found == 8'h24);
+   assign drive_DB = we_b & maria_en & (wr_addr_found == 8'h28);
    assign DB_out = status_read;
 
    assign slow_clock = ~tia_b | ~p6532_b;
@@ -90,8 +90,9 @@ module memory_map (
          wait_sync <= 8'b0;
          char_base <= 8'b0;
          {ZPH,ZPL} <= 16'b0;
-         deassert_ready <= 1'b0;
-      end else begin
+      end
+      
+      else begin
          deassert_ready <= 1'b0;
          //Handle writes to mem mapped regs
          case(wr_addr_found)
@@ -106,7 +107,7 @@ module memory_map (
            8'h25: color_map[4] <= DB_in;
            8'h26: color_map[5] <= DB_in;
            8'h27: color_map[6] <= DB_in;
-           8'h28: ; // Read only
+           //8'h28: status_read <= DB_in; Read only
            8'h29: color_map[7] <= DB_in;
            8'h2a: color_map[8] <= DB_in;
            8'h2b: color_map[9] <= DB_in;

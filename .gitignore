@@ -7,3 +7,10 @@
 auto-save-list
 tramp
 .\#*
+
+*/*.sim/
+*/*.runs/
+*/*.cache/
+vivado.*
+ucli.key
+maria_test/

@@ -59,10 +59,7 @@ module dll_img_ram (
   wea,
   addra,
   dina,
-  clkb,
-  enb,
-  addrb,
-  doutb
+  douta
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK" *)
@@ -75,28 +72,22 @@ input wire [0 : 0] wea;
 input wire [15 : 0] addra;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN" *)
 input wire [7 : 0] dina;
-(* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK" *)
-input wire clkb;
-(* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB EN" *)
-input wire enb;
-(* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB ADDR" *)
-input wire [15 : 0] addrb;
-(* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT" *)
-output wire [7 : 0] doutb;
+(* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA DOUT" *)
+output wire [7 : 0] douta;
 
   blk_mem_gen_v8_2 #(
     .C_FAMILY("zynq"),
     .C_XDEVICEFAMILY("zynq"),
     .C_ELABORATION_DIR("./"),
     .C_INTERFACE_TYPE(0),
-    .C_AXI_TYPE(1),
+    .C_AXI_TYPE(0),
     .C_AXI_SLAVE_TYPE(0),
     .C_USE_BRAM_BLOCK(0),
     .C_ENABLE_32BIT_ADDRESS(0),
     .C_CTRL_ECC_ALGO("NONE"),
     .C_HAS_AXI_ID(0),
     .C_AXI_ID_WIDTH(4),
-    .C_MEM_TYPE(1),
+    .C_MEM_TYPE(0),
     .C_BYTE_SIZE(9),
     .C_ALGORITHM(1),
     .C_PRIM_TYPE(1),
@@ -123,7 +114,7 @@ output wire [7 : 0] doutb;
     .C_RST_PRIORITY_B("CE"),
     .C_RSTRAM_B(0),
     .C_INITB_VAL("0"),
-    .C_HAS_ENB(1),
+    .C_HAS_ENB(0),
     .C_HAS_REGCEB(0),
     .C_USE_BYTE_WEB(0),
     .C_WEB_WIDTH(1),
@@ -133,8 +124,8 @@ output wire [7 : 0] doutb;
     .C_WRITE_DEPTH_B(65536),
     .C_READ_DEPTH_B(65536),
     .C_ADDRB_WIDTH(16),
-    .C_HAS_MEM_OUTPUT_REGS_A(0),
-    .C_HAS_MEM_OUTPUT_REGS_B(1),
+    .C_HAS_MEM_OUTPUT_REGS_A(1),
+    .C_HAS_MEM_OUTPUT_REGS_B(0),
     .C_HAS_MUX_OUTPUT_REGS_A(0),
     .C_HAS_MUX_OUTPUT_REGS_B(0),
     .C_MUX_PIPELINE_STAGES(0),
@@ -156,7 +147,7 @@ output wire [7 : 0] doutb;
     .C_DISABLE_WARN_BHV_RANGE(1),
     .C_COUNT_36K_BRAM("16"),
     .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     33.312202 mW")
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     16.114201 mW")
   ) inst (
     .clka(clka),
     .rsta(1'D0),
@@ -165,15 +156,15 @@ output wire [7 : 0] doutb;
     .wea(wea),
     .addra(addra),
     .dina(dina),
-    .douta(),
-    .clkb(clkb),
+    .douta(douta),
+    .clkb(1'D0),
     .rstb(1'D0),
-    .enb(enb),
+    .enb(1'D0),
     .regceb(1'D0),
     .web(1'B0),
-    .addrb(addrb),
+    .addrb(16'B0),
     .dinb(8'B0),
-    .doutb(doutb),
+    .doutb(),
     .injectsbiterr(1'D0),
     .injectdbiterr(1'D0),
     .eccpipece(1'D0),
