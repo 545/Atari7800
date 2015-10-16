@@ -1,0 +1,1528 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Thu Oct 15 19:32:04 2015
+| Host         : cascade.andrew.cmu.edu running 64-bit Red Hat Enterprise Linux Server release 7.1 (Maipo)
+| Command      : report_timing_summary -warn_on_violation -max_paths 10 -file Atari7800_timing_summary_routed.rpt -rpx Atari7800_timing_summary_routed.rpx
+| Design       : Atari7800
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.11 2014-09-11
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There is 1 input port with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 2 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There is 1 generated clock that is not connected to a clock source. (HIGH)
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     36.094        0.000                      0                   20        0.168        0.000                      0                   20        2.633        0.000                       0                    26  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock                        Waveform(ns)         Period(ns)      Frequency(MHz)
+-----                        ------------         ----------      --------------
+CLOCK_PLL                    {0.000 5.000}        10.000          100.000         
+  CLOCK_25_clock_divider     {0.000 19.886}       39.773          25.143          
+  CLOCK_7_143_clock_divider  {0.000 69.886}       139.773         7.154           
+  clkfbout_clock_divider     {0.000 25.000}       50.000          20.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock                         WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----                         -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+CLOCK_PLL                                                                                                                                                                   3.000        0.000                       0                     1  
+  CLOCK_25_clock_divider       36.094        0.000                      0                   20        0.168        0.000                      0                   20       19.386        0.000                       0                    22  
+  clkfbout_clock_divider                                                                                                                                                    2.633        0.000                       0                     3  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  CLOCK_PLL
+  To Clock:  CLOCK_PLL
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        3.000ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         CLOCK_PLL
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { CLOCK_PLL }
+
+Check Type        Corner  Lib Pin           Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period        n/a     PLLE2_ADV/CLKIN1  n/a            1.249         10.000      8.751      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+Max Period        n/a     PLLE2_ADV/CLKIN1  n/a            52.633        10.000      42.633     PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+Low Pulse Width   Slow    PLLE2_ADV/CLKIN1  n/a            2.000         5.000       3.000      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+Low Pulse Width   Fast    PLLE2_ADV/CLKIN1  n/a            2.000         5.000       3.000      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+High Pulse Width  Slow    PLLE2_ADV/CLKIN1  n/a            2.000         5.000       3.000      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+High Pulse Width  Fast    PLLE2_ADV/CLKIN1  n/a            2.000         5.000       3.000      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKIN1
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  CLOCK_25_clock_divider
+  To Clock:  CLOCK_25_clock_divider
+
+Setup :            0  Failing Endpoints,  Worst Slack       36.094ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.168ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack       19.386ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             36.094ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.552ns  (logic 0.828ns (23.310%)  route 2.724ns (76.690%))
+  Logic Levels:           3  (LUT2=1 LUT6=2)
+  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.486ns = ( 37.286 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.308ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           1.040     0.656    row_count[9]_i_4_n_0
+    SLICE_X2Y14          LUT6 (Prop_lut6_I1_O)        0.124     0.780 r  row_count[7]_i_1/O
+                         net (fo=1, routed)           0.000     0.780    row_count[7]_i_1_n_0
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.651    37.286    clock_25
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[7]/C
+                         clock pessimism             -0.308    36.978    
+                         clock uncertainty           -0.181    36.797    
+    SLICE_X2Y14          FDCE (Setup_fdce_C_D)        0.077    36.874    vga_out/row_count_reg[7]
+  -------------------------------------------------------------------
+                         required time                         36.874    
+                         arrival time                          -0.780    
+  -------------------------------------------------------------------
+                         slack                                 36.094    
+
+Slack (MET) :             36.149ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.493ns  (logic 0.828ns (23.703%)  route 2.665ns (76.297%))
+  Logic Levels:           3  (LUT2=1 LUT3=1 LUT6=1)
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.487ns = ( 37.285 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.311ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           0.981     0.597    row_count[9]_i_4_n_0
+    SLICE_X2Y15          LUT3 (Prop_lut3_I2_O)        0.124     0.721 r  row_count[4]_i_1/O
+                         net (fo=1, routed)           0.000     0.721    vga_out/p_0_in__0[4]
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.650    37.285    clock_25
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[4]/C
+                         clock pessimism             -0.311    36.974    
+                         clock uncertainty           -0.181    36.793    
+    SLICE_X2Y15          FDCE (Setup_fdce_C_D)        0.077    36.870    vga_out/row_count_reg[4]
+  -------------------------------------------------------------------
+                         required time                         36.870    
+                         arrival time                          -0.721    
+  -------------------------------------------------------------------
+                         slack                                 36.149    
+
+Slack (MET) :             36.151ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[2]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.458ns  (logic 1.257ns (36.349%)  route 2.201ns (63.651%))
+  Logic Levels:           3  (LUT2=1 LUT3=1 LUT6=1)
+  Clock Path Skew:        -0.063ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.486ns = ( 37.286 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.773ns
+    Clock Pessimism Removal (CPR):    -0.350ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.829    -2.773    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.478    -2.295 f  vga_out/col_count_reg[1]/Q
+                         net (fo=8, routed)           0.859    -1.437    vga_out/col_count_reg_n_0_[1]
+    SLICE_X3Y14          LUT2 (Prop_lut2_I1_O)        0.323    -1.114 r  col_count[7]_i_3/O
+                         net (fo=5, routed)           0.670    -0.443    col_count[7]_i_3_n_0
+    SLICE_X3Y13          LUT6 (Prop_lut6_I1_O)        0.332    -0.111 r  row_count[3]_i_2/O
+                         net (fo=3, routed)           0.672     0.561    row_count[3]_i_2_n_0
+    SLICE_X2Y13          LUT3 (Prop_lut3_I1_O)        0.124     0.685 r  row_count[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.685    row_count[2]_i_1_n_0
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.651    37.286    clock_25
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[2]/C
+                         clock pessimism             -0.350    36.936    
+                         clock uncertainty           -0.181    36.755    
+    SLICE_X2Y13          FDCE (Setup_fdce_C_D)        0.081    36.836    vga_out/row_count_reg[2]
+  -------------------------------------------------------------------
+                         required time                         36.836    
+                         arrival time                          -0.685    
+  -------------------------------------------------------------------
+                         slack                                 36.151    
+
+Slack (MET) :             36.156ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.490ns  (logic 0.828ns (23.723%)  route 2.662ns (76.277%))
+  Logic Levels:           3  (LUT2=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.487ns = ( 37.285 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.311ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           0.978     0.594    row_count[9]_i_4_n_0
+    SLICE_X2Y15          LUT4 (Prop_lut4_I0_O)        0.124     0.718 r  row_count[5]_i_1/O
+                         net (fo=1, routed)           0.000     0.718    vga_out/p_0_in__0[5]
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.650    37.285    clock_25
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[5]/C
+                         clock pessimism             -0.311    36.974    
+                         clock uncertainty           -0.181    36.793    
+    SLICE_X2Y15          FDCE (Setup_fdce_C_D)        0.081    36.874    vga_out/row_count_reg[5]
+  -------------------------------------------------------------------
+                         required time                         36.874    
+                         arrival time                          -0.718    
+  -------------------------------------------------------------------
+                         slack                                 36.156    
+
+Slack (MET) :             36.162ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[3]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.484ns  (logic 1.283ns (36.824%)  route 2.201ns (63.176%))
+  Logic Levels:           3  (LUT2=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.063ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.486ns = ( 37.286 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.773ns
+    Clock Pessimism Removal (CPR):    -0.350ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.829    -2.773    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.478    -2.295 f  vga_out/col_count_reg[1]/Q
+                         net (fo=8, routed)           0.859    -1.437    vga_out/col_count_reg_n_0_[1]
+    SLICE_X3Y14          LUT2 (Prop_lut2_I1_O)        0.323    -1.114 r  col_count[7]_i_3/O
+                         net (fo=5, routed)           0.670    -0.443    col_count[7]_i_3_n_0
+    SLICE_X3Y13          LUT6 (Prop_lut6_I1_O)        0.332    -0.111 r  row_count[3]_i_2/O
+                         net (fo=3, routed)           0.672     0.561    row_count[3]_i_2_n_0
+    SLICE_X2Y13          LUT4 (Prop_lut4_I1_O)        0.150     0.711 r  row_count[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.711    row_count[3]_i_1_n_0
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.651    37.286    clock_25
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[3]/C
+                         clock pessimism             -0.350    36.936    
+                         clock uncertainty           -0.181    36.755    
+    SLICE_X2Y13          FDCE (Setup_fdce_C_D)        0.118    36.873    vga_out/row_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                         36.873    
+                         arrival time                          -0.711    
+  -------------------------------------------------------------------
+                         slack                                 36.162    
+
+Slack (MET) :             36.164ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[8]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.519ns  (logic 0.854ns (24.267%)  route 2.665ns (75.733%))
+  Logic Levels:           3  (LUT2=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.487ns = ( 37.285 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.311ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           0.981     0.597    row_count[9]_i_4_n_0
+    SLICE_X2Y15          LUT4 (Prop_lut4_I2_O)        0.150     0.747 r  row_count[8]_i_1/O
+                         net (fo=1, routed)           0.000     0.747    vga_out/p_0_in__0[8]
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.650    37.285    clock_25
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[8]/C
+                         clock pessimism             -0.311    36.974    
+                         clock uncertainty           -0.181    36.793    
+    SLICE_X2Y15          FDCE (Setup_fdce_C_D)        0.118    36.911    vga_out/row_count_reg[8]
+  -------------------------------------------------------------------
+                         required time                         36.911    
+                         arrival time                          -0.747    
+  -------------------------------------------------------------------
+                         slack                                 36.164    
+
+Slack (MET) :             36.167ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[6]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.516ns  (logic 0.854ns (24.288%)  route 2.662ns (75.713%))
+  Logic Levels:           3  (LUT2=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.487ns = ( 37.285 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.311ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           0.978     0.594    row_count[9]_i_4_n_0
+    SLICE_X2Y15          LUT5 (Prop_lut5_I1_O)        0.150     0.744 r  row_count[6]_i_1/O
+                         net (fo=1, routed)           0.000     0.744    vga_out/p_0_in__0[6]
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.650    37.285    clock_25
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[6]/C
+                         clock pessimism             -0.311    36.974    
+                         clock uncertainty           -0.181    36.793    
+    SLICE_X2Y15          FDCE (Setup_fdce_C_D)        0.118    36.911    vga_out/row_count_reg[6]
+  -------------------------------------------------------------------
+                         required time                         36.911    
+                         arrival time                          -0.744    
+  -------------------------------------------------------------------
+                         slack                                 36.167    
+
+Slack (MET) :             36.310ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[9]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.340ns  (logic 0.828ns (24.789%)  route 2.512ns (75.211%))
+  Logic Levels:           3  (LUT2=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.486ns = ( 37.286 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.772ns
+    Clock Pessimism Removal (CPR):    -0.308ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.830    -2.772    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.456    -2.316 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           1.060    -1.256    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y13          LUT2 (Prop_lut2_I0_O)        0.124    -1.132 r  row_count[0]_i_2/O
+                         net (fo=2, routed)           0.624    -0.508    row_count[0]_i_2_n_0
+    SLICE_X2Y13          LUT6 (Prop_lut6_I3_O)        0.124    -0.384 r  row_count[9]_i_4/O
+                         net (fo=6, routed)           0.828     0.444    row_count[9]_i_4_n_0
+    SLICE_X2Y14          LUT5 (Prop_lut5_I2_O)        0.124     0.568 r  row_count[9]_i_1/O
+                         net (fo=1, routed)           0.000     0.568    vga_out/p_0_in__0[9]
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.651    37.286    clock_25
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[9]/C
+                         clock pessimism             -0.308    36.978    
+                         clock uncertainty           -0.181    36.797    
+    SLICE_X2Y14          FDCE (Setup_fdce_C_D)        0.081    36.878    vga_out/row_count_reg[9]
+  -------------------------------------------------------------------
+                         required time                         36.878    
+                         arrival time                          -0.568    
+  -------------------------------------------------------------------
+                         slack                                 36.310    
+
+Slack (MET) :             36.410ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[9]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.147ns  (logic 1.126ns (35.777%)  route 2.021ns (64.223%))
+  Logic Levels:           3  (LUT5=1 LUT6=2)
+  Clock Path Skew:        -0.063ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.486ns = ( 37.286 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.773ns
+    Clock Pessimism Removal (CPR):    -0.350ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.829    -2.773    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.518    -2.255 r  vga_out/col_count_reg[6]/Q
+                         net (fo=7, routed)           0.876    -1.379    vga_out/col_count_reg_n_0_[6]
+    SLICE_X3Y13          LUT5 (Prop_lut5_I0_O)        0.152    -1.227 r  col_count[9]_i_5/O
+                         net (fo=3, routed)           0.431    -0.796    col_count[9]_i_5_n_0
+    SLICE_X3Y14          LUT6 (Prop_lut6_I5_O)        0.332    -0.464 r  col_count[9]_i_2/O
+                         net (fo=4, routed)           0.714     0.250    col_count[9]_i_2_n_0
+    SLICE_X3Y13          LUT6 (Prop_lut6_I0_O)        0.124     0.374 r  col_count[9]_i_1/O
+                         net (fo=1, routed)           0.000     0.374    vga_out/p_0_in[9]
+    SLICE_X3Y13          FDCE                                         r  vga_out/col_count_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.651    37.286    clock_25
+    SLICE_X3Y13          FDCE                                         r  vga_out/col_count_reg[9]/C
+                         clock pessimism             -0.350    36.936    
+                         clock uncertainty           -0.181    36.755    
+    SLICE_X3Y13          FDCE (Setup_fdce_C_D)        0.029    36.784    vga_out/col_count_reg[9]
+  -------------------------------------------------------------------
+                         required time                         36.784    
+                         arrival time                          -0.374    
+  -------------------------------------------------------------------
+                         slack                                 36.410    
+
+Slack (MET) :             36.443ns  (required time - arrival time)
+  Source:                 vga_out/col_count_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[8]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            39.773ns  (CLOCK_25_clock_divider rise@39.773ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        3.203ns  (logic 1.257ns (39.248%)  route 1.946ns (60.752%))
+  Logic Levels:           3  (LUT2=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.487ns = ( 37.285 - 39.773 ) 
+    Source Clock Delay      (SCD):    -2.773ns
+    Clock Pessimism Removal (CPR):    -0.311ns
+  Clock Uncertainty:      0.181ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.355ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         1.008     1.008 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.306     2.314    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -8.866    -6.552 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.849    -4.703    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    -4.602 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.829    -2.773    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.478    -2.295 r  vga_out/col_count_reg[1]/Q
+                         net (fo=8, routed)           0.859    -1.437    vga_out/col_count_reg_n_0_[1]
+    SLICE_X3Y14          LUT2 (Prop_lut2_I1_O)        0.323    -1.114 f  col_count[7]_i_3/O
+                         net (fo=5, routed)           0.805    -0.309    col_count[7]_i_3_n_0
+    SLICE_X4Y13          LUT6 (Prop_lut6_I0_O)        0.332     0.023 r  col_count[8]_i_2/O
+                         net (fo=1, routed)           0.282     0.305    col_count[8]_i_2_n_0
+    SLICE_X4Y13          LUT4 (Prop_lut4_I2_O)        0.124     0.429 r  col_count[8]_i_1/O
+                         net (fo=1, routed)           0.000     0.429    vga_out/p_0_in[8]
+    SLICE_X4Y13          FDCE                                         r  vga_out/col_count_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                     39.773    39.773 r  
+    AA9                                               0.000    39.773 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000    39.773    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.874    40.646 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           1.181    41.827    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -7.970    33.858 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           1.686    35.544    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    35.635 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          1.650    37.285    clock_25
+    SLICE_X4Y13          FDCE                                         r  vga_out/col_count_reg[8]/C
+                         clock pessimism             -0.311    36.974    
+                         clock uncertainty           -0.181    36.793    
+    SLICE_X4Y13          FDCE (Setup_fdce_C_D)        0.079    36.872    vga_out/col_count_reg[8]
+  -------------------------------------------------------------------
+                         required time                         36.872    
+                         arrival time                          -0.429    
+  -------------------------------------------------------------------
+                         slack                                 36.443    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.168ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[6]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.324ns  (logic 0.186ns (57.361%)  route 0.138ns (42.639%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.035ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.197ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.141    -0.389 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           0.138    -0.251    vga_out/col_count_reg_n_0_[5]
+    SLICE_X4Y14          LUT6 (Prop_lut6_I4_O)        0.045    -0.206 r  col_count[6]_i_1/O
+                         net (fo=1, routed)           0.000    -0.206    vga_out/p_0_in[6]
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[6]/C
+                         clock pessimism             -0.197    -0.495    
+    SLICE_X4Y14          FDCE (Hold_fdce_C_D)         0.121    -0.374    vga_out/col_count_reg[6]
+  -------------------------------------------------------------------
+                         required time                          0.374    
+                         arrival time                          -0.206    
+  -------------------------------------------------------------------
+                         slack                                  0.168    
+
+Slack (MET) :             0.258ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.363ns  (logic 0.183ns (50.361%)  route 0.180ns (49.639%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.297ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.233ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y14          FDCE (Prop_fdce_C_Q)         0.141    -0.389 r  vga_out/col_count_reg[5]/Q
+                         net (fo=8, routed)           0.180    -0.208    vga_out/col_count_reg_n_0_[5]
+    SLICE_X3Y14          LUT5 (Prop_lut5_I4_O)        0.042    -0.166 r  col_count[5]_i_1/O
+                         net (fo=1, routed)           0.000    -0.166    vga_out/p_0_in[5]
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.888    -0.297    clock_25
+    SLICE_X3Y14          FDCE                                         r  vga_out/col_count_reg[5]/C
+                         clock pessimism             -0.233    -0.530    
+    SLICE_X3Y14          FDCE (Hold_fdce_C_D)         0.105    -0.425    vga_out/col_count_reg[5]
+  -------------------------------------------------------------------
+                         required time                          0.425    
+                         arrival time                          -0.166    
+  -------------------------------------------------------------------
+                         slack                                  0.258    
+
+Slack (MET) :             0.262ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.393ns  (logic 0.207ns (52.626%)  route 0.186ns (47.374%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.232ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/col_count_reg[0]/Q
+                         net (fo=9, routed)           0.186    -0.179    vga_out/col_count_reg_n_0_[0]
+    SLICE_X4Y14          LUT2 (Prop_lut2_I0_O)        0.043    -0.136 r  col_count[1]_i_1/O
+                         net (fo=1, routed)           0.000    -0.136    vga_out/p_0_in[1]
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[1]/C
+                         clock pessimism             -0.232    -0.530    
+    SLICE_X4Y14          FDCE (Hold_fdce_C_D)         0.131    -0.399    vga_out/col_count_reg[1]
+  -------------------------------------------------------------------
+                         required time                          0.399    
+                         arrival time                          -0.136    
+  -------------------------------------------------------------------
+                         slack                                  0.262    
+
+Slack (MET) :             0.262ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.393ns  (logic 0.207ns (52.626%)  route 0.186ns (47.374%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.232ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/col_count_reg[0]/Q
+                         net (fo=9, routed)           0.186    -0.179    vga_out/col_count_reg_n_0_[0]
+    SLICE_X4Y14          LUT5 (Prop_lut5_I2_O)        0.043    -0.136 r  col_count[4]_i_1/O
+                         net (fo=1, routed)           0.000    -0.136    vga_out/p_0_in[4]
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[4]/C
+                         clock pessimism             -0.232    -0.530    
+    SLICE_X4Y14          FDCE (Hold_fdce_C_D)         0.131    -0.399    vga_out/col_count_reg[4]
+  -------------------------------------------------------------------
+                         required time                          0.399    
+                         arrival time                          -0.136    
+  -------------------------------------------------------------------
+                         slack                                  0.262    
+
+Slack (MET) :             0.271ns  (arrival time - required time)
+  Source:                 vga_out/row_count_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.406ns  (logic 0.209ns (51.518%)  route 0.197ns (48.482%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.015ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.297ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.218ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X2Y15          FDCE                                         r  vga_out/row_count_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y15          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/row_count_reg[4]/Q
+                         net (fo=8, routed)           0.197    -0.169    vga_out/row_count_reg_n_0_[4]
+    SLICE_X2Y14          LUT6 (Prop_lut6_I2_O)        0.045    -0.124 r  row_count[7]_i_1/O
+                         net (fo=1, routed)           0.000    -0.124    row_count[7]_i_1_n_0
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.888    -0.297    clock_25
+    SLICE_X2Y14          FDCE                                         r  vga_out/row_count_reg[7]/C
+                         clock pessimism             -0.218    -0.515    
+    SLICE_X2Y14          FDCE (Hold_fdce_C_D)         0.120    -0.395    vga_out/row_count_reg[7]
+  -------------------------------------------------------------------
+                         required time                          0.395    
+                         arrival time                          -0.124    
+  -------------------------------------------------------------------
+                         slack                                  0.271    
+
+Slack (MET) :             0.274ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[3]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.395ns  (logic 0.209ns (52.866%)  route 0.186ns (47.134%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.232ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/col_count_reg[0]/Q
+                         net (fo=9, routed)           0.186    -0.179    vga_out/col_count_reg_n_0_[0]
+    SLICE_X4Y14          LUT4 (Prop_lut4_I1_O)        0.045    -0.134 r  col_count[3]_i_1/O
+                         net (fo=1, routed)           0.000    -0.134    vga_out/p_0_in[3]
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[3]/C
+                         clock pessimism             -0.232    -0.530    
+    SLICE_X4Y14          FDCE (Hold_fdce_C_D)         0.121    -0.409    vga_out/col_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                          0.409    
+                         arrival time                          -0.134    
+  -------------------------------------------------------------------
+                         slack                                  0.274    
+
+Slack (MET) :             0.275ns  (arrival time - required time)
+  Source:                 vga_out/row_count_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/row_count_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.395ns  (logic 0.209ns (52.866%)  route 0.186ns (47.134%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.297ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.233ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y13          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/row_count_reg[0]/Q
+                         net (fo=5, routed)           0.186    -0.179    vga_out/row_count_reg_n_0_[0]
+    SLICE_X2Y13          LUT6 (Prop_lut6_I4_O)        0.045    -0.134 r  row_count[0]_i_1/O
+                         net (fo=1, routed)           0.000    -0.134    vga_out/p_0_in__0[0]
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.888    -0.297    clock_25
+    SLICE_X2Y13          FDCE                                         r  vga_out/row_count_reg[0]/C
+                         clock pessimism             -0.233    -0.530    
+    SLICE_X2Y13          FDCE (Hold_fdce_C_D)         0.120    -0.410    vga_out/row_count_reg[0]
+  -------------------------------------------------------------------
+                         required time                          0.410    
+                         arrival time                          -0.134    
+  -------------------------------------------------------------------
+                         slack                                  0.275    
+
+Slack (MET) :             0.275ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.395ns  (logic 0.209ns (52.866%)  route 0.186ns (47.134%))
+  Logic Levels:           1  (LUT1=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.232ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y14          FDCE (Prop_fdce_C_Q)         0.164    -0.366 f  vga_out/col_count_reg[0]/Q
+                         net (fo=9, routed)           0.186    -0.179    vga_out/col_count_reg_n_0_[0]
+    SLICE_X4Y14          LUT1 (Prop_lut1_I0_O)        0.045    -0.134 r  col_count[0]_i_1/O
+                         net (fo=1, routed)           0.000    -0.134    vga_out/p_0_in[0]
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y14          FDCE                                         r  vga_out/col_count_reg[0]/C
+                         clock pessimism             -0.232    -0.530    
+    SLICE_X4Y14          FDCE (Hold_fdce_C_D)         0.120    -0.410    vga_out/col_count_reg[0]
+  -------------------------------------------------------------------
+                         required time                          0.410    
+                         arrival time                          -0.134    
+  -------------------------------------------------------------------
+                         slack                                  0.275    
+
+Slack (MET) :             0.276ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[7]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.396ns  (logic 0.209ns (52.728%)  route 0.187ns (47.272%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.298ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.232ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X4Y13          FDCE                                         r  vga_out/col_count_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y13          FDCE (Prop_fdce_C_Q)         0.164    -0.366 r  vga_out/col_count_reg[7]/Q
+                         net (fo=7, routed)           0.187    -0.178    vga_out/col_count_reg_n_0_[7]
+    SLICE_X4Y13          LUT6 (Prop_lut6_I0_O)        0.045    -0.133 r  col_count[7]_i_1/O
+                         net (fo=1, routed)           0.000    -0.133    vga_out/p_0_in[7]
+    SLICE_X4Y13          FDCE                                         r  vga_out/col_count_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.887    -0.298    clock_25
+    SLICE_X4Y13          FDCE                                         r  vga_out/col_count_reg[7]/C
+                         clock pessimism             -0.232    -0.530    
+    SLICE_X4Y13          FDCE (Hold_fdce_C_D)         0.120    -0.410    vga_out/col_count_reg[7]
+  -------------------------------------------------------------------
+                         required time                          0.410    
+                         arrival time                          -0.133    
+  -------------------------------------------------------------------
+                         slack                                  0.276    
+
+Slack (MET) :             0.284ns  (arrival time - required time)
+  Source:                 vga_out/col_count_reg[9]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Destination:            vga_out/col_count_reg[9]/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK_25_clock_divider  {rise@0.000ns fall@19.886ns period=39.773ns})
+  Path Group:             CLOCK_25_clock_divider
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (CLOCK_25_clock_divider rise@0.000ns - CLOCK_25_clock_divider rise@0.000ns)
+  Data Path Delay:        0.375ns  (logic 0.186ns (49.545%)  route 0.189ns (50.455%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.297ns
+    Source Clock Delay      (SCD):    -0.530ns
+    Clock Pessimism Removal (CPR):    0.233ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.236     0.236 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.676    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.384    -1.707 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.533    -1.174    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.148 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.619    -0.530    clock_25
+    SLICE_X3Y13          FDCE                                         r  vga_out/col_count_reg[9]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y13          FDCE (Prop_fdce_C_Q)         0.141    -0.389 r  vga_out/col_count_reg[9]/Q
+                         net (fo=5, routed)           0.189    -0.199    vga_out/col_count_reg_n_0_[9]
+    SLICE_X3Y13          LUT6 (Prop_lut6_I5_O)        0.045    -0.154 r  col_count[9]_i_1/O
+                         net (fo=1, routed)           0.000    -0.154    vga_out/p_0_in[9]
+    SLICE_X3Y13          FDCE                                         r  vga_out/col_count_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK_25_clock_divider rise edge)
+                                                      0.000     0.000 r  
+    AA9                                               0.000     0.000 r  CLOCK_PLL (IN)
+                         net (fo=0)                   0.000     0.000    divider/inst/CLOCK_PLL
+    AA9                  IBUF (Prop_ibuf_I_O)         0.425     0.425 r  divider/inst/clkin1_ibufg/O
+                         net (fo=1, routed)           0.481     0.906    divider/inst/CLOCK_PLL_clock_divider
+    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT1)
+                                                     -2.700    -1.794 r  divider/inst/plle2_adv_inst/CLKOUT1
+                         net (fo=1, routed)           0.580    -1.214    divider/inst/CLOCK_25_clock_divider
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029    -1.185 r  divider/inst/clkout2_buf/O
+                         net (fo=20, routed)          0.888    -0.297    clock_25
+    SLICE_X3Y13          FDCE                                         r  vga_out/col_count_reg[9]/C
+                         clock pessimism             -0.233    -0.530    
+    SLICE_X3Y13          FDCE (Hold_fdce_C_D)         0.091    -0.439    vga_out/col_count_reg[9]
+  -------------------------------------------------------------------
+                         required time                          0.439    
+                         arrival time                          -0.154    
+  -------------------------------------------------------------------
+                         slack                                  0.284    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         CLOCK_25_clock_divider
+Waveform(ns):       { 0.000 19.886 }
+Period(ns):         39.773
+Sources:            { divider/inst/plle2_adv_inst/CLKOUT1 }
+
+Check Type        Corner  Lib Pin            Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period        n/a     BUFG/I             n/a            2.155         39.773      37.618     BUFGCTRL_X0Y0   divider/inst/clkout2_buf/I
+Min Period        n/a     PLLE2_ADV/CLKOUT1  n/a            1.249         39.773      38.524     PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKOUT1
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y14     vga_out/col_count_reg[0]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y14     vga_out/col_count_reg[1]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X3Y15     vga_out/col_count_reg[2]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y14     vga_out/col_count_reg[3]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y14     vga_out/col_count_reg[4]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X3Y14     vga_out/col_count_reg[5]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y14     vga_out/col_count_reg[6]/C
+Min Period        n/a     FDCE/C             n/a            1.000         39.773      38.773     SLICE_X4Y13     vga_out/col_count_reg[7]/C
+Max Period        n/a     PLLE2_ADV/CLKOUT1  n/a            160.000       39.773      120.227    PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKOUT1
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[0]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[1]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y15     vga_out/col_count_reg[2]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[3]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[4]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y14     vga_out/col_count_reg[5]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[6]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y13     vga_out/col_count_reg[7]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y13     vga_out/col_count_reg[8]/C
+Low Pulse Width   Fast    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y13     vga_out/col_count_reg[9]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[0]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[1]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y15     vga_out/col_count_reg[2]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[3]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[4]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y14     vga_out/col_count_reg[5]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y14     vga_out/col_count_reg[6]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y13     vga_out/col_count_reg[7]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X4Y13     vga_out/col_count_reg[8]/C
+High Pulse Width  Slow    FDCE/C             n/a            0.500         19.886      19.386     SLICE_X3Y13     vga_out/col_count_reg[9]/C
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clkfbout_clock_divider
+  To Clock:  clkfbout_clock_divider
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        2.633ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clkfbout_clock_divider
+Waveform(ns):       { 0.000 25.000 }
+Period(ns):         50.000
+Sources:            { divider/inst/plle2_adv_inst/CLKFBOUT }
+
+Check Type  Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period  n/a     BUFG/I              n/a            2.155         50.000      47.845     BUFGCTRL_X0Y1   divider/inst/clkf_buf/I
+Min Period  n/a     PLLE2_ADV/CLKFBIN   n/a            1.249         50.000      48.751     PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKFBIN
+Min Period  n/a     PLLE2_ADV/CLKFBOUT  n/a            1.249         50.000      48.751     PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKFBOUT
+Max Period  n/a     PLLE2_ADV/CLKFBIN   n/a            52.633        50.000      2.633      PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKFBIN
+Max Period  n/a     PLLE2_ADV/CLKFBOUT  n/a            160.000       50.000      110.000    PLLE2_ADV_X0Y0  divider/inst/plle2_adv_inst/CLKFBOUT
+
+
+

@@ -1,0 +1,45 @@
+Unsupported Linux kernel (3.10.0-229.14.1.el7.x86_64), will try Linux
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTHE2_CHANNEL.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTHE2_CHANNEL.vhd, 34
+GTHE2_CHANNEL
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTHE2_CHANNEL.vhd, 596
+analysis-Parsing, "GTHE2_CHANNEL"
+  
+    architecture GTHE2_CHANNEL_FAST_V of GTHE2_CHANNEL is
+                                         ^
+  The compiled design unit for entity 'GTHE2_CHANNEL' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTHE2_CHANNEL.vhd": errors: 2; warnings: 0.
+Parsing design file '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTXE2_CHANNEL.vhd'
+
+Error-[OVNOSELECT1_LIB] Undefined identifier
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTXE2_CHANNEL.vhd, 39
+GTXE2_CHANNEL
+  
+  use unisim.VCOMPONENTS.all;
+             ^
+  The symbol named 'VCOMPONENTS' cannot be found in library 'UNISIM'.
+
+
+Error-[IEEEVHDLNOENT] Missing compiled design unit
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTXE2_CHANNEL.vhd, 490
+analysis-Parsing, "GTXE2_CHANNEL"
+  
+    architecture GTXE2_CHANNEL_FAST_V of GTXE2_CHANNEL is
+                                         ^
+  The compiled design unit for entity 'GTXE2_CHANNEL' is not found in WORK 
+  library.
+  Please verify that the entity was analyzed successfully.
+
+"/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/vhdl/src/unifast/secureip/GTXE2_CHANNEL.vhd": errors: 2; warnings: 0.

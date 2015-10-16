@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 `default_nettype none
 
 module Atari7800(
@@ -28,8 +29,12 @@ module Atari7800(
                            mm_p6532_b, mm_tia_b;
 
    // Memory Busses
-   logic [15:0]            AB;
-   logic  [7:0]            DB;
+   // wire [15:0]            AB;
+   // wire  [7:0]            DB;
+   logic [15:0] AB, AB_m;
+   logic        AB_m_en;
+   logic  [7:0] DB, DB_m;
+   logic        DB_m_en;
 
    /////////////////
    // Submodules //
@@ -58,7 +63,8 @@ module Atari7800(
 
    // MARIA
    maria maria_inst(
-      .AB(AB), .DB(DB),
+      .AB_in(AB), .AB_out(AB_m), .drive_AB(AB_m_en),
+      .DB_in(DB), .DB_out(DB_m), .drive_DB(DB_m_en),
       .reset(reset), .sysclk(sysclk_14_3),
       .pclk_2(pclk_2), .tia_clk(tia_clk), .pclk_0(pclk_0),
       .ram0_b(mm_ram0_b), .ram1_b(mm_ram1_b),

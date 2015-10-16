@@ -5,6 +5,7 @@
 debug::add_scope template.lib 1
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config  -id {USF-XSim 62}  -string {{ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or '/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.sim/sim_1/behav/xvlog.log' file for more information.}}  -suppress 
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.compositeFile.enableAutoGeneration 0
@@ -24,6 +25,8 @@ set_property is_locked true [get_files /afs/ece.cmu.edu/usr/cmbarker/Private/Ata
 read_verilog -library xil_defaultlib -sv {
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/line_ram.sv
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv
+  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/memory_map.sv
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/vga.sv
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv
   /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv

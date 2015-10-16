@@ -1,0 +1,1 @@
+/afs/ece.cmu.edu/support/synopsys/synopsys/share/image/usr/local/synopsys/vcs-mx_vF-2011.12-SP1/bin/vlogan +v2k -nc -full64 -work unifast_ver -f /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.cache/compile_simlib/unifast_ver/.cxl.verilog.unifast.unifast_ver.lin64.cmf

@@ -17,11 +17,818 @@ Command: synth_design -top Atari7800 -part xc7z020clg484-1 -flatten_hierarchy fu
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
-ERROR: [Synth 8-1031] vga_row_number is not declared [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv:31]
-INFO: [Synth 8-2350] module timing_ctrl ignored due to previous errors [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv:3]
-Failed to read verilog '/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv'
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1071.770 ; gain = 162.520 ; free physical = 7868 ; free virtual = 19587
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Atari7800' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:4]
+INFO: [Synth 8-638] synthesizing module 'clock_divider' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.v:70]
+INFO: [Synth 8-638] synthesizing module 'clock_divider_clk_wiz' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_clk_wiz.v:68]
+INFO: [Synth 8-638] synthesizing module 'IBUF' [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:10256]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-256] done synthesizing module 'IBUF' (1#1) [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:10256]
+INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV' [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:26066]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT bound to: 44 - type: integer 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: float 
+	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_DIVIDE bound to: 123 - type: integer 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT1_DIVIDE bound to: 35 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: float 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 5 - type: integer 
+	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
+	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
+	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV' (2#1) [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:26066]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (3#1) [/afs/ece/support/xilinx/xilinx.release/Vivado/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'clock_divider_clk_wiz' (4#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_clk_wiz.v:68]
+INFO: [Synth 8-256] done synthesizing module 'clock_divider' (5#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.v:70]
+INFO: [Synth 8-638] synthesizing module 'uv_to_vga' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/vga.sv:20]
+INFO: [Synth 8-256] done synthesizing module 'uv_to_vga' (6#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/vga.sv:20]
+INFO: [Synth 8-638] synthesizing module 'maria' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:4]
+INFO: [Synth 8-638] synthesizing module 'vga_to_vblank' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:160]
+INFO: [Synth 8-256] done synthesizing module 'vga_to_vblank' (7#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:160]
+INFO: [Synth 8-638] synthesizing module 'line_ram' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/line_ram.sv:12]
+INFO: [Synth 8-256] done synthesizing module 'line_ram' (8#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/line_ram.sv:12]
+INFO: [Synth 8-638] synthesizing module 'timing_ctrl' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv:27]
+INFO: [Synth 8-256] done synthesizing module 'timing_ctrl' (9#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/timing_ctrl.sv:27]
+INFO: [Synth 8-638] synthesizing module 'memory_map' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/memory_map.sv:10]
+WARNING: [Synth 8-152] case item 14'b1000000xx1xxx1 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/memory_map.sv:53]
+WARNING: [Synth 8-152] case item 14'b1000000xx1xx10 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/memory_map.sv:53]
+INFO: [Synth 8-256] done synthesizing module 'memory_map' (10#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/memory_map.sv:10]
+INFO: [Synth 8-638] synthesizing module 'dma_ctrl' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:4]
+INFO: [Synth 8-155] case statement is not full and has no default [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:60]
+INFO: [Synth 8-155] case statement is not full and has no default [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:90]
+INFO: [Synth 8-155] case statement is not full and has no default [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:51]
+WARNING: [Synth 8-3848] Net DP_saved in module/entity dma_ctrl does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:20]
+WARNING: [Synth 8-3848] Net dp_dma_done_dli in module/entity dma_ctrl does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:15]
+INFO: [Synth 8-256] done synthesizing module 'dma_ctrl' (11#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:4]
+WARNING: [Synth 8-350] instance 'dma_ctrl_inst' of module 'dma_ctrl' requires 17 connections, but only 16 given [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:147]
+WARNING: [Synth 8-3848] Net dp_dma_done_dli in module/entity maria does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:70]
+INFO: [Synth 8-256] done synthesizing module 'maria' (12#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:4]
+WARNING: [Synth 8-3848] Net AB in module/entity Atari7800 does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:34]
+WARNING: [Synth 8-3848] Net DB in module/entity Atari7800 does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:36]
+WARNING: [Synth 8-3848] Net pclk_2 in module/entity Atari7800 does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:16]
+WARNING: [Synth 8-3848] Net m_rw in module/entity Atari7800 does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:23]
+WARNING: [Synth 8-3848] Net m_en in module/entity Atari7800 does not have driver. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:23]
+INFO: [Synth 8-256] done synthesizing module 'Atari7800' (13#1) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:4]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 1199.059 ; gain = 289.809 ; free physical = 7734 ; free virtual = 19457
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin timing_ctrl_inst:dp_dma_done_dli to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/maria.sv:105]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[15] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[14] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[13] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[12] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[11] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[10] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[9] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[8] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[7] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[6] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[5] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[4] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[3] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[2] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[1] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:AB_in[0] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[7] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[6] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[5] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[4] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[3] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[2] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[1] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:DB_in[0] to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:pclk_2 to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:RW to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+WARNING: [Synth 8-3295] tying undriven pin maria_inst:enable to constant 0 [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/top.sv:65]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:14 . Memory (MB): peak = 1199.059 ; gain = 289.809 ; free physical = 7735 ; free virtual = 19458
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_board.xdc] for cell 'divider/inst'
+Finished Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_board.xdc] for cell 'divider/inst'
+Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc] for cell 'divider/inst'
+Finished Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc] for cell 'divider/inst'
+INFO: [Timing 38-2] Deriving generated clocks
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Atari7800_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Atari7800_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Atari7800_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Atari7800_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1547.754 ; gain = 0.000 ; free physical = 7450 ; free virtual = 19181
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 7310 ; free virtual = 19041
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 7310 ; free virtual = 19040
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for divider/inst. (constraint file  /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.runs/synth_1/dont_touch.xdc, line 8).
+Applied set_property DONT_TOUCH = true for divider. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 7310 ; free virtual = 19041
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "lram_in_reg[159]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[159]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[159]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[159]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[158]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[158]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[158]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[158]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[157]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[157]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[157]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[157]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[156]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[156]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[156]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[156]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[155]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[155]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[155]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[155]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[154]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[154]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[154]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[154]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[153]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[153]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[153]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[153]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[152]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[152]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[152]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[152]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[151]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[151]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[151]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[151]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[150]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[150]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[150]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[150]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[149]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[149]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[149]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[149]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[148]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[148]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[148]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[148]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[147]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[147]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[147]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[147]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[146]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[146]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[146]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[146]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[145]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[145]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[145]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[145]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[144]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[144]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[144]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[144]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[143]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[143]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[143]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[143]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[142]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[142]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[142]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[142]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[141]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[141]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[141]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[141]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[140]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[140]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[140]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[140]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[139]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[139]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[139]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[139]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[138]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[138]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[138]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[138]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[137]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[137]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[137]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[137]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[136]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[136]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[136]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[136]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[135]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[135]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[135]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "lram_in_reg[135]" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Common 17-14] Message 'Synth 8-5545' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-5544] ROM "slow_clk" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "halt_b" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "zp_dma_start" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "color_map" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ctrl" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "char_base" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ZPL" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ZPH" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "deassert_ready" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-4471] merging register 'ind_w_reg' into 'wm_w_reg' [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/sources_1/new/dma_ctrl.sv:118]
+INFO: [Synth 8-802] inferred FSM for state register 'zp_state_reg' in module 'dma_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'dp_state_reg' in module 'dma_ctrl'
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "zp_state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AddrB" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "OFFSET" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "DP" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "dp_state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ZP_saved" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "DP" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "PP" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_w" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "pixels_w" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "dp_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "dp_state0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "dp_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+           drive_zp_addr |                             0001 |                              000
+                w_offset |                             0010 |                              001
+                   w_DPL |                             0100 |                              010
+                   w_DPH |                             1000 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'zp_state_reg' using encoding 'one-hot' in module 'dma_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+           drive_dp_addr |                             0000 |                             0000
+                   w_PPL |                             0001 |                             0001
+         w_PALETTE_WIDTH |                             0010 |                             0010
+                   w_PPH |                             0011 |                             0011
+       w_PALETTE_WIDTH_2 |                             0100 |                             0100
+                 w_INPUT |                             0101 |                             0101
+           drive_pp_addr |                             0110 |                             0110
+                w_PIXELS |                             0111 |                             0111
+      drive_next_zp_addr |                             1000 |                             1000
+           w_next_offset |                             1001 |                             1001
+              w_next_DPL |                             1010 |                             1010
+              w_next_DPH |                             1011 |                             1011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dp_state_reg' using encoding 'sequential' in module 'dma_ctrl'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:39 ; elapsed = 00:00:46 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 7378 ; free virtual = 19112
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+---------------------------+------------+----------+
+|      |RTL Partition              |Replication |Instances |
++------+---------------------------+------------+----------+
+|1     |clock_divider_clk_wiz__GC0 |           1|         4|
+|2     |line_ram__GB0              |           1|     24705|
+|3     |line_ram__GB1              |           1|     20958|
+|4     |line_ram__GB2              |           1|     11993|
+|5     |line_ram__GB3              |           1|     13751|
+|6     |line_ram__GB4              |           1|     19688|
+|7     |line_ram__GB5              |           1|     24070|
+|8     |line_ram__GB6              |           1|     33054|
+|9     |line_ram__GB7              |           1|     31604|
+|10    |line_ram__GB8              |           1|      9071|
+|11    |line_ram__GB9              |           1|     29588|
+|12    |line_ram__GB10             |           1|     18652|
+|13    |maria__GC0                 |           1|      2962|
+|14    |uv_to_vga                  |           1|       204|
++------+---------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 5     
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      9 Bit       Adders := 5     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 4     
+	               10 Bit    Registers := 3     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 30    
+	                5 Bit    Registers := 322   
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 18    
++---Muxes : 
+	   4 Input     16 Bit        Muxes := 8     
+	   2 Input     16 Bit        Muxes := 3     
+	  12 Input     16 Bit        Muxes := 5     
+	   2 Input     10 Bit        Muxes := 4     
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   3 Input      8 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 962   
+	   8 Input      5 Bit        Muxes := 1     
+	  12 Input      5 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	  16 Input      4 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 4     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	  12 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1005  
+	   3 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 7     
+	  32 Input      1 Bit        Muxes := 30    
+	   4 Input      1 Bit        Muxes := 17    
+	  12 Input      1 Bit        Muxes := 16    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module uv_to_vga 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 2     
+Module line_ram 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 3     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 320   
+	                3 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 960   
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 961   
+Module timing_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 2     
+	   2 Input      9 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 14    
+	   3 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 7     
+Module memory_map 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 29    
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 30    
+	  32 Input      1 Bit        Muxes := 30    
+Module dma_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 5     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 4     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   4 Input     16 Bit        Muxes := 8     
+	   2 Input     16 Bit        Muxes := 3     
+	  12 Input     16 Bit        Muxes := 5     
+	  12 Input      5 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	  16 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	  12 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 17    
+	  12 Input      1 Bit        Muxes := 16    
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Common 17-14] Message 'Synth 8-5545' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-5545' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:01:17 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 5716 ; free virtual = 17527
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:45 ; elapsed = 00:01:17 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 5716 ; free virtual = 17527
+
+Report RTL Partitions: 
++------+---------------------------+------------+----------+
+|      |RTL Partition              |Replication |Instances |
++------+---------------------------+------------+----------+
+|1     |clock_divider_clk_wiz__GC0 |           1|         4|
+|2     |line_ram__GB0              |           1|     24761|
+|3     |line_ram__GB1              |           1|     20958|
+|4     |line_ram__GB2              |           1|     11993|
+|5     |line_ram__GB3              |           1|     13751|
+|6     |line_ram__GB4              |           1|     19688|
+|7     |line_ram__GB5              |           1|     24070|
+|8     |line_ram__GB6              |           1|     33054|
+|9     |line_ram__GB7              |           1|     31604|
+|10    |line_ram__GB8              |           1|      9071|
+|11    |line_ram__GB9              |           1|     29588|
+|12    |line_ram__GB10             |           1|     18654|
+|13    |maria__GC0                 |           1|      2969|
+|14    |uv_to_vga                  |           1|       358|
++------+---------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|uv_to_vga   | rom        | 256x4         | LUT            | 
+|uv_to_vga   | rom__1     | 256x4         | LUT            | 
+|uv_to_vga   | rom__2     | 256x4         | LUT            | 
+|uv_to_vga   | rom        | 256x4         | LUT            | 
+|uv_to_vga   | rom__3     | 256x4         | LUT            | 
+|uv_to_vga   | rom__4     | 256x4         | LUT            | 
++------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\timing_ctrl_inst/state_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\memory_map_inst/ctrl_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\timing_ctrl_inst/lram_swap_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/WIDTH_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/WIDTH_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/WIDTH_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/WIDTH_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/WIDTH_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/OFFSET_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/wm_w_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/pixels_w_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/input_w_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (maria_insti_11/\dma_ctrl_inst/palette_w_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[28][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[102][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[106][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[50][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[108][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[109][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\palette_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[28][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[102][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[106][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[50][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[108][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_8/\lram_in_reg[109][4] )
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:39 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 5347 ; free virtual = 17177
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:48 ; elapsed = 00:01:39 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 5347 ; free virtual = 17177
+
+Report RTL Partitions: 
++------+---------------------------+------------+----------+
+|      |RTL Partition              |Replication |Instances |
++------+---------------------------+------------+----------+
+|1     |clock_divider_clk_wiz__GC0 |           1|         4|
+|2     |line_ram__GB0              |           1|      3557|
+|3     |line_ram__GB1              |           1|      1396|
+|4     |line_ram__GB2              |           1|       781|
+|5     |line_ram__GB3              |           1|       800|
+|6     |line_ram__GB4              |           1|      1004|
+|7     |line_ram__GB5              |           1|      1187|
+|8     |line_ram__GB6              |           1|      1648|
+|9     |line_ram__GB7              |           1|      1401|
+|10    |line_ram__GB8              |           1|        25|
+|11    |line_ram__GB9              |           1|       821|
+|12    |line_ram__GB10             |           1|      1114|
+|13    |maria__GC0                 |           1|        38|
+|14    |uv_to_vga                  |           1|       346|
++------+---------------------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:48 ; elapsed = 00:01:39 . Memory (MB): peak = 1547.754 ; gain = 638.504 ; free physical = 5347 ; free virtual = 17177
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:56 ; elapsed = 00:01:47 . Memory (MB): peak = 1646.816 ; gain = 737.566 ; free physical = 5253 ; free virtual = 17084
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[149][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[145][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[144][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[142][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[140][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[138][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[135][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[133][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[132][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[131][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[129][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[128][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[127][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[125][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[123][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[122][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[121][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[116][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[113][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[112][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[105][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[103][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[101][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[100][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[98][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[97][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[95][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[94][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[93][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[92][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[91][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[90][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[87][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[85][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[83][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[82][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[81][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[80][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[79][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[78][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[77][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[76][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[75][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[74][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[72][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[68][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[67][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[65][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[64][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[63][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[61][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[58][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[53][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[52][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[51][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[49][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[48][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[45][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[44][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[43][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[41][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[38][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[36][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[35][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[34][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[33][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[19][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[16][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[12][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[11][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[10][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[8][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[2][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (line_ram_insti_0/\lram_in_reg[149][1] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:49 . Memory (MB): peak = 1653.820 ; gain = 744.570 ; free physical = 5248 ; free virtual = 17080
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+---------------------------+------------+----------+
+|      |RTL Partition              |Replication |Instances |
++------+---------------------------+------------+----------+
+|1     |clock_divider_clk_wiz__GC0 |           1|         4|
+|2     |maria__GC0                 |           1|        38|
+|3     |uv_to_vga                  |           1|       111|
++------+---------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:58 ; elapsed = 00:01:49 . Memory (MB): peak = 1661.820 ; gain = 752.570 ; free physical = 5242 ; free virtual = 17073
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:59 ; elapsed = 00:01:50 . Memory (MB): peak = 1661.820 ; gain = 752.570 ; free physical = 5259 ; free virtual = 17091
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:59 ; elapsed = 00:01:50 . Memory (MB): peak = 1661.820 ; gain = 752.570 ; free physical = 5259 ; free virtual = 17091
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     3|
+|2     |LUT1      |     1|
+|3     |LUT2      |     4|
+|4     |LUT3      |     6|
+|5     |LUT4      |    14|
+|6     |LUT5      |     6|
+|7     |LUT6      |    14|
+|8     |PLLE2_ADV |     1|
+|9     |FDCE      |    27|
+|10    |FDPE      |     1|
+|11    |IBUF      |     2|
+|12    |OBUF      |    14|
++------+----------+------+
+
+Report Instance Areas: 
++------+----------+----------------------+------+
+|      |Instance  |Module                |Cells |
++------+----------+----------------------+------+
+|1     |top       |                      |    93|
+|2     |  divider |clock_divider         |     5|
+|3     |    inst  |clock_divider_clk_wiz |     5|
++------+----------+----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:59 ; elapsed = 00:01:50 . Memory (MB): peak = 1661.820 ; gain = 752.570 ; free physical = 5257 ; free virtual = 17087
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:00 ; elapsed = 00:01:40 . Memory (MB): peak = 1665.734 ; gain = 291.270 ; free physical = 7083 ; free virtual = 18914
+Synthesis Optimization Complete : Time (s): cpu = 00:03:09 ; elapsed = 00:01:50 . Memory (MB): peak = 1665.734 ; gain = 756.484 ; free physical = 7174 ; free virtual = 18914
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
 INFO: [Common 17-83] Releasing license: Synthesis
-6 Infos, 0 Warnings, 0 Critical Warnings and 2 Errors encountered.
-synth_design failed
-ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Sat Oct 10 20:34:07 2015...
+304 Infos, 39 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:03:07 ; elapsed = 00:01:47 . Memory (MB): peak = 1709.844 ; gain = 692.074 ; free physical = 7181 ; free virtual = 18920
+report_utilization: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.09 . Memory (MB): peak = 1741.863 ; gain = 0.000 ; free physical = 7181 ; free virtual = 18921
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 15 19:29:59 2015...
