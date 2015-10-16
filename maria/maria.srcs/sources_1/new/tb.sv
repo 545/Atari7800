@@ -20,14 +20,11 @@ module tb();
 
     dll_img_ram dll_img(
       .clka(clk),
-      .ena(~reset & ram_we),
+      .ena(~reset),
       .wea(ram_we),
       .addra(ram_addr),
       .dina(ram_din),
-      .clkb(clk),
-      .enb(~reset & ~ram_we),
-      .addrb(ram_addr),
-      .doutb(ram_dout)
+      .douta(ram_dout)
     );
     
     initial clk = 0;
@@ -46,18 +43,31 @@ module tb();
         @(posedge clk);
     endtask
     
-    task initialize_mem();
-        ram_addr = 16'h1234;
-        ram_din = 8'hb3;
+    task write_mem(input logic [15:0] addr, input logic [7:0] data);
+        ram_addr = addr;
+        ram_din = data;
         ram_we = 1'b1;
-        $display("Before clock: %02x", ram_dout);
         @(posedge clk);
-        $display("After clock: %02x", ram_dout);
+        @(posedge clk);
         ram_we = 1'b0;
         @(posedge clk);
-        $display("After another: %02x", ram_dout);    
+    endtask
+    
+    task read_mem(input logic [15:0] addr, output logic [7:0] data);
+        ram_addr = addr;
         @(posedge clk);
-        $display("and another: %02x", ram_dout);
+        @(posedge clk);
+        @(posedge clk);
+        data = ram_dout;
+    endtask
+    
+    logic [7:0] outval;
+    
+    task initialize_mem();
+        write_mem(16'h0000, 8'hf3);
+        write_mem(16'h0001, 8'he2);
+        read_mem(16'h0000, outval);
+        $display("Read: %02x", outval);
     endtask
     
     initial begin
