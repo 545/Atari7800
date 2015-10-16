@@ -1,43 +1,42 @@
 `default_nettype none
-  
+
   module dma_ctrl(
-		  // Mark
 		  output logic [15:0] AddrB,
-		  input logic [7:0]   DataB,
+		  input  logic [7:0]  DataB,
 		  //from memory map
-		  input logic [15:0]  ZP;
-		  
-		  output logic 	      palette_w,input_w,pixels_w,
-		  output logic 	      wm_w,ind_w,
-		  
+		  input logic [15:0] ZP,
+
+		  output logic	palette_w,input_w,pixels_w,
+		  output logic	wm_w,ind_w,
+
 		  input logic 	      zp_dma_start, dp_dma_start,
 		  output logic 	      zp_dma_done, dp_dma_done,
-		  output logic 	      inc_ZP_by_3; 
-		  
+		  output logic 	      inc_ZP_by_3;
+
 		  input logic 	      sysclk, reset_b, last_line
 		  );
-   
+
    logic [15:0] 		DP, PP, DP_saved, ZP_saved;
    logic [4:0] 			WIDTH;
    logic [3:0] 			OFFSET;
-   
+
    //control regs
-   logic 			DLIen, A12en, A11en;   
-   
+   logic 			DLIen, A12en, A11en;
+
    //states
    enum 			logic [1:0] {waiting, zp_dma, dp_dma, pp_dma} state;
    enum 			logic [2:0] {drive_zp_addr,w_offset,w_DPL,w_DPH} zp_state;
-   enum 			logic [3:0] {drive_dp_addr, w_PPL, w_PALETTE_WIDTH, 
-					     w_PPH, w_PALETTE_WIDTH_2, w_INPUT, 
+   enum 			logic [3:0] {drive_dp_addr, w_PPL, w_PALETTE_WIDTH,
+					     w_PPH, w_PALETTE_WIDTH_2, w_INPUT,
 					     drive_pp_addr, w_PIXELS, drive_next_zp_addr,
 					     w_next_offset,w_next_DPL,w_next_DPH} dp_state;
-      
+
    logic 			five_byte_mode, null_width, null_data, zero_offset;
-   
+
    assign null_width = (DataB[4:0] == 5'b0);
    assign null_data = (DataB == 8'b0);
    assign zero_offset = (OFFSET == 4'b0);
-   
+
    always_ff @(posedge sysclk, negedge reset_b) begin
       if (~reset_b) begin
 	 state <= waiting;
@@ -47,14 +46,14 @@
 	 dp_dma_done <= 0;
 	 five_byte_mode <= 0;
       end
-      else begin 
-	 case (state) 
+      else begin
+	 case (state)
 	   waiting: begin
 	      state <= (zp_dma_start) ? zp_dma : (dp_dma_start) ? dp_dma : waiting;
 	      zp_dma_done <= 0;
 	      dp_dma_done <= 0;
 	   end
-	   
+
 	   ///////////////////////////////////////////////////////////////////////////////
 	   zp_dma: begin
 	      case (zp_state)
@@ -84,7 +83,7 @@
 		end
 	      endcase // case (zp_state)
 	   end // case: zp_dma
-	   
+
 	   ///////////////////////////////////////////////////////////////////////////////
 	   dp_dma: begin
 	      case (dp_state)
@@ -181,6 +180,5 @@
 	   end // case: dp_dma
 	 endcase
       end
-   end // always_ff @   
+   end // always_ff @
 endmodule // dma_ctrl
-

@@ -16,13 +16,12 @@ module Atari7800(
    logic             clock_divider_locked;
 
    // VGA Signals
-   logic [639:0][2:0][3:0] vga_line_buffer;
    logic [9:0]             vga_row, vga_col;
 
    // MARIA Signals
    logic                   m_int_b, m_en, m_rw, m_ready;
    logic                   halt_b;
-   logic [319:0][7:0]      uv_display_line;
+   logic [7:0]             uv_display;
 
    // Memory Map Select lines
    logic                   mm_ram0_b, mm_ram1_b,
@@ -51,7 +50,7 @@ module Atari7800(
    // VGA
    uv_to_vga vga_out(
       .clk(clock_25), .reset(reset),
-      .lbuffer(uv_display_line),
+      .uv_in(uv_display),
       .row(vga_row), .col(vga_col),
       .RED(RED), .GREEN(GREEN), .BLUE(BLUE),
       .HSync(HSync), .VSync(VSync)
@@ -66,7 +65,7 @@ module Atari7800(
       .p6532_b(mm_p6532_b), .tia_b(mm_tia_b),
       .RW(m_rw), .enable(m_en),
       .vga_row(vga_row), .vga_col(vga_col),
-      .UV_line_out(uv_display_line),
+      .UV_out(uv_display),
       .int_b(m_int_b), .halt_b(halt_b), .ready(m_ready)
    );
 
