@@ -27,7 +27,7 @@ module memory_map(
       {tia_b, p6532_b, ram0_b, ram1_b, slow_clock} = signals_out;
       ZP = {ZPH,ZPL};  
 
-      //Set output signal for {tia,6532,ram0,ram1} depending on addr
+      //Set output signals for {tia_b,6532_b,ram0_b,ram1_b,slow_clock} depending on addr
       casex ({AD[15:5],halt}):
 	//6532 + Slow
         {11'b0000010x1xx,1'bx}: signals_out = 5'b10111;
@@ -114,7 +114,7 @@ module memory_map(
 	   {16'b0024,1'b1}: DB <= wait_sync;
 	   {16'b0028,1'b1}: DB <= status_read;
 	   [16'b0034,1'b1}: DB <= char_base;
-	   default: ;
+	   default: DB <= 8'bz;
 	 endcase // case ({AB,we_b})
       end // else: !if(~reset_b)
    end // always_ff @   
