@@ -85,11 +85,25 @@ module memory_map (
 
    always_ff @(posedge sysclock, negedge reset_b) begin
       if (~reset_b) begin
-         ctrl <= 8'b0;
-         color_map <= 200'b0;
+         ctrl <= {1'b0, 2'b10, 1'b0, 1'b0, 1'b0, 2'b00}; // 8'b0
+         //color_map <= 200'b0;
+         //////// TESTING COLOR MAP /////////
+         // Background
+         color_map[0] <= 8'h72;
+         // Palette 0
+         color_map[3:1] <= {8'h4c, 8'h48, 8'h4c};
+         // Palette 1
+         color_map[6:4] <= {8'h7c, 8'h78, 8'h7c};
+         // Palette 2
+         color_map[9:7] <= {8'hbc, 8'hb8, 8'hbc};
+         // Palette 3
+         color_map[12:10] <= {8'hfc, 8'hf8, 8'hfc};
+         
+         color_map[24:11] <= 'b0;
+                  
          wait_sync <= 8'b0;
          char_base <= 8'b0;
-         {ZPH,ZPL} <= 16'b0;
+         {ZPH,ZPL} <= {8'h18, 8'h10};
       end
       
       else begin

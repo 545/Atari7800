@@ -55,8 +55,9 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1_____7.154______0.000______50.0______435.983____307.118
-// CLK_OUT2____25.143______0.000______50.0______355.364____307.118
+// CLK_OUT1_____7.143______0.000______50.0______244.806____114.212
+// CLK_OUT2____25.000______0.000______50.0______191.696____114.212
+// CLK_OUT3___100.000______0.000______50.0______144.719____114.212
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -65,7 +66,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "clock_divider,clk_wiz_v5_1,{component_name=clock_divider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=2,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "clock_divider,clk_wiz_v5_1,{component_name=clock_divider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=3,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module clock_divider 
  (
@@ -74,6 +75,7 @@ module clock_divider
   // Clock out ports
   output        CLOCK_7_143,
   output        CLOCK_25,
+  output        CLOCK_100,
   // Status and control signals
   input         reset,
   output        locked
@@ -86,6 +88,7 @@ module clock_divider
   // Clock out ports  
   .CLOCK_7_143(CLOCK_7_143),
   .CLOCK_25(CLOCK_25),
+  .CLOCK_100(CLOCK_100),
   // Status and control signals               
   .reset(reset), 
   .locked(locked)            

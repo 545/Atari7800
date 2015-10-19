@@ -12,24 +12,7 @@
 		      .HSync(HSync), .VSync(VSync)
 		      );
 
-
-   logic 	ram_we;
-   logic [15:0] ram_addr;
-   logic [7:0] 	 ram_din, ram_dout;
    logic [159:0][7:0] LRAM_str;
-
-
-   dll_img_ram dll_img(
-		       .clka(clk),
-		       .ena(~reset & ram_we),
-		       .wea(ram_we),
-		       .addra(ram_addr),
-		       .dina(ram_din),
-		       .clkb(clk),
-		       .enb(~reset & ~ram_we),
-		       .addrb(ram_addr),
-		       .doutb(ram_dout)
-		       );
 
    initial clk = 0;
 

@@ -55,8 +55,9 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1_____7.154______0.000______50.0______435.983____307.118
-// CLK_OUT2____25.143______0.000______50.0______355.364____307.118
+// CLK_OUT1_____7.143______0.000______50.0______244.806____114.212
+// CLK_OUT2____25.000______0.000______50.0______191.696____114.212
+// CLK_OUT3___100.000______0.000______50.0______144.719____114.212
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,6 +72,7 @@ module clock_divider_clk_wiz
   // Clock out ports
   output        CLOCK_7_143,
   output        CLOCK_25,
+  output        CLOCK_100,
   // Status and control signals
   input         reset,
   output        locked
@@ -97,7 +99,6 @@ module clock_divider_clk_wiz
   wire        clkfbout_clock_divider;
   wire        clkfbout_buf_clock_divider;
   wire        clkfboutb_unused;
-   wire clkout2_unused;
    wire clkout3_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
@@ -109,15 +110,18 @@ module clock_divider_clk_wiz
   PLLE2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
     .COMPENSATION         ("ZHOLD"),
-    .DIVCLK_DIVIDE        (5),
-    .CLKFBOUT_MULT        (44),
+    .DIVCLK_DIVIDE        (1),
+    .CLKFBOUT_MULT        (8),
     .CLKFBOUT_PHASE       (0.000),
-    .CLKOUT0_DIVIDE       (123),
+    .CLKOUT0_DIVIDE       (112),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
-    .CLKOUT1_DIVIDE       (35),
+    .CLKOUT1_DIVIDE       (32),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT2_DIVIDE       (8),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKIN1_PERIOD        (10.0))
   plle2_adv_inst
     // Output clocks
@@ -125,7 +129,7 @@ module clock_divider_clk_wiz
     .CLKFBOUT            (clkfbout_clock_divider),
     .CLKOUT0             (CLOCK_7_143_clock_divider),
     .CLKOUT1             (CLOCK_25_clock_divider),
-    .CLKOUT2             (clkout2_unused),
+    .CLKOUT2             (CLOCK_100_clock_divider),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -169,6 +173,10 @@ module clock_divider_clk_wiz
   BUFG clkout2_buf
    (.O   (CLOCK_25),
     .I   (CLOCK_25_clock_divider));
+
+  BUFG clkout3_buf
+   (.O   (CLOCK_100),
+    .I   (CLOCK_100_clock_divider));
 
 
 
