@@ -30,6 +30,7 @@ module maria(
    output logic       int_b, halt_b, ready
 );
 
+
    // Bus interface
    // Defined as ports.
    // logic        drive_AB;
@@ -76,10 +77,6 @@ module maria(
    //// Control signals between timing_ctrl and line_ram
    logic             lram_swap;
 
-   //// Signals from vga to memory map
-   logic              VBlank;
-
-   vga_to_vblank vtv(.row(vga_row), .vblank(VBlank));
 
    line_ram line_ram_inst(
       .SYSCLK(sysclk), .RESET(reset),
@@ -135,7 +132,7 @@ module maria(
       .ram0_b(ram0_b), .ram1_b(ram1_b),
       .ctrl(ctrl),
       .color_map(color_map),
-      .status_read({VBlank, 7'b0}),
+      .status_read(8'b0),//{vga_row[9], 7'b0}),
       .char_base(char_base),
       .ZP(ZP),
       .slow_clock(slow_clock),
@@ -158,14 +155,3 @@ module maria(
 
 endmodule
 
-module vga_to_vblank
-(
- input logic [9:0] row,
- output logic vblank
- );
-
-   // VBlank lasts 13 rows leading up to the start of the visible region.
-   // assign vblank = row > 10'd512;
-   assign vblank = row[9];
-
-endmodule

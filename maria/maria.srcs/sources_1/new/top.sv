@@ -79,9 +79,13 @@ module Atari7800(
       .RED(RED), .GREEN(GREEN), .BLUE(BLUE),
       .HSync(HSync), .VSync(VSync)
    );
-   
+
    // MEMORY
-  logic [7:0] DB_in, DB_out;
+   logic [7:0] DB_out;
+  assign DB = (1'b1) ? DB_m : DB_out;
+  assign AB = AB_m;
+  
+  /*
   always_comb begin
      if (DB_m_en)
         DB = DB_m;
@@ -91,14 +95,15 @@ module Atari7800(
      DB_in = DB_m;
         
      AB = AB_m;
-   end
+   end*/
+   
    
     dll_img_ram dll_img(
      .clka(clock_100),
      .ena(~reset),
      .wea(~m_rw),
      .addra(AB),
-     .dina(DB_in),
+     .dina(DB_m),
      .douta(DB_out)
    );
 

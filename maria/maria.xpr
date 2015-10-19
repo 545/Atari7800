@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="547c432d2f594a4ea3cf5238419a2990"/>
@@ -96,6 +96,18 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/displaylist_test.coe"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.xml"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="synth/dll_img_ram.vhd"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="sim/dll_img_ram.v"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/simulation/blk_mem_gen_v8_2.v"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.mif"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="summary.log"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="doc/blk_mem_gen_v8_2_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.veo"/>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>

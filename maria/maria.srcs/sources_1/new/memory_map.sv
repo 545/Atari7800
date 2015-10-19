@@ -37,7 +37,8 @@ module memory_map (
    logic [7:0]              wait_sync;
    logic                    pav;
 
-   assign drive_DB = we_b & maria_en & (wr_addr_found == 8'h28);
+    
+   assign drive_DB = 1'b1;//we_b && maria_en && (wr_addr_found == 8'h28);
    assign DB_out = status_read;
 
    assign slow_clock = ~tia_b | ~p6532_b;
