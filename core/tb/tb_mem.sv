@@ -4,14 +4,14 @@
 `timescale 1ns / 1ps
 
 
-module TB_MEM(phi1,phi2,addr,data_in,read_e,rst_b,data_out);
+module TB_MEM(clk,addr,data_in,we,rst_b,data_out);
   parameter
   number_of_words = 65536;
 
   input [15:0] addr;
   input [7:0] data_in;
-  input read_e;
-  input phi1,phi2;
+  input we;
+  input clk;
   input rst_b;
   output reg [7:0] data_out;
 
@@ -29,16 +29,13 @@ module TB_MEM(phi1,phi2,addr,data_in,read_e,rst_b,data_out);
   end
 
 
-  always_ff @(posedge phi2) begin 
-    if (read_e)
-      data_out <= mem[addr];
+  always_ff @(posedge clk) begin 
+    if (we)
+      mem[addr] <= data_in;
     else
-      addr_saved <= addr;
+      data_out <= mem[addr];   
   end
 
-  always_ff @(negedge phi2) begin
-    if (~read_e)
-      mem[addr_saved] <= data_in;
-  end
+  
 
 endmodule: TB_MEM

@@ -8,6 +8,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.all;
+
 
 library unisim;
 use unisim.vcomponents.all;
@@ -23,7 +25,8 @@ entity adau1761_test is
            AC_MCLK  : out   STD_LOGIC;
            AC_SCK   : out   STD_LOGIC;
            AC_SDA   : inout STD_LOGIC;
-           sw       : in    STD_LOGIC_VECTOR(7 downto 0)
+           sw       : in    STD_LOGIC_VECTOR(7 downto 0);
+           pb       : in    STD_LOGIC
            );
 end adau1761_test;
 
@@ -83,46 +86,86 @@ architecture Behavioral of adau1761_test is
       );
    end component;
    
-   component file_gen
+    component audio
+    port(
+      CLK_30            : in     std_logic;
+      AUD0              : out    std_logic;
+      AUD1              : out    std_logic;
+      AUDC0             : in     std_logic_vector(3 downto 0);
+      AUDC1             : in     std_logic_vector(3 downto 0);
+      AUDF0             : in     std_logic_vector(4 downto 0);
+      AUDF1             : in     std_logic_vector(4 downto 0)
+      );
+    end component;
+      
+   component audio_xformer
    port(
-    clk                 : in     std_logic;
-    sample_out          : out    STD_LOGIC_VECTOR(15 downto 0);
-    sel                 : in     STD_LOGIC;
-    enable              : in     STD_LOGIC
-   );
-   end component;
+     AUD0              : in    std_logic;
+     AUD1              : in    std_logic;
+     AUDV0             : in    std_logic_vector(3 downto 0);
+     AUDV1             : in    std_logic_vector(3 downto 0);
+     AUD_SIGNAL        : out   std_logic_vector(15 downto 0)
+     );
+   end component; 
+  
    
    signal clk_48     : std_logic;
+   signal clk_30     : std_logic;
+   signal AUD0       : std_logic;
+   signal AUD1       : std_logic;
    signal new_sample : std_logic;
+   signal AUDV0      : std_logic_vector(3 downto 0);
+   signal AUDV1      : std_logic_vector(3 downto 0);
+   signal AUDC0      : std_logic_vector(3 downto 0);
+   signal AUDC1      : std_logic_vector(3 downto 0);
+   signal AUDF0      : std_logic_vector(4 downto 0);
+   signal AUDF1      : std_logic_vector(4 downto 0);
+   signal AUD_SIGNAL : std_logic_vector(15 downto 0);
    signal line_in_l  : std_logic_vector(15 downto 0);
    signal line_in_r  : std_logic_vector(15 downto 0);
    signal hphone_l   : std_logic_vector(15 downto 0);
-   signal hphone_r   : std_logic_vector(15 downto 0);    
+   signal hphone_r   : std_logic_vector(15 downto 0);  
+   signal count      : unsigned(15 downto 0) := "0000000000000000";  
 
    signal filter0_l  : std_logic_vector(20 downto 0);
    signal filter0_r  : std_logic_vector(20 downto 0);
 
-   signal filter1_l  : std_logic_vector(20 downto 0);
-   signal filter1_r  : std_logic_vector(20 downto 0);
-   
-   signal filter2_l  : std_logic_vector(20 downto 0);
-   signal filter2_r  : std_logic_vector(20 downto 0);
-
-   signal filter3_l  : std_logic_vector(20 downto 0);
-   signal filter3_r  : std_logic_vector(20 downto 0);
-
-   signal aud_file : std_logic_vector(15 downto 0);
-
    signal line_in_l_extended  : std_logic_vector(20 downto 0);
    signal line_in_r_extended  : std_logic_vector(20 downto 0);
-   signal sw_synced : std_logic_vector(7 downto 0);
    constant hi : natural := 15;
 begin
+   
 process(clk_48)
    begin
       if rising_edge(clk_48) then
-         sw_synced <= sw;
-      end if;
+         if (count = 764) then
+            CLK_30 <= '1';      
+            count <= count + 1;
+         elsif (count = 1528) then
+            CLK_30 <= '0';
+            count <= "0000000000000000";
+         else
+            count <= count + 1;
+         end if;
+         if (pb = '1') then
+             if (sw(5) = '1') then
+                AUDC0 <= sw(3 downto 0);
+             elsif (sw(6) = '1') then
+                AUDV0 <= sw(3 downto 0);
+             elsif (sw(7) = '1') then
+                AUDF0 <= sw(4 downto 0);
+             end if;
+         else
+            if (sw(5) = '1') then
+                AUDC1 <= sw(3 downto 0);
+            elsif (sw(6) = '1') then
+                AUDV1 <= sw(3 downto 0);
+                       
+            elsif (sw(7) = '1') then
+                AUDF1 <= sw(4 downto 0);
+            end if;
+         end if;
+      end if;   
    end process;
       
    -- extend the line in sample to 21 bits.
@@ -130,19 +173,13 @@ process(clk_48)
    line_in_r_extended <= line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r(hi) & line_in_r;
 
    -- source the files
-   file_src: file_gen PORT MAP(clk => clk_48, sample_out => aud_file, sel => sw(0), enable => sw(1));
-
-   -- filter the extended samples
-lpms1_l: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width =>  8) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_l_extended, sample_out => filter1_l);
-lpms1_r: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width =>  8) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_r_extended, sample_out => filter1_r);
-lpms2_l: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width => 16) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_l_extended, sample_out => filter2_l);
-lpms2_r: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width => 16) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_r_extended, sample_out => filter2_r);
-lpms3_l: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width => 32) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_l_extended, sample_out => filter3_l);
-lpms3_r: low_pass_moving_sum GENERIC MAP(data_width => 21, window_width => 32) PORT MAP(clk => clk_48,	enable => new_sample, sample_in => line_in_r_extended, sample_out => filter3_r);
+   audio_src: audio port map(CLK_30 => clk_30, AUD0 => AUD0, AUD1 => AUD1, AUDC0 => AUDC0, AUDC1 => AUDC1, AUDF0 => AUDF0, AUDF1 => AUDF1);
+   audio_xform: audio_xformer port map(AUD0 => AUD0, AUD1 => AUD1, AUDV0 => AUDV0, AUDV1 => AUDV1, AUD_SIGNAL => AUD_SIGNAL);
+   
 
     -- choose the output, and adjust for filter gain
-      hphone_l <= aud_file;
-      hphone_r <= hphone_l;
+      hphone_l <= AUD_SIGNAL;
+      hphone_r <= AUD_SIGNAL;
                                  
 i_clocking : clocking port map (
       CLK_100 => CLK_100,

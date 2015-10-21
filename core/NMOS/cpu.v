@@ -19,6 +19,7 @@
  */
  `timescale 1ns / 1ps
 
+`define SIM
 
 module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY );
 

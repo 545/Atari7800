@@ -7,16 +7,18 @@ module core_tb();
   reg rst_b;
   wire phi1,phi2;
   reg [7:0] idle_count;
-  reg [15:0] pc_save;
-  reg [15:0] addr_bus;
-  wire re;
-  reg [7:0] data_bus_in, data_bus_out;
+  reg [15:0] pc_save1,pc_save2,pc_save3;
+  wire [15:0] addr_bus;
+  wire we;
+  wire halt_b;
+  reg [7:0] data_bus_in;
+  wire [7:0] data_bus_out;
   wire rdy, nmi, irq, so, sync;
 
   assign rdy = 1;
   assign so = 1;
-  assign nmi = 1;
-  assign irq = 1;
+  assign nmi = 0;
+  assign irq = 0;
 
   initial begin
     rst_b = 1;
@@ -28,23 +30,27 @@ module core_tb();
 
   clock CLK(phi1,phi2);
 
-  ag6502 core(.phi_0(phi1),.phi_1(phi1),.phi_2(phi2),.ab(addr_bus),.read(re),
-               .db_in(data_bus_in),.db_out(data_bus_out),.rdy(rdy),.nmi(nmi),
-               .irq(irq),.so(so),.sync(sync),.rst(rst_b));
+  cpu_wrapper core(.clk(phi1),.reset(~rst_b),.AB(addr_bus),.DI(data_bus_in),
+           .DO(data_bus_out),.WE(we),.IRQ(irq),.RDY(rdy),.NMI(nmi),.halt_b(halt_b));
+           
+  TB_MEM mem(.clk(phi1),.addr(addr_bus),.data_in(data_bus_out),
+             .we(we),.rst_b(rst_b),.data_out(data_bus_in));
 
-  TB_MEM mem(.phi1(phi1),.phi2(phi2),.addr(addr_bus),.data_in(data_bus_out),
-             .read_e(re),.rst_b(rst_b),.data_out(data_bus_in));
+  halt_controller halter(.clk(phi1),.reset_b(rst_b),.halt(halt_b));
+
 
 
   always_ff @(posedge phi1) begin
-    if (idle_count == 255)
+    if (idle_count == 255 || core.core.PC == 16'h7046)
       $finish;
-    else if (core.PC == pc_save) //if we idle for too long, terminate the
+    else if (core.core.PC == pc_save3) //if we idle for too long, terminate the
       idle_count <= idle_count + 1;
     else begin
-      pc_save <= core.PC;
       idle_count <= 0;
     end
+    pc_save3 <= pc_save2;
+    pc_save2 <= pc_save1;
+    pc_save1 <= core.core.PC;
     end
 
 
@@ -68,3 +74,25 @@ module clock(clockSignal1,clockSignal2); //Taken from 18447 test bench
    end
 
 endmodule
+
+module halt_controller(clk, reset_b, halt);
+  
+  input clk, reset_b;
+  output logic halt;
+
+  integer count;
+
+  always_ff @(posedge clk) begin
+  if (~reset_b) begin
+    halt <= 1;
+    count <= 0;
+  end
+  else if (count == 63) begin
+    halt <= ~halt;
+    count <= 0;
+    end
+  else 
+    count <= count + 1;
+  end
+
+endmodule: halt_controller

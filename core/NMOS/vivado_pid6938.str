@@ -1,0 +1,56 @@
+/*
+
+Vivado v2015.2 (64-bit)
+SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+Process ID: 6938
+
+Current time: 	10/7/15 2:50:23 PM EDT
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Red Hat Enterprise Linux Server release 7.1 (Maipo)
+Version: 3.10.0-229.14.1.el7.x86_64
+Architecture: amd64
+Available processors (cores): 8
+
+DISPLAY: :0
+Screen size: 1600x1200
+Screen resolution (DPI): 96
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_25 64-bit
+Java home: 	/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/tps/lnx64/jre
+
+User name: 	rmrobert
+User directory: /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/NMOS
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+Vivado preferences path: /afs/ece.cmu.edu/usr/rmrobert/.Xilinx/Vivado/2015.2/vivado.ini
+Vivado layouts directory: null
+
+GUI allocated memory:	120 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 4,785 MB
+
+*/
+
+// TclEventType: START_GUI
+/*
+#-------------------------------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# Current time: 10/7/15 2:50:23 PM EDT
+# Process ID: 6938
+# Platform: Unix
+#
+# This file is an indication that an internal application error occurred.
+# This information is useful for debugging. Please open a case with Xilinx
+# Technical Support with this file and a testcase attached.
+#-------------------------------------------------------------------------------
+java.lang.NullPointerException (See /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/core/NMOS/vivado_pid6938.debug)
+*/
+// [GUI Memory]: 43 MB (+42411kb) [00:00:04]
+// [Engine Memory]: 4,787 MB (+4867541kb) [00:00:04]
+// HMemoryUtils.trashcanNow. Engine heap size: 4,792 MB. GUI used memory: 8 MB. Current time: 10/7/15 2:50:28 PM EDT
