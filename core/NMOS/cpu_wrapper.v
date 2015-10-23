@@ -1,16 +1,16 @@
 `timescale 1ns / 1ps
 
 
-module cpu_wrapper( clk, reset, AB, DB, RD, IRQ, NMI, RDY, halt_b);
+module cpu_wrapper( clk, reset_b, AB, DB, RD, IRQ, NMI, RDY, halt_b);
 
-input clk;              // CPU clock 
-input reset;            // reset signal
+input clk;              // CPU clock
+input reset_b;            // reset signal
 inout [15:0] AB;   // address bus
 inout  [7:0] DB;        // data out, write bus
 output RD;              // read enable
 input IRQ;              // interrupt request
 input NMI;              // non-maskable interrupt request
-input RDY;              // Ready signal. Pauses CPU when RDY=0 
+input RDY;              // Ready signal. Pauses CPU when RDY=0
 input halt_b;
 
 wire rdy_in;
@@ -19,7 +19,7 @@ wire [15:0] ab_out;
 wire [7:0] db_out;
 wire [7:0] db_in;
 
-cpu core(.clk(clk),.reset(reset),.AB(ab_out),.DI(db_in),.DO(db_out),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
+cpu core(.clk(clk),.reset(~reset_b),.AB(ab_out),.DI(db_in),.DO(db_out),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
 
 assign RD = ~WE;
 assign WE = WE_OUT & halt_b;
