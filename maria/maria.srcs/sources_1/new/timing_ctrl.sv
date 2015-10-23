@@ -54,7 +54,7 @@ module timing_ctrl (
    // Current NTSC row and col
    logic [8:0]        row, col;
 
-   logic [9:0]        vga_row_prev, vga_col_prev;
+   // logic [9:0]        vga_row_prev, vga_col_prev;
 
    // Each ntsc line is two vga lines. Asserted => we are on second one
    logic              second_vga_line;
@@ -88,7 +88,7 @@ module timing_ctrl (
       DP_DMA_WAITSWAP // Done with DP DMA, but not ready to swap linerams yet
    } state;
 
-   assign vga_line_delta = vga_row_prev != vga_row;
+   assign vga_line_delta = (col == 9'd452);
 
    // In general, we are on the second row if the row number is odd (vga_row[0])
    // However, above 512 (521/522, 523/524) we are on the second row if the row
@@ -115,8 +115,8 @@ module timing_ctrl (
       if (reset) begin
          row <= 9'b0;
          col <= 9'b0;
-         vga_row_prev <= vga_row;
-         vga_col_prev <= vga_col;
+         // vga_row_prev <= vga_row;
+         // vga_col_prev <= vga_col;
          fast_clk <= 1'b0;
          slow_clk <= 1'b0;
          fast_ctr <= 2'b0;
@@ -146,8 +146,8 @@ module timing_ctrl (
          int_b <= ~(~int_b_next & enable);
          int_b_next <= ~dp_dma_done_dli;
 
-         vga_row_prev <= vga_row;
-         vga_col_prev <= vga_col;
+         //vga_row_prev <= vga_row;
+         //vga_col_prev <= vga_col;
          ready_for_lswap_prev <= ready_for_lswap;
 
          // Column counting

@@ -165,7 +165,9 @@ module line_ram(
          wm <= WM_W ? WM : wm;
          ind <= IND_W ? IND : (INPUT_W ? ind : 1'b0);
          if (LRAM_SWAP) begin
-            lram_in <= 800'd0; // All background color
+            lram_in <= 800'b0;
+            //lram_in <= {{40{2'b00}}, {40{2'b01}}, {40{2'b10}}, {40{2'b11}}};  //800'd0; // All background color
+            //lram_in <= {{5{5'd0}}, {5{5'd1}}, {5{5'd2}}, {5{5'd3}}, {5{5'd4}}, {5{5'd5}}, {5{5'd6}}, {5{5'd7}}, {5{5'd8}}, {5{5'd9}}, {5{5'd10}}, {5{5'd11}}, {5{5'd12}}, {5{5'd13}}, {5{5'd14}}, {5{5'd15}}, {5{5'd16}}, {5{5'd17}}, {5{5'd18}}, {5{5'd19}}, {5{5'd20}}, {5{5'd21}}, {5{5'd22}}, {5{5'd23}}, {5{5'd24}}, {5{5'd25}}, {5{5'd26}}, {5{5'd27}}, {5{5'd28}}, {5{5'd29}}, {5{5'd30}}, {5{5'd31}}}; 
             lram_out <= lram_in;
          end
          if (PIXELS_W) begin
@@ -201,13 +203,13 @@ module line_ram(
                 // These can all be written into the cells using
                 // the same format and read out differently.
                 input_addr <= input_addr + 4;
-                if (|PIXELS[7:6])
+                if (|PIXELS[7:6] && input_addr < 10'd160)
                     lram_in[input_addr+0] <= {palette, PIXELS[7:6]};
-                if (|PIXELS[5:4])
+                if (|PIXELS[5:4] && input_addr < 10'd159)
                     lram_in[input_addr+1] <= {palette, PIXELS[5:4]};
-                if (|PIXELS[3:2])
+                if (|PIXELS[3:2] && input_addr < 10'd158)
                     lram_in[input_addr+2] <= {palette, PIXELS[3:2]};
-                if (|PIXELS[1:0])
+                if (|PIXELS[1:0] && input_addr < 10'd157)
                     lram_in[input_addr+3] <= {palette, PIXELS[1:0]};
             end
             1'b1: begin
@@ -231,9 +233,9 @@ module line_ram(
                 // transparency may not be correct in 320B mode here
                 // since the color bits are different than 160B and 320C.
                 input_addr <= input_addr + 2;
-                if (|PIXELS[7:6])
+                if (|PIXELS[7:6] && input_addr < 10'd160)
                     lram_in[input_addr+0] <= {palette[2], PIXELS[3:2], PIXELS[7:6]};
-                if (|PIXELS[5:4])
+                if (|PIXELS[5:4] && input_addr < 10'd159)
                     lram_in[input_addr+1] <= {palette[2], PIXELS[1:0], PIXELS[5:4]};
             end
             endcase

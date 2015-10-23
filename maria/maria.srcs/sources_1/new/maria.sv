@@ -13,7 +13,7 @@ module maria(
 
    // Clocking
    input logic        reset,
-   input logic        sysclk, pclk_2,
+   input logic        sysclk_in, pclk_2,
    output logic       tia_clk, pclk_0,
 
    // Memory Map Select lines
@@ -27,7 +27,9 @@ module maria(
    output logic [7:0] UV_out,
 
    // Outputs to 6532
-   output logic       int_b, halt_b, ready
+   output logic       int_b, halt_b, ready,
+   
+   input logic btnu, btnl, btnc, btnr, btnd, btn8
 );
 
 
@@ -76,7 +78,23 @@ module maria(
 
    //// Control signals between timing_ctrl and line_ram
    logic             lram_swap;
+   
+   //// Clock divider
+   logic             sysclk_ctr;
+   always @(posedge sysclk) begin
+      sysclk_ctr <= ~sysclk_ctr;
+      if (sysckl_ctr) begin
+         sysclk <= ~sysclk;
+      end
+   end
 
+   logic lram_swap_prev;
+   always @(posedge sysclk)
+       lram_swap_prev <= btnr;
+       
+   logic pixels_w_prev;
+   always @(posedge sysclk)
+       pixels_w_prev <= btnc;
 
    line_ram line_ram_inst(
       .SYSCLK(sysclk), .RESET(reset),
@@ -85,17 +103,19 @@ module maria(
       .INPUT_ADDR(DB_in), .PALETTE(DB_in[7:5]), .PIXELS(DB_in),
       .WM(DB_in[7]), .IND(DB_in[5]),
       // Write enable for databus inputs
-      .PALETTE_W(palette_w), .INPUT_W(input_w), .PIXELS_W(pixels_w),
-      .WM_W(wm_w), .IND_W(ind_w),
+      //.PALETTE_W(palette_w), .INPUT_W(input_w), .PIXELS_W(pixels_w),
+      //.WM_W(wm_w), .IND_W(ind_w),
       // Memory mapped registers
+      .PALETTE_W(btnu), .INPUT_W(btnl), .PIXELS_W(btnc & ~pixels_w_prev),
+      .WM_W(1'b0), .IND_W(1'b0),
       .COLOR_MAP(color_map),
-      .READ_MODE(ctrl[1:0]),
+      .READ_MODE({vga_row[8], vga_row[7]}),
       .KANGAROO_MODE(ctrl[2]),
       .BORDER_CONTROL(ctrl[3]),
       .CHARACTER_WIDTH(ctrl[4]),
       .COLOR_KILL(ctrl[7]),
       // Control signals from timing_ctrl
-      .LRAM_SWAP(lram_swap),
+      .LRAM_SWAP(btnr & ~lram_swap_prev),
       .LRAM_OUT_COL(vga_col[9:1])
    );
 

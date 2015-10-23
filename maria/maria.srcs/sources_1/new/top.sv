@@ -5,7 +5,9 @@ module Atari7800(
   input  logic       CLOCK_PLL, reset,
   output logic [3:0] RED, GREEN, BLUE,
   output logic       HSync, VSync,
-  output logic [7:0] ld
+  output logic [7:0] ld,
+  input  logic [7:0] sw,
+  input logic btnu, btnl, btnc, btnr, btnd, btn8
 );
 
    //////////////
@@ -68,8 +70,8 @@ module Atari7800(
      .reset(reset),
      .locked(clock_divider_locked)
    );
+
    
-   assign pclk_0 = 1'b0;
 
    // VGA
    uv_to_vga vga_out(
@@ -110,15 +112,16 @@ module Atari7800(
    // MARIA
    maria maria_inst(
       .AB_in(AB), .AB_out(AB_m), .drive_AB(AB_m_en),
-      .DB_in(DB), .DB_out(DB_m), .drive_DB(DB_m_en),
+      .DB_in(sw), .DB_out(DB_m), .drive_DB(DB_m_en),
       .reset(reset), .sysclk(sysclk_14_3),
       .pclk_2(pclk_2), .tia_clk(tia_clk), .pclk_0(pclk_0),
       .ram0_b(mm_ram0_b), .ram1_b(mm_ram1_b),
       .p6532_b(mm_p6532_b), .tia_b(mm_tia_b),
-      .RW(m_rw), .enable(m_en),
+      .RW(m_rw), .enable(1'b1),
       .vga_row(vga_row), .vga_col(vga_col),
       .UV_out(uv_display),
-      .int_b(m_int_b), .halt_b(halt_b), .ready(m_ready)
+      .int_b(m_int_b), .halt_b(halt_b), .ready(m_ready),
+      .btnu(btnu), .btnl(btnl), .btnc(btnc), .btnr(btnr), .btnd(btnc), .btn8(btn8)
    );
 
 endmodule

@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="547c432d2f594a4ea3cf5238419a2990"/>
@@ -13,7 +13,7 @@
     <Option Name="TargetSimulator" Val="VCS"/>
     <Option Name="BoardPart" Val="em.avnet.com:zed:part0:1.3"/>
     <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
-    <Option Name="ActiveSimSet" Val="sim_1"/>
+    <Option Name="ActiveSimSet" Val="sim_2"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="EnableCoreContainer" Val="FALSE"/>
     <Option Name="EnableCoreContainerForIPI" Val="FALSE"/>
@@ -76,6 +76,14 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider.xml"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider.xdc"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider.v"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider_clk_wiz.v"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider.veo"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="clock_divider_board.xdc"/>
+        <CompFileExtendedInfo CompFileName="clock_divider.xci" FileRelPathName="doc/clk_wiz_v5_1_changelog.txt"/>
       </File>
       <File Path="$PSRCDIR/sources_1/new/top.sv">
         <FileInfo>
@@ -96,22 +104,10 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/displaylist_test.coe"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.xml"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="synth/dll_img_ram.vhd"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram_ooc.xdc"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="sim/dll_img_ram.v"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="blk_mem_gen_v8_2/simulation/blk_mem_gen_v8_2.v"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.mif"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="summary.log"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="doc/blk_mem_gen_v8_2_changelog.txt"/>
-        <CompFileExtendedInfo CompFileName="dll_img_ram.xci" FileRelPathName="dll_img_ram.veo"/>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="Atari7800"/>
+        <Option Name="TopModule" Val="tb"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -143,7 +139,6 @@
         <Option Name="TopModule" Val="tb"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
-        <Option Name="SimMode" Val="post-implementation"/>
         <Option Name="SrcSet" Val="sources_1"/>
       </Config>
     </FileSet>
@@ -199,11 +194,23 @@
     <MsgAttr Name="RuleType" Val="0"/>
     <MsgAttr Name="Limit" Val="-1"/>
     <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="USF-XSim 62"/>
+    <MsgAttr Name="Id" Val="IP_Flow 19-4067"/>
     <MsgAttr Name="Severity" Val="ANY"/>
     <MsgAttr Name="ShowRule" Val="1"/>
     <MsgAttr Name="RuleSource" Val="8"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="ERROR: [USF-XSim-62] &apos;compile&apos; step failed with error(s). Please check the Tcl console output or &apos;/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.sim/sim_1/behav/xvlog.log&apos; file for more information."/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Common 17-55"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="CRITICAL WARNING: [Common 17-55] &apos;set_property&apos; expects at least one object. [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/maria/maria.srcs/constrs_1/new/constraints.xdc:80]
+Resolution: If [get_&lt;value>] was used to populate the object, check to make sure this command returns at least one valid object."/>
   </MsgRule>
 </Project>
