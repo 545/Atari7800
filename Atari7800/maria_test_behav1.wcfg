@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="maria_test_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="maria_test" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="29" />
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/CLOCK_PLL">
+      <obj_property name="ElementShortName">CLOCK_PLL</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_PLL</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/m_en">
+      <obj_property name="ElementShortName">m_en</obj_property>
+      <obj_property name="ObjectShortName">m_en</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/maria_inst/timing_ctrl_inst/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/m_ready">
+      <obj_property name="ElementShortName">m_ready</obj_property>
+      <obj_property name="ObjectShortName">m_ready</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/m_int_b">
+      <obj_property name="ElementShortName">m_int_b</obj_property>
+      <obj_property name="ObjectShortName">m_int_b</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/clock_100">
+      <obj_property name="ElementShortName">clock_100</obj_property>
+      <obj_property name="ObjectShortName">clock_100</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/clock_25">
+      <obj_property name="ElementShortName">clock_25</obj_property>
+      <obj_property name="ObjectShortName">clock_25</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/sysclk_7_143">
+      <obj_property name="ElementShortName">sysclk_7_143</obj_property>
+      <obj_property name="ObjectShortName">sysclk_7_143</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/clock_divider_locked">
+      <obj_property name="ElementShortName">clock_divider_locked</obj_property>
+      <obj_property name="ObjectShortName">clock_divider_locked</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/RED">
+      <obj_property name="ElementShortName">RED[3:0]</obj_property>
+      <obj_property name="ObjectShortName">RED[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/GREEN">
+      <obj_property name="ElementShortName">GREEN[3:0]</obj_property>
+      <obj_property name="ObjectShortName">GREEN[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/BLUE">
+      <obj_property name="ElementShortName">BLUE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">BLUE[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/vga_row">
+      <obj_property name="ElementShortName">vga_row[9:0]</obj_property>
+      <obj_property name="ObjectShortName">vga_row[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/vga_col">
+      <obj_property name="ElementShortName">vga_col[9:0]</obj_property>
+      <obj_property name="ObjectShortName">vga_col[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/halt_b">
+      <obj_property name="ElementShortName">halt_b</obj_property>
+      <obj_property name="ObjectShortName">halt_b</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/uv_display">
+      <obj_property name="ElementShortName">uv_display[7:0]</obj_property>
+      <obj_property name="ObjectShortName">uv_display[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/RW">
+      <obj_property name="ElementShortName">RW</obj_property>
+      <obj_property name="ObjectShortName">RW</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/AB">
+      <obj_property name="ElementShortName">AB[15:0]</obj_property>
+      <obj_property name="ObjectShortName">AB[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/DB">
+      <obj_property name="ElementShortName">DB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DB[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/maria_inst/dma_ctrl_inst/zp_dma_start">
+      <obj_property name="ElementShortName">zp_dma_start</obj_property>
+      <obj_property name="ObjectShortName">zp_dma_start</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="/maria_test/maria_inst/timing_ctrl_inst/zp_ready">
+      <obj_property name="ElementShortName">zp_ready</obj_property>
+      <obj_property name="ObjectShortName">zp_ready</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/timing_ctrl_inst/col">
+      <obj_property name="ElementShortName">col[8:0]</obj_property>
+      <obj_property name="ObjectShortName">col[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/timing_ctrl_inst/state">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      <obj_property name="label">TC State</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/line_ram_inst/lram_in[0]">
+      <obj_property name="ElementShortName">[0][4:0]</obj_property>
+      <obj_property name="ObjectShortName">lram_in[0][4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/line_ram_inst/lram_out[0]">
+      <obj_property name="ElementShortName">[0][4:0]</obj_property>
+      <obj_property name="ObjectShortName">lram_out[0][4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/line_ram_inst/LRAM_OUT_COL">
+      <obj_property name="ElementShortName">LRAM_OUT_COL[8:0]</obj_property>
+      <obj_property name="ObjectShortName">LRAM_OUT_COL[8:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/line_ram_inst/lram_ix">
+      <obj_property name="ElementShortName">lram_ix[7:0]</obj_property>
+      <obj_property name="ObjectShortName">lram_ix[7:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="/maria_test/maria_inst/line_ram_inst/playback_ix">
+      <obj_property name="ElementShortName">playback_ix[8:0]</obj_property>
+      <obj_property name="ObjectShortName">playback_ix[8:0]</obj_property>
+   </wvobject>
+</wave_config>

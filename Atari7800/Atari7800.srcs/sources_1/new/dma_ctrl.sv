@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`default_nettype none
 
 module dma_ctrl(
    output logic [15:0] AddrB,
@@ -25,22 +24,23 @@ module dma_ctrl(
    logic               DLIen, A12en, A11en;
 
    // states
-   enum logic [1:0] {waiting, zp_dma, dp_dma, pp_dma} state;
-   enum logic [2:0] {drive_zp_addr,w_offset,w_DPL,w_DPH} zp_state;
-   enum logic [3:0] {drive_dp_addr, w_PPL, w_PALETTE_WIDTH,
-                     w_PPH, w_PALETTE_WIDTH_2, w_INPUT,
-                     drive_pp_addr, w_PIXELS, drive_next_zp_addr,
-                     w_next_offset,w_next_DPL,w_next_DPH} dp_state;
+   enum logic [1:0] {waiting = 2'b00, zp_dma = 2'b01, dp_dma = 2'b10} state;
+   enum logic [2:0] {drive_zp_addr = 3'b000, w_offset = 3'b001, w_DPL = 3'b010 ,w_DPH = 3'b100} zp_state;
+   enum logic [3:0] {drive_dp_addr = 4'h0, w_PPL = 4'h1, w_PALETTE_WIDTH = 4'h2,
+                     w_PPH = 4'h3, w_PALETTE_WIDTH_2 = 4'h4, w_INPUT = 4'h5,
+                     drive_pp_addr = 4'h6, w_PIXELS = 4'h7, drive_next_zp_addr = 4'h8,
+                     w_next_offset = 4'h9, w_next_DPL = 4'ha, w_next_DPH = 4'hb} dp_state;
 
    logic five_byte_mode, null_width, null_data, zero_offset;
 
    assign null_width = (DataB[4:0] == 5'b0);
    assign null_data = (DataB == 8'b0);
    assign zero_offset = (OFFSET == 4'b0);
+   
+   assign drive_AB = (state != waiting);
 
    always_comb begin
-      drive_AB = 1'b0;
-      AddrB = 'hx;
+      AddrB = 'h1234;
       wm_w = 0;
       ind_w = 0;
       palette_w = 0;
@@ -48,11 +48,9 @@ module dma_ctrl(
       pixels_w = 0;
       case (state)
          zp_dma: begin
-            drive_AB = 1'b1;
             AddrB = ZP_saved;
          end
          dp_dma: begin
-            drive_AB = 1'b1;
             AddrB = DP_saved;
             case (dp_state)
                w_PALETTE_WIDTH: begin
@@ -110,7 +108,7 @@ module dma_ctrl(
                 drive_zp_addr: begin // Read zp
                    zp_state <= w_offset;
                    // AddrB = ZP_saved;
-                   ZP_saved <= ZP+1;
+                   ZP_saved <= ZP_saved+1;
                 end
                 w_offset: begin //write cbits and offset
                    zp_state <= w_DPL;

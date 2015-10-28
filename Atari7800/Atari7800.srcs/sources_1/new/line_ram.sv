@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`default_nettype none
 
 // Graphics Mode Definitions
 `define GM_160A 3'b000
@@ -159,6 +158,10 @@ module line_ram(
       if (RESET) begin
          input_addr <= 8'b0;
          palette <= 3'b0;
+         wm <= 1'b0;
+         ind <= 1'b0;
+         lram_in <= 800'd0;
+         lram_out <= 800'd0;
       end else begin
          input_addr <= INPUT_W ? INPUT_ADDR : input_addr;
          palette <= PALETTE_W ? PALETTE : palette;

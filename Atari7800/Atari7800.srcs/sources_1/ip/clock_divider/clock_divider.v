@@ -71,7 +71,7 @@
 module clock_divider 
  (
  // Clock in ports
-  input         clk_in1,
+  input         CLOCK_PLL,
   // Clock out ports
   output        CLOCK_100,
   output        CLOCK_7_143,
@@ -84,7 +84,7 @@ module clock_divider
   clock_divider_clk_wiz inst
   (
  // Clock in ports
-  .clk_in1(clk_in1),
+  .CLOCK_PLL(CLOCK_PLL),
   // Clock out ports  
   .CLOCK_100(CLOCK_100),
   .CLOCK_7_143(CLOCK_7_143),

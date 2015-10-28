@@ -25,25 +25,27 @@ module Atari7800(
 
    // MARIA Signals
    logic                   m_int_b, m_en, m_ready;
+   logic                   maria_rw;
    logic                   halt_b;
    logic [7:0]             uv_display;
 
    // Memory Map Select lines
    logic                   mm_ram0_b, mm_ram1_b,
-                           mm_p6532_b, mm_tia_b;
+                           mm_p6532_b, mm_tia_b,
+                           r_ram_select_b;
 
    // TIA Signals
-   logic Hblank, Vblank, aud0, aud1, tia_rw;
+   logic Hblank, Vblank, aud0, aud1;
    logic [3:0] audv0, audv1;
    logic [7:0] tia_uv, tia_db_out;
    logic [15:0] aud_signal_out;
 
    // RIOT Signals
-   logic RS_b, riot_rw;
+   logic RS_b;
    logic [7:0] PAin, PAout, PBin, PBout;
 
    // 6502 Signals
-   logic RDY, cpu_rw, IRQ_n;
+   logic RDY, IRQ_n;
    logic [3:0] I;
    logic [1:0] ilatch;
 
@@ -51,6 +53,8 @@ module Atari7800(
    logic                  RW;
    wire [15:0]            AB;
    wire  [7:0]            DB;
+   
+   logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out;
 
    assign m_en = 1'b1;
    assign pclk_2 = 1'b0;
@@ -83,7 +87,8 @@ module Atari7800(
 
    // MEMORY
    logic [7:0] DB_out;
-   assign DB = RW ? DB_out : (~tia_rw ? tia_DB_out : 'bz);
+   assign DB = RW ? DB_out : (~mm_tia_b ? tia_DB_out : (
+                              ~mm_p6532_b ? riot_DB_out : 'bz));
    memory dll_img(
       .clka(clock_100), // IN STD_LOGIC;
       .wea(~RW),        // IN STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -99,6 +104,7 @@ module Atari7800(
       .pclk_2(pclk_2), .tia_clk(tia_clk), .pclk_0(pclk_0),
       .ram0_b(mm_ram0_b), .ram1_b(mm_ram1_b),
       .p6532_b(mm_p6532_b), .tia_b(mm_tia_b),
+      .riot_ram_b(r_ram_select_b),
       .RW(RW), .enable(m_en),
       .vga_row(vga_row), .vga_col(vga_col),
       .UV_out(uv_display),
@@ -111,15 +117,15 @@ module Atari7800(
       .Dout(tia_DB_out), // Data bus output
       .CS_n(mm_tia_b), // Active low chip select input
       .CS(~mm_tia_b), // Chip select input
-      .R_W_n(tia_rw), // Active low read/write input
+      .R_W_n(RW), // Active low read/write input
       .RDY(RDY), // CPU ready output
       .MASTERCLK(tia_clk), // 3.58 Mhz pixel clock input
       .CLK2(pclk_0), // 1.19 Mhz bus clock input
       .Idump(I), // Dumped I/O
       .Ilatch(ilatch), // Latched I/O
-      .HSYNC(HSync), // Video horizontal sync output
+      .HSYNC(),        // Video horizontal sync output
       .HBLANK(Hblank), // Video horizontal blank output
-      .VSYNC(VSync), // Video vertical sync output
+      .VSYNC(),        // Video vertical sync output
       .VBLANK(Vblank), // Video vertical sync output
       .COLOROUT(tia_uv), // Indexed color output
       .RES_n(reset), // Active low reset input
@@ -146,27 +152,27 @@ module Atari7800(
            );
 
   //RIOT
-  RIOT riot_inst(.A(AB), // Address bus input
-      .Din(DB), // Data bus input
-      .Dout(DB_m), // Data bus output
-      .CS(~mm_p6532_b), // Chip select input
-      .CS_n(mm_p6532_b), // Active low chip select input
-      .R_W_n(riot_rw), // Active low read/write input
-      .RS_n(RS_b), // Active low rom select input
-      .RES_n(reset), // Active low reset input
-      .IRQ_n(), // Active low interrupt output
-      .CLK(pclk_0),   // Clock input
-      .PAin(PAin),  // 8 bit port A input
-      .PAout(PAout), // 8 bit port A output
-      .PBin(PBin),  // 8 bit port B input
-      .PBout(PBout));// 8 bit port B output
+  RIOT riot_inst(.A(AB),     // Address bus input
+      .Din(DB),              // Data bus input
+      .Dout(riot_DB_out),    // Data bus output
+      .CS(~mm_p6532_b),      // Chip select input
+      .CS_n(mm_p6532_b),     // Active low chip select input
+      .R_W_n(RW),            // Active low read/write input
+      .RS_n(r_ram_select_b), // Active low rom select input
+      .RES_n(~reset),        // Active low reset input
+      .IRQ_n(),              // Active low interrupt output
+      .CLK(pclk_0),          // Clock input
+      .PAin(PAin),           // 8 bit port A input
+      .PAout(PAout),         // 8 bit port A output
+      .PBin(PBin),           // 8 bit port B input
+      .PBout(PBout));        // 8 bit port B output
 
   //6502  
   cpu_wrapper cpu_inst(.clk(pclk_0),
-    .reset(reset),
+    .reset_b(~reset),
     .AB(AB),
     .DB(DB),
-    .RD(cpu_rw),
+    .RD(RW),
     .IRQ(IRQ_n),
     .NMI(m_int_b),
     .RDY(RDY),

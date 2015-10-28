@@ -1,15 +1,18 @@
 `timescale 1ns / 1ps
-`default_nettype none
 
 module maria(
    // Busses ("tristate")
-   input  logic [15:0] AB_in,
-   output logic [15:0] AB_out,
-   output logic        drive_AB,
+   // input  logic [15:0] AB_in,
+   // output logic [15:0] AB_out,
+   // output logic        drive_AB,
 
-   input  logic  [7:0] DB_in,
-   output logic  [7:0] DB_out,
-   output logic        drive_DB,
+   // input  logic  [7:0] DB_in,
+   // output logic  [7:0] DB_out,
+   // output logic        drive_DB,
+   // inout wire [15:0]  AB,
+   // inout wire [ 7:0]  DB,
+   input logic [7:0]   DB,
+   output logic [15:0] AB,
 
    // Clocking
    input logic        reset,
@@ -18,6 +21,7 @@ module maria(
 
    // Memory Map Select lines
    output logic       ram0_b, ram1_b, p6532_b, tia_b,
+   output logic       riot_ram_b,
 
    // Maria configuration
    input logic        RW, enable,
@@ -33,14 +37,19 @@ module maria(
 
    // Bus interface
    // Defined as ports.
-   // logic        drive_AB;
-   // logic [15:0] AB_in, AB_out;
-   // logic        drive_DB;
-   // logic  [7:0] DB_in, DB_out;
-   // assign DB = drive_DB ? DB_out : 'bz;
-   // assign AB = drive_AB ? AB_out : 'bz;
-   // assign DB_in = DB;
-   // assign AB_in = AB;
+   logic        drive_AB;
+   logic [15:0] AB_in, AB_out;
+   logic        drive_DB;
+   logic  [7:0] DB_in, DB_out;
+   //assign DB = drive_DB ? DB_out : 'bz;
+   //assign AB = drive_AB ? AB_out : 'bz;
+   //assign DB_in = DB;
+   //assign AB_in = AB;\
+   
+   // For testing DMA. 
+   assign DB_in = DB;
+   assign AB = AB_out;
+   assign AB_in = AB_out;
 
    //// Memory Mapped Registers
    // Control register format:
@@ -129,6 +138,7 @@ module maria(
       .halt_b(halt_b), .we_b(RW),
       .tia_b(tia_b), .p6532_b(p6532_b),
       .ram0_b(ram0_b), .ram1_b(ram1_b),
+      .riot_ram_b(riot_ram_b),
       .ctrl(ctrl),
       .color_map(color_map),
       .status_read(8'b0),//{vga_row[9], 7'b0}),

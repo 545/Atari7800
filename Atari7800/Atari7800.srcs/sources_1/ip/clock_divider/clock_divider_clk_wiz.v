@@ -68,7 +68,7 @@
 
 module clock_divider_clk_wiz 
  (// Clock in ports
-  input         clk_in1,
+  input         CLOCK_PLL,
   // Clock out ports
   output        CLOCK_100,
   output        CLOCK_7_143,
@@ -81,8 +81,8 @@ module clock_divider_clk_wiz
   // Input buffering
   //------------------------------------
   IBUF clkin1_ibufg
-   (.O (clk_in1_clock_divider),
-    .I (clk_in1));
+   (.O (CLOCK_PLL_clock_divider),
+    .I (CLOCK_PLL));
 
 
 
@@ -135,7 +135,7 @@ module clock_divider_clk_wiz
     .CLKOUT5             (clkout5_unused),
      // Input clock control
     .CLKFBIN             (clkfbout_buf_clock_divider),
-    .CLKIN1              (clk_in1_clock_divider),
+    .CLKIN1              (CLOCK_PLL_clock_divider),
     .CLKIN2              (1'b0),
      // Tied to always select the primary input clock
     .CLKINSEL            (1'b1),

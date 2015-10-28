@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`default_nettype none
 
 // Number of sysclk cycles needed for the halt signal to take on the CPU
 `define DMA_STARTUP_CYCLES 9
@@ -83,14 +82,14 @@ module timing_ctrl (
    logic [4:0]        startup_ctr;
 
    enum logic [2:0] {
-      VWAIT,          // Waiting for VSYNC to complete before starting ZP DMA
-      HWAIT,          // Waiting for HSYNC to complete before starting DP DMA
-      ZP_DMA_STARTUP, // Waiting for HALT to reach CPU before starting ZP DMA
-      ZP_DMA,         // Waiting for DMA CTRL to finish ZP DMA
-      START_OF_LINE,  // Waiting for first 7 CPU cycles of line before DP DMA
-      DP_DMA_STARTUP, // Waiting for HALT to reach CPU before starting DP DMA
-      DP_DMA,         // Waiting for DMA CTRL to finish DP DMA
-      DP_DMA_WAITSWAP // Done with DP DMA, but not ready to swap linerams yet
+      VWAIT = 3'h0,          // Waiting for VSYNC to complete before starting ZP DMA
+      HWAIT = 3'h1,          // Waiting for HSYNC to complete before starting DP DMA
+      ZP_DMA_STARTUP = 3'h2, // Waiting for HALT to reach CPU before starting ZP DMA
+      ZP_DMA = 3'h3,         // Waiting for DMA CTRL to finish ZP DMA
+      START_OF_LINE = 3'h4,  // Waiting for first 7 CPU cycles of line before DP DMA
+      DP_DMA_STARTUP = 3'h5, // Waiting for HALT to reach CPU before starting DP DMA
+      DP_DMA = 3'h6,         // Waiting for DMA CTRL to finish DP DMA
+      DP_DMA_WAITSWAP = 3'h7 // Done with DP DMA, but not ready to swap linerams yet
    } state;
 
    assign vga_line_delta = vga_row_prev_prev != vga_row_prev;
@@ -118,6 +117,7 @@ module timing_ctrl (
 
    always @(posedge sysclk, posedge reset) begin
       if (reset) begin
+         state <= VWAIT;
          row <= 9'b0;
          col <= 9'b0;
          vga_row_prev <= 10'd0;
@@ -177,7 +177,7 @@ module timing_ctrl (
          // Next state logic
          case (state)
            VWAIT: begin
-              if (enable & zp_ready) begin
+              if (zp_ready) begin
                  halt_b <= 1'b0;
                  state <= ZP_DMA_STARTUP;
                  startup_ctr <= 1;

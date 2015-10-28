@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`default_nettype none
 
 `define TIA_SIG 4'b0111
 `define P6532_SIG 4'b1011
@@ -15,6 +14,7 @@ module memory_map (
    output logic             drive_DB,
    input  logic             halt_b, we_b,
    output logic             tia_b, p6532_b, ram0_b, ram1_b,
+   output logic             riot_ram_b,
    output logic [7:0]       ctrl,
    output logic [24:0][7:0] color_map,
    input  logic [7:0]       status_read,
@@ -45,6 +45,8 @@ module memory_map (
 
    assign pav = 1'b1; // For now, since I don't think pclk_0 works
    // assign pav = pclk_0 | pclk_2;
+   
+   assign riot_ram_b = AB[9]; // 480-4FF is RAM, 280-2FF is ports
 
    always_comb begin
       {tia_b, p6532_b, ram0_b, ram1_b} = signals_out;

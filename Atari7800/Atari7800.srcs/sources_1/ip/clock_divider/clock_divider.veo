@@ -72,7 +72,7 @@
   clock_divider instance_name
    (
    // Clock in ports
-    .clk_in1(clk_in1),      // input clk_in1
+    .CLOCK_PLL(CLOCK_PLL),      // input CLOCK_PLL
     // Clock out ports
     .CLOCK_100(CLOCK_100),     // output CLOCK_100
     .CLOCK_7_143(CLOCK_7_143),     // output CLOCK_7_143
