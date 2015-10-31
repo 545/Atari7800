@@ -44,6 +44,9 @@ module Atari7800(
    logic RS_b;
    logic [7:0] PAin, PAout, PBin, PBout;
 
+   //Memory Signals
+   logic [7:0] bios_db_out;
+
    // 6502 Signals
    logic RDY, IRQ_n;
    logic [3:0] I;
@@ -56,10 +59,10 @@ module Atari7800(
    logic                  RW;
    logic [15:0]           AB;
    logic  [7:0]           DB;
-   
+
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
                           ram0_DB_out, ram1_DB_out;
-   
+
    always_comb casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b})
       4'b0xxx: DB = ram0_DB_out;
       4'b10xx: DB = ram1_DB_out;
@@ -68,7 +71,7 @@ module Atari7800(
       // Otherwise, allow the Maria or Cartridge or BIOS to drive the bus
       default: DB = 8'bz;
    endcase
-   
+
    ram0 ram0_inst(
       .clka(sysclk_7_143),
       .ena(~ram0_cs_b),
@@ -77,7 +80,7 @@ module Atari7800(
       .dina(DB),
       .douta(ram0_DB_out)
    );
-   
+
    ram1 ram1_inst(
       .clka(sysclk_7_143),
       .ena(~ram1_cs_b),
@@ -110,7 +113,12 @@ module Atari7800(
       .HSync(HSync), .VSync(VSync)
    );
 
-
+   BIOS_ROM BIOS(.clka(sysclk_7_143),
+       .ena(~bios_en_b & AB[15]),
+       .wea(0),
+       .addra(AB[14:0]),
+       .dina(0),
+       .douta(bios_db_out));
 
    // VIDEO
    always_comb case ({maria_en, tia_en})
@@ -118,7 +126,7 @@ module Atari7800(
        2'b01: uv_display = uv_tia;
        2'b10: uv_display = uv_maria;
        2'b11: uv_display = uv_tia;
-       default: uv_display = uv_maria; 
+       default: uv_display = uv_maria;
    endcase
 
    // MARIA
@@ -158,7 +166,7 @@ module Atari7800(
       .audv0(audv0), //audio volume for use with external xformer module
       .audv1(audv1) //audio volume for use with external xformer module
    );
-  
+
   audio_xformer audio_xform(.AUD0(aud0), .AUD1(aud1), .AUDV0(audv0),
                             .AUDV1(audv1), .AUD_SIGNAL(aud_signal_out));
 
@@ -191,7 +199,7 @@ module Atari7800(
       .PBin(PBin),           // 8 bit port B input
       .PBout(PBout));        // 8 bit port B output
 
-  //6502  
+  //6502
   cpu_wrapper cpu_inst(.clk(pclk_0),
     .reset_b(~reset),
     .AB(AB),
@@ -201,18 +209,18 @@ module Atari7800(
     .NMI(m_int_b),
     .RDY(RDY),
     .halt_b(halt_b));
-    
-    
 
-  ctrl_reg ctrl(.lock_in(DB[0]), 
-                .maria_en_in(DB[1]), 
-                .bios_en_in(DB[2]), 
-                .tia_en_in(DB[3]), 
-                .latch_b(RW | mm_tia_b | lock_ctrl), 
+
+
+  ctrl_reg ctrl(.lock_in(DB[0]),
+                .maria_en_in(DB[1]),
+                .bios_en_in(DB[2]),
+                .tia_en_in(DB[3]),
+                .latch_b(RW | mm_tia_b | lock_ctrl),
                 .rst(reset),
-                .lock_out(lock_ctrl), 
-                .maria_en_out(maria_en), 
-                .bios_en_out(bios_en), 
+                .lock_out(lock_ctrl),
+                .maria_en_out(maria_en),
+                .bios_en_out(bios_en),
                 .tia_en_out(tia_en));
 
 
