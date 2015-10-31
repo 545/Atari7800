@@ -44,6 +44,9 @@ module Atari7800(
    logic RS_b;
    logic [7:0] PAin, PAout, PBin, PBout;
 
+   //Memory Signals
+   logic [7:0] bios_db_out;
+
    // 6502 Signals
    logic RDY, IRQ_n;
    logic [3:0] I;
@@ -99,6 +102,13 @@ module Atari7800(
       .dina(DB),        // IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       .douta(DB_out)    // OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
    );
+   
+   BIOS_ROM BIOS(.clka(sysclk_7_143),
+       .ena(~bios_en_b & AB[15]),
+       .wea(0),
+       .addra(AB[14:0]), 
+       .dina(0), 
+       .douta(bios_db_out)); 
 
    // MARIA
    maria maria_inst(
