@@ -4,7 +4,7 @@
 `define DMA_STARTUP_CYCLES 9
 
 // Number of sysclk cycles that the cpu gets at the start of a line
-`define START_OF_LINE_CYCLES 28
+`define START_OF_LINE_CYCLES 24
 
 // At which column we terminate DP DMA
 `define DP_DMA_KILL_COL 436

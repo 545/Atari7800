@@ -24,18 +24,18 @@ module Atari7800(
    logic [9:0]             vga_row, vga_col;
 
    // MARIA Signals
-   logic                   m_int_b, m_en, m_ready;
+   logic                   m_int_b, maria_en, maria_ready;
    logic                   maria_rw;
    logic                   halt_b;
    logic [7:0]             uv_display, uv_maria, uv_tia;
 
    // Memory Map Select lines
-   logic                   mm_ram0_b, mm_ram1_b,
-                           mm_p6532_b, mm_tia_b,
-                           r_ram_select_b;
+   logic                   ram0_cs_b, ram1_cs_b,
+                           riot_cs_b, tia_cs_b,
+                           riot_ram_cs_b;
 
    // TIA Signals
-   logic Hblank, Vblank, aud0, aud1;
+   logic hblank_tia, vblank_tia, aud0, aud1;
    logic [3:0] audv0, audv1;
    logic [7:0] tia_uv, tia_db_out;
    logic [15:0] aud_signal_out;
@@ -50,23 +50,45 @@ module Atari7800(
    logic [1:0] ilatch;
 
    //ctrl Signals
-   logic maria_en, tia_en, lock_ctrl, bios_en_b,
+   logic maria_en, tia_en, lock_ctrl, bios_en_b;
 
    // Buses
    logic                  RW;
-   wire [15:0]            AB;
-   wire  [7:0]            DB;
+   logic [15:0]           AB;
+   logic  [7:0]           DB;
    
-   logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out;
-
-   assign m_en = 1'b1;
-   assign pclk_2 = 1'b0;
-
-   /////////////////
-   // Subsystems //
-   ///////////////
+   logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
+                          ram0_DB_out, ram1_DB_out;
+   
+   always_comb casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b})
+      4'b0xxx: DB = ram0_DB_out;
+      4'b10xx: DB = ram1_DB_out;
+      4'b110x: DB = riot_DB_out;
+      4'b1110: DB = tia_DB_out;
+      // Otherwise, allow the Maria or Cartridge or BIOS to drive the bus
+      default: DB = 8'bz;
+   endcase
+   
+   ram0 ram0_inst(
+      .clka(sysclk_7_143),
+      .ena(~ram0_cs_b),
+      .wea(~RW),
+      .addra(AB[10:0]),
+      .dina(DB),
+      .douta(ram0_DB_out)
+   );
+   
+   ram1 ram1_inst(
+      .clka(sysclk_7_143),
+      .ena(~ram1_cs_b),
+      .wea(~RW),
+      .addra(AB[10:0]),
+      .dina(DB),
+      .douta(ram1_DB_out)
+   );
 
    // Clock
+   assign pclk_2 = 1'b0;
    clock_divider divider (
      .CLOCK_PLL(CLOCK_PLL),
 
@@ -88,28 +110,16 @@ module Atari7800(
       .HSync(HSync), .VSync(VSync)
    );
 
-   // MEMORY
-   logic [7:0] DB_out;
-   assign DB = RW ? DB_out : (~mm_tia_b ? tia_DB_out : (
-                              ~mm_p6532_b ? riot_DB_out : 'bz));
-   memory dll_img(
-      .clka(clock_100), // IN STD_LOGIC;
-      .wea(~RW),        // IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      .addra(AB),       // IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      .dina(DB),        // IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      .douta(DB_out)    // OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-   );
+
 
    // VIDEO
-   always_comb begin:
-       case ({maria_en, tia_en})
-           2'b00: uv_display = uv_maria;
-           2'b01: uv_display = uv_tia;
-           2'b10: uv_display = uv_maria;
-           2'b11: uv_display = uv_tia;
-           default: uv_display = uv_maria; 
-       endcase
-   end
+   always_comb case ({maria_en, tia_en})
+       2'b00: uv_display = uv_maria;
+       2'b01: uv_display = uv_tia;
+       2'b10: uv_display = uv_maria;
+       2'b11: uv_display = uv_tia;
+       default: uv_display = uv_maria; 
+   endcase
 
    // MARIA
    maria maria_inst(
@@ -122,7 +132,7 @@ module Atari7800(
       .RW(RW), .enable(m_en),
       .vga_row(vga_row), .vga_col(vga_col),
       .UV_out(uv_display),
-      .int_b(m_int_b), .halt_b(halt_b), .ready(m_ready)
+      .int_b(m_int_b), .halt_b(halt_b), .ready(maria_ready)
    );
 
    // TIA
