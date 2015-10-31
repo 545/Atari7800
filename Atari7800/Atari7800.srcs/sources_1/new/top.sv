@@ -49,6 +49,9 @@ module Atari7800(
    logic [3:0] I;
    logic [1:0] ilatch;
 
+   //ctrl Signals
+   logic maria_en, tia_en, lock_ctrl, bios_en_b,
+
    // Buses
    logic                  RW;
    wire [15:0]            AB;
@@ -191,5 +194,36 @@ module Atari7800(
     
     
 
+  ctrl_reg ctrl(.lock_in(DB[0]), 
+                .maria_en_in(DB[1]), 
+                .bios_en_in(DB[2]), 
+                .tia_en_in(DB[3]), 
+                .latch_b(RW | mm_tia_b | lock_ctrl), 
+                .rst(reset),
+                .lock_out(lock_ctrl), 
+                .maria_en_out(maria_en), 
+                .bios_en_out(bios_en), 
+                .tia_en_out(tia_en));
 
+
+endmodule
+
+module ctrl_reg(input logic lock_in, maria_en_in, bios_en_in, tia_en_in, latch_b, rst,
+                output logic lock_out, maria_en_out, bios_en_out, tia_en_out);
+
+
+  always_ff @(negedge latch_b, posedge rst) begin
+    if (rst) begin
+      lock_out <= 0;
+      maria_en_out <= 0;
+      bios_en_out <= 0;
+      tia_en_out <= 0;
+    end
+    else if (~latch_b) begin
+      lock_out <= lock_in;
+      maria_en_out <= maria_en_in;
+      bios_en_out <= bios_en_in;
+      tia_en_out <= tia_en_in;
+    end
+  end
 endmodule
