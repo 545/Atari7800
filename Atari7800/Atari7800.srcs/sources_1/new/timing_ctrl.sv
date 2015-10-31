@@ -107,13 +107,16 @@ module timing_ctrl (
    assign zp_ready = ((enable) & (vga_row == `ZP_READY_ROW) &
                       (col == `ZP_READY_COL));
 
-   assign ready_for_lswap = ((enable) & second_vga_line &
-                             (vga_col > `VGA_VISIBLE_COLS));
-
    assign last_line = (row == (`NTSC_SCANLINE_COUNT - 1));
 
    assign tia_clk = fast_ctr[1]; // Divide sysclk by 2
    assign pclk_0 = slow_clock ? slow_clk : fast_clk;
+   
+   assign ready_for_lswap = ((enable) & second_vga_line &
+                             (vga_col > `VGA_VISIBLE_COLS));
+   assign lram_swap = (ready_for_lswap & 
+                      (((state == DP_DMA) & (dp_dma_done | dp_dma_kill)) || 
+                       (state == DP_DMA_WAITSWAP)));
 
    always @(posedge sysclk, posedge reset) begin
       if (reset) begin
@@ -240,7 +243,6 @@ module timing_ctrl (
                  halt_b <= 1'b1;
                  if (ready_for_lswap) begin
                     state <= last_line ? VWAIT : HWAIT;
-                    lram_swap <= 1'b1;
                  end else begin
                     state <= DP_DMA_WAITSWAP;
                  end
@@ -251,7 +253,6 @@ module timing_ctrl (
                  state <= VWAIT;
               end else if (ready_for_lswap) begin
                  state <= last_line ? VWAIT : HWAIT;
-                 lram_swap <= 1'b1;
               end
            end
          endcase

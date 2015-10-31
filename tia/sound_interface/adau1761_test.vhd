@@ -74,7 +74,7 @@ architecture Behavioral of adau1761_test is
 
    signal clk_48     : std_logic;
    signal new_sample : std_logic;
-   signal AUD_SIGNAL : std_logic_vector(15 downto 0);
+   -- signal AUD_SIGNAL : std_logic_vector(15 downto 0); -- Already declared
    signal line_in_l  : std_logic_vector(15 downto 0);
    signal line_in_r  : std_logic_vector(15 downto 0);
    signal hphone_l   : std_logic_vector(15 downto 0);

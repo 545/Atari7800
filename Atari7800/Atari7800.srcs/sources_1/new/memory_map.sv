@@ -92,21 +92,23 @@ module memory_map (
          //color_map <= 200'b0;
          //////// TESTING COLOR MAP /////////
          // Background
-         color_map[0] <= 8'h58;
+         color_map[0] <= 8'h0c;
          // Palette 0
-         color_map[3:1] <= {8'h4c, 8'h48, 8'h4c};
+         color_map[3:1] <= {8'h32, 8'h55, 8'h55};
          // Palette 1
-         color_map[6:4] <= {8'h7c, 8'h78, 8'h7c};
+         color_map[6:4] <= {8'h83, 8'h55, 8'h55};
          // Palette 2
-         color_map[9:7] <= {8'hbc, 8'hb8, 8'hbc};
+         color_map[9:7] <= {8'h1c, 8'h55, 8'h55};
          // Palette 3
-         color_map[12:10] <= {8'hfc, 8'hf8, 8'hfc};
+         color_map[12:10] <= {8'h25, 8'h55, 8'h55};
+         // Palette 4
+         color_map[15:13] <= {8'hda, 8'h55, 8'h55};
          
-         color_map[24:11] <= 'b0;
+         color_map[24:16] <= 'b0;
                   
          wait_sync <= 8'b0;
          char_base <= 8'b0;
-         {ZPH,ZPL} <= {8'h18, 8'h10};
+         {ZPH,ZPL} <= {8'h18, 8'h20};
       end
       
       else begin

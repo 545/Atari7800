@@ -156,6 +156,7 @@ module maria(
       .palette_w(palette_w), .input_w(input_w), .pixels_w(pixels_w),
       .wm_w(wm_w), .ind_w(ind_w),
       .zp_dma_start(zp_dma_start), .dp_dma_start(dp_dma_start),
+      .dp_dma_kill(dp_dma_kill),
       .zp_dma_done(zp_dma_done), .dp_dma_done(dp_dma_done),
       .dp_dma_done_dli(dp_dma_done_dli),
       .sysclk(sysclk), .reset(reset),

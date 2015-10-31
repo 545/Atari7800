@@ -52,6 +52,19 @@ module line_ram(
          PLAYBACK = COLOR_MAP[3 * playback_palette + playback_color];
       end
    end
+   
+   logic [4:0] cell1, cell2, cell3, cell4;
+   logic [4:0] pcell1, pcell2, pcell3, pcell4;
+   
+   assign cell1 = lram_in[input_addr];
+   assign cell2 = lram_in[input_addr+1];
+   assign cell3 = lram_in[input_addr+2];
+   assign cell4 = lram_in[input_addr+3];
+
+   assign pcell1 = lram_in[input_addr-4];
+   assign pcell2 = lram_in[input_addr-3];
+   assign pcell3 = lram_in[input_addr-2];
+   assign pcell4 = lram_in[input_addr-1];
 
    // Assign playback_color and playback_palette based on
    // lram_in and playback_ix and display_mode

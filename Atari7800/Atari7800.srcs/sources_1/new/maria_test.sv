@@ -21,10 +21,11 @@
 
 module maria_test(
    output logic [3:0] RED, GREEN, BLUE,
-   output logic       HSync, VSync
+   output logic       HSync, VSync,
+   input  logic       reset, CLOCK_PLL
 );
     // Test inputs
-    logic reset, CLOCK_PLL;
+    //logic reset, CLOCK_PLL;
 
 
    // Clock Signals
@@ -104,13 +105,14 @@ module maria_test(
       .int_b(m_int_b), .halt_b(halt_b), .ready(m_ready)
    );
    
-   initial begin
+   /*initial begin
      CLOCK_PLL = 1'b0;
      #10 reset = 1'b0;
      #10 reset = 1'b1;
      #10 reset = 1'b0;
      @(negedge maria_inst.zp_dma_done);
-     @(negedge maria_inst.zp_dma_done);
+     @(negedge maria_inst.dp_dma_done);
+     @(negedge maria_inst.dp_dma_done);
    end
    
    initial begin
@@ -118,7 +120,7 @@ module maria_test(
          #1 CLOCK_PLL = ~CLOCK_PLL;
          
       end
-   end
+   end*/
    
 
 

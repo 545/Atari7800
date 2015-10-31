@@ -94,41 +94,4 @@ set_property MARK_DEBUG false [get_nets maria_inst/dma_ctrl_inst/zp_dma_start]
 
 
 set_property MARK_DEBUG false [get_nets divider/inst/CLOCK_7_143]
-create_debug_core u_ila_0 ila
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU_CNT 4 [get_debug_cores u_ila_0]
-set_property C_ADV_TRIGGER true [get_debug_cores u_ila_0]
-set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
-set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0]
-set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
-set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
-set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
-set_property port_width 1 [get_debug_ports u_ila_0/clk]
-connect_debug_port u_ila_0/clk [get_nets [list divider/inst/CLOCK_7_143]]
-set_property port_width 16 [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {dll_img/addra[0]} {dll_img/addra[1]} {dll_img/addra[2]} {dll_img/addra[3]} {dll_img/addra[4]} {dll_img/addra[5]} {dll_img/addra[6]} {dll_img/addra[7]} {dll_img/addra[8]} {dll_img/addra[9]} {dll_img/addra[10]} {dll_img/addra[11]} {dll_img/addra[12]} {dll_img/addra[13]} {dll_img/addra[14]} {dll_img/addra[15]}]]
-create_debug_port u_ila_0 probe
-set_property port_width 8 [get_debug_ports u_ila_0/probe1]
-connect_debug_port u_ila_0/probe1 [get_nets [list {dll_img/douta[0]} {dll_img/douta[1]} {dll_img/douta[2]} {dll_img/douta[3]} {dll_img/douta[4]} {dll_img/douta[5]} {dll_img/douta[6]} {dll_img/douta[7]}]]
-create_debug_port u_ila_0 probe
-set_property port_width 16 [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list {AB[0]} {AB[1]} {AB[2]} {AB[3]} {AB[4]} {AB[5]} {AB[6]} {AB[7]} {AB[8]} {AB[9]} {AB[10]} {AB[11]} {AB[12]} {AB[13]} {AB[14]} {AB[15]}]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list maria_inst/timing_ctrl_inst/dp_dma_done]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe4]
-connect_debug_port u_ila_0/probe4 [get_nets [list maria_inst/timing_ctrl_inst/lram_swap]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe5]
-connect_debug_port u_ila_0/probe5 [get_nets [list maria_inst/timing_ctrl_inst/ready_for_lswap]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe6]
-connect_debug_port u_ila_0/probe6 [get_nets [list maria_inst/timing_ctrl_inst/vga_line_delta]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe7]
-connect_debug_port u_ila_0/probe7 [get_nets [list maria_inst/timing_ctrl_inst/zp_dma_done]]
-set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-connect_debug_port dbg_hub/clk [get_nets sysclk_7_143]
+

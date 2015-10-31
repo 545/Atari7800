@@ -6,7 +6,7 @@
  Redesign of the Atari TIA chip. Provides the Atari with video generation,
  sound generation and I/O.
  */
-`include "TIA.h"
+`include "tia.vh"
 module TIA(A, // Address bus input
 	   Din, // Data bus input
 	   Dout, // Data bus output
@@ -42,9 +42,9 @@ module TIA(A, // Address bus input
    output 	HSYNC, HBLANK;
    output 	VSYNC, VBLANK;
    output [7:0] COLOROUT;
-   input 	RES_n;
+   input wire	RES_n;
    output AUD0, AUD1;
-   output [3:0] audv0, audv1;
+   output reg [3:0] audv0, audv1;
    // Data output register
    reg [7:0] 	Dout;
    // Video control signal registers
@@ -95,7 +95,9 @@ module TIA(A, // Address bus input
    reg [4:0]  audf0, audf1;
    // Pixel number calculation
    wire [7:0] pixelNum;
-   assign pixelNum = (hCount >= 68)? hCount − 8'd68 : 8'd227;
+   
+   assign pixelNum = (hCount >= 8'd68) ? (hCount - 8'd68) : 8'd227;
+   
    // Pixel tests. For each pixel and screen object, a test is done based on the
    // screen objects register to determine if the screen object should show on that
    // pixel. The results of all the tests are fed into logic to pick which displayed
@@ -105,8 +107,8 @@ module TIA(A, // Address bus input
    wire       pfPixelOn, pfLeftPixelVal, pfRightPixelVal;
    assign pfPixelNum = pixelNum[7:2];
    assign pfLeftPixelVal = pfGraphic[pfPixelNum];
-   assign pfRightPixelVal = (pfReflect == 1'b0)? pfGraphic[pfPixelNum − 6'd20]:
-			    pfGraphic[6'd39 − pfPixelNum];
+   assign pfRightPixelVal = (pfReflect == 1'b0)? pfGraphic[pfPixelNum - 6'd20]:
+			    pfGraphic[6'd39 - pfPixelNum];
    assign pfPixelOn = (pfPixelNum < 6'd20)? pfLeftPixelVal : pfRightPixelVal;
    // Player 0 sprite pixel test
    wire       pl0PixelOn;
@@ -368,7 +370,7 @@ module TIA(A, // Address bus input
 	     `RESMP1: missile1Lock <= Din[1];
 	     // Strobed line that initiates an object move
 	     `HMOVE: begin
-		player0Pos <= player0Pos − {{4{player0Motion[3]}},
+		player0Pos <= player0Pos - {{4{player0Motion[3]}},
 					    player0Motion[3:0]};
 		player1Pos <= player1Pos − {{4{player1Motion[3]}},
 					    player1Motion[3:0]};

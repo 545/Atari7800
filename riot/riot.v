@@ -5,7 +5,7 @@ Daniel Beer
     RIOT.v
 Redesign of the MOS 6532 chip. Provides RAM, I/O and timers to the Atari.
 */
-`include "RIOT.vh"
+`include "riot.vh"
 module RIOT(A, // Address bus input
 	    Din, // Data bus input
 	    Dout, // Data bus output
@@ -46,7 +46,7 @@ module RIOT(A, // Address bus input
    assign PRESCALER_VALS[1] = 10'd7;
    assign PRESCALER_VALS[2] = 10'd63;
    assign PRESCALER_VALS[3] = 10'd1023;
-   // Interrupt 
+   // Interrupt
    assign IRQ_n = ~(Timer_Int_Flag & Timer_Int_Enable | PA7_Int_Flag & PA7_Int_Enable);
    // Operation decoding
    wire [6:0] 	op;
@@ -135,7 +135,7 @@ module RIOT(A, // Address bus input
       // Reset operation
       if (~RES_n) begin
 	 Timer <= 9'b0;
-	 Timer_Mode <= 2'b0; 
+	 Timer_Mode <= 2'b0;
 	 Prescaler <= 10'b0;
 	 Timer_Int_Enable <= 1'b0;
       end
@@ -146,7 +146,7 @@ module RIOT(A, // Address bus input
 	  // Write value to the timer and update the prescaler based on the address
 	  `WRITE_TIMER:begin
 	     Timer <= {1'b0, R_Din};
-	     Timer_Mode <= R_op[1:0]; 
+	     Timer_Mode <= R_op[1:0];
 	     Prescaler <= PRESCALER_VALS[R_op[1:0]];
 	     Timer_Int_Enable <= R_op[3];
 	  end
@@ -155,16 +155,16 @@ module RIOT(A, // Address bus input
 	  // run before the timer is decremented
 	  default:if (Timer != 9'b100000000) begin
 	     if (Prescaler != 10'b0)
-	       Prescaler <= Prescaler − 10'b1;
+	       Prescaler <= Prescaler - 10'b1;
 	     else begin
-		if (Timer == 9'b0) 
+		if (Timer == 9'b0)
 		  begin
 		     Prescaler <= 10'b0;
 		     Timer_Mode <= 2'b0;
 		  end
 		else
 		  Prescaler <= PRESCALER_VALS[Timer_Mode];
-		Timer <= Timer − 9'b1;
+		Timer <= Timer - 9'b1;
 	     end
 	  end
 	endcase
