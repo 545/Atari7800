@@ -8,7 +8,7 @@ module Atari7800(
   output logic [7:0] ld,
   output logic AC_ADR0, AC_ADR1, AC_GPIO0, AC_MCLK, AC_SCK,
   input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
-  inout  wire  AC_SDA
+  inout  logic AC_SDA
 );
 
    //////////////
@@ -27,7 +27,7 @@ module Atari7800(
    logic                   m_int_b, m_en, m_ready;
    logic                   maria_rw;
    logic                   halt_b;
-   logic [7:0]             uv_display;
+   logic [7:0]             uv_display, uv_maria, uv_tia;
 
    // Memory Map Select lines
    logic                   mm_ram0_b, mm_ram1_b,
@@ -96,6 +96,17 @@ module Atari7800(
       .dina(DB),        // IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       .douta(DB_out)    // OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
    );
+
+   // VIDEO
+   always_comb begin:
+       case ({maria_en, tia_en})
+           2'b00: uv_display = uv_maria;
+           2'b01: uv_display = uv_tia;
+           2'b10: uv_display = uv_maria;
+           2'b11: uv_display = uv_tia;
+           default: uv_display = uv_maria; 
+       endcase
+   end
 
    // MARIA
    maria maria_inst(
@@ -177,6 +188,8 @@ module Atari7800(
     .NMI(m_int_b),
     .RDY(RDY),
     .halt_b(halt_b));
+    
+    
 
 
 endmodule
