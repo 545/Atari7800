@@ -31,7 +31,7 @@ module timing_ctrl (
    output logic       pclk_0, tia_clk,
    input  logic       slow_clock,
 
-   // Outputs to 6532
+   // Outputs to 6502
    output logic       halt_b, int_b, ready,
 
    // Signals to/from dma_ctrl

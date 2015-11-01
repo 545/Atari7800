@@ -53,6 +53,23 @@ module TIA(A, // Address bus input
    // Horizontal pixel counter
    reg [7:0] 	hCount;
    reg [3:0] 	hCountReset;
+   reg clk_30;
+   reg [7:0] clk_30_count;
+   
+   always @(posedge MASTERCLK) begin
+   if (res_n) begin
+     if (clk_30_count == 57) begin
+        clk_30 <= ~clk_30;
+        clk_30_count <= 0;
+     end
+     else begin
+        clk_30_count <= clk_30_count + 1;
+     end
+   end
+    
+   end
+
+   
    // Pixel counter update
    always @(posedge MASTERCLK)
      begin
@@ -60,6 +77,8 @@ module TIA(A, // Address bus input
 	if (~RES_n) begin
 	   hCount <= 8'd0;
 	   hCountReset[3:1] <= 3'd0;
+	   clk_30 <= 0;
+	   clk_30_count <= 0;
 	end
 	else begin
 	   // Increment the count and reset if necessary
@@ -96,6 +115,16 @@ module TIA(A, // Address bus input
    // Pixel number calculation
    wire [7:0] pixelNum;
    
+   
+   //audio control
+      audio audio_ctrl(.AUDC0(audc0), 
+                       .AUDC1(audc1),
+                       .AUDF0(audf0), 
+                       .AUDF1(audf1),
+                       .CLK_30(clk_30), //30khz clock
+                       .AUD0(AUD0),
+                       .AUD1(AUD1));
+   
    assign pixelNum = (hCount >= 8'd68) ? (hCount - 8'd68) : 8'd227;
    
    // Pixel tests. For each pixel and screen object, a test is done based on the
@@ -118,7 +147,7 @@ module TIA(A, // Address bus input
 						     pl0MaskDel[2], pl0MaskDel[3],
 						     pl0MaskDel[4], pl0MaskDel[5],
 						     pl0MaskDel[6], pl0MaskDel[7]};
-   objPixelOn(pixelNum, player0Pos, player0Size[2:0], pl0Mask, pl0PixelOn);
+   objPixelOn player0_test(pixelNum, player0Pos, player0Size[2:0], pl0Mask, pl0PixelOn);
    // Player 1 sprite pixel test
    wire       pl1PixelOn;
    wire [7:0] pl1Mask, pl1MaskDel;
@@ -127,7 +156,7 @@ module TIA(A, // Address bus input
 						     pl1MaskDel[2], pl1MaskDel[3],
 						     pl1MaskDel[4], pl1MaskDel[5],
 						     pl1MaskDel[6], pl1MaskDel[7]};
-   objPixelOn(pixelNum, player1Pos, player1Size[2:0], pl1Mask, pl1PixelOn);
+   objPixelOn player1_test(pixelNum, player1Pos, player1Size[2:0], pl1Mask, pl1PixelOn);
    // Missile 0 pixel test
    wire       mis0PixelOn, mis0PixelOut;
    wire [7:0] mis0ActualPos;
@@ -142,7 +171,7 @@ module TIA(A, // Address bus input
 	endcase
      end
    assign mis0ActualPos = (missile0Lock)? player0Pos : missile0Pos;
-   objPixelOn(pixelNum, mis0ActualPos, player0Size[2:0], mis0Mask, mis0PixelOut);
+   objPixelOn missile0_test(pixelNum, mis0ActualPos, player0Size[2:0], mis0Mask, mis0PixelOut);
    assign mis0PixelOn = mis0PixelOut && missile0Enable;
    // Missile 1 pixel test
    wire mis1PixelOn, mis1PixelOut;
@@ -158,7 +187,7 @@ module TIA(A, // Address bus input
 	endcase
      end
    assign mis1ActualPos = (missile1Lock)? player1Pos : missile1Pos;
-   objPixelOn(pixelNum, mis1ActualPos, player1Size[2:0], mis1Mask, mis1PixelOut);
+   objPixelOn missile1_test(pixelNum, mis1ActualPos, player1Size[2:0], mis1Mask, mis1PixelOut);
    assign mis1PixelOn = mis1PixelOut && missile1Enable;
    // Ball pixel test
    wire ballPixelOut, ballPixelOn, ballEnableDel;
@@ -172,7 +201,7 @@ module TIA(A, // Address bus input
 	  2'd3: ballMask <= 8'hFF;
 	endcase
      end
-   objPixelOn(pixelNum, ballPos, 3'd0, ballMask, ballPixelOut);
+   objPixelOn ball_test(pixelNum, ballPos, 3'd0, ballMask, ballPixelOut);
    assign ballEnableDel = ((ballVertDelay)? R_ballEnable : ballEnable);
    assign ballPixelOn = ballPixelOut && ballEnableDel;
    // Playfield color selection

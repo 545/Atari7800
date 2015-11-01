@@ -2,17 +2,17 @@
 
 module maria(
    // Busses ("tristate")
-   // input  logic [15:0] AB_in,
-   // output logic [15:0] AB_out,
-   // output logic        drive_AB,
+   input  logic [15:0] AB_in,
+   output logic [15:0] AB_out,
+   output logic        drive_AB,
 
-   // input  logic  [7:0] DB_in,
-   // output logic  [7:0] DB_out,
-   // output logic        drive_DB,
+   input  logic  [7:0] DB_in,
+   output logic  [7:0] DB_out,
+   output logic        drive_DB,
    // inout wire [15:0]  AB,
    // inout wire [ 7:0]  DB,
-   inout wire [7:0]   DB,
-   inout wire [15:0]  AB,
+   //inout wire [7:0]   DB,
+   //inout wire [15:0]  AB,
 
    // Clocking
    input logic        reset,
@@ -30,21 +30,21 @@ module maria(
    input logic [9:0]  vga_row, vga_col,
    output logic [7:0] UV_out,
 
-   // Outputs to 6532
+   // Outputs to 6502
    output logic       int_b, halt_b, ready
 );
 
 
    // Bus interface
    // Defined as ports.
-   logic        drive_AB;
-   logic [15:0] AB_in, AB_out;
-   logic        drive_DB;
-   logic  [7:0] DB_in, DB_out;
-   assign DB = drive_DB ? DB_out : 'bz;
-   assign AB = drive_AB ? AB_out : 'bz;
-   assign DB_in = DB;
-   assign AB_in = AB;
+   //logic        drive_AB;
+   //logic [15:0] AB_in, AB_out;
+   //logic        drive_DB;
+   //logic  [7:0] DB_in, DB_out;
+   //assign DB = drive_DB ? DB_out : 'bz;
+   //assign AB = drive_AB ? AB_out : 'bz;
+   //assign DB_in = DB;
+   //assign AB_in = AB;
    
    // For testing DMA. 
    //assign DB_in = DB;

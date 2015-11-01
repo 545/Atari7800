@@ -8,7 +8,7 @@ module Atari7800(
   output logic [7:0] ld,
   output logic AC_ADR0, AC_ADR1, AC_GPIO0, AC_MCLK, AC_SCK,
   input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
-  inout   wire AC_SDA
+  inout  wire AC_SDA
 );
 
    //////////////
@@ -24,13 +24,14 @@ module Atari7800(
    logic [9:0]             vga_row, vga_col;
 
    // MARIA Signals
-   logic                   m_int_b, maria_en;
+   logic                   m_int_b, maria_RDY;
    logic                   maria_rw;
-   logic                   halt_b;
+   logic                   halt_b, maria_drive_DB, maria_drive_AB;
    logic [7:0]             uv_display, uv_maria, uv_tia;
+   logic [15:0]            maria_AB_out;
 
    // TIA Signals
-   logic hblank_tia, vblank_tia, aud0, aud1;
+   logic hblank_tia, vblank_tia, aud0, aud1, tia_RDY;
    logic [3:0] audv0, audv1;
    logic [7:0] tia_db_out;
    logic [15:0] aud_signal_out;
@@ -41,7 +42,9 @@ module Atari7800(
 
    // 6502 Signals
    logic RDY, IRQ_n;
-   logic [3:0] I;
+   logic [7:0] core_DB_out;
+   logic [15:0] core_AB_out;
+   wire [3:0] idump;
    logic [1:0] ilatch;
 
    //ctrl Signals
@@ -61,17 +64,21 @@ module Atari7800(
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
    always_comb begin
-      if (RW) begin casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b})
-          5'b0xxxx: DB = ram0_DB_out;
-          5'b10xxx: DB = ram1_DB_out;
-          5'b110xx: DB = riot_DB_out;
-          5'b1110x: DB = tia_DB_out;
-          5'b11110: DB = bios_DB_out;
-          // Otherwise, allow the Maria or Cartridge or BIOS to drive the bus
+      if (RW) begin casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB})
+          6'b0xxxxx: DB = ram0_DB_out;
+          6'b10xxxx: DB = ram1_DB_out;
+          6'b110xxx: DB = riot_DB_out;
+          6'b1110xx: DB = tia_DB_out;
+          6'b11110x: DB = bios_DB_out;
+          6'b111111: DB = maria_DB_out;
+          6'b111110: DB = 0;//cart_DB_out
+          // Otherwise, nothing is driving the data bus. THIS SHOULD NEVER HAPPEN
           default: DB = 8'bz;
       endcase end else begin
-          DB = 8'bz;
+          //if we are doing a write, let 6502 drive the bus
+          DB = core_DB_out;
       end
+      AB = (halt_b) ? core_AB_out : ((maria_drive_AB) ? maria_AB_out : 16'bz);
    end
    
 
@@ -96,9 +103,9 @@ module Atari7800(
   assign bios_cs_b = ~(AB[15] & ~bios_en_b);
   BIOS_ROM BIOS(.clka(sysclk_7_143),
     .ena(~bios_cs_b),
-    .wea(0),
-    .addra(AB[14:0]),
-    .dina(0),
+    .wea(1'b0),
+    .addra(AB[11:0]),
+    .dina(8'b0),
     .douta(bios_DB_out)
   );
 
@@ -136,8 +143,12 @@ module Atari7800(
 
    // MARIA
    maria maria_inst(
-      .AB(AB), 
-      .DB(DB),
+      .AB_in(AB),
+      .AB_out(maria_AB_out),
+      .drive_AB(maria_drive_AB),
+      .DB_in(DB),
+      .DB_out(maria_DB_out),
+      .drive_DB(maria_drive_DB), 
       .reset(reset), 
       .sysclk(sysclk_7_143),
       .pclk_2(pclk_2), 
@@ -152,23 +163,23 @@ module Atari7800(
       .enable(maria_en),
       .vga_row(vga_row), 
       .vga_col(vga_col),
-      .UV_out(uv_display),
+      .UV_out(uv_maria),
       .int_b(m_int_b), 
       .halt_b(halt_b), 
-      .ready(RDY)
+      .ready(maria_RDY)
    );
 
    // TIA
-   TIA tia_inst(.A(AB), // Address bus input
+   TIA tia_inst(.A(AB[5:0]), // Address bus input
       .Din(DB), // Data bus input
       .Dout(tia_DB_out), // Data bus output
-      .CS_n(tia_cs_b), // Active low chip select input
+      .CS_n({2'b0,tia_cs_b}), // Active low chip select input
       .CS(~tia_cs_b), // Chip select input
       .R_W_n(RW), // Active low read/write input
-      .RDY(RDY), // CPU ready output
+      .RDY(tia_RDY), // CPU ready output
       .MASTERCLK(tia_clk), // 3.58 Mhz pixel clock input
       .CLK2(pclk_0), // 1.19 Mhz bus clock input
-      .Idump(I), // Dumped I/O
+      .Idump(idump), // Dumped I/O
       .Ilatch(ilatch), // Latched I/O
       .HSYNC(),        // Video horizontal sync output
       .HBLANK(hblank_tia), // Video horizontal blank output
@@ -199,7 +210,7 @@ module Atari7800(
            );
 
   //RIOT
-  RIOT riot_inst(.A(AB),     // Address bus input
+  RIOT riot_inst(.A(AB[6:0]),     // Address bus input
       .Din(DB),              // Data bus input
       .Dout(riot_DB_out),    // Data bus output
       .CS(~riot_cs_b),       // Chip select input
@@ -215,10 +226,12 @@ module Atari7800(
       .PBout(PBout));        // 8 bit port B output
 
   //6502
+  assign RDY = (maria_en) ? maria_RDY : tia_RDY;
   cpu_wrapper cpu_inst(.clk(pclk_0),
-    .reset_b(~reset),
-    .AB(AB),
-    .DB(DB),
+    .reset(reset),
+    .AB(core_AB_out),
+    .DB_IN(DB),
+    .DB_OUT(core_DB_out),
     .RD(RW),
     .IRQ(IRQ_n),
     .NMI(m_int_b),

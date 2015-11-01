@@ -48,8 +48,8 @@ module maria_test(
    
     // Buses
     logic                  RW;
-    logic [15:0]            AB;
-    logic  [7:0]            DB;
+    wire [15:0]            AB;
+    wire  [7:0]            DB;
     
    // MEMORY
    // logic [7:0] DB_in, DB_out;
