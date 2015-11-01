@@ -8,7 +8,7 @@ module Atari7800(
   output logic [7:0] ld,
   output logic AC_ADR0, AC_ADR1, AC_GPIO0, AC_MCLK, AC_SCK,
   input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
-  inout  logic AC_SDA
+  inout   wire AC_SDA
 );
 
    //////////////
@@ -24,28 +24,20 @@ module Atari7800(
    logic [9:0]             vga_row, vga_col;
 
    // MARIA Signals
-   logic                   m_int_b, maria_en, maria_ready;
+   logic                   m_int_b, maria_en;
    logic                   maria_rw;
    logic                   halt_b;
    logic [7:0]             uv_display, uv_maria, uv_tia;
 
-   // Memory Map Select lines
-   logic                   ram0_cs_b, ram1_cs_b,
-                           riot_cs_b, tia_cs_b,
-                           riot_ram_cs_b;
-
    // TIA Signals
    logic hblank_tia, vblank_tia, aud0, aud1;
    logic [3:0] audv0, audv1;
-   logic [7:0] tia_uv, tia_db_out;
+   logic [7:0] tia_db_out;
    logic [15:0] aud_signal_out;
 
    // RIOT Signals
-   logic RS_b;
+   logic riot_RS_b;
    logic [7:0] PAin, PAout, PBin, PBout;
-
-   //Memory Signals
-   logic [7:0] bios_db_out;
 
    // 6502 Signals
    logic RDY, IRQ_n;
@@ -55,22 +47,33 @@ module Atari7800(
    //ctrl Signals
    logic maria_en, tia_en, lock_ctrl, bios_en_b;
 
+   // Memory Map Select lines
+   logic                   ram0_cs_b, ram1_cs_b,
+                           riot_cs_b, tia_cs_b,
+                           riot_ram_cs_b, bios_cs_b;
+
    // Buses
    logic                  RW;
    logic [15:0]           AB;
    logic  [7:0]           DB;
 
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
-                          ram0_DB_out, ram1_DB_out;
+                          ram0_DB_out, ram1_DB_out, bios_DB_out;
 
-   always_comb casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b})
-      4'b0xxx: DB = ram0_DB_out;
-      4'b10xx: DB = ram1_DB_out;
-      4'b110x: DB = riot_DB_out;
-      4'b1110: DB = tia_DB_out;
-      // Otherwise, allow the Maria or Cartridge or BIOS to drive the bus
-      default: DB = 8'bz;
-   endcase
+   always_comb begin
+      if (RW) begin casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b})
+          5'b0xxxx: DB = ram0_DB_out;
+          5'b10xxx: DB = ram1_DB_out;
+          5'b110xx: DB = riot_DB_out;
+          5'b1110x: DB = tia_DB_out;
+          5'b11110: DB = bios_DB_out;
+          // Otherwise, allow the Maria or Cartridge or BIOS to drive the bus
+          default: DB = 8'bz;
+      endcase end else begin
+          DB = 8'bz;
+      end
+   end
+   
 
    ram0 ram0_inst(
       .clka(sysclk_7_143),
@@ -89,6 +92,15 @@ module Atari7800(
       .dina(DB),
       .douta(ram1_DB_out)
    );
+   
+  assign bios_cs_b = ~(AB[15] & ~bios_en_b);
+  BIOS_ROM BIOS(.clka(sysclk_7_143),
+    .ena(~bios_cs_b),
+    .wea(0),
+    .addra(AB[14:0]),
+    .dina(0),
+    .douta(bios_DB_out)
+  );
 
    // Clock
    assign pclk_2 = 1'b0;
@@ -113,13 +125,6 @@ module Atari7800(
       .HSync(HSync), .VSync(VSync)
    );
 
-   BIOS_ROM BIOS(.clka(sysclk_7_143),
-       .ena(~bios_en_b & AB[15]),
-       .wea(0),
-       .addra(AB[14:0]),
-       .dina(0),
-       .douta(bios_db_out));
-
    // VIDEO
    always_comb case ({maria_en, tia_en})
        2'b00: uv_display = uv_maria;
@@ -131,24 +136,34 @@ module Atari7800(
 
    // MARIA
    maria maria_inst(
-      .AB(AB), .DB(DB),
-      .reset(reset), .sysclk(sysclk_7_143),
-      .pclk_2(pclk_2), .tia_clk(tia_clk), .pclk_0(pclk_0),
-      .ram0_b(mm_ram0_b), .ram1_b(mm_ram1_b),
-      .p6532_b(mm_p6532_b), .tia_b(mm_tia_b),
-      .riot_ram_b(r_ram_select_b),
-      .RW(RW), .enable(m_en),
-      .vga_row(vga_row), .vga_col(vga_col),
+      .AB(AB), 
+      .DB(DB),
+      .reset(reset), 
+      .sysclk(sysclk_7_143),
+      .pclk_2(pclk_2), 
+      .tia_clk(tia_clk), 
+      .pclk_0(pclk_0),
+      .ram0_b(ram0_cs_b), 
+      .ram1_b(ram1_cs_b),
+      .p6532_b(riot_cs_b), 
+      .tia_b(tia_cs_b),
+      .riot_ram_b(riot_RS_b),
+      .RW(RW), 
+      .enable(maria_en),
+      .vga_row(vga_row), 
+      .vga_col(vga_col),
       .UV_out(uv_display),
-      .int_b(m_int_b), .halt_b(halt_b), .ready(maria_ready)
+      .int_b(m_int_b), 
+      .halt_b(halt_b), 
+      .ready(RDY)
    );
 
    // TIA
    TIA tia_inst(.A(AB), // Address bus input
       .Din(DB), // Data bus input
       .Dout(tia_DB_out), // Data bus output
-      .CS_n(mm_tia_b), // Active low chip select input
-      .CS(~mm_tia_b), // Chip select input
+      .CS_n(tia_cs_b), // Active low chip select input
+      .CS(~tia_cs_b), // Chip select input
       .R_W_n(RW), // Active low read/write input
       .RDY(RDY), // CPU ready output
       .MASTERCLK(tia_clk), // 3.58 Mhz pixel clock input
@@ -156,10 +171,10 @@ module Atari7800(
       .Idump(I), // Dumped I/O
       .Ilatch(ilatch), // Latched I/O
       .HSYNC(),        // Video horizontal sync output
-      .HBLANK(Hblank), // Video horizontal blank output
+      .HBLANK(hblank_tia), // Video horizontal blank output
       .VSYNC(),        // Video vertical sync output
-      .VBLANK(Vblank), // Video vertical sync output
-      .COLOROUT(tia_uv), // Indexed color output
+      .VBLANK(vblank_tia), // Video vertical sync output
+      .COLOROUT(uv_tia), // Indexed color output
       .RES_n(reset), // Active low reset input
       .AUD0(aud0), //audio pin 0
       .AUD1(aud1), //audio pin 1
@@ -187,10 +202,10 @@ module Atari7800(
   RIOT riot_inst(.A(AB),     // Address bus input
       .Din(DB),              // Data bus input
       .Dout(riot_DB_out),    // Data bus output
-      .CS(~mm_p6532_b),      // Chip select input
-      .CS_n(mm_p6532_b),     // Active low chip select input
-      .R_W_n(RW),            // Active low read/write input
-      .RS_n(r_ram_select_b), // Active low rom select input
+      .CS(~riot_cs_b),       // Chip select input
+      .CS_n(riot_cs_b),      // Active low chip select input
+      .R_W_n(RW),            // Active high read, active low write input
+      .RS_n(riot_RS_b),      // Active low rom select input
       .RES_n(~reset),        // Active low reset input
       .IRQ_n(),              // Active low interrupt output
       .CLK(pclk_0),          // Clock input
@@ -216,11 +231,11 @@ module Atari7800(
                 .maria_en_in(DB[1]),
                 .bios_en_in(DB[2]),
                 .tia_en_in(DB[3]),
-                .latch_b(RW | mm_tia_b | lock_ctrl),
+                .latch_b(RW | tia_cs_b | lock_ctrl),
                 .rst(reset),
                 .lock_out(lock_ctrl),
                 .maria_en_out(maria_en),
-                .bios_en_out(bios_en),
+                .bios_en_out(bios_en_b),
                 .tia_en_out(tia_en));
 
 

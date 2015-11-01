@@ -11,8 +11,8 @@ module maria(
    // output logic        drive_DB,
    // inout wire [15:0]  AB,
    // inout wire [ 7:0]  DB,
-   input logic [7:0]   DB,
-   output logic [15:0] AB,
+   inout wire [7:0]   DB,
+   inout wire [15:0]  AB,
 
    // Clocking
    input logic        reset,
@@ -41,15 +41,15 @@ module maria(
    logic [15:0] AB_in, AB_out;
    logic        drive_DB;
    logic  [7:0] DB_in, DB_out;
-   //assign DB = drive_DB ? DB_out : 'bz;
-   //assign AB = drive_AB ? AB_out : 'bz;
-   //assign DB_in = DB;
-   //assign AB_in = AB;\
+   assign DB = drive_DB ? DB_out : 'bz;
+   assign AB = drive_AB ? AB_out : 'bz;
+   assign DB_in = DB;
+   assign AB_in = AB;
    
    // For testing DMA. 
-   assign DB_in = DB;
-   assign AB = AB_out;
-   assign AB_in = AB_out;
+   //assign DB_in = DB;
+   //assign AB = AB_out;
+   //assign AB_in = AB_out;
 
    //// Memory Mapped Registers
    // Control register format:
