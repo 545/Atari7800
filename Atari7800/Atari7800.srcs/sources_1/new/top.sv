@@ -5,10 +5,15 @@ module Atari7800(
   input  logic       CLOCK_PLL, reset,
   output logic [3:0] RED, GREEN, BLUE,
   output logic       HSync, VSync,
-  output logic [7:0] ld,
+  
   output logic AC_ADR0, AC_ADR1, AC_GPIO0, AC_MCLK, AC_SCK,
   input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
-  inout  wire AC_SDA
+  inout  wire AC_SDA,
+  
+  input  logic [7:0]  cart_DB_out,
+  output logic [15:0] AB,
+  output logic        RW,
+  output logic        pclk_2
 );
 
    //////////////
@@ -17,7 +22,7 @@ module Atari7800(
 
    // Clock Signals
    logic             clock_25, clock_100;
-   logic             sysclk_7_143, pclk_0, pclk_2, tia_clk;
+   logic             sysclk_7_143, pclk_0, tia_clk;
    logic             clock_divider_locked;
 
    // VGA Signals
@@ -46,6 +51,8 @@ module Atari7800(
    logic [15:0] core_AB_out;
    wire [3:0] idump;
    logic [1:0] ilatch;
+   
+   assign IRQ_n = 1'b1;
 
    //ctrl Signals
    logic maria_en, tia_en, lock_ctrl, bios_en_b;
@@ -56,31 +63,42 @@ module Atari7800(
                            riot_ram_cs_b, bios_cs_b;
 
    // Buses
-   logic                  RW;
-   logic [15:0]           AB;
+   // AB and RW defined in port declaration
    logic  [7:0]           DB;
 
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
+   logic [5:0] chip_select_buf;
+   logic mem_clk;
+   assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
+   
+   always_ff @(posedge mem_clk, posedge reset) begin
+      if (reset) begin
+         chip_select_buf <= 6'b111110;
+      end else begin
+         chip_select_buf <= {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB}; 
+      end
+   end
+    
+
    always_comb begin
-      if (RW) begin casex ({ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB})
+      if (RW) begin casex (chip_select_buf)
           6'b0xxxxx: DB = ram0_DB_out;
           6'b10xxxx: DB = ram1_DB_out;
           6'b110xxx: DB = riot_DB_out;
           6'b1110xx: DB = tia_DB_out;
           6'b11110x: DB = bios_DB_out;
           6'b111111: DB = maria_DB_out;
-          6'b111110: DB = 0;//cart_DB_out
+          6'b111110: DB = cart_DB_out;
           // Otherwise, nothing is driving the data bus. THIS SHOULD NEVER HAPPEN
-          default: DB = 8'bz;
+          default: DB = 8'h46;
       endcase end else begin
           //if we are doing a write, let 6502 drive the bus
           DB = core_DB_out;
       end
-      AB = (halt_b) ? core_AB_out : ((maria_drive_AB) ? maria_AB_out : 16'bz);
+      AB = (halt_b) ? core_AB_out : ((maria_drive_AB) ? maria_AB_out : 16'hbeef);
    end
-   
 
    ram0 ram0_inst(
       .clka(sysclk_7_143),
@@ -110,7 +128,7 @@ module Atari7800(
   );
 
    // Clock
-   assign pclk_2 = 1'b0;
+   assign pclk_2 = ~pclk_0;
    clock_divider divider (
      .CLOCK_PLL(CLOCK_PLL),
 

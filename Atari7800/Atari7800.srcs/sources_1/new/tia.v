@@ -57,14 +57,8 @@ module TIA(A, // Address bus input
    reg [7:0] clk_30_count;
    
    always @(posedge MASTERCLK) begin
-   if (res_n) begin
-     if (clk_30_count == 57) begin
-        clk_30 <= ~clk_30;
-        clk_30_count <= 0;
-     end
-     else begin
-        clk_30_count <= clk_30_count + 1;
-     end
+   if (RES_n) begin
+
    end
     
    end
@@ -81,15 +75,21 @@ module TIA(A, // Address bus input
 	   clk_30_count <= 0;
 	end
 	else begin
+	   if (clk_30_count == 57) begin
+          clk_30 <= ~clk_30;
+          clk_30_count <= 0;
+       end else begin
+          clk_30_count <= clk_30_count + 1;
+       end
 	   // Increment the count and reset if necessary
 	   if ((hCountReset[3]) ||(hCount == 8'd227))
-	     hCount <= 8'd0;
+	      hCount <= 8'd0;
 	   else
-	     hCount <= hCount + 8'd1;
-	   // Software resets are delayed by three cycles
-	   hCountReset[3:1] <= hCountReset[2:0];
-	end
-     end
+	      hCount <= hCount + 8'd1;
+	      // Software resets are delayed by three cycles
+	      hCountReset[3:1] <= hCountReset[2:0];
+	   end
+   end
    assign HSYNC = (hCount >= 8'd20) && (hCount < 8'd36);
    assign HBLANK = (hCount < 8'd68);
    // Screen object registers
