@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="e80a4110db2348cf8202ec34b4d27017"/>
@@ -222,6 +222,18 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="synth/CART_ROM.vhd"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="CART_ROM.xml"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.srcs/sources_1/new/robotron.coe"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="CART_ROM_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="sim/CART_ROM.v"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="blk_mem_gen_v8_2/simulation/blk_mem_gen_v8_2.v"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="CART_ROM.mif"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="summary.log"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="CART_ROM.veo"/>
+        <CompFileExtendedInfo CompFileName="CART_ROM.xci" FileRelPathName="doc/blk_mem_gen_v8_2_changelog.txt"/>
       </File>
       <File Path="$PSRCDIR/sources_1/new/cart_top.sv">
         <FileInfo>
