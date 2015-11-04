@@ -43,8 +43,8 @@ module Atari7800(
    logic [1:0] ilatch;
    
    // Testing
-   assign  idump = 4'b0;
-   assign ilatch = 2'b0;
+   //assign  idump = 4'b0;
+   //assign ilatch = 2'b0;
 
    // RIOT Signals
    logic riot_RS_b;
