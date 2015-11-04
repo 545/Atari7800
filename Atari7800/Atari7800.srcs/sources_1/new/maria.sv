@@ -6,7 +6,8 @@ module maria(
    output logic [15:0] AB_out,
    output logic        drive_AB,
 
-   input  logic  [7:0] DB_in,
+   input  logic  [7:0] read_DB_in,
+   input  logic  [7:0] write_DB_in,
    output logic  [7:0] DB_out,
    output logic        drive_DB,
    // inout wire [15:0]  AB,
@@ -90,8 +91,8 @@ module maria(
       .SYSCLK(sysclk), .RESET(reset),
       .PLAYBACK(UV_out),
       // Databus inputs
-      .INPUT_ADDR(DB_in), .PALETTE(DB_in[7:5]), .PIXELS(DB_in),
-      .WM(DB_in[7]), .IND(DB_in[5]),
+      .INPUT_ADDR(read_DB_in), .PALETTE(read_DB_in[7:5]), .PIXELS(read_DB_in),
+      .WM(read_DB_in[7]), .IND(read_DB_in[5]),
       // Write enable for databus inputs
       .PALETTE_W(palette_w), .INPUT_W(input_w), .PIXELS_W(pixels_w),
       .WM_W(wm_w), .IND_W(ind_w),
@@ -114,7 +115,7 @@ module maria(
       .sysclk(sysclk), .reset(reset), .pclk_2(pclk_2),
       .pclk_0(pclk_0), .tia_clk(tia_clk),
       // Signals needed to slow pclk_0
-      .slow_clock(slow_clock),
+      .sel_slow_clock(slow_clock),
       // Outputs to 6502
       .halt_b(halt_b), .int_b(int_b), .ready(ready),
       // Signals to/from dma_ctrl
@@ -133,7 +134,7 @@ module maria(
    memory_map memory_map_inst(
       .maria_en(enable),
       .AB(AB_in),
-      .DB_in(DB_in), .DB_out(DB_out),
+      .DB_in(write_DB_in), .DB_out(DB_out),
       .drive_DB(drive_DB),
       .halt_b(halt_b), .we_b(RW),
       .tia_b(tia_b), .p6532_b(p6532_b),
@@ -152,7 +153,7 @@ module maria(
 
    dma_ctrl dma_ctrl_inst (
       .AddrB(AB_out), .drive_AB(drive_AB),
-      .DataB(DB_in), .ZP(ZP),
+      .DataB(read_DB_in), .ZP(ZP),
       .palette_w(palette_w), .input_w(input_w), .pixels_w(pixels_w),
       .wm_w(wm_w), .ind_w(ind_w),
       .zp_dma_start(zp_dma_start), .dp_dma_start(dp_dma_start),

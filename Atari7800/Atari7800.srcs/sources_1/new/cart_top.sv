@@ -35,10 +35,34 @@ module cart_top(
     logic        RW;
     logic        pclk_2;
     
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    
+    logic reset, CLOCK_PLL;
+    
+    initial begin
+      #1 reset = 1'b0;
+      #750 reset = 1'b1;
+      #1250 reset = 1'b0;
+      @(posedge console.lock_ctrl);
+      #10000;
+      $finish;
+    end
+    
+    initial begin
+       CLOCK_PLL = 1'b0;
+       forever #5 CLOCK_PLL = ~CLOCK_PLL;          
+    end
+    
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+    
     CART_ROM robotron (
       .clka(pclk_2),    // input wire clka
       .wea(1'b0),      // input wire [0 : 0] wea
-      .addra(AB),  // input wire [14 : 0] addra
+      .addra(AB[14:0]),  // input wire [14 : 0] addra
       .dina(8'b0),    // input wire [7 : 0] dina
       .douta(cart_data_out)  // output wire [7 : 0] douta
     );
@@ -50,7 +74,7 @@ module cart_top(
        .HSync(HSync), .VSync(VSync),
        .AC_ADR0(AC_ADR0), .AC_ADR1(AC_ADR1), .AC_GPIO0(AC_GPIO0),
        .AC_MCLK(AC_MCLK), .AC_SCK(AC_SCK), .AC_GPIO1(AC_GPIO1),
-       .AC_GPIO2(AC_GPIO2), .AC_GPIO3(AC_GPIO3),
+       .AC_GPIO2(AC_GPIO2), .AC_GPIO3(AC_GPIO3), .AC_SDA(AC_SDA),
        
        .cart_DB_out(cart_data_out),
        .AB(AB),

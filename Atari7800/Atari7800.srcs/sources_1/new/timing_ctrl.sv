@@ -29,7 +29,7 @@ module timing_ctrl (
    // Clocking
    input  logic       sysclk, reset, pclk_2,
    output logic       pclk_0, tia_clk,
-   input  logic       slow_clock,
+   input  logic       sel_slow_clock,
 
    // Outputs to 6502
    output logic       halt_b, int_b, ready,
@@ -110,7 +110,7 @@ module timing_ctrl (
    assign last_line = (row == (`NTSC_SCANLINE_COUNT - 1));
 
    assign tia_clk = fast_ctr[1]; // Divide sysclk by 2
-   assign pclk_0 = slow_clock ? slow_clk : fast_clk;
+   assign pclk_0 = sel_slow_clock ? slow_clk : fast_clk;
    
    assign ready_for_lswap = ((enable) & second_vga_line &
                              (vga_col > `VGA_VISIBLE_COLS));
@@ -142,12 +142,17 @@ module timing_ctrl (
          if (&fast_ctr) begin
             fast_clk <= ~fast_clk;
          end
+         if (sel_slow_clock)
+            fast_ctr <= 2'b0; 
+         
          if (slow_ctr == 3'd5) begin
             slow_ctr <= 3'b0;
             slow_clk <= ~slow_clk;
          end else begin
             slow_ctr <= slow_ctr + 3'b001;
          end
+         if (~sel_slow_clock)
+            slow_ctr <= 3'b000;
 
          // Interrupt generation
          int_b_reg <= ~(~int_b_next & enable);

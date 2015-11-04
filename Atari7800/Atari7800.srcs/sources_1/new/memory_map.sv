@@ -37,9 +37,6 @@ module memory_map (
    logic [7:0]              wait_sync;
    logic                    pav;
 
-    
-   assign drive_DB = we_b && maria_en && (wr_addr_found == 8'h28);
-   assign DB_out = status_read;
 
    assign slow_clock = ~tia_b | ~p6532_b;
 
@@ -47,9 +44,10 @@ module memory_map (
    // assign pav = pclk_0 | pclk_2;
    
    assign drive_db = |read_addr_found; // If read_addr_found is nonzero, assert maria chip select
+   
+   assign {tia_b, p6532_b, ram0_b, ram1_b} = signals_out;   
 
    always_comb begin
-      {tia_b, p6532_b, ram0_b, ram1_b} = signals_out;
       ZP = {ZPH,ZPL};
       
       riot_ram_b = 1'bx;

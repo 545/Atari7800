@@ -16,9 +16,6 @@ input halt_b;
 
 wire rdy_in;
 wire WE_OUT;
-wire [15:0] ab_out;
-wire [7:0] db_out;
-wire [7:0] db_in;
 
 cpu core(.clk(clk),.reset(reset),.AB(AB),.DI(DB_IN),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
 
