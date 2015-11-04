@@ -76,10 +76,13 @@ module Atari7800(
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
    logic [5:0] chip_select_buf;
+   logic [5:0] chip_select_cur;
    logic       RW_buf;
    
    logic mem_clk;
    assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
+   
+   assign chip_select_cur = {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
    
    always_ff @(posedge mem_clk, posedge reset) begin
       if (reset) begin
@@ -136,9 +139,7 @@ module Atari7800(
   
   BIOS_ROM BIOS(.clka(mem_clk),
     .ena(~bios_cs_b),
-    .wea(1'b0),
     .addra(AB[11:0]),
-    .dina(8'b0),
     .douta(bios_DB_out)
   );
 

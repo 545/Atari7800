@@ -71,7 +71,7 @@ module maria(
    logic             deassert_ready, slow_clock;
 
    // Write enables for internal Display List registers
-   logic             palette_w, input_w, pixels_w, wm_w, ind_w;
+   logic             palette_w, input_w, pixels_w, wm_w;
 
    //// Control signals between timing_ctrl and dma_ctrl
    logic             zp_dma_start, dp_dma_start;
@@ -92,16 +92,15 @@ module maria(
       .PLAYBACK(UV_out),
       // Databus inputs
       .INPUT_ADDR(read_DB_in), .PALETTE(read_DB_in[7:5]), .PIXELS(read_DB_in),
-      .WM(read_DB_in[7]), .IND(read_DB_in[5]),
+      .WM(read_DB_in[7]),
       // Write enable for databus inputs
       .PALETTE_W(palette_w), .INPUT_W(input_w), .PIXELS_W(pixels_w),
-      .WM_W(wm_w), .IND_W(ind_w),
+      .WM_W(wm_w),
       // Memory mapped registers
       .COLOR_MAP(color_map),
       .READ_MODE(ctrl[1:0]),
       .KANGAROO_MODE(ctrl[2]),
       .BORDER_CONTROL(ctrl[3]),
-      .CHARACTER_WIDTH(ctrl[4]),
       .COLOR_KILL(ctrl[7]),
       // Control signals from timing_ctrl
       .LRAM_SWAP(lram_swap),
@@ -155,13 +154,14 @@ module maria(
       .AddrB(AB_out), .drive_AB(drive_AB),
       .DataB(read_DB_in), .ZP(ZP),
       .palette_w(palette_w), .input_w(input_w), .pixels_w(pixels_w),
-      .wm_w(wm_w), .ind_w(ind_w),
+      .wm_w(wm_w),
       .zp_dma_start(zp_dma_start), .dp_dma_start(dp_dma_start),
       .dp_dma_kill(dp_dma_kill),
       .zp_dma_done(zp_dma_done), .dp_dma_done(dp_dma_done),
       .dp_dma_done_dli(dp_dma_done_dli),
       .sysclk(sysclk), .reset(reset),
-      .last_line(last_line)
+      .last_line(last_line),
+      .character_width(read_DB_in[4])
    );
 
 endmodule

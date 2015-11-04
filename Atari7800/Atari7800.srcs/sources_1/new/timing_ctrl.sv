@@ -177,7 +177,7 @@ module timing_ctrl (
          end
 
          // Ready signal
-         if (deassert_ready)
+         if (enable & deassert_ready)
             ready <= 1'b0;
          else if (ready_for_lswap & ~ready_for_lswap_prev)
             ready <= 1'b1;

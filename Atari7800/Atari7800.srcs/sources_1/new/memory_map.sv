@@ -43,7 +43,7 @@ module memory_map (
    assign pav = 1'b1; // For now, since I don't think pclk_0 works
    // assign pav = pclk_0 | pclk_2;
    
-   assign drive_db = |read_addr_found; // If read_addr_found is nonzero, assert maria chip select
+   assign drive_DB = read_addr_found != 8'b0; // If read_addr_found is nonzero, assert maria chip select
    
    assign {tia_b, p6532_b, ram0_b, ram1_b} = signals_out;   
 
@@ -104,7 +104,7 @@ module memory_map (
         {16'b0000_00xx_001x_xxxx,1'b1}: read_addr_found = AB[7:0];
         default: read_addr_found = 8'b0;
       endcase
-        
+      
       
    end // always_comb
 

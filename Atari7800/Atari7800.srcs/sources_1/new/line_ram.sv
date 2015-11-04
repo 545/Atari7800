@@ -15,14 +15,14 @@ module line_ram(
     input  logic [7:0]         INPUT_ADDR,
     input  logic [2:0]         PALETTE,
     input  logic [7:0]         PIXELS,
-    input  logic               WM, IND,
+    input  logic               WM,
     // Write enable for databus inputs
-    input  logic PALETTE_W, INPUT_W, PIXELS_W, WM_W, IND_W,
+    input  logic PALETTE_W, INPUT_W, PIXELS_W, WM_W,
     // Memory mapped registers
     input  logic [24:0][7:0]   COLOR_MAP,
     input  logic [1:0]         READ_MODE,
     input  logic               KANGAROO_MODE, BORDER_CONTROL,
-    input  logic               CHARACTER_WIDTH, COLOR_KILL,
+    input  logic               COLOR_KILL,
     input  logic               LRAM_SWAP,
     // VGA Control signal
     input  logic [8:0]         LRAM_OUT_COL
@@ -32,7 +32,7 @@ module line_ram(
 
    logic [7:0]                 input_addr;
    logic [2:0]                 palette;
-   logic                       wm, ind;
+   logic                       wm;
 
    logic [2:0]               display_mode;
    assign display_mode = {wm, READ_MODE};
@@ -172,14 +172,12 @@ module line_ram(
          input_addr <= 8'b0;
          palette <= 3'b0;
          wm <= 1'b0;
-         ind <= 1'b0;
          lram_in <= 800'd0;
          lram_out <= 800'd0;
       end else begin
          input_addr <= INPUT_W ? INPUT_ADDR : input_addr;
          palette <= PALETTE_W ? PALETTE : palette;
          wm <= WM_W ? WM : wm;
-         ind <= IND_W ? IND : (INPUT_W ? ind : 1'b0);
          if (LRAM_SWAP) begin
             lram_in <= 800'd0; // All background color
             lram_out <= lram_in;

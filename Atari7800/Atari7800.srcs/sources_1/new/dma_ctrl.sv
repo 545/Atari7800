@@ -8,10 +8,12 @@ module dma_ctrl(
    input logic [15:0]  ZP,
 
    output logic        palette_w, input_w, pixels_w,
-   output logic        wm_w, ind_w,
+   output logic        wm_w,
 
    input  logic        zp_dma_start, dp_dma_start, dp_dma_kill,
    output logic        zp_dma_done, dp_dma_done, dp_dma_done_dli,
+   
+   input logic         character_width,
 
    input logic         sysclk, reset, last_line
 );
@@ -19,6 +21,8 @@ module dma_ctrl(
    logic [15:0]        DP, PP, DP_saved, ZP_saved, ZP_saved_next;
    logic [4:0]         WIDTH;
    logic [3:0]         OFFSET;
+   
+   logic               INDIRECT_MODE;
 
    // control regs
    logic               DLIen, DLIen_prev, A12en, A11en;
@@ -44,7 +48,6 @@ module dma_ctrl(
    always_comb begin
       AddrB = 'h1234;
       wm_w = 0;
-      ind_w = 0;
       palette_w = 0;
       input_w = 0;
       pixels_w = 0;
@@ -58,7 +61,6 @@ module dma_ctrl(
                w_PALETTE_WIDTH: begin
                    if (~null_data) begin
                       wm_w = null_width;
-                      ind_w = null_width;
                       palette_w = ~null_width;
                    end
                end
@@ -98,6 +100,7 @@ module dma_ctrl(
          dp_dma_done <= 0;
          dp_dma_done_dli <= 0;
          five_byte_mode <= 0;
+         INDIRECT_MODE <= 0;
       end else begin
          case (state)
            waiting: begin
@@ -155,6 +158,7 @@ module dma_ctrl(
                    // AddrB = DP_saved;
                    DP_saved <= DP_saved+1;
                    five_byte_mode <= 0;
+                   INDIRECT_MODE <= 0;
                 end
                 w_PPL: begin //Write PPL
                    dp_state <= w_PALETTE_WIDTH;
@@ -175,6 +179,7 @@ module dma_ctrl(
                      // Write palette and width or determine its 5b mode
                      dp_state <= w_PPH;
                      five_byte_mode <= null_width;
+                     INDIRECT_MODE <= null_width & DataB[5];
                      // wm_w <= null_width;
                      // ind_w <= null_width;
                      // palette_w <= ~null_width;
