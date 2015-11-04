@@ -136,9 +136,7 @@ module Atari7800(
   
   BIOS_ROM BIOS(.clka(mem_clk),
     .ena(~bios_cs_b),
-    .wea(1'b0),
     .addra(AB[11:0]),
-    .dina(8'b0),
     .douta(bios_DB_out)
   );
 

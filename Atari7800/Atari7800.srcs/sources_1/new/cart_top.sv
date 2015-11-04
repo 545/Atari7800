@@ -61,9 +61,7 @@ module cart_top(
     
     CART_ROM robotron (
       .clka(pclk_2),    // input wire clka
-      .wea(1'b0),      // input wire [0 : 0] wea
       .addra(AB[14:0]),  // input wire [14 : 0] addra
-      .dina(8'b0),    // input wire [7 : 0] dina
       .douta(cart_data_out)  // output wire [7 : 0] douta
     );
     
