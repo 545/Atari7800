@@ -68,7 +68,7 @@ module maria(
    logic [15:0]      ZP;
 
    //// Signals from memory_map to timing_ctrl
-   logic             deassert_ready, slow_clock;
+   logic             deassert_ready, zp_written, slow_clock;
 
    // Write enables for internal Display List registers
    logic             palette_w, input_w, pixels_w, wm_w;
@@ -127,7 +127,8 @@ module maria(
       // Signals to/from VGA
       .vga_row(vga_row), .vga_col(vga_col),
       // Signals from memory map
-      .deassert_ready(deassert_ready)
+      .deassert_ready(deassert_ready),
+      .zp_written(zp_written)
    );
 
    memory_map memory_map_inst(
@@ -146,6 +147,7 @@ module maria(
       .ZP(ZP),
       .slow_clock(slow_clock),
       .deassert_ready(deassert_ready),
+      .zp_written(zp_written),
       .sysclock(sysclk), .reset_b(~reset),
       .pclk_0(pclk_0), .pclk_2(pclk_2)
    );

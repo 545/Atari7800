@@ -7,7 +7,7 @@
 `define START_OF_LINE_CYCLES 24
 
 // At which column we terminate DP DMA
-`define DP_DMA_KILL_COL 436
+`define DP_DMA_KILL_COL 435
 
 // Column to start the ZP DMA, given that about 29 cycles are needed
 // and there are 452 columns total. Plus some slack cycles.
@@ -22,6 +22,8 @@
 `define VGA_VISIBLE_COLS 640
 
 `define NTSC_SCANLINE_COUNT 242
+
+`define COOLDOWN_CYCLES 0
 
 module timing_ctrl (
    input  logic       enable,
@@ -48,7 +50,7 @@ module timing_ctrl (
    input  logic [9:0] vga_row, vga_col,
 
    // Signals from memory map
-   input  logic       deassert_ready
+   input  logic       deassert_ready, zp_written
 );
 
    // Output buffers
@@ -80,16 +82,19 @@ module timing_ctrl (
    logic              int_b_next;
 
    logic [4:0]        startup_ctr;
+   logic              cooldown_count;
 
-   enum logic [2:0] {
-      VWAIT = 3'h0,          // Waiting for VSYNC to complete before starting ZP DMA
-      HWAIT = 3'h1,          // Waiting for HSYNC to complete before starting DP DMA
-      ZP_DMA_STARTUP = 3'h2, // Waiting for HALT to reach CPU before starting ZP DMA
-      ZP_DMA = 3'h3,         // Waiting for DMA CTRL to finish ZP DMA
-      START_OF_LINE = 3'h4,  // Waiting for first 7 CPU cycles of line before DP DMA
-      DP_DMA_STARTUP = 3'h5, // Waiting for HALT to reach CPU before starting DP DMA
-      DP_DMA = 3'h6,         // Waiting for DMA CTRL to finish DP DMA
-      DP_DMA_WAITSWAP = 3'h7 // Done with DP DMA, but not ready to swap linerams yet
+   enum logic [3:0] {
+      VWAIT = 'h0,           // Waiting for VSYNC to complete before starting ZP DMA
+      HWAIT = 'h1,           // Waiting for HSYNC to complete before starting DP DMA
+      ZP_DMA_STARTUP = 'h2,  // Waiting for HALT to reach CPU before starting ZP DMA
+      ZP_DMA = 'h3,          // Waiting for DMA CTRL to finish ZP DMA
+      START_OF_LINE = 'h4,   // Waiting for first 7 CPU cycles of line before DP DMA
+      DP_DMA_STARTUP = 'h5,  // Waiting for HALT to reach CPU before starting DP DMA
+      DP_DMA = 'h6,          // Waiting for DMA CTRL to finish DP DMA
+      DP_DMA_WAITSWAP = 'h7, // Done with DP DMA, but not ready to swap linerams yet
+      VWAIT_COOLDOWN = 'h8,
+      HWAIT_COOLDOWN = 'h9
    } state;
 
    assign vga_line_delta = vga_row_prev_prev != vga_row_prev;
@@ -118,6 +123,7 @@ module timing_ctrl (
                       (((state == DP_DMA) & (dp_dma_done | dp_dma_kill)) || 
                        (state == DP_DMA_WAITSWAP)));
 
+
    always @(posedge sysclk, posedge reset) begin
       if (reset) begin
          state <= VWAIT;
@@ -125,6 +131,7 @@ module timing_ctrl (
          col <= 9'b0;
          vga_row_prev <= 10'd0;
          fast_clk <= 1'b0;
+         cooldown_count <= 1'b0;
          slow_clk <= 1'b0;
          fast_ctr <= 2'b0;
          slow_ctr <= 3'b0;
@@ -185,7 +192,7 @@ module timing_ctrl (
          // Next state logic
          case (state)
            VWAIT: begin
-              if (zp_ready) begin
+              if (zp_ready & zp_written) begin
                  halt_b <= 1'b0;
                  state <= ZP_DMA_STARTUP;
                  startup_ctr <= 1;
@@ -193,7 +200,9 @@ module timing_ctrl (
            end
            HWAIT: begin
               if (~enable) begin
-                 state <= VWAIT;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (vga_line_delta) begin
                  state <= START_OF_LINE;
                  startup_ctr <= 1;
@@ -202,8 +211,9 @@ module timing_ctrl (
            ZP_DMA_STARTUP: begin
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
-                 halt_b <= 1'b1;
-                 state <= VWAIT;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `DMA_STARTUP_CYCLES) begin
                  zp_dma_start <= 1'b1;
                  state <= ZP_DMA;
@@ -212,17 +222,21 @@ module timing_ctrl (
            ZP_DMA: begin
               zp_dma_start <= 1'b0;
               if (~enable) begin
-                 state <= VWAIT;
-                 halt_b <= 1'b1;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (zp_dma_done) begin
-                 state <= HWAIT;
-                 halt_b <= 1'b1;
+                 state <= HWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end
            end
            START_OF_LINE: begin
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
-                 state <= VWAIT;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `START_OF_LINE_CYCLES) begin
                  halt_b <= 1'b0;
                  state <= DP_DMA_STARTUP;
@@ -232,8 +246,9 @@ module timing_ctrl (
            DP_DMA_STARTUP: begin
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
-                 state <= VWAIT;
-                 halt_b <= 1'b1;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `DMA_STARTUP_CYCLES) begin
                  dp_dma_start <= 1'b1;
                  state <= DP_DMA;
@@ -242,12 +257,14 @@ module timing_ctrl (
            DP_DMA: begin
               dp_dma_start <= 1'b0;
               if (~enable) begin
-                 state <= VWAIT;
-                 halt_b <= 1'b1;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (dp_dma_done | dp_dma_kill) begin
-                 halt_b <= 1'b1;
                  if (ready_for_lswap) begin
-                    state <= last_line ? VWAIT : HWAIT;
+                    state <= last_line ? VWAIT_COOLDOWN : HWAIT_COOLDOWN;
+                    halt_b <= 1'b0;
+                    cooldown_count <= `COOLDOWN_CYCLES;
                  end else begin
                     state <= DP_DMA_WAITSWAP;
                  end
@@ -255,11 +272,31 @@ module timing_ctrl (
            end
            DP_DMA_WAITSWAP: begin
               if (~enable) begin
-                 state <= VWAIT;
+                 state <= VWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end else if (ready_for_lswap) begin
-                 state <= last_line ? VWAIT : HWAIT;
+                 state <= last_line ? VWAIT_COOLDOWN : HWAIT_COOLDOWN;
+                 halt_b <= 1'b0;
+                 cooldown_count <= `COOLDOWN_CYCLES;
               end
            end
+             VWAIT_COOLDOWN: begin
+                if (cooldown_count == 0) begin
+                   state <= VWAIT;
+                   halt_b <= 1'b1;
+                end else begin
+                   cooldown_count <= cooldown_count - 1;
+                end
+             end
+             HWAIT_COOLDOWN: begin
+                if (cooldown_count == 0) begin
+                   state <= HWAIT;
+                   halt_b <= 1'b1;
+                end else begin
+                   cooldown_count <= cooldown_count - 1;
+                end
+             end
          endcase
       end
    end

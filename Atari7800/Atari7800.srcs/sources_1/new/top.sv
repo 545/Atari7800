@@ -12,7 +12,7 @@ module Atari7800(
   input  logic [7:0]  cart_DB_out,
   output logic [15:0] AB,
   output logic        RW,
-  output logic        pclk_2
+  output logic        pclk_0
 );
 
    //////////////
@@ -21,7 +21,7 @@ module Atari7800(
 
    // Clock Signals
    logic             clock_25, clock_100;
-   logic             sysclk_7_143, pclk_0, tia_clk;
+   logic             sysclk_7_143, pclk_2, tia_clk;
    logic             clock_divider_locked;
 
    // VGA Signals
@@ -55,13 +55,14 @@ module Atari7800(
    logic [7:0] core_DB_out;
    logic [15:0] core_AB_out;
 
-   logic cpu_reset;
+   logic cpu_reset, core_halt_b;
    logic [2:0] cpu_reset_counter; 
    
    assign IRQ_n = 1'b1;
 
    //ctrl Signals
    logic maria_en, tia_en, lock_ctrl, bios_en_b;
+   logic [1:0] ctrl_writes;
 
    // Memory Map Select lines
    logic                   ram0_cs_b, ram1_cs_b,
@@ -89,7 +90,7 @@ module Atari7800(
          chip_select_buf <= 6'b111110;
          RW_buf <= 1'b1;
       end else begin
-         chip_select_buf <= {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
+         chip_select_buf <= chip_select_cur;
          RW_buf <= RW; 
       end
    end
@@ -114,7 +115,7 @@ module Atari7800(
       
       write_DB = core_DB_out;
       
-      AB = (halt_b) ? core_AB_out : ((maria_drive_AB) ? maria_AB_out : 16'hbeef);
+      AB = (~core_halt_b & maria_drive_AB) ? maria_AB_out : core_AB_out;
    end
 
    ram0 ram0_inst(
@@ -274,6 +275,7 @@ module Atari7800(
   
   
   assign RDY = maria_en ? maria_RDY : ((tia_en) ? tia_RDY : clock_divider_locked);
+  assign core_halt_b = (ctrl_writes == 2'd2) ? halt_b : 1'b1;
   cpu_wrapper cpu_inst(.clk(pclk_0),
     .reset(cpu_reset),
     .AB(core_AB_out),
@@ -283,40 +285,46 @@ module Atari7800(
     .IRQ(~IRQ_n),
     .NMI(~m_int_b),
     .RDY(RDY),
-    .halt_b(halt_b));
+    .halt_b(core_halt_b));
 
 
 
-  ctrl_reg ctrl(.lock_in(write_DB[0]),
+  ctrl_reg ctrl(.clk(mem_clk),
+                .lock_in(write_DB[0]),
                 .maria_en_in(write_DB[1]),
                 .bios_en_in(write_DB[2]),
                 .tia_en_in(write_DB[3]),
-                .latch_b(RW | chip_select_buf[2] /* buffered tia_cs_b */ | lock_ctrl),
+                .latch_b(RW | tia_cs_b  | lock_ctrl),
                 .rst(reset),
                 .lock_out(lock_ctrl),
                 .maria_en_out(maria_en),
                 .bios_en_out(bios_en_b),
-                .tia_en_out(tia_en));
+                .tia_en_out(tia_en),
+                .writes(ctrl_writes));
 
 
 endmodule
 
-module ctrl_reg(input logic lock_in, maria_en_in, bios_en_in, tia_en_in, latch_b, rst,
-                output logic lock_out, maria_en_out, bios_en_out, tia_en_out);
+module ctrl_reg(input logic clk, lock_in, maria_en_in, bios_en_in, tia_en_in, latch_b, rst,
+                output logic lock_out, maria_en_out, bios_en_out, tia_en_out, 
+                output logic [1:0] writes);
 
 
-  always_ff @(negedge latch_b, posedge rst) begin
+  always_ff @(posedge clk, posedge rst) begin
     if (rst) begin
       lock_out <= 0;
       maria_en_out <= 0;
       bios_en_out <= 0;
       tia_en_out <= 0;
+      writes <= 0;
     end
     else if (~latch_b) begin
       lock_out <= lock_in;
       maria_en_out <= maria_en_in;
       bios_en_out <= bios_en_in;
       tia_en_out <= tia_en_in;
+      if (writes < 2'd2)
+        writes <= writes + 1;
     end
   end
 endmodule

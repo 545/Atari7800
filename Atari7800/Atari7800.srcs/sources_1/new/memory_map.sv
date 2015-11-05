@@ -25,7 +25,7 @@ module memory_map (
    output logic             slow_clock,
 
    // when wait_sync is written to, ready is deasserted
-   output logic             deassert_ready,
+   output logic             deassert_ready, zp_written,
 
    input logic              sysclock, reset_b, pclk_0, pclk_2
 );
@@ -131,6 +131,7 @@ module memory_map (
          wait_sync <= 8'b0;
          char_base <= 8'b0;
          {ZPH,ZPL} <= {8'h18, 8'h20};
+         zp_written <= 1'b0;
       end
       
       else begin
@@ -152,7 +153,10 @@ module memory_map (
            8'h29: color_map[7] <= DB_in;
            8'h2a: color_map[8] <= DB_in;
            8'h2b: color_map[9] <= DB_in;
-           8'h2c: ZPH <= DB_in;
+           8'h2c: begin
+              ZPH <= DB_in;
+              zp_written <= 1'b1;
+           end
            8'h2d: color_map[10] <= DB_in;
            8'h2e: color_map[11] <= DB_in;
            8'h2f: color_map[12] <= DB_in;

@@ -21,7 +21,7 @@
 
 
 module cart_top(
-    input  logic       CLOCK_PLL, reset,
+    //input  logic       CLOCK_PLL, reset,
     output logic [3:0] RED, GREEN, BLUE,
     output logic       HSync, VSync,
     
@@ -33,13 +33,13 @@ module cart_top(
     logic [7:0]  cart_data_out;
     logic [15:0] AB;
     logic        RW;
-    logic        pclk_2;
+    logic        pclk_0;
     
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
-    /*logic reset, CLOCK_PLL;
+    logic reset, CLOCK_PLL;
     
     initial begin
       #1 reset = 1'b0;
@@ -53,14 +53,14 @@ module cart_top(
     initial begin
        CLOCK_PLL = 1'b0;
        forever #5 CLOCK_PLL = ~CLOCK_PLL;          
-    end*/
+    end
     
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
     CART_ROM robotron (
-      .clka(pclk_2),    // input wire clka
+      .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
       .douta(cart_data_out)  // output wire [7 : 0] douta
     );
@@ -77,7 +77,7 @@ module cart_top(
        .cart_DB_out(cart_data_out),
        .AB(AB),
        .RW(RW),
-       .pclk_2(pclk_2)
+       .pclk_0(pclk_0)
     );
     
     
