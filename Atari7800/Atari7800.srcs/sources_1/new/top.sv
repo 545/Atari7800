@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+`include "atari7800.vh"
+
 
 module Atari7800(
   input  logic       CLOCK_PLL, reset,
@@ -33,6 +35,7 @@ module Atari7800(
    logic                   halt_b, maria_drive_DB, maria_drive_AB;
    logic [7:0]             uv_display, uv_maria, uv_tia;
    logic [15:0]            maria_AB_out;
+   `chipselect              CS;
 
    // TIA Signals
    logic hblank_tia, vblank_tia, aud0, aud1, tia_RDY;
@@ -45,6 +48,8 @@ module Atari7800(
    // Testing
    //assign  idump = 4'b0;
    //assign ilatch = 2'b0;
+   
+   
 
    // RIOT Signals
    logic riot_RS_b;
@@ -65,10 +70,11 @@ module Atari7800(
    logic [1:0] ctrl_writes;
 
    // Memory Map Select lines
-   logic                   ram0_cs_b, ram1_cs_b,
+   /*logic                   ram0_cs_b, ram1_cs_b,
                            riot_cs_b, tia_cs_b,
                            riot_ram_cs_b, bios_cs_b;
-
+    */
+    
    // Buses
    // AB and RW defined in port declaration
    logic  [7:0]           read_DB, write_DB;
@@ -76,40 +82,62 @@ module Atari7800(
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
-   logic [5:0] chip_select_buf;
-   logic [5:0] chip_select_cur;
+   //logic [5:0] chip_select_buf;
+   //logic [5:0] chip_select_cur;
+   `chipselect       CS_buf;
    logic       RW_buf;
    
    logic mem_clk;
    assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
    
-   assign chip_select_cur = {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
+   //assign chip_select_cur = {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
    
    always_ff @(posedge mem_clk, posedge reset) begin
       if (reset) begin
-         chip_select_buf <= 6'b111110;
+         //chip_select_buf <= 6'b111110;
+         CS_buf <= CS_NONE;
          RW_buf <= 1'b1;
       end else begin
-         chip_select_buf <= chip_select_cur;
+         //chip_select_buf <= chip_select_cur;
+         CS_buf <= CS;
          RW_buf <= RW; 
       end
    end
-    
+   
+   //CS LOGIC
+   logic ram0_cs, ram1_cs, bios_cs, tia_cs, riot_cs, riot_ram_cs;
+   
+   always_comb begin
+        ram0_cs = 1'b0;
+        ram1_cs = 1'b0;
+        bios_cs = 1'b0;
+        tia_cs = 1'b0;
+        riot_cs = 1'b0;
+        riot_ram_cs = 1'b0;
+        casex (CS)
+            CS_RAM0: ram0_cs = 1'b1;
+            CS_RAM1: ram1_cs = 1'b1;
+            CS_BIOS: bios_cs = 1'b1;
+            CS_TIA: tia_cs = 1'b1;
+            CS_RIOT_IO: riot_cs = 1'b1;
+            CS_RIOT_RAM: begin riot_cs = 1'b1; riot_ram_cs = 1'b1; end
+        endcase
+    end
    
 
    always_comb begin
-      if (RW_buf) begin casex (chip_select_buf)
-          6'b0xxxxx: read_DB = ram0_DB_out;
-          6'b10xxxx: read_DB = ram1_DB_out;
-          6'b110xxx: read_DB = riot_DB_out;
-          6'b1110xx: read_DB = tia_DB_out;
-          6'b11110x: read_DB = bios_DB_out;
-          6'b111111: read_DB = maria_DB_out;
-          6'b111110: read_DB = cart_DB_out;
+      if (RW_buf) begin casex (CS_buf)
+          CS_RAM0: read_DB = ram0_DB_out;
+          CS_RAM1: read_DB = ram1_DB_out;
+          CS_RIOT_IO,
+          CS_RIOT_RAM: read_DB = riot_DB_out;
+          CS_TIA: read_DB = tia_DB_out;
+          CS_BIOS: read_DB = bios_DB_out;
+          CS_MARIA: read_DB = maria_DB_out;
+          CS_CART: read_DB = cart_DB_out;
           // Otherwise, nothing is driving the data bus. THIS SHOULD NEVER HAPPEN
           default: read_DB = 8'h46;
       endcase end else begin
-          //if we are doing a write, let 6502 drive the bus
           read_DB = 8'h47;
       end
       
@@ -117,10 +145,12 @@ module Atari7800(
       
       AB = (~core_halt_b & maria_drive_AB) ? maria_AB_out : core_AB_out;
    end
+   
 
    ram0 ram0_inst(
       .clka(mem_clk),
-      .ena(~ram0_cs_b),
+      //.ena(~ram0_cs_b),
+      .ena(ram0_cs),
       .wea(~RW),
       .addra(AB[10:0]),
       .dina(write_DB),
@@ -129,17 +159,19 @@ module Atari7800(
 
    ram1 ram1_inst(
       .clka(mem_clk),
-      .ena(~ram1_cs_b),
+      //.ena(~ram1_cs_b),
+      .ena(ram1_cs),
       .wea(~RW),
       .addra(AB[10:0]),
       .dina(write_DB),
       .douta(ram1_DB_out)
    );
    
-  assign bios_cs_b = ~(AB[15] & ~bios_en_b);
+  //assign bios_cs_b = ~(AB[15] & ~bios_en_b);
+
   
   BIOS_ROM BIOS(.clka(mem_clk),
-    .ena(~bios_cs_b),
+    .ena(bios_cs),
     .addra(AB[11:0]),
     .douta(bios_DB_out)
   );
@@ -190,11 +222,12 @@ module Atari7800(
       .pclk_2(pclk_2), 
       .tia_clk(tia_clk), 
       .pclk_0(pclk_0),
-      .ram0_b(ram0_cs_b), 
-      .ram1_b(ram1_cs_b),
-      .p6532_b(riot_cs_b), 
-      .tia_b(tia_cs_b),
-      .riot_ram_b(riot_RS_b),
+      .CS(CS),
+      //.ram0_b(ram0_cs_b), 
+      //.ram1_b(ram1_cs_b),
+      //.p6532_b(riot_cs_b), 
+      //.tia_b(tia_cs_b),
+      //.riot_ram_b(riot_RS_b),
       .RW(RW), 
       .enable(maria_en),
       .vga_row(vga_row), 
@@ -209,8 +242,8 @@ module Atari7800(
    TIA tia_inst(.A(AB[5:0]), // Address bus input
       .Din(write_DB), // Data bus input
       .Dout(tia_DB_out), // Data bus output
-      .CS_n({2'b0,tia_cs_b}), // Active low chip select input
-      .CS(~tia_cs_b), // Chip select input
+      .CS_n({2'b0,~tia_cs}), // Active low chip select input
+      .CS(tia_cs), // Chip select input
       .R_W_n(RW), // Active low read/write input
       .RDY(tia_RDY), // CPU ready output
       .MASTERCLK(tia_clk), // 3.58 Mhz pixel clock input
@@ -249,10 +282,10 @@ module Atari7800(
   RIOT riot_inst(.A(AB[6:0]),     // Address bus input
       .Din(write_DB),              // Data bus input
       .Dout(riot_DB_out),    // Data bus output
-      .CS(~riot_cs_b),       // Chip select input
-      .CS_n(riot_cs_b),      // Active low chip select input
+      .CS(riot_cs),       // Chip select input
+      .CS_n(~riot_cs),      // Active low chip select input
       .R_W_n(RW),            // Active high read, active low write input
-      .RS_n(riot_RS_b),      // Active low rom select input
+      .RS_n(~riot_ram_cs),      // Active low rom select input
       .RES_n(~reset),        // Active low reset input
       .IRQ_n(),              // Active low interrupt output
       .CLK(pclk_0),          // Clock input

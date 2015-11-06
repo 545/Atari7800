@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+`include "atari7800.vh"
+
 
 module maria(
    // Busses ("tristate")
@@ -21,8 +23,9 @@ module maria(
    output logic       tia_clk, pclk_0,
 
    // Memory Map Select lines
-   output logic       ram0_b, ram1_b, p6532_b, tia_b,
-   output logic       riot_ram_b,
+   output `chipselect  CS,
+   //output logic       ram0_b, ram1_b, p6532_b, tia_b,
+   //output logic       riot_ram_b,
 
    // Maria configuration
    input logic        RW, enable,
@@ -34,6 +37,8 @@ module maria(
    // Outputs to 6502
    output logic       int_b, halt_b, ready
 );
+
+chipselect test;
 
 
    // Bus interface
@@ -135,11 +140,12 @@ module maria(
       .maria_en(enable),
       .AB(AB_in),
       .DB_in(write_DB_in), .DB_out(DB_out),
-      .drive_DB(drive_DB),
+      //.drive_DB(drive_DB),
       .halt_b(halt_b), .we_b(RW),
-      .tia_b(tia_b), .p6532_b(p6532_b),
-      .ram0_b(ram0_b), .ram1_b(ram1_b),
-      .riot_ram_b(riot_ram_b),
+      //.tia_b(tia_b), .p6532_b(p6532_b),
+      //.ram0_b(ram0_b), .ram1_b(ram1_b),
+      //.riot_ram_b(riot_ram_b),
+      .cs(test),
       .ctrl(ctrl),
       .color_map(color_map),
       .status_read(8'b0),//{vga_row[9], 7'b0}),

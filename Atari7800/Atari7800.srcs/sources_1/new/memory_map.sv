@@ -1,22 +1,6 @@
 `timescale 1ns / 1ps
 
-`define TIA_SIG 4'b0111
-`define P6532_SIG 4'b1011
-`define RAM0_SIG 4'b1101
-`define RAM1_SIG 4'b1110
-`define NONE_SIG 4'b1111
-
-typedef enum logic [3:0] {
-   CS_NONE     = 'h0,
-   CS_RAM0     = 'h1,
-   CS_RAM1     = 'h2,
-   CS_RIOT_IO  = 'h3,
-   CS_RIOT_RAM = 'h4,
-   CS_TIA      = 'h5,
-   CS_BIOS     = 'h6,
-   CS_MARIA    = 'h7,
-   CS_CART     = 'h8
-} chipselect;
+`include "atari7800.vh"
 
 module memory_map (
    input  logic             maria_en,
@@ -25,7 +9,7 @@ module memory_map (
    output logic [7:0]       DB_out,
    input  logic             halt_b, we_b,
    
-   output chipselect        cs,
+   output `chipselect        cs,
    input  logic             bios_en,
    
    output logic [7:0]       ctrl,
@@ -48,8 +32,10 @@ module memory_map (
    // Internal Memory Mapped Registers
    logic [7:0]              ZPH, ZPL;
    logic [7:0]              wait_sync;
+   
+   logic [7:0]              read_addr_found, write_addr_found;
 
-   assign slow_clock = ((cs == CS_TIA) || (cs == CS_RIOT));   
+   assign slow_clock = ((cs == CS_TIA) || (cs == CS_RIOT_IO) || (cs == CS_RIOT_RAM));   
 
    assign ZP = {ZPH, ZPL};
 
@@ -59,11 +45,11 @@ module memory_map (
       
       if (maria_en) casex (AB)
             // RIOT RAM: "Do Not Use" in 7800 mode.
-            16'b0000_010x_1xxx_xxxx: cs = CS_RIOT_RAM;
-            16'b0000_0010_1xxx_xxxx: cs = CS_RIOT_IO;
+            16'b0000_010x_1xxx_xxxx: cs = `CS_RIOT_RAM;
+            16'b0000_0010_1xxx_xxxx: cs = `CS_RIOT_IO;
             
             // 1800-1FFF: 2K RAM.
-            16'b0001_1xxx_xxxx_xxxx: cs = CS_RAM1;
+            16'b0001_1xxx_xxxx_xxxx: cs = `CS_RAM1;
             
             // 0040-00FF: Zero Page (Local variable space)
             // 0140-01FF: Stack
@@ -72,30 +58,37 @@ module memory_map (
             16'b0000_00xx_1xxx_xxxx,
             
             // 2000-27FF: 2K RAM. Zero Page and Stack mirrored from here.
-            16'b0010_0xxx_xxxx_xxxx: cs = CS_RAM0;
+            16'b0010_0xxx_xxxx_xxxx: cs = `CS_RAM0;
 
             // TIA Registers:
             // 0000-001F, 0100-001F, 0200-021F, 0300-031F
             // All mirrors are ranges of the same registers
-            16'b0000_00xx_000x_xxxx: cs = CS_TIA;
+            16'b0000_00xx_000x_xxxx: cs = `CS_TIA;
             
             // MARIA Registers:
             // 0020-003F, 0120-003F, 0220-023F, 0320-033F
             // All ranges are mirrors of the same registers
-            16'b0000_00xx_001x_xxxx: cs = CS_MARIA;
+            16'b0000_00xx_001x_xxxx: cs = `CS_MARIA;
             
       endcase else casex (AB)
-            16'bxxx0_xx0x_1xxx_xxxx: cs = CS_RIOT_RAM;
-            16'bxxx0_xx1x_1xxx_xxxx: cs = CS_RIOT_IO;
-            16'bxxx0_xxxx_0xxx_xxxx: cs = CS_TIA;
+            16'bxxx0_xx0x_1xxx_xxxx: cs = `CS_RIOT_RAM;
+            16'bxxx0_xx1x_1xxx_xxxx: cs = `CS_RIOT_IO;
+            16'bxxx0_xxxx_0xxx_xxxx: cs = `CS_TIA;
       endcase
       
       if (bios_en & AB[15])
-         cs = CS_BIOS; 
+         cs = `CS_BIOS; 
       
       // If MARIA is selected, handle memory mapped registers
-      if (cs == CS_MARIA) begin
-      
+      if (cs == `CS_MARIA) begin
+        if (we_b) begin
+            read_addr_found = AB[7:0];
+            write_addr_found = 8'h0;
+        end
+        else begin 
+            write_addr_found = AB[7:0];
+            read_addr_found = 8'h0;
+        end
       end
 
       /*
@@ -143,7 +136,7 @@ module memory_map (
       else begin
          deassert_ready <= 1'b0;
          //Handle writes to mem mapped regs
-         case(wr_addr_found)
+         case(write_addr_found)
            8'h20: color_map[0] <= DB_in;
            8'h21: color_map[1] <= DB_in;
            8'h22: color_map[2] <= DB_in;
