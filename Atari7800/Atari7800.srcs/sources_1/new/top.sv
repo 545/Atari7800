@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 `include "atari7800.vh"
 
+`define SIM
 
 module Atari7800(
   input  logic       CLOCK_PLL, reset,
@@ -36,6 +37,38 @@ module Atari7800(
    logic [7:0]             uv_display, uv_maria, uv_tia;
    logic [15:0]            maria_AB_out;
    `chipselect              CS;
+
+`ifdef SIM
+
+  reg [8*8-1:0] csname;
+  reg [8*8-1:0] csbufname;
+
+  always @* begin
+      case(CS)
+         `CS_NONE: csname = "None";
+         `CS_RAM0: csname = "ram0";
+         `CS_RAM1: csname = "ram1";
+         `CS_RIOT_IO: csname = "riot";
+         `CS_RIOT_RAM: csname = "riot_ram";
+         `CS_TIA: csname = "tia";
+         `CS_BIOS: csname = "bios";
+         `CS_MARIA: csname = "maria";
+         `CS_CART: csname = "cart";
+     endcase
+          
+     case(CS_buf)
+         `CS_RAM0: csbufname = "ram0";
+         `CS_RAM1: csbufname = "ram1";
+         `CS_RIOT_IO: csbufname = "riot";
+         `CS_RIOT_RAM: csbufname = "riot_ram";
+         `CS_TIA: csbufname = "tia";
+         `CS_BIOS: csbufname = "bios";
+         `CS_MARIA: csbufname = "maria";
+         `CS_CART: csbufname = "cart";
+     endcase
+   end
+   
+`endif
 
    // TIA Signals
    logic hblank_tia, vblank_tia, aud0, aud1, tia_RDY;
@@ -95,7 +128,7 @@ module Atari7800(
    always_ff @(posedge mem_clk, posedge reset) begin
       if (reset) begin
          //chip_select_buf <= 6'b111110;
-         CS_buf <= CS_NONE;
+         CS_buf <= `CS_NONE;
          RW_buf <= 1'b1;
       end else begin
          //chip_select_buf <= chip_select_cur;
@@ -115,26 +148,26 @@ module Atari7800(
         riot_cs = 1'b0;
         riot_ram_cs = 1'b0;
         casex (CS)
-            CS_RAM0: ram0_cs = 1'b1;
-            CS_RAM1: ram1_cs = 1'b1;
-            CS_BIOS: bios_cs = 1'b1;
-            CS_TIA: tia_cs = 1'b1;
-            CS_RIOT_IO: riot_cs = 1'b1;
-            CS_RIOT_RAM: begin riot_cs = 1'b1; riot_ram_cs = 1'b1; end
+            `CS_RAM0: ram0_cs = 1'b1;
+            `CS_RAM1: ram1_cs = 1'b1;
+            `CS_BIOS: bios_cs = 1'b1;
+            `CS_TIA: tia_cs = 1'b1;
+            `CS_RIOT_IO: riot_cs = 1'b1;
+            `CS_RIOT_RAM: begin riot_cs = 1'b1; riot_ram_cs = 1'b1; end
         endcase
     end
    
 
    always_comb begin
       if (RW_buf) begin casex (CS_buf)
-          CS_RAM0: read_DB = ram0_DB_out;
-          CS_RAM1: read_DB = ram1_DB_out;
-          CS_RIOT_IO,
-          CS_RIOT_RAM: read_DB = riot_DB_out;
-          CS_TIA: read_DB = tia_DB_out;
-          CS_BIOS: read_DB = bios_DB_out;
-          CS_MARIA: read_DB = maria_DB_out;
-          CS_CART: read_DB = cart_DB_out;
+          `CS_RAM0: read_DB = ram0_DB_out;
+          `CS_RAM1: read_DB = ram1_DB_out;
+          `CS_RIOT_IO,
+          `CS_RIOT_RAM: read_DB = riot_DB_out;
+          `CS_TIA: read_DB = tia_DB_out;
+          `CS_BIOS: read_DB = bios_DB_out;
+          `CS_MARIA: read_DB = maria_DB_out;
+          `CS_CART: read_DB = cart_DB_out;
           // Otherwise, nothing is driving the data bus. THIS SHOULD NEVER HAPPEN
           default: read_DB = 8'h46;
       endcase end else begin
@@ -217,6 +250,7 @@ module Atari7800(
       .write_DB_in(write_DB),
       .DB_out(maria_DB_out),
       .drive_DB(maria_drive_DB), 
+      .bios_en(~bios_en_b),
       .reset(reset), 
       .sysclk(sysclk_7_143),
       .pclk_2(pclk_2), 
@@ -327,7 +361,7 @@ module Atari7800(
                 .maria_en_in(write_DB[1]),
                 .bios_en_in(write_DB[2]),
                 .tia_en_in(write_DB[3]),
-                .latch_b(RW | tia_cs_b  | lock_ctrl),
+                .latch_b(RW | ~tia_cs  | lock_ctrl),
                 .rst(reset),
                 .lock_out(lock_ctrl),
                 .maria_en_out(maria_en),

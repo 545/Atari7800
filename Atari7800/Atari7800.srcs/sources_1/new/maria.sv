@@ -24,6 +24,7 @@ module maria(
 
    // Memory Map Select lines
    output `chipselect  CS,
+   input logic        bios_en,
    //output logic       ram0_b, ram1_b, p6532_b, tia_b,
    //output logic       riot_ram_b,
 
@@ -37,9 +38,6 @@ module maria(
    // Outputs to 6502
    output logic       int_b, halt_b, ready
 );
-
-chipselect test;
-
 
    // Bus interface
    // Defined as ports.
@@ -91,6 +89,9 @@ chipselect test;
 
    //// Control signals between timing_ctrl and line_ram
    logic             lram_swap;
+   
+   logic             VBLANK;
+   assign VBLANK = vga_row > 10'd481 && vga_row < 10'd523;
    
    line_ram line_ram_inst(
       .SYSCLK(sysclk), .RESET(reset),
@@ -145,10 +146,10 @@ chipselect test;
       //.tia_b(tia_b), .p6532_b(p6532_b),
       //.ram0_b(ram0_b), .ram1_b(ram1_b),
       //.riot_ram_b(riot_ram_b),
-      .cs(test),
+      .cs(CS), .bios_en(bios_en),
       .ctrl(ctrl),
       .color_map(color_map),
-      .status_read(8'b0),//{vga_row[9], 7'b0}),
+      .status_read({VBLANK, 7'b0}),
       .char_base(char_base),
       .ZP(ZP),
       .slow_clock(slow_clock),

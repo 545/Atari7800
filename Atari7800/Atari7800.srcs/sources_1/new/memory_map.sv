@@ -9,7 +9,7 @@ module memory_map (
    output logic [7:0]       DB_out,
    input  logic             halt_b, we_b,
    
-   output `chipselect        cs,
+   output `chipselect       cs,
    input  logic             bios_en,
    
    output logic [7:0]       ctrl,
@@ -35,13 +35,13 @@ module memory_map (
    
    logic [7:0]              read_addr_found, write_addr_found;
 
-   assign slow_clock = ((cs == CS_TIA) || (cs == CS_RIOT_IO) || (cs == CS_RIOT_RAM));   
+   assign slow_clock = ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM));   
 
    assign ZP = {ZPH, ZPL};
 
    always_comb begin
       // Generate Chip Select (cs) Signal
-      cs = CS_CART;
+      cs = `CS_CART;
       
       if (maria_en) casex (AB)
             // RIOT RAM: "Do Not Use" in 7800 mode.
@@ -186,15 +186,15 @@ module memory_map (
             8'h25: DB_out <= color_map[4];
             8'h26: DB_out <= color_map[5];
             8'h27: DB_out <= color_map[6];
-            //8'h28: status_read <= DB_in; Read only
+            8'h28: DB_out <= status_read;
             8'h29: DB_out <= color_map[7];
             8'h2a: DB_out <= color_map[8];
             8'h2b: DB_out <= color_map[9];
-            8'h2c: DB_out <= ZPH <= DB_in;
+            8'h2c: DB_out <= ZPH;
             8'h2d: DB_out <= color_map[10];
             8'h2e: DB_out <= color_map[11];
             8'h2f: DB_out <= color_map[12];
-            8'h30: DB_out <= ZPL <= DB_in;
+            8'h30: DB_out <= ZPL;
             8'h31: DB_out <= color_map[13];
             8'h32: DB_out <= color_map[14];
             8'h33: DB_out <= color_map[15];
@@ -206,7 +206,7 @@ module memory_map (
             8'h39: DB_out <= color_map[19];
             8'h3a: DB_out <= color_map[20];
             8'h3b: DB_out <= color_map[21];
-            8'h3c: DB_out <= ctrl <= DB_in;
+            8'h3c: DB_out <= ctrl;
             8'h3d: DB_out <= color_map[22];
             8'h3e: DB_out <= color_map[23];
             8'h3f: DB_out <= color_map[24];

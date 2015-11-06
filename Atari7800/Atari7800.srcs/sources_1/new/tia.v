@@ -6,6 +6,8 @@
  Redesign of the Atari TIA chip. Provides the Atari with video generation,
  sound generation and I/O.
  */
+ `timescale 1ns / 1ps
+ 
 `include "tia.vh"
 module TIA(A, // Address bus input
 	   Din, // Data bus input

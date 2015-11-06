@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="e80a4110db2348cf8202ec34b4d27017"/>
