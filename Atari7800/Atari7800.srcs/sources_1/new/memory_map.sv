@@ -6,15 +6,28 @@
 `define RAM1_SIG 4'b1110
 `define NONE_SIG 4'b1111
 
+typedef enum logic [3:0] {
+   CS_NONE     = 'h0,
+   CS_RAM0     = 'h1,
+   CS_RAM1     = 'h2,
+   CS_RIOT_IO  = 'h3,
+   CS_RIOT_RAM = 'h4,
+   CS_TIA      = 'h5,
+   CS_BIOS     = 'h6,
+   CS_MARIA    = 'h7,
+   CS_CART     = 'h8
+} chipselect;
+
 module memory_map (
    input  logic             maria_en,
    input  logic [15:0]      AB,
    input  logic [7:0]       DB_in,
    output logic [7:0]       DB_out,
-   output logic             drive_DB,
    input  logic             halt_b, we_b,
-   output logic             tia_b, p6532_b, ram0_b, ram1_b,
-   output logic             riot_ram_b,
+   
+   output chipselect        cs,
+   input  logic             bios_en,
+   
    output logic [7:0]       ctrl,
    output logic [24:0][7:0] color_map,
    input  logic [7:0]       status_read,
@@ -31,69 +44,61 @@ module memory_map (
 );
 
    logic [3:0]              signals_out;
-   logic [7:0]              wr_addr_found, read_addr_found;
-   logic [7:0]              ZPH,ZPL;
-
+   
+   // Internal Memory Mapped Registers
+   logic [7:0]              ZPH, ZPL;
    logic [7:0]              wait_sync;
-   logic                    pav;
 
+   assign slow_clock = ((cs == CS_TIA) || (cs == CS_RIOT));   
 
-   assign slow_clock = ~tia_b | ~p6532_b;
-
-   assign pav = 1'b1; // For now, since I don't think pclk_0 works
-   // assign pav = pclk_0 | pclk_2;
-   
-   assign drive_DB = read_addr_found != 8'b0; // If read_addr_found is nonzero, assert maria chip select
-   
-   assign {tia_b, p6532_b, ram0_b, ram1_b} = signals_out;   
+   assign ZP = {ZPH, ZPL};
 
    always_comb begin
-      ZP = {ZPH,ZPL};
+      // Generate Chip Select (cs) Signal
+      cs = CS_CART;
       
-      riot_ram_b = 1'bx;
+      if (maria_en) casex (AB)
+            // RIOT RAM: "Do Not Use" in 7800 mode.
+            16'b0000_010x_1xxx_xxxx: cs = CS_RIOT_RAM;
+            16'b0000_0010_1xxx_xxxx: cs = CS_RIOT_IO;
+            
+            // 1800-1FFF: 2K RAM.
+            16'b0001_1xxx_xxxx_xxxx: cs = CS_RAM1;
+            
+            // 0040-00FF: Zero Page (Local variable space)
+            // 0140-01FF: Stack
+            // Additional Mirrors at 240- and 340-
+            16'b0000_00xx_01xx_xxxx,
+            16'b0000_00xx_1xxx_xxxx,
+            
+            // 2000-27FF: 2K RAM. Zero Page and Stack mirrored from here.
+            16'b0010_0xxx_xxxx_xxxx: cs = CS_RAM0;
 
-      //Set output signal for {tia,6532,ram0,ram1} depending on addr
-      casex ({maria_en, AB[15:5], pav, halt_b})
-        //6532
-        {1'b1, 11'b0000_010x_1xx, 1'bx, 1'bx}: begin
-            signals_out = `P6532_SIG;
-            riot_ram_b = 1'b0;        
-        end
-
-        {1'b1, 11'b0000_0010_1xx, 1'bx, 1'bx}: begin
-            signals_out = `P6532_SIG;
-            riot_ram_b = 1'b1;
-        end
-        
-        {1'b0, 11'bxxx0_xx0x_1xx, 1'bx, 1'bx}: begin
-            signals_out = `P6532_SIG;
-            riot_ram_b = 1'b0;
-        end
-        {1'b0, 11'bxxx0_xx1x_1xx, 1'bx, 1'bx}: begin
-            signals_out = `P6532_SIG;
-            riot_ram_b = 1'b1;
-        end
-
-        //RAM1
-        {1'b1, 11'b0001_1xxx_xxx, 1'bx, 1'bx}: signals_out = `RAM1_SIG;
-        
-        //{1'b1, 11'b0001_1xxxxxx, 1'b1, 1'b0}: 
-
-        //TIA
-        {1'b1, 11'b0000_00xx_000, 1'bx, 1'bx},
-        {1'b0, 11'bxxx0_xxxx_0xx, 1'bx, 1'bx}: signals_out = `TIA_SIG;
-
-        //RAM0
-        {1'b1, 11'b0000_00xx_1xx, 1'bx, 1'bx},
-        //{1'b1, 11'b0000_00xx1xx, 1'b1, 1'b0},
-        {1'b1, 11'b0000_00xx_01x, 1'bx, 1'bx},
-        //{1'b1, 11'b0000_00xx01x, 1'b1, 1'b0},
-        {1'b1, 11'b0010_0xxx_xxx, 1'bx, 1'bx}: signals_out = `RAM0_SIG;
-        //{1'b1, 11'b0010_0xxxxxx, 1'b1, 1'b0}: 
-
-        default: signals_out = `NONE_SIG;
+            // TIA Registers:
+            // 0000-001F, 0100-001F, 0200-021F, 0300-031F
+            // All mirrors are ranges of the same registers
+            16'b0000_00xx_000x_xxxx: cs = CS_TIA;
+            
+            // MARIA Registers:
+            // 0020-003F, 0120-003F, 0220-023F, 0320-033F
+            // All ranges are mirrors of the same registers
+            16'b0000_00xx_001x_xxxx: cs = CS_MARIA;
+            
+      endcase else casex (AB)
+            16'bxxx0_xx0x_1xxx_xxxx: cs = CS_RIOT_RAM;
+            16'bxxx0_xx1x_1xxx_xxxx: cs = CS_RIOT_IO;
+            16'bxxx0_xxxx_0xxx_xxxx: cs = CS_TIA;
       endcase
+      
+      if (bios_en & AB[15])
+         cs = CS_BIOS; 
+      
+      // If MARIA is selected, handle memory mapped registers
+      if (cs == CS_MARIA) begin
+      
+      end
 
+      /*
       //Find write addresses on bus to latch data on next tick
       casex ({AB, we_b})
         {16'b0000_00xx_001x_xxxx,1'b0}: wr_addr_found = AB[7:0];
@@ -104,6 +109,7 @@ module memory_map (
         {16'b0000_00xx_001x_xxxx,1'b1}: read_addr_found = AB[7:0];
         default: read_addr_found = 8'b0;
       endcase
+      */
       
       
    end // always_comb
