@@ -71,6 +71,7 @@
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/uv_in">
          <obj_property name="ElementShortName">uv_in[7:0]</obj_property>
          <obj_property name="ObjectShortName">uv_in[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/row">
          <obj_property name="ElementShortName">row[9:0]</obj_property>
@@ -486,6 +487,7 @@
          <obj_property name="ObjectShortName">ctrl[7:0]</obj_property>
          <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/memory_map_inst/color_map">
          <obj_property name="ElementShortName">color_map[24:0][7:0]</obj_property>

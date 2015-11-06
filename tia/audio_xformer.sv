@@ -1,4 +1,4 @@
-
+`timescale 1ns / 1ps
 
 module audio_xformer(input logic AUD0, AUD1,
                      input logic [3:0] AUDV0, AUDV1,

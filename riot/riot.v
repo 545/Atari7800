@@ -5,6 +5,8 @@ Daniel Beer
     RIOT.v
 Redesign of the MOS 6532 chip. Provides RAM, I/O and timers to the Atari.
 */
+`timescale 1ns / 1ps
+
 `include "riot.vh"
 module RIOT(A, // Address bus input
 	    Din, // Data bus input

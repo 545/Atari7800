@@ -140,7 +140,7 @@ module Atari7800(
    );
 
    // TIA
-  tia tia_inst(.A(AB), // Address bus input
+  TIA tia_inst(.A(AB), // Address bus input
      .Din(DB), // Data bus input
      .Dout(DB_m), // Data bus output
      .CS_n(mm_tia_b), // Active low chip select input

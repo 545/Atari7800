@@ -89,6 +89,9 @@ module memory_map (
             write_addr_found = AB[7:0];
             read_addr_found = 8'h0;
         end
+      end else begin
+         read_addr_found = 8'h0;
+         write_addr_found = 8'h0;
       end
 
       /*

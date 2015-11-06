@@ -1,4 +1,4 @@
-
+`timescale 1ns / 1ps
 
 module audio(input logic [3:0] AUDC0, AUDC1,
 	         input logic [4:0] AUDF0, AUDF1,

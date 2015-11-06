@@ -1,0 +1,24 @@
+#
+# An unexpected error has occurred (6)
+#
+Stack:
+/lib64/libc.so.6(+0x35650) [0x7f83a07d4650]
+/lib64/libc.so.6(gsignal+0x37) [0x7f83a07d45d7]
+/lib64/libc.so.6(abort+0x148) [0x7f83a07d5cc8]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x155) [0x7f83a0dd5a95]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/libstdc++.so.6(+0x5dc06) [0x7f83a0dd3c06]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/libstdc++.so.6(+0x5dc33) [0x7f83a0dd3c33]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/libstdc++.so.6(+0x5de5e) [0x7f83a0dd3e5e]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_common.so(+0x62023b) [0x7f83a18a423b]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_common.so(hdi::tcltasks::task_manager::eval_in_tcl_throw(Tcl_Interp*, char const*, char const*, bool)+0x14) [0x7f83a18a6f14]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_labtools.so(LTDHWServer::localProgressCB(XHWProgramStatus const&, boost::shared_ptr<bool>)+0x19a) [0x7f8374c1c35a]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_labtools.so(boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void, boost::_mfi::mf2<void, LTDHWServer, XHWProgramStatus const&, boost::shared_ptr<bool> >, boost::_bi::list3<boost::_bi::value<LTDHWServer*>, boost::arg<1>, boost::arg<2> > >, void, XHWProgramStatus const&, boost::shared_ptr<bool> >::invoke(boost::detail::function::function_buffer&, XHWProgramStatus const&, boost::shared_ptr<bool>)+0x4c) [0x7f8374c241cc]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(boost::signals2::detail::signal_impl<void (XHWProgramStatus const&, boost::shared_ptr<bool>), boost::signals2::optional_last_value<void>, int, std::less<int>, boost::function<void (XHWProgramStatus const&, boost::shared_ptr<bool>)>, boost::function<void (boost::signals2::connection const&, XHWProgramStatus const&, boost::shared_ptr<bool>)>, boost::signals2::mutex>::operator()(XHWProgramStatus const&, boost::shared_ptr<bool>)+0x1f7) [0x7f83702a0b57]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(XicomHWJtagNodeEvents::addNode(NodeProperty&)+0x205) [0x7f83702ddad5]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(XicomHWJtagNodeEvents::addNodeEvent(Channel*, void*)+0xac) [0x7f83702de39c]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(handle_protocol_message(Channel*)+0xb61) [0x7f83703e7221]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(+0x1ff715) [0x7f83703db715]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(run_event_loop()+0x287) [0x7f83703de7e7]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_xicom_hw.so(+0x20d93a) [0x7f83703e993a]
+/lib64/libpthread.so.0(+0x7df5) [0x7f83a0288df5]
+/lib64/libc.so.6(clone+0x6d) [0x7f83a08951ad]
