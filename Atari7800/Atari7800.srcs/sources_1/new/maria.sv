@@ -11,7 +11,6 @@ module maria(
    input  logic  [7:0] read_DB_in,
    input  logic  [7:0] write_DB_in,
    output logic  [7:0] DB_out,
-   output logic        drive_DB,
    // inout wire [15:0]  AB,
    // inout wire [ 7:0]  DB,
    //inout wire [7:0]   DB,
@@ -91,7 +90,7 @@ module maria(
    logic             lram_swap;
    
    logic             VBLANK;
-   assign VBLANK = vga_row > 10'd481 && vga_row < 10'd523;
+   assign VBLANK = (vga_row > 10'd481) && (vga_row < 10'd523);
    
    line_ram line_ram_inst(
       .SYSCLK(sysclk), .RESET(reset),

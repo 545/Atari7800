@@ -33,7 +33,7 @@ module Atari7800(
    // MARIA Signals
    logic                   m_int_b, maria_RDY;
    logic                   maria_rw;
-   logic                   halt_b, maria_drive_DB, maria_drive_AB;
+   logic                   halt_b, maria_drive_AB;
    logic [7:0]             uv_display, uv_maria, uv_tia;
    logic [15:0]            maria_AB_out;
    `chipselect              CS;
@@ -249,7 +249,6 @@ module Atari7800(
       .read_DB_in(read_DB),
       .write_DB_in(write_DB),
       .DB_out(maria_DB_out),
-      .drive_DB(maria_drive_DB), 
       .bios_en(~bios_en_b),
       .reset(reset), 
       .sysclk(sysclk_7_143),

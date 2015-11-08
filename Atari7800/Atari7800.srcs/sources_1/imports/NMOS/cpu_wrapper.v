@@ -16,11 +16,24 @@ input halt_b;
 
 wire rdy_in;
 wire WE_OUT;
+reg holding;
+wire [7:0] DB_hold;
 
-cpu core(.clk(clk),.reset(reset),.AB(AB),.DI(DB_IN),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
+cpu core(.clk(clk),.reset(reset),.AB(AB),.DI(DB_hold),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
 
 assign RD = ~WE;
 assign WE = WE_OUT & halt_b;
 assign rdy_in = RDY & halt_b;
+assign DB_hold = (holding) ? DB_hold : DB_IN;
+
+always @(posedge clk, posedge reset, negedge rdy_in) begin
+    if (reset)
+        holding <= 1'b0;
+    else if (~rdy_in) 
+        holding <= 1'b1;
+    else
+        holding <= 1'b0;
+
+end
 
 endmodule: cpu_wrapper
