@@ -53,9 +53,8 @@ module memory_map (
             
             // 0040-00FF: Zero Page (Local variable space)
             // 0140-01FF: Stack
-            // Additional Mirrors at 240- and 340-
-            16'b0000_00xx_01xx_xxxx,
-            16'b0000_00xx_1xxx_xxxx,
+            16'b0000_0000_01xx_xxxx,
+            16'b0000_0001_1xxx_xxxx,
             
             // 2000-27FF: 2K RAM. Zero Page and Stack mirrored from here.
             16'b0010_0xxx_xxxx_xxxx: cs = `CS_RAM0;
@@ -110,7 +109,7 @@ module memory_map (
       
    end // always_comb
 
-   always_ff @(posedge sysclock, negedge reset_b) begin
+   always_ff @(posedge pclk_0, negedge reset_b) begin
       if (~reset_b) begin
          ctrl <= {1'b0, 2'b10, 1'b0, 1'b0, 1'b0, 2'b00}; // 8'b0
          //color_map <= 200'b0;

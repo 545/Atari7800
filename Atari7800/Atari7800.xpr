@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="e80a4110db2348cf8202ec34b4d27017"/>
@@ -302,11 +302,6 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/maria_test_behav.wcfg">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/maria_test_behav1.wcfg">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>

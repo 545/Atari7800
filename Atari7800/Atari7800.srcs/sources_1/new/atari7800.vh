@@ -9,3 +9,5 @@
 `define CS_CART     'h8
 
 `define chipselect  logic[3:0]
+
+`define SIM

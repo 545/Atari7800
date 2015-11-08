@@ -389,6 +389,12 @@
          <obj_property name="CustomSignalColor">#FFD700</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/DB_hold">
+         <obj_property name="ElementShortName">DB_hold[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DB_hold[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/DB_OUT">
          <obj_property name="ElementShortName">DB_OUT[7:0]</obj_property>
          <obj_property name="ObjectShortName">DB_OUT[7:0]</obj_property>
@@ -415,6 +421,10 @@
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/halt_b">
          <obj_property name="ElementShortName">halt_b</obj_property>
          <obj_property name="ObjectShortName">halt_b</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/holding">
+         <obj_property name="ElementShortName">holding</obj_property>
+         <obj_property name="ObjectShortName">holding</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/rdy_in">
          <obj_property name="ElementShortName">rdy_in</obj_property>
@@ -472,6 +482,18 @@
          <obj_property name="ObjectShortName">statename[47:0]</obj_property>
          <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/core/ALU/AI">
+         <obj_property name="ElementShortName">AI[7:0]</obj_property>
+         <obj_property name="ObjectShortName">AI[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/core/ALU/BI">
+         <obj_property name="ElementShortName">BI[7:0]</obj_property>
+         <obj_property name="ObjectShortName">BI[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/core/ALU/OUT">
+         <obj_property name="ElementShortName">OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OUT[7:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group155">
       <obj_property name="label">MARIA</obj_property>
@@ -481,6 +503,10 @@
          <obj_property name="ObjectShortName">maria_en</obj_property>
          <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/VBLANK">
+         <obj_property name="ElementShortName">VBLANK</obj_property>
+         <obj_property name="ObjectShortName">VBLANK</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/memory_map_inst/ctrl">
          <obj_property name="ElementShortName">ctrl[7:0]</obj_property>

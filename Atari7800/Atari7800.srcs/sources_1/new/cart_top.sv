@@ -19,9 +19,12 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+`define SIM
 
 module cart_top(
-    //input  logic       CLOCK_PLL, reset,
+`ifndef SIM
+    input  logic       CLOCK_PLL, reset,
+`endif
     output logic [3:0] RED, GREEN, BLUE,
     output logic       HSync, VSync,
     
@@ -39,6 +42,7 @@ module cart_top(
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
+//`ifdef SIM
     logic reset, CLOCK_PLL;
     
     initial begin
@@ -54,6 +58,7 @@ module cart_top(
        CLOCK_PLL = 1'b0;
        forever #5 CLOCK_PLL = ~CLOCK_PLL;          
     end
+//`endif
     
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
