@@ -29,7 +29,7 @@ module dma_ctrl(
 
    // states
    enum logic [1:0] {waiting = 2'b00, zp_dma = 2'b01, dp_dma = 2'b10} state;
-   enum logic [2:0] {drive_zp_addr = 3'b000, w_offset = 3'b001, w_DPL = 3'b010 ,w_DPH = 3'b100} zp_state;
+   enum logic [2:0] {drive_zp_addr = 3'b000, w_offset = 3'b001, w_DPH = 3'b010 ,w_DPL = 3'b100} zp_state;
    enum logic [3:0] {drive_dp_addr = 4'h0, w_PPL = 4'h1, w_PALETTE_WIDTH = 4'h2,
                      w_PPH = 4'h3, w_PALETTE_WIDTH_2 = 4'h4, w_INPUT = 4'h5,
                      drive_pp_addr = 4'h6, w_PIXELS = 4'h7, drive_next_zp_addr = 4'h8,
@@ -124,23 +124,23 @@ module dma_ctrl(
                    ZP_saved <= ZP_saved_next;
                 end
                 w_offset: begin //write cbits and offset
-                   zp_state <= w_DPL;
+                   zp_state <= w_DPH;
                    {DLIen,A12en,A11en} <= DataB[7:5];
                    OFFSET <= DataB[3:0];
                    // AddrB = ZP_saved_next;
                    ZP_saved <= ZP_saved_next;
                 end
-                w_DPL: begin //Write DPL
-                   zp_state <= w_DPH;
-                   DP[7:0] <= DataB;
+                w_DPH: begin //Write DPH
+                   zp_state <= w_DPL;
+                   DP[15:8] <= DataB;
                    // AddrB = ZP_saved;
                    ZP_saved <= ZP_saved_next;
                 end
-                w_DPH: begin //Write DPH
+                w_DPL: begin //Write DPL
                    zp_state <= drive_zp_addr;
                    state <= waiting;
-                   DP[15:8] <= DataB;
-                   DP_saved <= {DataB, DP[7:0]};
+                   DP[7:0] <= DataB;
+                   DP_saved <= {DP[15:8], DataB};
                    zp_dma_done <= 1'b1;
                 end
               endcase // case (zp_state)
@@ -201,7 +201,10 @@ module dma_ctrl(
                    DP_saved <= DP_saved+1;
                 end
                 w_INPUT: begin //write INPUT
-                   dp_state <= drive_pp_addr;
+                   if ((A12en & drive_pp_addr[12]) | (A11en & drive_pp_addr[11]))
+                      dp_state <= drive_dp_addr;
+                   else
+                      dp_state <= drive_pp_addr;
                    // palette_w <= 0;
                    // AddrB <= DP;
                    // input_w <= 1;
@@ -228,26 +231,26 @@ module dma_ctrl(
                    ZP_saved <= ZP_saved_next;
                 end
                 w_next_offset: begin //write cbits and offset
-                   dp_state <= w_next_DPL;
+                   dp_state <= w_next_DPH;
                    DLIen_prev <= DLIen;
                    {DLIen,A12en,A11en} <= DataB[7:5];
                    OFFSET <= DataB[3:0];
                    // AddrB <= ZP_saved;
                    ZP_saved <= ZP_saved_next;
                 end
-                w_next_DPL: begin //Write DPL
-                   dp_state <= w_next_DPH;
-                   DP[7:0] <= DataB;
+                w_next_DPH: begin //Write DPH
+                   dp_state <= w_next_DPL;
+                   DP[15:8] <= DataB;
                    // AddrB <= ZP_saved;
                    ZP_saved <= ZP_saved_next;
                 end
-                w_next_DPH: begin //Write DPH
+                w_next_DPL: begin //Write DPH
                    dp_state <= drive_dp_addr;
                    state <= waiting;
-                   DP[15:8] <= DataB;
-                   DP_saved <= {DataB, DP[7:0]};
+                   DP[7:0] <= DataB;
+                   DP_saved <= {DP[15:8], DataB};
                    dp_dma_done <= 1;
-                   dp_dma_done_dli <= DLIen;
+                   dp_dma_done_dli <= DLIen_prev;
                 end               
               endcase // case (dp_state)
            end // case: dp_dma

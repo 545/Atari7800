@@ -33,7 +33,6 @@ always @(posedge clk, posedge reset, negedge rdy_in) begin
         holding <= 1'b1;
     else
         holding <= 1'b0;
-
 end
 
 endmodule: cpu_wrapper
