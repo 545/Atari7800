@@ -1,0 +1,12 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e58a9) [0x7ffb74ed98a9]
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(JVM_handle_linux_signal+0xb6) [0x7ffb74edf4f6]
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e2523) [0x7ffb74ed6523]
+/lib64/libc.so.6(+0x35650) [0x7ffbab176650]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(WVDAppInterface::WVDWindowManager::getCurrentWcfg() const+0x3) [0x7ffb7b3a6023]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(WVExecutive::setCurrentWcfg()+0x16) [0x7ffb7b46e046]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(Java_ui_views_waveform_waveformi_WVExecutive_1setCurrentWcfg+0x17) [0x7ffb7b4939a7]
+[0x7ffb64fb36d4]
