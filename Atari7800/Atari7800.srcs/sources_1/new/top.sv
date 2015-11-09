@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 `include "atari7800.vh"
 
-`define SIM
+
 
 module Atari7800(
   input  logic       CLOCK_PLL, reset,

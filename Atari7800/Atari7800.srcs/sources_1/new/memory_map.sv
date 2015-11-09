@@ -53,11 +53,11 @@ module memory_map (
             
             // 0040-00FF: Zero Page (Local variable space)
             // 0140-01FF: Stack
-            16'b0000_0000_01xx_xxxx,
-            16'b0000_0001_1xxx_xxxx,
+            16'b0000_000x_01xx_xxxx,
+            16'b0000_000x_1xxx_xxxx,
             
             // 2000-27FF: 2K RAM. Zero Page and Stack mirrored from here.
-            16'b0010_0xxx_xxxx_xxxx: cs = `CS_RAM0;
+            16'b001x_xxxx_xxxx_xxxx: cs = `CS_RAM0;
 
             // TIA Registers:
             // 0000-001F, 0100-001F, 0200-021F, 0300-031F
