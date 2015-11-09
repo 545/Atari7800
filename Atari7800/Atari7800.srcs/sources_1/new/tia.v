@@ -58,14 +58,6 @@ module TIA(A, // Address bus input
    reg clk_30;
    reg [7:0] clk_30_count;
    
-   always @(posedge MASTERCLK) begin
-   if (RES_n) begin
-
-   end
-    
-   end
-
-   
    // Pixel counter update
    always @(posedge MASTERCLK)
      begin

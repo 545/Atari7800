@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="19" />
    <wvobject type="group" fp_name="group127">
       <obj_property name="label">Clocks</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -81,22 +81,26 @@
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/col">
          <obj_property name="ElementShortName">col[9:0]</obj_property>
          <obj_property name="ObjectShortName">col[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/RED">
          <obj_property name="ElementShortName">RED[3:0]</obj_property>
          <obj_property name="ObjectShortName">RED[3:0]</obj_property>
          <obj_property name="CustomSignalColor">#FF0000</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/GREEN">
          <obj_property name="ElementShortName">GREEN[3:0]</obj_property>
          <obj_property name="ObjectShortName">GREEN[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/vga_out/BLUE">
          <obj_property name="ElementShortName">BLUE[3:0]</obj_property>
          <obj_property name="ObjectShortName">BLUE[3:0]</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/vga_out/HSync">
          <obj_property name="ElementShortName">HSync</obj_property>
@@ -565,6 +569,483 @@
          <obj_property name="ElementShortName">wait_sync[7:0]</obj_property>
          <obj_property name="ObjectShortName">wait_sync[7:0]</obj_property>
          <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group224">
+      <obj_property name="label">timing_ctrl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/zp_dma_start">
+         <obj_property name="ElementShortName">zp_dma_start</obj_property>
+         <obj_property name="ObjectShortName">zp_dma_start</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/dp_dma_start">
+         <obj_property name="ElementShortName">dp_dma_start</obj_property>
+         <obj_property name="ObjectShortName">dp_dma_start</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/zp_dma_done">
+         <obj_property name="ElementShortName">zp_dma_done</obj_property>
+         <obj_property name="ObjectShortName">zp_dma_done</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/dp_dma_done">
+         <obj_property name="ElementShortName">dp_dma_done</obj_property>
+         <obj_property name="ObjectShortName">dp_dma_done</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/dp_dma_done_dli">
+         <obj_property name="ElementShortName">dp_dma_done_dli</obj_property>
+         <obj_property name="ObjectShortName">dp_dma_done_dli</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/dp_dma_kill">
+         <obj_property name="ElementShortName">dp_dma_kill</obj_property>
+         <obj_property name="ObjectShortName">dp_dma_kill</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/last_line">
+         <obj_property name="ElementShortName">last_line</obj_property>
+         <obj_property name="ObjectShortName">last_line</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/lram_swap">
+         <obj_property name="ElementShortName">lram_swap</obj_property>
+         <obj_property name="ObjectShortName">lram_swap</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/zp_written">
+         <obj_property name="ElementShortName">zp_written</obj_property>
+         <obj_property name="ObjectShortName">zp_written</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/row">
+         <obj_property name="ElementShortName">row[8:0]</obj_property>
+         <obj_property name="ObjectShortName">row[8:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/col">
+         <obj_property name="ElementShortName">col[8:0]</obj_property>
+         <obj_property name="ObjectShortName">col[8:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/second_vga_line">
+         <obj_property name="ElementShortName">second_vga_line</obj_property>
+         <obj_property name="ObjectShortName">second_vga_line</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/vga_line_delta">
+         <obj_property name="ElementShortName">vga_line_delta</obj_property>
+         <obj_property name="ObjectShortName">vga_line_delta</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/zp_ready">
+         <obj_property name="ElementShortName">zp_ready</obj_property>
+         <obj_property name="ObjectShortName">zp_ready</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/state">
+         <obj_property name="ElementShortName">state[3:0]</obj_property>
+         <obj_property name="ObjectShortName">state[3:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/startup_ctr">
+         <obj_property name="ElementShortName">startup_ctr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">startup_ctr[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/timing_ctrl_inst/cooldown_count">
+         <obj_property name="ElementShortName">cooldown_count</obj_property>
+         <obj_property name="ObjectShortName">cooldown_count</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group225">
+      <obj_property name="label">dma_ctrl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/AddrB">
+         <obj_property name="ElementShortName">AddrB[15:0]</obj_property>
+         <obj_property name="ObjectShortName">AddrB[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/drive_AB">
+         <obj_property name="ElementShortName">drive_AB</obj_property>
+         <obj_property name="ObjectShortName">drive_AB</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/DataB">
+         <obj_property name="ElementShortName">DataB[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DataB[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/ZP">
+         <obj_property name="ElementShortName">ZP[15:0]</obj_property>
+         <obj_property name="ObjectShortName">ZP[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/palette_w">
+         <obj_property name="ElementShortName">palette_w</obj_property>
+         <obj_property name="ObjectShortName">palette_w</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/input_w">
+         <obj_property name="ElementShortName">input_w</obj_property>
+         <obj_property name="ObjectShortName">input_w</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/pixels_w">
+         <obj_property name="ElementShortName">pixels_w</obj_property>
+         <obj_property name="ObjectShortName">pixels_w</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/wm_w">
+         <obj_property name="ElementShortName">wm_w</obj_property>
+         <obj_property name="ObjectShortName">wm_w</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/character_width">
+         <obj_property name="ElementShortName">character_width</obj_property>
+         <obj_property name="ObjectShortName">character_width</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/DP">
+         <obj_property name="ElementShortName">DP[15:0]</obj_property>
+         <obj_property name="ObjectShortName">DP[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/PP">
+         <obj_property name="ElementShortName">PP[15:0]</obj_property>
+         <obj_property name="ObjectShortName">PP[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/DP_saved">
+         <obj_property name="ElementShortName">DP_saved[15:0]</obj_property>
+         <obj_property name="ObjectShortName">DP_saved[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/ZP_saved">
+         <obj_property name="ElementShortName">ZP_saved[15:0]</obj_property>
+         <obj_property name="ObjectShortName">ZP_saved[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/WIDTH">
+         <obj_property name="ElementShortName">WIDTH[4:0]</obj_property>
+         <obj_property name="ObjectShortName">WIDTH[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/OFFSET">
+         <obj_property name="ElementShortName">OFFSET[3:0]</obj_property>
+         <obj_property name="ObjectShortName">OFFSET[3:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/INDIRECT_MODE">
+         <obj_property name="ElementShortName">INDIRECT_MODE</obj_property>
+         <obj_property name="ObjectShortName">INDIRECT_MODE</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/DLIen">
+         <obj_property name="ElementShortName">DLIen</obj_property>
+         <obj_property name="ObjectShortName">DLIen</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/state">
+         <obj_property name="ElementShortName">state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">state[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/zp_state">
+         <obj_property name="ElementShortName">zp_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">zp_state[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/dp_state">
+         <obj_property name="ElementShortName">dp_state[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dp_state[3:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/five_byte_mode">
+         <obj_property name="ElementShortName">five_byte_mode</obj_property>
+         <obj_property name="ObjectShortName">five_byte_mode</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/null_width">
+         <obj_property name="ElementShortName">null_width</obj_property>
+         <obj_property name="ObjectShortName">null_width</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/dma_ctrl_inst/DataB">
+         <obj_property name="ElementShortName">DataB[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DataB[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group226">
+      <obj_property name="label">lram</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/SYSCLK">
+         <obj_property name="ElementShortName">SYSCLK</obj_property>
+         <obj_property name="ObjectShortName">SYSCLK</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/RESET">
+         <obj_property name="ElementShortName">RESET</obj_property>
+         <obj_property name="ObjectShortName">RESET</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/INPUT_W">
+         <obj_property name="ElementShortName">INPUT_W</obj_property>
+         <obj_property name="ObjectShortName">INPUT_W</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/INPUT_ADDR">
+         <obj_property name="ElementShortName">INPUT_ADDR[7:0]</obj_property>
+         <obj_property name="ObjectShortName">INPUT_ADDR[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/input_addr">
+         <obj_property name="ElementShortName">input_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">input_addr[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/PALETTE_W">
+         <obj_property name="ElementShortName">PALETTE_W</obj_property>
+         <obj_property name="ObjectShortName">PALETTE_W</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/PALETTE">
+         <obj_property name="ElementShortName">PALETTE[2:0]</obj_property>
+         <obj_property name="ObjectShortName">PALETTE[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/palette">
+         <obj_property name="ElementShortName">palette[2:0]</obj_property>
+         <obj_property name="ObjectShortName">palette[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/PIXELS_W">
+         <obj_property name="ElementShortName">PIXELS_W</obj_property>
+         <obj_property name="ObjectShortName">PIXELS_W</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/PIXELS">
+         <obj_property name="ElementShortName">PIXELS[7:0]</obj_property>
+         <obj_property name="ObjectShortName">PIXELS[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/WM">
+         <obj_property name="ElementShortName">WM</obj_property>
+         <obj_property name="ObjectShortName">WM</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/WM_W">
+         <obj_property name="ElementShortName">WM_W</obj_property>
+         <obj_property name="ObjectShortName">WM_W</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/wm">
+         <obj_property name="ElementShortName">wm</obj_property>
+         <obj_property name="ObjectShortName">wm</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/READ_MODE">
+         <obj_property name="ElementShortName">READ_MODE[1:0]</obj_property>
+         <obj_property name="ObjectShortName">READ_MODE[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/COLOR_MAP">
+         <obj_property name="ElementShortName">COLOR_MAP[24:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">COLOR_MAP[24:0][7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/KANGAROO_MODE">
+         <obj_property name="ElementShortName">KANGAROO_MODE</obj_property>
+         <obj_property name="ObjectShortName">KANGAROO_MODE</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/BORDER_CONTROL">
+         <obj_property name="ElementShortName">BORDER_CONTROL</obj_property>
+         <obj_property name="ObjectShortName">BORDER_CONTROL</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/COLOR_KILL">
+         <obj_property name="ElementShortName">COLOR_KILL</obj_property>
+         <obj_property name="ObjectShortName">COLOR_KILL</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/line_ram_inst/LRAM_SWAP">
+         <obj_property name="ElementShortName">LRAM_SWAP</obj_property>
+         <obj_property name="ObjectShortName">LRAM_SWAP</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/LRAM_OUT_COL">
+         <obj_property name="ElementShortName">LRAM_OUT_COL[8:0]</obj_property>
+         <obj_property name="ObjectShortName">LRAM_OUT_COL[8:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/display_mode">
+         <obj_property name="ElementShortName">display_mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">display_mode[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/playback_palette">
+         <obj_property name="ElementShortName">playback_palette[2:0]</obj_property>
+         <obj_property name="ObjectShortName">playback_palette[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/playback_cell">
+         <obj_property name="ElementShortName">playback_cell[4:0]</obj_property>
+         <obj_property name="ObjectShortName">playback_cell[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/playback_color">
+         <obj_property name="ElementShortName">playback_color[1:0]</obj_property>
+         <obj_property name="ObjectShortName">playback_color[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/playback_ix">
+         <obj_property name="ElementShortName">playback_ix[8:0]</obj_property>
+         <obj_property name="ObjectShortName">playback_ix[8:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/lram_ix">
+         <obj_property name="ElementShortName">lram_ix[7:0]</obj_property>
+         <obj_property name="ObjectShortName">lram_ix[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/PLAYBACK">
+         <obj_property name="ElementShortName">PLAYBACK[7:0]</obj_property>
+         <obj_property name="ObjectShortName">PLAYBACK[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/cell1">
+         <obj_property name="ElementShortName">cell1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cell1[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/cell2">
+         <obj_property name="ElementShortName">cell2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cell2[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/cell3">
+         <obj_property name="ElementShortName">cell3[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cell3[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/cell4">
+         <obj_property name="ElementShortName">cell4[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cell4[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/pcell1">
+         <obj_property name="ElementShortName">pcell1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pcell1[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/pcell2">
+         <obj_property name="ElementShortName">pcell2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pcell2[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/pcell3">
+         <obj_property name="ElementShortName">pcell3[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pcell3[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/pcell4">
+         <obj_property name="ElementShortName">pcell4[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pcell4[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
