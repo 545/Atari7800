@@ -18,8 +18,9 @@
  * on the output pads if external memory is required.
  */
  `timescale 1ns / 1ps
+`include "atari7800.vh"
 
-`define SIM
+
 
 module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY );
 
