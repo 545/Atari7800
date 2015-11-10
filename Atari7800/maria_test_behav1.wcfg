@@ -398,6 +398,7 @@
          <obj_property name="ObjectShortName">DB_hold[7:0]</obj_property>
          <obj_property name="CustomSignalColor">#FFFF00</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/DB_OUT">
          <obj_property name="ElementShortName">DB_OUT[7:0]</obj_property>

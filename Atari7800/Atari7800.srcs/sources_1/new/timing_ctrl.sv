@@ -79,7 +79,7 @@ module timing_ctrl (
    logic              zp_ready;
 
    // interrupt on next cycle
-   logic              int_b_next;
+   logic              dli_next, raise_dli;
 
    logic [4:0]        startup_ctr;
    logic              cooldown_count;
@@ -136,8 +136,9 @@ module timing_ctrl (
          fast_ctr <= 2'b0;
          slow_ctr <= 3'b0;
          int_b_reg <= 1'b1;
-         int_b_next <= 1'b1;
+         raise_dli <= 1'b0;
          startup_ctr <= 4'd0;
+         dli_next <= 1'b0;
          halt_b <= 1'b1;
          zp_dma_start <= 1'b0;
          dp_dma_start <= 1'b0;
@@ -162,8 +163,7 @@ module timing_ctrl (
             slow_ctr <= 3'b000;
 
          // Interrupt generation
-         int_b_reg <= ~(~int_b_next & enable);
-         int_b_next <= ~dp_dma_done_dli;
+         int_b_reg <= ~(dli_next & enable);
 
          vga_row_prev <= vga_row;
          vga_row_prev_prev <= vga_row_prev;
@@ -194,6 +194,8 @@ module timing_ctrl (
            VWAIT: begin
               if (zp_ready & zp_written) begin
                  halt_b <= 1'b0;
+                 raise_dli <= 1'b0;
+                 dli_next <= 1'b0;
                  state <= ZP_DMA_STARTUP;
                  startup_ctr <= 1;
               end
@@ -202,6 +204,8 @@ module timing_ctrl (
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
                  halt_b <= 1'b0;
+                 raise_dli <= 1'b0;
+                 dli_next <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (vga_line_delta) begin
                  state <= START_OF_LINE;
@@ -212,6 +216,7 @@ module timing_ctrl (
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
+                 raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `DMA_STARTUP_CYCLES) begin
@@ -223,10 +228,12 @@ module timing_ctrl (
               zp_dma_start <= 1'b0;
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
+                 raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (zp_dma_done) begin
                  state <= HWAIT_COOLDOWN;
+                 raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end
@@ -235,6 +242,7 @@ module timing_ctrl (
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
+                 raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `START_OF_LINE_CYCLES) begin
@@ -247,10 +255,12 @@ module timing_ctrl (
               startup_ctr <= startup_ctr + 1;
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
+                 raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (startup_ctr == `DMA_STARTUP_CYCLES) begin
                  dp_dma_start <= 1'b1;
+                 raise_dli <= 1'b0;
                  state <= DP_DMA;
               end
            end
@@ -261,10 +271,11 @@ module timing_ctrl (
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (dp_dma_done | dp_dma_kill) begin
+                 halt_b <= 1'b0;
+                 raise_dli <= dp_dma_done_dli;
+                 cooldown_count <= `COOLDOWN_CYCLES;
                  if (ready_for_lswap) begin
                     state <= last_line ? VWAIT_COOLDOWN : HWAIT_COOLDOWN;
-                    halt_b <= 1'b0;
-                    cooldown_count <= `COOLDOWN_CYCLES;
                  end else begin
                     state <= DP_DMA_WAITSWAP;
                  end
@@ -273,31 +284,38 @@ module timing_ctrl (
            DP_DMA_WAITSWAP: begin
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
-                 halt_b <= 1'b0;
-                 cooldown_count <= `COOLDOWN_CYCLES;
-              end else if (ready_for_lswap) begin
+              end else if (cooldown_count == 0) begin
+                 halt_b <= 1'b1;
+                 raise_dli <= 1'b0;
+                 dli_next <= raise_dli;
+              end else begin
+                 cooldown_count <= cooldown_count - 1;
+              end
+              if (ready_for_lswap) begin
                  state <= last_line ? VWAIT_COOLDOWN : HWAIT_COOLDOWN;
-                 halt_b <= 1'b0;
-                 cooldown_count <= `COOLDOWN_CYCLES;
               end
            end
-             VWAIT_COOLDOWN: begin
-                if (cooldown_count == 0) begin
-                   state <= VWAIT;
-                   halt_b <= 1'b1;
-                end else begin
-                   cooldown_count <= cooldown_count - 1;
-                end
-             end
-             HWAIT_COOLDOWN: begin
-                if (cooldown_count == 0) begin
-                   state <= HWAIT;
-                   halt_b <= 1'b1;
-                end else begin
-                   cooldown_count <= cooldown_count - 1;
-                end
-             end
-         endcase
-      end
-   end
+           VWAIT_COOLDOWN: begin
+              if (cooldown_count == 0) begin
+                 state <= VWAIT;
+                 halt_b <= 1'b1;
+                 raise_dli <= 1'b0;
+                 dli_next <= raise_dli;
+              end else begin
+                 cooldown_count <= cooldown_count - 1;
+              end
+           end
+           HWAIT_COOLDOWN: begin
+              if (cooldown_count == 0) begin
+                 state <= HWAIT;
+                 halt_b <= 1'b1;
+                 raise_dli <= 1'b0;
+                 dli_next <= raise_dli;
+              end else begin
+                 cooldown_count <= cooldown_count - 1;
+              end
+           end
+       endcase
+    end
+  end
 endmodule

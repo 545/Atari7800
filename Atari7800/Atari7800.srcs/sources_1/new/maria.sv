@@ -169,7 +169,7 @@ module maria(
       .dp_dma_done_dli(dp_dma_done_dli),
       .sysclk(sysclk), .reset(reset),
       .last_line(last_line),
-      .character_width(read_DB_in[4])
+      .character_width(ctrl[4]), .char_base(char_base)
    );
 
 endmodule

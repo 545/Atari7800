@@ -12,16 +12,20 @@ module dma_ctrl(
 
    input  logic        zp_dma_start, dp_dma_start, dp_dma_kill,
    output logic        zp_dma_done, dp_dma_done, dp_dma_done_dli,
-   
+
    input logic         character_width,
+   input logic [7:0]   char_base,
 
    input logic         sysclk, reset, last_line
 );
 
    logic [15:0]        DP, PP, DP_saved, ZP_saved, ZP_saved_next;
+   logic [7:0]         CHAR_PTR;
+   logic [1:0]         char_ptr_cycles;
+   logic               char_bytes_fetched;
    logic [4:0]         WIDTH;
    logic [3:0]         OFFSET;
-   
+
    logic               INDIRECT_MODE;
 
    // control regs
@@ -30,19 +34,31 @@ module dma_ctrl(
    // states
    enum logic [1:0] {waiting = 2'b00, zp_dma = 2'b01, dp_dma = 2'b10} state;
    enum logic [2:0] {drive_zp_addr = 3'b000, w_offset = 3'b001, w_DPH = 3'b010 ,w_DPL = 3'b100} zp_state;
-   enum logic [3:0] {drive_dp_addr = 4'h0, w_PPL = 4'h1, w_PALETTE_WIDTH = 4'h2,
-                     w_PPH = 4'h3, w_PALETTE_WIDTH_2 = 4'h4, w_INPUT = 4'h5,
-                     drive_pp_addr = 4'h6, w_PIXELS = 4'h7, drive_next_zp_addr = 4'h8,
-                     w_next_offset = 4'h9, w_next_DPL = 4'ha, w_next_DPH = 4'hb} dp_state;
+   enum logic [3:0] {drive_dp_addr = 4'h0,
+                     w_PPL = 4'h1,
+                     w_PALETTE_WIDTH = 4'h2,
+                     w_PPH = 4'h3,
+                     w_PALETTE_WIDTH_2 = 4'h4,
+                     w_INPUT = 4'h5,
+                     drive_pp_addr = 4'h6,
+                     w_PIXELS = 4'h7,
+                     drive_char_addr = 4'h8,
+                     w_CHAR_PTR = 4'h9,
+                     w_CHAR_PIXELS = 4'ha,
+                     drive_next_zp_addr = 4'hb,
+                     w_next_offset = 4'hc,
+                     w_next_DPL = 4'hd,
+                     w_next_DPH = 4'he} dp_state;
+
 
    logic five_byte_mode, null_width, null_data, zero_offset;
 
    assign null_width = (DataB[4:0] == 5'b0);
    assign null_data = (DataB == 8'b0);
    assign zero_offset = (OFFSET == 4'b0);
-   
+
    assign drive_AB = (state != waiting);
-   
+
    assign ZP_saved_next = ZP_saved + 1;
 
    always_comb begin
@@ -77,6 +93,26 @@ module dma_ctrl(
                   AddrB = PP;
                   pixels_w = 1;
                end
+
+              drive_char_addr: begin
+                 AddrB = PP + {4'b0, OFFSET, 8'b0};
+              end
+              w_CHAR_PTR: begin
+                 AddrB = {char_base, DataB}; // CHAR_PTR == DataB
+              end
+              w_CHAR_PIXELS: begin
+                 if (char_ptr_cycles == 2'b11) begin
+                    pixels_w = 1;
+                    if (~char_bytes_fetched & character_width) begin
+                       AddrB = CHAR_PTR + 1;
+                    end else begin
+                       AddrB = PP + 1;
+                    end
+                 end else begin
+                    AddrB = CHAR_PTR;
+                 end
+              end
+
                drive_next_zp_addr: begin
                   AddrB = ZP_saved;
                end
@@ -170,11 +206,22 @@ module dma_ctrl(
                   // Write palette/width or determine 5b
                   // mode or find end of DP list
                   if (null_data) begin //Found end of DP list
-                     dp_state <= (zero_offset & ~last_line) ?
-                                 drive_next_zp_addr : drive_dp_addr;
-                     state <= (zero_offset & ~last_line) ? dp_dma : waiting;
-                     OFFSET <= zero_offset ? OFFSET : OFFSET-1;
-                     dp_dma_done <= ~(zero_offset & ~last_line);
+                     if (zero_offset) begin //Found end of zone
+                        if (last_line) begin // Found end of frame
+                           dp_state <= drive_dp_addr;
+                           state <= waiting;
+                           dp_dma_done <= 1;
+                           dp_dma_done_dli <= DLIen;
+                        end else begin
+                           dp_state <= drive_next_zp_addr;
+                           state <= dp_dma;
+                        end
+                     end else begin
+                        state <= waiting;
+                        dp_state <= drive_dp_addr;
+                        OFFSET <= OFFSET - 1;
+                        dp_dma_done <= 1;
+                     end
                   end else begin
                      // Write palette and width or determine its 5b mode
                      dp_state <= w_PPH;
@@ -201,10 +248,14 @@ module dma_ctrl(
                    DP_saved <= DP_saved+1;
                 end
                 w_INPUT: begin //write INPUT
-                   if ((A12en & drive_pp_addr[12]) | (A11en & drive_pp_addr[11]))
-                      dp_state <= drive_dp_addr;
-                   else
-                      dp_state <= drive_pp_addr;
+                   if (INDIRECT_MODE) begin
+                      dp_state <= drive_char_addr;
+                   end else begin
+                       if ((A12en & PP[12]) | (A11en & PP[11]))
+                          dp_state <= drive_dp_addr;
+                       else
+                          dp_state <= drive_pp_addr;
+                   end
                    // palette_w <= 0;
                    // AddrB <= DP;
                    // input_w <= 1;
@@ -223,6 +274,35 @@ module dma_ctrl(
                    dp_state <= (WIDTH == 5'b0) ? drive_dp_addr : w_PIXELS;
                    // pixels_w <= 1;
                 end
+                drive_char_addr: begin // read character pointer from pp
+                   dp_state <= w_CHAR_PTR;
+                   WIDTH <= WIDTH + 1;
+                   PP <= PP+{4'b0,OFFSET,8'b1};
+                end
+                w_CHAR_PTR: begin
+                   dp_state <= w_CHAR_PIXELS;
+                   CHAR_PTR <= DataB;
+                   char_ptr_cycles <= 2'b00;
+                   char_bytes_fetched <= 2'b0;
+                end
+                w_CHAR_PIXELS: begin
+                   if (char_ptr_cycles == 2'b11) begin
+                      if (~char_bytes_fetched & character_width) begin
+                         dp_state <= w_CHAR_PIXELS;
+                         char_bytes_fetched <= 1'b1;
+                         CHAR_PTR <= CHAR_PTR + 1;
+                      end else begin
+                         if (WIDTH == 5'b0) begin
+                            dp_state <= drive_dp_addr;
+                         end else begin
+                            dp_state <= w_CHAR_PTR;
+                         end
+                      end
+                   end else begin
+                      char_ptr_cycles <= char_ptr_cycles + 1;
+                   end
+                end
+
                 /////////////////////////////////////////////////
                 //Loading next zp when OFFSET has been decremented to 0
                 drive_next_zp_addr: begin //Read zp
@@ -251,7 +331,7 @@ module dma_ctrl(
                    DP_saved <= {DP[15:8], DataB};
                    dp_dma_done <= 1;
                    dp_dma_done_dli <= DLIen_prev;
-                end               
+                end
               endcase // case (dp_state)
            end // case: dp_dma
          endcase
