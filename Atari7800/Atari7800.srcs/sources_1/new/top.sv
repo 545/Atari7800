@@ -118,10 +118,16 @@ module Atari7800(
    //logic [5:0] chip_select_buf;
    //logic [5:0] chip_select_cur;
    `chipselect       CS_buf;
-   logic       RW_buf;
+   //logic       RW_buf;
    
    logic mem_clk;
-   assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
+   
+   always_ff @(pclk_0, sysclk_7_143) 
+    if(halt_b)
+        mem_clk <= pclk_0;
+    else
+        mem_clk <= sysclk_7_143;
+   //assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
    
    //assign chip_select_cur = {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
    
@@ -129,13 +135,14 @@ module Atari7800(
       if (reset) begin
          //chip_select_buf <= 6'b111110;
          CS_buf <= `CS_NONE;
-         RW_buf <= 1'b1;
+         //RW_buf <= 1'b1;
       end else begin
          //chip_select_buf <= chip_select_cur;
          CS_buf <= CS;
-         RW_buf <= RW; 
+         //RW_buf <= RW; 
       end
    end
+
    
    //CS LOGIC
    logic ram0_cs, ram1_cs, bios_cs, tia_cs, riot_cs, riot_ram_cs;
@@ -159,7 +166,7 @@ module Atari7800(
    
 
    always_comb begin
-      if (RW_buf) begin casex (CS_buf)
+      casex (CS_buf)
           `CS_RAM0: read_DB = ram0_DB_out;
           `CS_RAM1: read_DB = ram1_DB_out;
           `CS_RIOT_IO,
@@ -170,13 +177,11 @@ module Atari7800(
           `CS_CART: read_DB = cart_DB_out;
           // Otherwise, nothing is driving the data bus. THIS SHOULD NEVER HAPPEN
           default: read_DB = 8'h46;
-      endcase end else begin
-          read_DB = 8'h47;
-      end
+      endcase
       
       write_DB = core_DB_out;
       
-      AB = (~core_halt_b & maria_drive_AB) ? maria_AB_out : core_AB_out;
+      AB = (maria_drive_AB) ? maria_AB_out : core_AB_out;
    end
    
 
