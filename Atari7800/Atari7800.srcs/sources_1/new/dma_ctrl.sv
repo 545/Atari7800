@@ -72,23 +72,42 @@ module dma_ctrl(
             AddrB = ZP_saved;
          end
          dp_dma: begin
-            AddrB = DP_saved;
+            AddrB = 16'hx;
             case (dp_state)
-               w_PALETTE_WIDTH: begin
-                   if (~null_data) begin
-                      wm_w = null_width;
-                      palette_w = ~null_width;
-                   end
+               drive_dp_addr: begin
+                  AddrB = DP_saved;
                end
+               
+               w_PPL: begin
+                  AddrB = DP_saved;
+               end
+               
+               w_PALETTE_WIDTH: begin
+                  AddrB = DP_saved;
+                  if (~null_data) begin
+                     wm_w = null_width;
+                     palette_w = ~null_width;
+                  end
+               end
+               
+               w_PPH: begin
+                  AddrB = DP_saved;
+               end
+               
                w_PALETTE_WIDTH_2: begin
+                  AddrB = DP_saved;
                   palette_w = 1;
                end
+               
                w_INPUT: begin
+                  AddrB = DP_saved;
                   input_w = 1;
                end
+               
                drive_pp_addr: begin
                   AddrB = PP + {4'b0, OFFSET, 8'b0};
                end
+               
                w_PIXELS: begin
                   AddrB = PP;
                   pixels_w = 1;
@@ -97,9 +116,11 @@ module dma_ctrl(
               drive_char_addr: begin
                  AddrB = PP + {4'b0, OFFSET, 8'b0};
               end
+              
               w_CHAR_PTR: begin
                  AddrB = {char_base, DataB}; // CHAR_PTR == DataB
               end
+              
               w_CHAR_PIXELS: begin
                  if (char_ptr_cycles == 2'b11) begin
                     pixels_w = 1;
@@ -117,6 +138,9 @@ module dma_ctrl(
                   AddrB = ZP_saved;
                end
                w_next_offset: begin
+                  AddrB = ZP_saved;
+               end
+               w_next_DPL: begin
                   AddrB = ZP_saved;
                end
                w_next_DPL: begin

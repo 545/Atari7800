@@ -957,6 +957,7 @@
          <obj_property name="ObjectShortName">LRAM_OUT_COL[8:0]</obj_property>
          <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/display_mode">
          <obj_property name="ElementShortName">display_mode[2:0]</obj_property>
@@ -987,12 +988,14 @@
          <obj_property name="ObjectShortName">playback_ix[8:0]</obj_property>
          <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/lram_ix">
          <obj_property name="ElementShortName">lram_ix[7:0]</obj_property>
          <obj_property name="ObjectShortName">lram_ix[7:0]</obj_property>
          <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_inst/line_ram_inst/PLAYBACK">
          <obj_property name="ElementShortName">PLAYBACK[7:0]</obj_property>
