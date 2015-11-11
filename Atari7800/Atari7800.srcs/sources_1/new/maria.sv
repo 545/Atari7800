@@ -19,11 +19,12 @@ module maria(
    // Clocking
    input logic        reset,
    input logic        sysclk, pclk_2,
-   output logic       tia_clk, pclk_0,
+   output logic       tia_clk, pclk_0, sel_slow_clock,
 
    // Memory Map Select lines
    output `chipselect  CS,
    input logic        bios_en,
+   input logic        tia_en,
    //output logic       ram0_b, ram1_b, p6532_b, tia_b,
    //output logic       riot_ram_b,
 
@@ -70,7 +71,7 @@ module maria(
    logic [15:0]      ZP;
 
    //// Signals from memory_map to timing_ctrl
-   logic             deassert_ready, zp_written, slow_clock;
+   logic             deassert_ready, zp_written;
 
    // Write enables for internal Display List registers
    logic             palette_w, input_w, pixels_w, wm_w;
@@ -119,7 +120,7 @@ module maria(
       .sysclk(sysclk), .reset(reset), .pclk_2(pclk_2),
       .pclk_0(pclk_0), .tia_clk(tia_clk),
       // Signals needed to slow pclk_0
-      .sel_slow_clock(slow_clock),
+      .sel_slow_clock(sel_slow_clock),
       // Outputs to 6502
       .halt_b(halt_b), .int_b(int_b), .ready(ready),
       // Signals to/from dma_ctrl
@@ -138,6 +139,7 @@ module maria(
 
    memory_map memory_map_inst(
       .maria_en(enable),
+      .tia_en(tia_en),
       .AB(AB_in),
       .DB_in(write_DB_in), .DB_out(DB_out),
       //.drive_DB(drive_DB),
@@ -151,7 +153,7 @@ module maria(
       .status_read({VBLANK, 7'b0}),
       .char_base(char_base),
       .ZP(ZP),
-      .slow_clock(slow_clock),
+      .sel_slow_clock(sel_slow_clock),
       .deassert_ready(deassert_ready),
       .zp_written(zp_written),
       .sysclock(sysclk), .reset_b(~reset),

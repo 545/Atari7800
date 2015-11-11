@@ -143,7 +143,7 @@ module dma_ctrl(
                w_next_DPL: begin
                   AddrB = ZP_saved;
                end
-               w_next_DPL: begin
+               w_next_DPH: begin
                   AddrB = ZP_saved;
                end
             endcase

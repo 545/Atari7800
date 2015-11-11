@@ -45,6 +45,7 @@ module timing_ctrl (
 
    // Signals to/from line_ram
    output logic       lram_swap,
+  
 
    // VGA Status
    input  logic [9:0] vga_row, vga_col,
@@ -69,8 +70,8 @@ module timing_ctrl (
    logic              vga_line_delta;
 
    // Clock division
-   logic [1:0]        fast_ctr;
-   logic [2:0]        slow_ctr;
+   logic              fast_ctr;
+   logic [1:0]        slow_ctr;
    logic              fast_clk, slow_clk;
 
    logic              ready_for_lswap, ready_for_lswap_prev;
@@ -114,7 +115,6 @@ module timing_ctrl (
 
    assign last_line = (row == (`NTSC_SCANLINE_COUNT - 1));
 
-   assign tia_clk = fast_ctr[1]; // Divide sysclk by 2
    assign pclk_0 = sel_slow_clock ? slow_clk : fast_clk;
    
    assign ready_for_lswap = ((enable) & second_vga_line &
@@ -133,8 +133,8 @@ module timing_ctrl (
          fast_clk <= 1'b0;
          cooldown_count <= 1'b0;
          slow_clk <= 1'b0;
-         fast_ctr <= 2'b0;
-         slow_ctr <= 3'b0;
+         fast_ctr <= 1'b0;
+         slow_ctr <= 2'b0;
          int_b_reg <= 1'b1;
          raise_dli <= 1'b0;
          startup_ctr <= 4'd0;
@@ -144,23 +144,28 @@ module timing_ctrl (
          dp_dma_start <= 1'b0;
          ready_for_lswap_prev <= 1'b0;
          ready <= 1'b1;
+         tia_clk <= 1'b0;
       end else begin
          // Clock generation
-         fast_ctr <= fast_ctr + 2'b01;
-         if (&fast_ctr) begin
-            fast_clk <= ~fast_clk;
+         tia_clk <= ~tia_clk;
+         if (sel_slow_clock) begin
+            fast_ctr <= 1'b0;
+            fast_clk <= slow_clk; 
+            if (slow_ctr == 2'd2) begin
+                slow_ctr <= 2'b0;
+                slow_clk <= ~slow_clk;
+            end
+            else
+                slow_ctr <= slow_ctr + 2'b01;
          end
-         if (sel_slow_clock)
-            fast_ctr <= 2'b0; 
-         
-         if (slow_ctr == 3'd5) begin
-            slow_ctr <= 3'b0;
-            slow_clk <= ~slow_clk;
-         end else begin
-            slow_ctr <= slow_ctr + 3'b001;
+         else begin
+            slow_ctr <= 2'b00;
+            slow_clk <= fast_clk;
+            fast_ctr <= ~fast_ctr;
+            if (fast_ctr) begin
+                fast_clk <= ~fast_clk;
+            end
          end
-         if (~sel_slow_clock)
-            slow_ctr <= 3'b000;
 
          // Interrupt generation
          int_b_reg <= ~(dli_next & enable);

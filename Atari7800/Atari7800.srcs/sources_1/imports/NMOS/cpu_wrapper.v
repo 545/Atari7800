@@ -26,6 +26,8 @@ assign WE = WE_OUT & halt_b;
 assign rdy_in = RDY & halt_b;
 assign DB_hold = (holding) ? DB_hold : DB_IN;
 
+always_ff @(holding, DB_IN)
+
 always @(posedge clk, posedge reset, negedge rdy_in) begin
     if (reset)
         holding <= 1'b0;

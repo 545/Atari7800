@@ -15,8 +15,12 @@ module Atari7800(
   input  logic [7:0]  cart_DB_out,
   output logic [15:0] AB,
   output logic        RW,
-  output logic        pclk_0
+  output logic        pclk_0,
+  
+  output logic [7:0] ld
 );
+
+   assign ld[0] = lock_ctrl;
 
    //////////////
    // Signals //
@@ -24,7 +28,7 @@ module Atari7800(
 
    // Clock Signals
    logic             clock_25, clock_100;
-   logic             sysclk_7_143, pclk_2, tia_clk;
+   logic             sysclk_7_143, pclk_2, tia_clk, sel_slow_clock;
    logic             clock_divider_locked;
 
    // VGA Signals
@@ -41,7 +45,7 @@ module Atari7800(
 `ifdef SIM
 
   reg [8*8-1:0] csname;
-  reg [8*8-1:0] csbufname;
+  reg [8*8-1:0] maria_csbufname, core_csbufname;
 
   always @* begin
       case(CS)
@@ -56,15 +60,26 @@ module Atari7800(
          `CS_CART: csname = "cart";
      endcase
           
-     case(CS_buf)
-         `CS_RAM0: csbufname = "ram0";
-         `CS_RAM1: csbufname = "ram1";
-         `CS_RIOT_IO: csbufname = "riot";
-         `CS_RIOT_RAM: csbufname = "riot_ram";
-         `CS_TIA: csbufname = "tia";
-         `CS_BIOS: csbufname = "bios";
-         `CS_MARIA: csbufname = "maria";
-         `CS_CART: csbufname = "cart";
+     case(CS_maria_buf)
+         `CS_RAM0: core_csbufname = "ram0";
+         `CS_RAM1: core_csbufname = "ram1";
+         `CS_RIOT_IO: core_csbufname = "riot";
+         `CS_RIOT_RAM: core_csbufname = "riot_ram";
+         `CS_TIA: core_csbufname = "tia";
+         `CS_BIOS: core_csbufname = "bios";
+         `CS_MARIA: core_csbufname = "maria";
+         `CS_CART: core_csbufname = "cart";
+     endcase
+     
+     case(CS_core_buf)
+         `CS_RAM0: maria_csbufname = "ram0";
+         `CS_RAM1: maria_csbufname = "ram1";
+         `CS_RIOT_IO: maria_csbufname = "riot";
+         `CS_RIOT_RAM: maria_csbufname = "riot_ram";
+         `CS_TIA: maria_csbufname = "tia";
+         `CS_BIOS: maria_csbufname = "bios";
+         `CS_MARIA: maria_csbufname = "maria";
+         `CS_CART: maria_csbufname = "cart";
      endcase
    end
    
@@ -102,12 +117,6 @@ module Atari7800(
    logic maria_en, tia_en, lock_ctrl, bios_en_b;
    logic [1:0] ctrl_writes;
 
-   // Memory Map Select lines
-   /*logic                   ram0_cs_b, ram1_cs_b,
-                           riot_cs_b, tia_cs_b,
-                           riot_ram_cs_b, bios_cs_b;
-    */
-    
    // Buses
    // AB and RW defined in port declaration
    logic  [7:0]           read_DB, write_DB;
@@ -115,34 +124,25 @@ module Atari7800(
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
-   //logic [5:0] chip_select_buf;
-   //logic [5:0] chip_select_cur;
-   `chipselect       CS_buf;
-   //logic       RW_buf;
+   `chipselect       CS_maria_buf, CS_core_buf;
    
-   logic mem_clk;
-   
-   always_ff @(pclk_0, sysclk_7_143) 
-    if(halt_b)
-        mem_clk <= pclk_0;
-    else
-        mem_clk <= sysclk_7_143;
-   //assign mem_clk = halt_b ? pclk_0 : sysclk_7_143;
-   
-   //assign chip_select_cur = {ram0_cs_b, ram1_cs_b, riot_cs_b, tia_cs_b, bios_cs_b, maria_drive_DB};
-   
-   always_ff @(posedge mem_clk, posedge reset) begin
+   always_ff @(posedge sysclk_7_143, posedge reset) begin
       if (reset) begin
-         //chip_select_buf <= 6'b111110;
-         CS_buf <= `CS_NONE;
-         //RW_buf <= 1'b1;
+         CS_maria_buf <= `CS_NONE;
       end else begin
-         //chip_select_buf <= chip_select_cur;
-         CS_buf <= CS;
-         //RW_buf <= RW; 
+         CS_maria_buf <= CS; 
       end
    end
-
+   
+   always_ff @(posedge pclk_0, posedge reset) begin
+      if (reset) begin
+         CS_core_buf <= `CS_NONE;
+      end else begin
+         CS_core_buf <= CS;
+      end
+   end
+   
+   assign CS_buf = maria_drive_AB ? CS_maria_buf : CS_core_buf;
    
    //CS LOGIC
    logic ram0_cs, ram1_cs, bios_cs, tia_cs, riot_cs, riot_ram_cs;
@@ -186,7 +186,7 @@ module Atari7800(
    
 
    ram0 ram0_inst(
-      .clka(mem_clk),
+      .clka(sysclk_7_143),
       //.ena(~ram0_cs_b),
       .ena(ram0_cs),
       .wea(~RW),
@@ -196,7 +196,7 @@ module Atari7800(
    );
 
    ram1 ram1_inst(
-      .clka(mem_clk),
+      .clka(sysclk_7_143),
       //.ena(~ram1_cs_b),
       .ena(ram1_cs),
       .wea(~RW),
@@ -208,7 +208,7 @@ module Atari7800(
   //assign bios_cs_b = ~(AB[15] & ~bios_en_b);
 
   
-  BIOS_ROM BIOS(.clka(mem_clk),
+  BIOS_ROM BIOS(.clka(sysclk_7_143),
     .ena(bios_cs),
     .addra(AB[11:0]),
     .douta(bios_DB_out)
@@ -258,6 +258,8 @@ module Atari7800(
       .reset(reset), 
       .sysclk(sysclk_7_143),
       .pclk_2(pclk_2), 
+      .sel_slow_clock(sel_slow_clock),
+      .tia_en(tia_en),
       .tia_clk(tia_clk), 
       .pclk_0(pclk_0),
       .CS(CS),
@@ -346,7 +348,9 @@ module Atari7800(
   
   
   assign RDY = maria_en ? maria_RDY : ((tia_en) ? tia_RDY : clock_divider_locked);
+  
   assign core_halt_b = (ctrl_writes == 2'd2) ? halt_b : 1'b1;
+  
   cpu_wrapper cpu_inst(.clk(pclk_0),
     .reset(cpu_reset),
     .AB(core_AB_out),
@@ -360,7 +364,7 @@ module Atari7800(
 
 
 
-  ctrl_reg ctrl(.clk(mem_clk),
+  ctrl_reg ctrl(.clk(pclk_0),
                 .lock_in(write_DB[0]),
                 .maria_en_in(write_DB[1]),
                 .bios_en_in(write_DB[2]),

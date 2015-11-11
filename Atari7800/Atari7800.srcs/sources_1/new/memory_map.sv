@@ -4,6 +4,7 @@
 
 module memory_map (
    input  logic             maria_en,
+   input  logic             tia_en,
    input  logic [15:0]      AB,
    input  logic [7:0]       DB_in,
    output logic [7:0]       DB_out,
@@ -19,7 +20,7 @@ module memory_map (
    output logic [15:0]      ZP,
 
    // whether to slow pclk_0 for slow memory accesses
-   output logic             slow_clock,
+   output logic             sel_slow_clock,
 
    // when wait_sync is written to, ready is deasserted
    output logic             deassert_ready, zp_written,
@@ -35,7 +36,7 @@ module memory_map (
    
    logic [7:0]              read_addr_found, write_addr_found;
 
-   assign slow_clock = ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM));   
+   assign sel_slow_clock = (tia_en) ? 1'b1 : ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM));   
 
    assign ZP = {ZPH, ZPL};
 
