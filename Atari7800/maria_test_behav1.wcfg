@@ -283,9 +283,9 @@
          <obj_property name="ElementShortName">CS[3:0]</obj_property>
          <obj_property name="ObjectShortName">CS[3:0]</obj_property>
       </wvobject>
-      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/CS_buf">
-         <obj_property name="ElementShortName">CS_buf[3:0]</obj_property>
-         <obj_property name="ObjectShortName">CS_buf[3:0]</obj_property>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/CS_buf">
+         <obj_property name="ElementShortName">CS_buf</obj_property>
+         <obj_property name="ObjectShortName">CS_buf</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/csname">
          <obj_property name="ElementShortName">csname[63:0]</obj_property>
@@ -294,11 +294,18 @@
          <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/csbufname">
-         <obj_property name="ElementShortName">csbufname[63:0]</obj_property>
-         <obj_property name="ObjectShortName">csbufname[63:0]</obj_property>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/maria_csbufname">
+         <obj_property name="ElementShortName">maria_csbufname[63:0]</obj_property>
+         <obj_property name="ObjectShortName">maria_csbufname[63:0]</obj_property>
          <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/core_csbufname">
+         <obj_property name="ElementShortName">core_csbufname[63:0]</obj_property>
+         <obj_property name="ObjectShortName">core_csbufname[63:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject type="group" fp_name="group987">
@@ -406,6 +413,10 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="CustomSignalColor">#FFA500</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/load_db">
+         <obj_property name="ElementShortName">load_db</obj_property>
+         <obj_property name="ObjectShortName">load_db</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/RD">
          <obj_property name="ElementShortName">RD</obj_property>
@@ -546,12 +557,6 @@
          <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/memory_map_inst/slow_clock">
-         <obj_property name="ElementShortName">slow_clock</obj_property>
-         <obj_property name="ObjectShortName">slow_clock</obj_property>
-         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/maria_inst/memory_map_inst/deassert_ready">
          <obj_property name="ElementShortName">deassert_ready</obj_property>

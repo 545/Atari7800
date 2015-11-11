@@ -17,16 +17,15 @@ input halt_b;
 
 logic rdy_in;
 logic WE_OUT;
-logic holding;
-logic [7:0] DB_hold, DB_held;
+logic holding, load_db;
+logic [7:0] DB_hold, DB_into_cpu;
 
-cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_hold),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
+cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_into_cpu),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in));
 
 assign RD = ~WE;
 assign WE = WE_OUT & halt_b;
 assign rdy_in = RDY & halt_b;
-
-logic load_db;
+assign DB_into_cpu = (load_db) ? DB_IN : DB_hold;
 
 always_ff @(posedge clk) begin
    if (rdy_in)

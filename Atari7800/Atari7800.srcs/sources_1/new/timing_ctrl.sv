@@ -150,7 +150,7 @@ module timing_ctrl (
          tia_clk <= ~tia_clk;
          if (sel_slow_clock) begin
             fast_ctr <= 1'b0;
-            fast_clk <= slow_clk; 
+            fast_clk <= 1'b1; 
             if (slow_ctr == 2'd2) begin
                 slow_ctr <= 2'b0;
                 slow_clk <= ~slow_clk;
@@ -160,7 +160,7 @@ module timing_ctrl (
          end
          else begin
             slow_ctr <= 2'b00;
-            slow_clk <= fast_clk;
+            slow_clk <= 1'b1;
             fast_ctr <= ~fast_ctr;
             if (fast_ctr) begin
                 fast_clk <= ~fast_clk;

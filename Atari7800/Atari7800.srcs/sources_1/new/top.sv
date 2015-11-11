@@ -40,7 +40,6 @@ module Atari7800(
    logic                   halt_b, maria_drive_AB;
    logic [7:0]             uv_display, uv_maria, uv_tia;
    logic [15:0]            maria_AB_out;
-   `chipselect              CS;
 
 `ifdef SIM
 
@@ -124,7 +123,7 @@ module Atari7800(
    logic [7:0]            tia_DB_out, riot_DB_out, maria_DB_out,
                           ram0_DB_out, ram1_DB_out, bios_DB_out;
 
-   `chipselect       CS_maria_buf, CS_core_buf;
+   `chipselect       CS_maria_buf, CS_core_buf, CS_buf, CS;
    
    always_ff @(posedge sysclk_7_143, posedge reset) begin
       if (reset) begin
@@ -352,6 +351,7 @@ module Atari7800(
   assign core_halt_b = (ctrl_writes == 2'd2) ? halt_b : 1'b1;
   
   cpu_wrapper cpu_inst(.clk(pclk_0),
+    .sysclk(sysclk_7_143),
     .reset(cpu_reset),
     .AB(core_AB_out),
     .DB_IN(read_DB),

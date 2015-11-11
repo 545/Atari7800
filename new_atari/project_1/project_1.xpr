@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Product Version: Vivado v2015.2 (64-bit)              -->
+<!--                                                         -->
+<!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
+
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/new_atari/project_1/project_1.xpr">
+  <DefaultLaunch Dir="$PRUNDIR"/>
+  <Configuration>
+    <Option Name="Id" Val="75ef7a382abf472a848b9b0ffb0edacc"/>
+    <Option Name="Part" Val="xc7z020clg484-1"/>
+    <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
+    <Option Name="TargetLanguage" Val="VHDL"/>
+    <Option Name="BoardPart" Val="em.avnet.com:zed:part0:1.3"/>
+    <Option Name="ActiveSimSet" Val="sim_1"/>
+    <Option Name="DefaultLib" Val="xil_defaultlib"/>
+    <Option Name="EnableCoreContainer" Val="FALSE"/>
+    <Option Name="EnableCoreContainerForIPI" Val="FALSE"/>
+  </Configuration>
+  <FileSets Version="1" Minor="31">
+    <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/i3c2.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/i3c2.vhd"/>
+          <Attr Name="ImportTime" Val="1445537011"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/adau1761_configuraiton_data.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/adau1761_configuraiton_data.vhd"/>
+          <Attr Name="ImportTime" Val="1445537011"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/NMOS/ALU.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/imports/NMOS/ALU.v"/>
+          <Attr Name="ImportTime" Val="1446312368"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/i2c.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/i2c.vhd"/>
+          <Attr Name="ImportTime" Val="1445537012"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/ADAU1761_interface.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/ADAU1761_interface.vhd"/>
+          <Attr Name="ImportTime" Val="1445537011"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/i2s_data_interface.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/i2s_data_interface.vhd"/>
+          <Attr Name="ImportTime" Val="1445537011"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/atari7800.vh">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/atari7800.vh"/>
+          <Attr Name="ImportTime" Val="1447089866"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/NMOS/cpu.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v"/>
+          <Attr Name="ImportTime" Val="1447021508"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/timing_ctrl.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/timing_ctrl.sv"/>
+          <Attr Name="ImportTime" Val="1446683952"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/memory_map.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/memory_map.sv"/>
+          <Attr Name="ImportTime" Val="1447022301"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/line_ram.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/line_ram.sv"/>
+          <Attr Name="ImportTime" Val="1446659718"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/dma_ctrl.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/dma_ctrl.sv"/>
+          <Attr Name="ImportTime" Val="1447104125"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/clocking.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/clocking.vhd"/>
+          <Attr Name="ImportTime" Val="1445537012"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/dsp_block.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/dsp_block.vhd"/>
+          <Attr Name="ImportTime" Val="1445537012"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/adau1761_izedboard.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/adau1761_izedboard.vhd"/>
+          <Attr Name="ImportTime" Val="1445537011"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/audio.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/audio.sv"/>
+          <Attr Name="ImportTime" Val="1446852850"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/tia.vh">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/tia.vh"/>
+          <Attr Name="ImportTime" Val="1446312369"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/tia.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/tia.v"/>
+          <Attr Name="ImportTime" Val="1447088244"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/ram1/ram1.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/ram1/ram1.xci"/>
+          <Attr Name="ImportTime" Val="1446411326"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/ram0/ram0.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/ram0/ram0.xci"/>
+          <Attr Name="ImportTime" Val="1446411168"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/NMOS/cpu_wrapper.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu_wrapper.v"/>
+          <Attr Name="ImportTime" Val="1447088244"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/uv_vga.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/uv_vga.sv"/>
+          <Attr Name="ImportTime" Val="1446312369"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/maria.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/maria.sv"/>
+          <Attr Name="ImportTime" Val="1446932505"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/clock_divider/clock_divider.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/clock_divider/clock_divider.xci"/>
+          <Attr Name="ImportTime" Val="1446312368"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/riot/riot.vh">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../riot/riot.vh"/>
+          <Attr Name="ImportTime" Val="1446312370"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/riot/riot.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../riot/riot.v"/>
+          <Attr Name="ImportTime" Val="1446852850"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/audio_xformer.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/audio_xformer.sv"/>
+          <Attr Name="ImportTime" Val="1446852850"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Atari7800/tia/sound_interface/adau1761_test.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../tia/sound_interface/adau1761_test.vhd"/>
+          <Attr Name="ImportTime" Val="1446312370"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/top.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/top.sv"/>
+          <Attr Name="ImportTime" Val="1447084472"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/CART_ROM/CART_ROM.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/CART_ROM/CART_ROM.xci"/>
+          <Attr Name="ImportTime" Val="1447179030"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/cart_top.sv">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/cart_top.sv"/>
+          <Attr Name="ImportTime" Val="1447021560"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/memory/memory.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/memory/memory.xci"/>
+          <Attr Name="ImportTime" Val="1447179021"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/maria_test.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/maria_test.sv"/>
+          <Attr Name="ImportTime" Val="1446411895"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/cpu_wrapper.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/cpu_wrapper.v"/>
+          <Attr Name="ImportTime" Val="1446319559"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/cpu.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/cpu.v"/>
+          <Attr Name="ImportTime" Val="1446319528"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/ALU.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/ALU.v"/>
+          <Attr Name="ImportTime" Val="1446319520"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Atari7800/et2.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/7800.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/new/robotron.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="cart_top"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+      <Filter Type="Constrs"/>
+      <File Path="$PSRCDIR/constrs_1/imports/new/constraints.xdc">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/constrs_1/new/constraints.xdc"/>
+          <Attr Name="ImportTime" Val="1447177740"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="ConstrsType" Val="XDC"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
+      <Config>
+        <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="maria_test"/>
+        <Option Name="TopLib" Val="xil_defaultlib"/>
+        <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="SrcSet" Val="sources_1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="BIOS_ROM" Type="BlockSrcs" RelSrcDir="$PSRCDIR/BIOS_ROM">
+      <File Path="$PSRCDIR/sources_1/ip/BIOS_ROM/BIOS_ROM.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Atari7800/Atari7800.srcs/sources_1/ip/BIOS_ROM/BIOS_ROM.xci"/>
+          <Attr Name="ImportTime" Val="1447179024"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="BIOS_ROM"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+  </FileSets>
+  <Simulators>
+    <Simulator Name="XSim">
+      <Option Name="Description" Val="Vivado Simulator"/>
+      <Option Name="CompiledLib" Val="0"/>
+    </Simulator>
+    <Simulator Name="ModelSim">
+      <Option Name="Description" Val="ModelSim Simulator"/>
+    </Simulator>
+    <Simulator Name="Questa">
+      <Option Name="Description" Val="Questa Advanced Simulator"/>
+    </Simulator>
+    <Simulator Name="IES">
+      <Option Name="Description" Val="Incisive Enterprise Simulator (IES)"/>
+    </Simulator>
+    <Simulator Name="VCS">
+      <Option Name="Description" Val="Verilog Compiler Simulator (VCS)"/>
+    </Simulator>
+    <Simulator Name="Riviera">
+      <Option Name="Description" Val="Riviera-PRO Simulator"/>
+    </Simulator>
+  </Simulators>
+  <Runs Version="1" Minor="9">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+    </Run>
+    <Run Id="BIOS_ROM_synth_1" Type="Ft3:Synth" SrcSet="BIOS_ROM" Part="xc7z020clg484-1" ConstrsSet="BIOS_ROM" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/BIOS_ROM_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+    </Run>
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" SynthRun="synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015">
+          <Desc>Vivado Implementation Defaults</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+    </Run>
+    <Run Id="BIOS_ROM_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="BIOS_ROM" Description="Vivado Implementation Defaults" SynthRun="BIOS_ROM_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015">
+          <Desc>Vivado Implementation Defaults</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+    </Run>
+  </Runs>
+</Project>
