@@ -59,7 +59,7 @@ module Atari7800(
          `CS_CART: csname = "cart";
      endcase
           
-     case(CS_maria_buf)
+     case(CS_core_buf)
          `CS_RAM0: core_csbufname = "ram0";
          `CS_RAM1: core_csbufname = "ram1";
          `CS_RIOT_IO: core_csbufname = "riot";
@@ -70,7 +70,7 @@ module Atari7800(
          `CS_CART: core_csbufname = "cart";
      endcase
      
-     case(CS_core_buf)
+     case(CS_maria_buf)
          `CS_RAM0: maria_csbufname = "ram0";
          `CS_RAM1: maria_csbufname = "ram1";
          `CS_RIOT_IO: maria_csbufname = "riot";

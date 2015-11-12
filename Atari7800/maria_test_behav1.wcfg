@@ -283,9 +283,17 @@
          <obj_property name="ElementShortName">CS[3:0]</obj_property>
          <obj_property name="ObjectShortName">CS[3:0]</obj_property>
       </wvobject>
-      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/CS_buf">
-         <obj_property name="ElementShortName">CS_buf</obj_property>
-         <obj_property name="ObjectShortName">CS_buf</obj_property>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/CS_buf">
+         <obj_property name="ElementShortName">CS_buf[3:0]</obj_property>
+         <obj_property name="ObjectShortName">CS_buf[3:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/CS_core_buf">
+         <obj_property name="ElementShortName">CS_core_buf[3:0]</obj_property>
+         <obj_property name="ObjectShortName">CS_core_buf[3:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/CS_maria_buf">
+         <obj_property name="ElementShortName">CS_maria_buf[3:0]</obj_property>
+         <obj_property name="ObjectShortName">CS_maria_buf[3:0]</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/csname">
          <obj_property name="ElementShortName">csname[63:0]</obj_property>

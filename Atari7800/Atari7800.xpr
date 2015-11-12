@@ -317,7 +317,7 @@
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/maria_test_behav.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/maria_test_behav1.wcfg"/>
-        <Option Name="xsim.simulate.runtime" Val="5 s"/>
+        <Option Name="xsim.simulate.runtime" Val="3 s"/>
       </Config>
     </FileSet>
   </FileSets>
