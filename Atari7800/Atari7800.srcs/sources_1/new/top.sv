@@ -350,6 +350,27 @@ module Atari7800(
   
   assign core_halt_b = (ctrl_writes == 2'd2) ? halt_b : 1'b1;
   
+  /// DEBUG  ///////////////////////////////////////////
+  logic [15:0] pc_temp;
+  
+  assign ld[1] = pc_reached_f7b9;
+  assign ld[2] = pc_reached_26b9;
+  
+  logic pc_reached_f7b9;
+  logic pc_reached_26b9;
+  always_ff @(posedge sysclk, posedge reset) begin
+     if (reset) begin
+        pc_reached_f7b9 <= 1'b0;
+        pc_reached_26b9 <= 1'b0;
+     end else begin
+        if (pc_temp == 16'hf7b9)
+           pc_reached_f7b9 <= 1'b1;
+        if (pc_temp == 16'h26b9)
+           pc_reached_26b9 <= 1'b1;
+     end
+  end
+  //////////////////////////////////////////////////////
+  
   cpu_wrapper cpu_inst(.clk(pclk_0),
     .sysclk(sysclk_7_143),
     .reset(cpu_reset),
@@ -360,7 +381,8 @@ module Atari7800(
     .IRQ(~IRQ_n),
     .NMI(~m_int_b),
     .RDY(RDY),
-    .halt_b(core_halt_b));
+    .halt_b(core_halt_b),
+    .pc_temp(pc_temp));
 
 
 

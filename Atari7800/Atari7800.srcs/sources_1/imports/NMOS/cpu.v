@@ -22,7 +22,7 @@
 
 
 
-module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY );
+module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY, pc_temp );
 
 input clk;              // CPU clock 
 input reset;            // reset signal
@@ -32,7 +32,10 @@ output [7:0] DO;        // data out, write bus
 output WE;              // write enable
 input IRQ;              // interrupt request
 input NMI;              // non-maskable interrupt request
-input RDY;              // Ready signal. Pauses CPU when RDY=0 
+input RDY;              // Ready signal. Pauses CPU when RDY=0
+
+output [15:0] pc_temp; 
+assign pc_temp = PC_temp;
 
 /*
  * internal signals

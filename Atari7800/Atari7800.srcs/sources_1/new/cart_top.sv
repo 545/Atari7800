@@ -32,7 +32,9 @@ module cart_top(
     
     output logic AC_ADR0, AC_ADR1, AC_GPIO0, AC_MCLK, AC_SCK,
     input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
-    inout  wire AC_SDA
+    inout  wire AC_SDA,
+    
+    output logic [7:0] ld
     );
     
     logic [7:0]  cart_data_out;
@@ -84,7 +86,8 @@ module cart_top(
        .cart_DB_out(cart_data_out),
        .AB(AB),
        .RW(RW),
-       .pclk_0(pclk_0)
+       .pclk_0(pclk_0),
+       .ld(ld)
     );
     
     

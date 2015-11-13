@@ -55,8 +55,8 @@ module timing_ctrl (
 );
 
    // Output buffers
-   logic int_b_reg;
-   assign int_b = int_b_reg;
+   logic [5:0] int_b_sr;
+   assign int_b = &int_b_sr;
 
    // Current NTSC row and col
    logic [8:0]        row, col;
@@ -124,6 +124,7 @@ module timing_ctrl (
                        (state == DP_DMA_WAITSWAP)));
 
 
+
    always @(posedge sysclk, posedge reset) begin
       if (reset) begin
          state <= VWAIT;
@@ -135,7 +136,7 @@ module timing_ctrl (
          slow_clk <= 1'b0;
          fast_ctr <= 1'b0;
          slow_ctr <= 2'b0;
-         int_b_reg <= 1'b1;
+         int_b_sr <= 6'b111111;
          raise_dli <= 1'b0;
          startup_ctr <= 4'd0;
          dli_next <= 1'b0;
@@ -168,7 +169,8 @@ module timing_ctrl (
          end
 
          // Interrupt generation
-         int_b_reg <= ~(dli_next & enable);
+         int_b_sr <= {int_b_sr[4:0], ~(dli_next & enable)};
+         //int_b_reg <= ~(dli_next & enable);
 
          vga_row_prev <= vga_row;
          vga_row_prev_prev <= vga_row_prev;
