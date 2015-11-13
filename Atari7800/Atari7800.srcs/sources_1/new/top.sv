@@ -351,24 +351,42 @@ module Atari7800(
   assign core_halt_b = (ctrl_writes == 2'd2) ? halt_b : 1'b1;
   
   /// DEBUG  ///////////////////////////////////////////
+  `ifndef SIM
   logic [15:0] pc_temp;
   
-  assign ld[1] = pc_reached_f7b9;
-  assign ld[2] = pc_reached_26b9;
+  assign ld[1] = pc_reached_230a;
+  assign ld[2] = pc_reached_26bc;
+  assign ld[3] = pc_reached_fbad;
+  assign ld[4] = pc_reached_fbbd;
+  assign ld[5] = pc_reached_faaf;
   
-  logic pc_reached_f7b9;
-  logic pc_reached_26b9;
-  always_ff @(posedge sysclk, posedge reset) begin
+  logic pc_reached_230a; // Beginning of RAM code
+  logic pc_reached_26bc; // Exit BIOS
+  logic pc_reached_fbad; // waiting for VSYNC
+  logic pc_reached_fbbd; // done waiting for VSYNC
+  logic pc_reached_faaf; // NMI handler
+  
+  always_ff @(posedge sysclk_7_143, posedge reset) begin
      if (reset) begin
-        pc_reached_f7b9 <= 1'b0;
-        pc_reached_26b9 <= 1'b0;
+        pc_reached_230a <= 1'b0;
+        pc_reached_26bc <= 1'b0;
+        pc_reached_fbad <= 1'b0;
+        pc_reached_fbbd <= 1'b0;
+        pc_reached_faaf <= 1'b0;
      end else begin
-        if (pc_temp == 16'hf7b9)
-           pc_reached_f7b9 <= 1'b1;
-        if (pc_temp == 16'h26b9)
-           pc_reached_26b9 <= 1'b1;
+        if (pc_temp == 16'h230a)
+           pc_reached_230a <= 1'b1;
+        if (pc_temp == 16'h26bc)
+           pc_reached_26bc <= 1'b1;
+        if (pc_temp == 16'hfbad)
+           pc_reached_fbad <= 1'b1;
+        if (pc_temp == 16'hfbbd)
+           pc_reached_fbbd <= 1'b1;
+        if (pc_temp == 16'hfaaf)
+           pc_reached_faaf <= 1'b1;
      end
   end
+  `endif
   //////////////////////////////////////////////////////
   
   cpu_wrapper cpu_inst(.clk(pclk_0),
