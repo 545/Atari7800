@@ -34,7 +34,7 @@ module timing_ctrl (
    input  logic       sel_slow_clock,
 
    // Outputs to 6502
-   output logic       halt_b, int_b, ready,
+   output logic       halt_b, int_b, ready, core_latch_data,
 
    // Signals to/from dma_ctrl
    output logic       zp_dma_start, dp_dma_start,
@@ -143,18 +143,22 @@ module timing_ctrl (
          halt_b <= 1'b1;
          zp_dma_start <= 1'b0;
          dp_dma_start <= 1'b0;
+         core_latch_data <= 1'b0;
          ready_for_lswap_prev <= 1'b0;
          ready <= 1'b1;
          tia_clk <= 1'b0;
       end else begin
          // Clock generation
          tia_clk <= ~tia_clk;
+         core_latch_data <= 1'b0;
          if (sel_slow_clock) begin
             fast_ctr <= 1'b0;
             fast_clk <= 1'b1; 
             if (slow_ctr == 2'd2) begin
                 slow_ctr <= 2'b0;
                 slow_clk <= ~slow_clk;
+                if (slow_clk == 1'b0)
+                    core_latch_data <= 1'b1;
             end
             else
                 slow_ctr <= slow_ctr + 2'b01;
@@ -165,6 +169,8 @@ module timing_ctrl (
             fast_ctr <= ~fast_ctr;
             if (fast_ctr) begin
                 fast_clk <= ~fast_clk;
+                if (fast_clk == 1'b0)
+                   core_latch_data <= 1'b1;
             end
          end
 

@@ -22,7 +22,9 @@
 
 
 
-module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY, pc_temp );
+
+
+module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY, pc_temp, res );
 
 input clk;              // CPU clock 
 input reset;            // reset signal
@@ -35,6 +37,8 @@ input NMI;              // non-maskable interrupt request
 input RDY;              // Ready signal. Pauses CPU when RDY=0
 
 output [15:0] pc_temp; 
+output reg res;
+
 assign pc_temp = PC_temp;
 
 /*
@@ -154,7 +158,7 @@ reg sei;                // set interrupt
 reg clv;                // clear overflow 
 reg brk;                // doing BRK
 
-reg res;                // in reset
+//reg res;                // in reset
 
 /*
  * ALU operations

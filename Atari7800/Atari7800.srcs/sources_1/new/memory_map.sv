@@ -44,7 +44,7 @@ module memory_map (
       // Generate Chip Select (cs) Signal
       cs = `CS_CART;
       
-      if (maria_en) casex (AB)
+      if (~tia_en) casex (AB)
             // RIOT RAM: "Do Not Use" in 7800 mode.
             16'b0000_010x_1xxx_xxxx: cs = `CS_RIOT_RAM;
             16'b0000_0010_1xxx_xxxx: cs = `CS_RIOT_IO;

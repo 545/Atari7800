@@ -1,0 +1,7 @@
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/ram0/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/ram0/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/BIOS_ROM/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/BIOS_ROM/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/CART_ROM/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd
+Duplicated file found; will not be sent for synthesis: /afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/ip/CART_ROM/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2.vhd
+CRC performance measure: elapsed=00:00:09s;;memory_peak=7610.461MB;;memory_gain=0.000MB

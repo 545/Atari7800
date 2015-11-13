@@ -107,7 +107,7 @@ module Atari7800(
    logic [7:0] core_DB_out;
    logic [15:0] core_AB_out;
 
-   logic cpu_reset, core_halt_b;
+   logic cpu_reset, core_halt_b, core_latch_data;
    logic [2:0] cpu_reset_counter; 
    
    assign IRQ_n = 1'b1;
@@ -223,7 +223,7 @@ module Atari7800(
      .CLOCK_25(clock_25),        // 25 MHz
      .CLOCK_7_143(sysclk_7_143), // 7.143 MHz. Divide to 1.79 MHz
      // Status and control signals
-     .reset(reset),
+     .reset(1'b0),
      .locked(clock_divider_locked)
    );
 
@@ -258,6 +258,7 @@ module Atari7800(
       .sysclk(sysclk_7_143),
       .pclk_2(pclk_2), 
       .sel_slow_clock(sel_slow_clock),
+      .core_latch_data(core_latch_data),
       .tia_en(tia_en),
       .tia_clk(tia_clk), 
       .pclk_0(pclk_0),
@@ -360,6 +361,9 @@ module Atari7800(
   assign ld[4] = pc_reached_fbbd;
   assign ld[5] = pc_reached_faaf;
   
+  assign ld[6] = tia_en;
+  assign ld[7] = maria_en;
+  
   logic pc_reached_230a; // Beginning of RAM code
   logic pc_reached_26bc; // Exit BIOS
   logic pc_reached_fbad; // waiting for VSYNC
@@ -390,6 +394,7 @@ module Atari7800(
   //////////////////////////////////////////////////////
   
   cpu_wrapper cpu_inst(.clk(pclk_0),
+    .core_latch_data(core_latch_data),
     .sysclk(sysclk_7_143),
     .reset(cpu_reset),
     .AB(core_AB_out),

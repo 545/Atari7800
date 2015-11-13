@@ -36,7 +36,7 @@ module maria(
    output logic [7:0] UV_out,
 
    // Outputs to 6502
-   output logic       int_b, halt_b, ready
+   output logic       int_b, halt_b, ready, core_latch_data
 );
 
    // Bus interface
@@ -122,7 +122,7 @@ module maria(
       // Signals needed to slow pclk_0
       .sel_slow_clock(sel_slow_clock),
       // Outputs to 6502
-      .halt_b(halt_b), .int_b(int_b), .ready(ready),
+      .halt_b(halt_b), .int_b(int_b), .ready(ready), .core_latch_data(core_latch_data),
       // Signals to/from dma_ctrl
       .zp_dma_start(zp_dma_start), .dp_dma_start(dp_dma_start),
       .zp_dma_done(zp_dma_done), .dp_dma_done(dp_dma_done),
