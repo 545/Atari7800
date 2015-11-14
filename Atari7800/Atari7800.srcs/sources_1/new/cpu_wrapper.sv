@@ -21,20 +21,37 @@ output [15:0] pc_temp;
 logic res;
 logic rdy_in;
 logic WE_OUT;
+logic WE, holding;
 logic [7:0] DB_hold, DB_into_cpu;
 
-cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_into_cpu),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in), .pc_temp(pc_temp), .res(res));
+cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_hold),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in), .pc_temp(pc_temp), .res(res));
 
 assign RD = ~(WE & ~res & ~reset);
-assign WE = WE_OUT & halt_b;
+assign WE = WE_OUT & halt_b; //& ~core_latch_data;
 assign rdy_in = RDY & halt_b;
-assign DB_into_cpu = (core_latch_data) ? DB_IN : DB_hold;
+assign DB_hold = (holding) ? DB_hold : DB_IN;
+
+//assign DB_into_cpu = (core_latch_data) ? DB_IN : DB_hold;
+//assign DB_into_cpu = DB_hold;
 
 
-always_ff @(posedge sysclk) begin
-   if (core_latch_data) begin
+/*always_ff @(posedge sysclk) begin
+   if (core_latch_data & rdy_in) begin
       DB_hold <= DB_IN;
    end
-end
+end*/
+
+/*always_ff @(posedge clk) begin
+  if (rdy_in)
+     DB_hold <= DB_IN;
+end*/
+
+always_ff @(posedge clk, negedge rdy_in, posedge reset)
+    if (reset)
+        holding <= 1'b0;
+    else if (~rdy_in)
+        holding <= 1'b1;
+    else
+        holding <= 1'b0;
 
 endmodule: cpu_wrapper

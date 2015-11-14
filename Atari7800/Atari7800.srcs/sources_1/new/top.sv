@@ -125,23 +125,27 @@ module Atari7800(
 
    `chipselect       CS_maria_buf, CS_core_buf, CS_buf, CS;
    
-   always_ff @(posedge sysclk_7_143, posedge reset) begin
+   logic memclk;
+   assign memclk = (~halt_b & maria_drive_AB) ? sysclk_7_143 : pclk_0;
+   
+   /*always_ff @(posedge sysclk_7_143, posedge reset) begin
       if (reset) begin
          CS_maria_buf <= `CS_NONE;
-      end else begin
-         CS_maria_buf <= CS; 
-      end
-   end
-   
-   always_ff @(posedge pclk_0, posedge reset) begin
-      if (reset) begin
          CS_core_buf <= `CS_NONE;
       end else begin
-         CS_core_buf <= CS;
+         CS_maria_buf <= CS;
+         CS_core_buf <= CS; 
       end
    end
    
-   assign CS_buf = maria_drive_AB ? CS_maria_buf : CS_core_buf;
+   assign CS_buf = maria_drive_AB ? CS_maria_buf : CS_core_buf;*/
+   
+   always_ff @(posedge memclk, posedge reset)
+      if (reset)
+        CS_buf <= `CS_NONE;
+      else 
+        CS_buf <= CS;
+        
    
    //CS LOGIC
    logic ram0_cs, ram1_cs, bios_cs, tia_cs, riot_cs, riot_ram_cs;
@@ -185,7 +189,7 @@ module Atari7800(
    
 
    ram0 ram0_inst(
-      .clka(sysclk_7_143),
+      .clka(memclk),
       //.ena(~ram0_cs_b),
       .ena(ram0_cs),
       .wea(~RW),
@@ -195,7 +199,7 @@ module Atari7800(
    );
 
    ram1 ram1_inst(
-      .clka(sysclk_7_143),
+      .clka(memclk),
       //.ena(~ram1_cs_b),
       .ena(ram1_cs),
       .wea(~RW),
@@ -207,7 +211,7 @@ module Atari7800(
   //assign bios_cs_b = ~(AB[15] & ~bios_en_b);
 
   
-  BIOS_ROM BIOS(.clka(sysclk_7_143),
+  BIOS_ROM BIOS(.clka(memclk),
     .ena(bios_cs),
     .addra(AB[11:0]),
     .douta(bios_DB_out)

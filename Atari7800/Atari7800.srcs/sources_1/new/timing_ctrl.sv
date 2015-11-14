@@ -23,7 +23,7 @@
 
 `define NTSC_SCANLINE_COUNT 242
 
-`define COOLDOWN_CYCLES 0
+`define COOLDOWN_CYCLES 1
 
 module timing_ctrl (
    input  logic       enable,
