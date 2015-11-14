@@ -124,7 +124,6 @@ module timing_ctrl (
                        (state == DP_DMA_WAITSWAP)));
 
 
-
    always @(posedge sysclk, posedge reset) begin
       if (reset) begin
          state <= VWAIT;

@@ -39,6 +39,9 @@ module memory_map (
    assign sel_slow_clock = (tia_en) ? 1'b1 : ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM));   
 
    assign ZP = {ZPH, ZPL};
+   logic [1:0] zp_byte_written;
+   
+   assign zp_written = &zp_byte_written;
 
    always_comb begin
       // Generate Chip Select (cs) Signal
@@ -133,7 +136,7 @@ module memory_map (
          wait_sync <= 8'b0;
          char_base <= 8'b0;
          {ZPH,ZPL} <= {8'h18, 8'h20};
-         zp_written <= 1'b0;
+         zp_byte_written <= 2'b0;
       end
       
       else begin
@@ -157,12 +160,15 @@ module memory_map (
            8'h2b: color_map[9] <= DB_in;
            8'h2c: begin
               ZPH <= DB_in;
-              zp_written <= 1'b1;
+              zp_byte_written[1] <= 1'b1;
            end
            8'h2d: color_map[10] <= DB_in;
            8'h2e: color_map[11] <= DB_in;
            8'h2f: color_map[12] <= DB_in;
-           8'h30: ZPL <= DB_in;
+           8'h30: begin
+              ZPL <= DB_in;
+              zp_byte_written[0] <= 1'b1;
+           end
            8'h31: color_map[13] <= DB_in;
            8'h32: color_map[14] <= DB_in;
            8'h33: color_map[15] <= DB_in;
