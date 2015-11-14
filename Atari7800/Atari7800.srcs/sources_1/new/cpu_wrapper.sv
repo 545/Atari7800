@@ -46,12 +46,10 @@ end*/
      DB_hold <= DB_IN;
 end*/
 
-always_ff @(posedge clk, negedge rdy_in, posedge reset)
+always_ff @(posedge clk, posedge reset)
     if (reset)
         holding <= 1'b0;
-    else if (~rdy_in)
-        holding <= 1'b1;
     else
-        holding <= 1'b0;
+        holding <= ~ready_in;
 
 endmodule: cpu_wrapper

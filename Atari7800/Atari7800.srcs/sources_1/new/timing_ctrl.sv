@@ -297,9 +297,12 @@ module timing_ctrl (
               if (~enable) begin
                  state <= VWAIT_COOLDOWN;
               end else if (cooldown_count == 0) begin
-                 halt_b <= 1'b1;
-                 raise_dli <= 1'b0;
-                 dli_next <= raise_dli;
+                 if ((sel_slow_clock && slow_ctr != 2'b10) ||
+                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                    halt_b <= 1'b1;
+                    raise_dli <= 1'b0;
+                    dli_next <= raise_dli;
+                 end
               end else begin
                  cooldown_count <= cooldown_count - 1;
               end
@@ -309,20 +312,26 @@ module timing_ctrl (
            end
            VWAIT_COOLDOWN: begin
               if (cooldown_count == 0) begin
-                 state <= VWAIT;
-                 halt_b <= 1'b1;
-                 raise_dli <= 1'b0;
-                 dli_next <= raise_dli;
+                 if ((sel_slow_clock && slow_ctr != 2'b10) ||
+                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                    halt_b <= 1'b1;
+                    raise_dli <= 1'b0;
+                    dli_next <= raise_dli;
+                    state <= VWAIT;
+                 end
               end else begin
                  cooldown_count <= cooldown_count - 1;
               end
            end
            HWAIT_COOLDOWN: begin
               if (cooldown_count == 0) begin
-                 state <= HWAIT;
-                 halt_b <= 1'b1;
-                 raise_dli <= 1'b0;
-                 dli_next <= raise_dli;
+                 if ((sel_slow_clock && slow_ctr != 2'b10) ||
+                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                    halt_b <= 1'b1;
+                    raise_dli <= 1'b0;
+                    dli_next <= raise_dli;
+                    state <= HWAIT;
+                 end
               end else begin
                  cooldown_count <= cooldown_count - 1;
               end
