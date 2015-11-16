@@ -50,6 +50,6 @@ always_ff @(posedge clk, posedge reset)
     if (reset)
         holding <= 1'b0;
     else
-        holding <= ~ready_in;
+        holding <= ~rdy_in;
 
 endmodule: cpu_wrapper
