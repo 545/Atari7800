@@ -103,7 +103,7 @@ module Atari7800(
    logic [7:0] PAin, PAout, PBin, PBout;
 
    // 6502 Signals
-   logic RDY, IRQ_n;
+   logic RDY, IRQ_n, CPU_NMI;
    logic [7:0] core_DB_out;
    logic [15:0] core_AB_out;
 
@@ -397,6 +397,8 @@ module Atari7800(
   `endif
   //////////////////////////////////////////////////////
   
+  assign CPU_NMI = (lock_ctrl) ? (~m_int_b) : (~m_int_b & ~bios_en_b);
+  
   cpu_wrapper cpu_inst(.clk(pclk_0),
     .core_latch_data(core_latch_data),
     .sysclk(sysclk_7_143),
@@ -406,7 +408,7 @@ module Atari7800(
     .DB_OUT(core_DB_out),
     .RD(RW),
     .IRQ(~IRQ_n),
-    .NMI(~m_int_b),
+    .NMI(CPU_NMI),
     .RDY(RDY),
     .halt_b(core_halt_b),
     .pc_temp(pc_temp));
