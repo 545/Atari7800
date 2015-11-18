@@ -1,0 +1,21 @@
+#
+# An unexpected error has occurred (6)
+#
+Stack:
+/lib64/libc.so.6(+0x35650) [0x7fbd4a574650]
+/lib64/libc.so.6(gsignal+0x37) [0x7fbd4a5745d7]
+/lib64/libc.so.6(abort+0x148) [0x7fbd4a575cc8]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x155) [0x7fbd4ab75a95]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libstdc++.so.6(+0x5dc06) [0x7fbd4ab73c06]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libstdc++.so.6(+0x5dc33) [0x7fbd4ab73c33]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libstdc++.so.6(__cxa_rethrow+0x46) [0x7fbd4ab73ea6]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libstdc++.so.6(_ZNSo5writeEPKcl+0x135) [0x7fbd4aba9435]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbFileBlockManager::addBlock(char const*, unsigned long long)+0x4a) [0x7fbd1992048a]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbEventBlock::addBlock(SimBridge::WdbIBlockManager&, unsigned int&) const+0xec) [0x7fbd199250bc]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbAppendingBlockList<SimBridge::WdbEventBlock, 100>::closeRecord()+0x3f) [0x7fbd199336bf]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbMultipleBucketEventDatabase::saveEvent(SimBridge::WdbAppendingBlockList<SimBridge::WdbEventBlock, 100>*, long long, long long, unsigned int, unsigned char const*)+0x7f) [0x7fbd19931daf]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbMultipleBucketEventDatabase::writeEvent(long long, long long, unsigned int, unsigned char const*)+0xdd) [0x7fbd19931f0d]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_simbridge_kernel.so(SimBridge::WdbSharedMemReader::runReadThread(SimBridge::WdbIEventBlockDatabase*)+0xa7) [0x7fbd19937a27]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/libboost_thread.so(+0x10b6a) [0x7fbd4885db6a]
+/lib64/libpthread.so.0(+0x7df5) [0x7fbd4a028df5]
+/lib64/libc.so.6(clone+0x6d) [0x7fbd4a6351ad]

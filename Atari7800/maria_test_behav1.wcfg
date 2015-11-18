@@ -56,6 +56,10 @@
          <obj_property name="ElementShortName">fast_clk</obj_property>
          <obj_property name="ObjectShortName">fast_clk</obj_property>
       </wvobject>
+      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/memclk">
+         <obj_property name="ElementShortName">memclk</obj_property>
+         <obj_property name="ObjectShortName">memclk</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group139">
       <obj_property name="label">VGA</obj_property>
@@ -401,6 +405,10 @@
          <obj_property name="CustomSignalColor">#F0E68C</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/DB_into_cpu">
+         <obj_property name="ElementShortName">DB_into_cpu[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DB_into_cpu[7:0]</obj_property>
+      </wvobject>
       <wvobject db_ref_id="1" type="array" fp_name="/cart_top/console/cpu_inst/DB_IN">
          <obj_property name="ElementShortName">DB_IN[7:0]</obj_property>
          <obj_property name="ObjectShortName">DB_IN[7:0]</obj_property>
@@ -421,10 +429,6 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="CustomSignalColor">#FFA500</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/load_db">
-         <obj_property name="ElementShortName">load_db</obj_property>
-         <obj_property name="ObjectShortName">load_db</obj_property>
       </wvobject>
       <wvobject db_ref_id="1" type="logic" fp_name="/cart_top/console/cpu_inst/RD">
          <obj_property name="ElementShortName">RD</obj_property>

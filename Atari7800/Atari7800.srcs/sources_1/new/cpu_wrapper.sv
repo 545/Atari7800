@@ -28,7 +28,7 @@ cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_hold),.DO(DB_OUT),.WE(WE_OUT),.
 
 assign RD = ~(WE & ~res & ~reset);
 assign WE = WE_OUT & halt_b; //& ~core_latch_data;
-assign rdy_in = RDY & halt_b;
+//assign rdy_in = RDY & halt_b;
 assign DB_hold = (holding) ? DB_hold : DB_IN;
 
 //assign DB_into_cpu = (core_latch_data) ? DB_IN : DB_hold;
@@ -52,4 +52,10 @@ always_ff @(posedge clk, posedge reset)
     else
         holding <= ~rdy_in;
 
+always_ff @(negedge clk)
+    if (halt_b && RDY)
+        rdy_in <= 1'b1;
+    else
+        rdy_in <= 1'b0;
+        
 endmodule: cpu_wrapper
