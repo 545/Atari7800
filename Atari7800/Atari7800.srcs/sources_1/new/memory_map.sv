@@ -12,6 +12,7 @@ module memory_map (
    
    output `chipselect       cs,
    input  logic             bios_en,
+   input  logic             drive_AB,
    
    output logic [7:0]       ctrl,
    output logic [24:0][7:0] color_map,
@@ -36,7 +37,7 @@ module memory_map (
    
    logic [7:0]              read_addr_found, write_addr_found;
 
-   assign sel_slow_clock = (tia_en) ? 1'b1 : ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM));   
+   assign sel_slow_clock = (drive_AB) ? 1'b0 : ((tia_en) ? 1'b1 : ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM)));   
 
    assign ZP = {ZPH, ZPL};
    logic [1:0] zp_byte_written;

@@ -23,8 +23,8 @@
 
 
 
-
-module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY, pc_temp, res );
+(* KEEP_HIERARCHY = "yes" *)
+module cpu( clk, reset, AB, DI, DO, WE, IRQ, NMI, RDY, pc_temp, res);
 
 input clk;              // CPU clock 
 input reset;            // reset signal
@@ -58,6 +58,19 @@ reg  [7:0] IRHOLD;      // Hold for Instruction register
 reg  IRHOLD_valid;      // Valid instruction in IRHOLD
 
 reg  [7:0] AXYS[3:0];   // A, X, Y and S register file
+
+(* keep = "true" *)
+wire [7:0] AA;
+(* keep = "true" *)
+wire [7:0] XX;
+(* keep = "true" *)
+wire [7:0] YY;
+(* keep = "true" *)
+wire [7:0] SS;
+assign YY = AXYS[3];
+assign XX = AXYS[2];
+assign SS = AXYS[1];
+assign AA = AXYS[0];
 
 reg  C = 0;             // carry flag (init at zero to avoid X's in ALU sim)
 reg  Z = 0;             // zero flag

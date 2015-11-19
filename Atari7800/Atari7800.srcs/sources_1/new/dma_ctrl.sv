@@ -18,8 +18,11 @@ module dma_ctrl(
 
    input logic         sysclk, reset, last_line
 );
-
-   logic [15:0]        DP, PP, DP_saved, ZP_saved, ZP_saved_next;
+   (* keep = "true" *)
+   logic [15:0]        DP;
+   (* keep = "true" *)
+   logic [15:0]        DP_saved;
+   logic [15:0]        PP, ZP_saved, ZP_saved_next;
    logic [7:0]         CHAR_PTR;
    logic [1:0]         char_ptr_cycles;
    logic               char_bytes_fetched;
@@ -60,6 +63,9 @@ module dma_ctrl(
    assign drive_AB = (state != waiting);
 
    assign ZP_saved_next = ZP_saved + 1;
+   
+   logic [15:0] PP_plus_offset;
+   assign PP_plus_offset = PP + {4'b0, OFFSET, 8'b0};
 
    always_comb begin
       AddrB = 'h1234;
@@ -105,7 +111,7 @@ module dma_ctrl(
                end
                
                drive_pp_addr: begin
-                  AddrB = PP + {4'b0, OFFSET, 8'b0};
+                  AddrB = PP_plus_offset;
                end
                
                w_PIXELS: begin
@@ -114,7 +120,7 @@ module dma_ctrl(
                end
 
               drive_char_addr: begin
-                 AddrB = PP + {4'b0, OFFSET, 8'b0};
+                 AddrB = PP_plus_offset;
               end
               
               w_CHAR_PTR: begin
@@ -275,7 +281,7 @@ module dma_ctrl(
                    if (INDIRECT_MODE) begin
                       dp_state <= drive_char_addr;
                    end else begin
-                       if ((A12en & PP[12]) | (A11en & PP[11]))
+                       if ((A12en & PP_plus_offset[12]) | (A11en & PP_plus_offset[11]))
                           dp_state <= drive_dp_addr;
                        else
                           dp_state <= drive_pp_addr;
@@ -288,7 +294,7 @@ module dma_ctrl(
                    dp_state <= w_PIXELS;
                    WIDTH <= WIDTH+1;
                    // AddrB <= PP+{4'b0,OFFSET,8'b0};
-                   PP <= PP+{4'b0,OFFSET,8'b1};
+                   PP <= PP_plus_offset + 1;
                    // input_w <= 0;
                 end
                 w_PIXELS: begin //Write Pixel data
@@ -301,11 +307,11 @@ module dma_ctrl(
                 drive_char_addr: begin // read character pointer from pp
                    dp_state <= w_CHAR_PTR;
                    WIDTH <= WIDTH + 1;
-                   PP <= PP+{4'b0,OFFSET,8'b1};
+                   PP <= PP_plus_offset + 1;
                 end
                 w_CHAR_PTR: begin
                    dp_state <= w_CHAR_PIXELS;
-                   CHAR_PTR <= DataB;
+                   CHAR_PTR <= {char_base, DataB};
                    char_ptr_cycles <= 2'b00;
                    char_bytes_fetched <= 2'b0;
                 end
