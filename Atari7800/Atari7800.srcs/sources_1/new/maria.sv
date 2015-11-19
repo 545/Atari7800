@@ -65,6 +65,7 @@ module maria(
    // BC: Border Control: 0=>Background Color. 1=>Black Border.
    // KM: Kangaroo Mode: 0=>Transparency, 1=>No transparency
    // {RM1, RM0}: Read mode.
+   (* keep = "true" *)
    logic [7:0]       ctrl;
    logic [24:0][7:0] color_map;
    logic [7:0]       char_base;
@@ -148,6 +149,7 @@ module maria(
       //.ram0_b(ram0_b), .ram1_b(ram1_b),
       //.riot_ram_b(riot_ram_b),
       .cs(CS), .bios_en(bios_en),
+      .drive_AB(drive_AB),
       .ctrl(ctrl),
       .color_map(color_map),
       .status_read({VBLANK, 7'b0}),

@@ -361,9 +361,10 @@ module Atari7800(
   
   assign ld[1] = pc_reached_230a;
   assign ld[2] = pc_reached_26bc;
-  assign ld[3] = pc_reached_fbad;
+  //assign ld[3] = pc_reached_fbad;
   assign ld[4] = pc_reached_fbbd;
   assign ld[5] = pc_reached_faaf;
+  
   
   assign ld[6] = tia_en;
   assign ld[7] = maria_en;

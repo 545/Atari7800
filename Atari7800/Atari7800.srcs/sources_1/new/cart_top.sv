@@ -38,6 +38,7 @@ module cart_top(
     );
     
     logic [7:0]  cart_data_out;
+    (* keep = "true" *)
     logic [15:0] AB;
     logic        RW;
     logic        pclk_0;

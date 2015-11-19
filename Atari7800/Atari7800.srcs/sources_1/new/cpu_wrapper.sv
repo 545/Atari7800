@@ -27,7 +27,7 @@ logic [7:0] DB_hold, DB_into_cpu;
 cpu core(.clk(clk), .reset(reset),.AB(AB),.DI(DB_hold),.DO(DB_OUT),.WE(WE_OUT),.IRQ(IRQ),.NMI(NMI),.RDY(rdy_in), .pc_temp(pc_temp), .res(res));
 
 assign RD = ~(WE & ~res & ~reset);
-assign WE = WE_OUT & halt_b; //& ~core_latch_data;
+assign WE = WE_OUT & rdy_in; //& ~core_latch_data;
 //assign rdy_in = RDY & halt_b;
 assign DB_hold = (holding) ? DB_hold : DB_IN;
 
