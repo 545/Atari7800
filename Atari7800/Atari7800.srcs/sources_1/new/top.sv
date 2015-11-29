@@ -17,7 +17,14 @@ module Atari7800(
   output logic        RW,
   output logic        pclk_0,
   
-  output logic [7:0] ld
+  output logic [7:0] ld,
+  
+  // Tia inputs
+  input  logic [3:0] idump,
+  input  logic [1:0] ilatch,
+  
+  // Riot inputs
+  logic [7:0] PAin, PBin
 );
 
    assign ld[0] = lock_ctrl;
@@ -89,8 +96,6 @@ module Atari7800(
    logic [3:0] audv0, audv1;
    logic [7:0] tia_db_out;
    logic [15:0] aud_signal_out;
-   wire [3:0] idump;
-   logic [1:0] ilatch;
    
    // Testing
    //assign  idump = 4'b0;
@@ -100,7 +105,8 @@ module Atari7800(
 
    // RIOT Signals
    logic riot_RS_b;
-   logic [7:0] PAin, PAout, PBin, PBout;
+   logic [7:0] PAout, PBout;
+   
 
    // 6502 Signals
    logic RDY, IRQ_n, CPU_NMI;
@@ -227,7 +233,7 @@ module Atari7800(
      .CLOCK_25(clock_25),        // 25 MHz
      .CLOCK_7_143(sysclk_7_143), // 7.143 MHz. Divide to 1.79 MHz
      // Status and control signals
-     .reset(1'b0),
+     .reset(reset),
      .locked(clock_divider_locked)
    );
 
@@ -283,7 +289,7 @@ module Atari7800(
    );
 
    // TIA
-   TIA tia_inst(.A(AB[5:0]), // Address bus input
+   TIA tia_inst(.A({(AB[5] & tia_en), AB[4:0]}), // Address bus input
       .Din(write_DB), // Data bus input
       .Dout(tia_DB_out), // Data bus output
       .CS_n({2'b0,~tia_cs}), // Active low chip select input
@@ -292,14 +298,14 @@ module Atari7800(
       .RDY(tia_RDY), // CPU ready output
       .MASTERCLK(tia_clk), // 3.58 Mhz pixel clock input
       .CLK2(pclk_0), // 1.19 Mhz bus clock input
-      .Idump(idump), // Dumped I/O
+      .idump_in(idump), // Dumped I/O
       .Ilatch(ilatch), // Latched I/O
       .HSYNC(),        // Video horizontal sync output
       .HBLANK(hblank_tia), // Video horizontal blank output
       .VSYNC(),        // Video vertical sync output
       .VBLANK(vblank_tia), // Video vertical sync output
       .COLOROUT(uv_tia), // Indexed color output
-      .RES_n(reset), // Active low reset input
+      .RES_n(~reset), // Active low reset input
       .AUD0(aud0), //audio pin 0
       .AUD1(aud1), //audio pin 1
       .audv0(audv0), //audio volume for use with external xformer module
@@ -385,7 +391,7 @@ module Atari7800(
      end else begin
         if (pc_temp == 16'h230a)
            pc_reached_230a <= 1'b1;
-        if (pc_temp == 16'h26bc)
+        if (pc_temp == 16'h23ee)
            pc_reached_26bc <= 1'b1;
         if (pc_temp == 16'hfbad)
            pc_reached_fbad <= 1'b1;

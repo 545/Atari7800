@@ -18,7 +18,7 @@ module TIA(A, // Address bus input
 	   RDY, // CPU ready output
 	   MASTERCLK, // 3.58 Mhz pixel clock input
 	   CLK2, // 1.19 Mhz bus clock input
-	   Idump, // Dumped I/O
+	   idump_in, // Dumped I/O
 	   Ilatch, // Latched I/O
 	   HSYNC, // Video horizontal sync output
 	   HBLANK, // Video horizontal blank output
@@ -40,7 +40,7 @@ module TIA(A, // Address bus input
    input 	MASTERCLK;
    input 	CLK2;
    input [1:0] 	Ilatch;
-   inout [3:0] 	Idump;
+   input [3:0] 	idump_in;
    output 	HSYNC, HBLANK;
    output 	VSYNC, VBLANK;
    output [7:0] COLOROUT;
@@ -58,6 +58,8 @@ module TIA(A, // Address bus input
    reg clk_30;
    reg [7:0] clk_30_count;
    
+   wire [3:0] Idump;
+   
    // Pixel counter update
    always @(posedge MASTERCLK)
      begin
@@ -67,8 +69,14 @@ module TIA(A, // Address bus input
 	   hCountReset[3:1] <= 3'd0;
 	   clk_30 <= 0;
 	   clk_30_count <= 0;
+	   latchedInputs <= 2'b11;
 	end
 	else begin
+	   if (inputLatchReset)
+          latchedInputs <= 2'b11;
+       else
+          latchedInputs <= latchedInputs & Ilatch;
+	
 	   if (clk_30_count == 57) begin
           clk_30 <= ~clk_30;
           clk_30_count <= 0;
@@ -277,20 +285,27 @@ module TIA(A, // Address bus input
      end
    assign RDY = ~wSync;
    // Latched input registers and update
+   (* keep = "true" *)
    wire [1:0] latchedInputsValue;
-   reg 	      inputLatchEnabled, inputLatchReset;
+   (* keep = "true" *)
+   reg 	      inputLatchEnabled;
+   (* keep = "true" *)
+   reg inputLatchReset;
+   (* keep = "true" *)
    reg [1:0]  latchedInputs;
-   always @(Ilatch, inputLatchReset)
+   
+   /*always_ff @(Ilatch, inputLatchReset)
      begin
 	if (inputLatchReset)
 	  latchedInputs <= 2'b11;
 	else
 	  latchedInputs <= latchedInputs & Ilatch;
-     end
+     end*/
+     
    assign latchedInputsValue = (inputLatchEnabled)? latchedInputs : Ilatch;
    // Dumped input registers update
    reg inputDumpEnabled;
-   assign Idump = (inputDumpEnabled)? 4'b0000 : 4'bzzzz;
+   assign Idump = (inputDumpEnabled)? 4'b0000 : idump_in;
    // Software operations
    always @(posedge CLK2)
      begin
@@ -303,7 +318,7 @@ module TIA(A, // Address bus input
 	   Dout <= 8'b00000000;
 	end
 	// If the chip is enabled, execute an operation
-	else if (CS && !CS_n) begin
+	else if (CS) begin
 	   // Software reset signals
 	   inputLatchReset <= ({R_W_n, A[5:0]} == `VBLANK && Din[6] && !inputLatchEnabled);
 	   collisionLatchReset <= ({R_W_n, A[5:0]} == `CXCLR);
@@ -311,21 +326,21 @@ module TIA(A, // Address bus input
 	   wSyncReset <= ({R_W_n, A[5:0]} == `WSYNC) && !wSync;
 	   case({R_W_n, A[5:0]})
 	     // Collision latch reads
-	     `CXM0P: Dout <= {collisionLatch[1:0],6'b000000};
-	     `CXM1P: Dout <= {collisionLatch[3:2],6'b000000};
-	     `CXP0FB: Dout <= {collisionLatch[5:4],6'b000000};
-	     `CXP1FB: Dout <= {collisionLatch[7:6],6'b000000};
-	     `CXM0FB: Dout <= {collisionLatch[9:8],6'b000000};
-	     `CXM1FB: Dout <= {collisionLatch[11:10],6'b000000};
-	     `CXBLPF: Dout <= {collisionLatch[12],7'b0000000};
-	     `CXPPMM: Dout <= {collisionLatch[14:13],6'b000000};
+	     `CXM0P, `CXM0P_7800: Dout <= {collisionLatch[1:0],6'b000000};
+	     `CXM1P, `CXM1P_7800: Dout <= {collisionLatch[3:2],6'b000000};
+	     `CXP0FB, `CXP0FB_7800: Dout <= {collisionLatch[5:4],6'b000000};
+	     `CXP1FB, `CXP1FB_7800: Dout <= {collisionLatch[7:6],6'b000000};
+	     `CXM0FB, `CXM0FB_7800: Dout <= {collisionLatch[9:8],6'b000000};
+	     `CXM1FB, `CXM1FB_7800: Dout <= {collisionLatch[11:10],6'b000000};
+	     `CXBLPF, `CXBLPF_7800: Dout <= {collisionLatch[12],7'b0000000};
+	     `CXPPMM, `CXPPMM_7800: Dout <= {collisionLatch[14:13],6'b000000};
 	     // I/O reads
-	     `INPT0: Dout <= {Idump[0], 7'b0000000};
-	     `INPT1: Dout <= {Idump[1], 7'b0000000};
-	     `INPT2: Dout <= {Idump[2], 7'b0000000};
-	     `INPT3: Dout <= {Idump[3], 7'b0000000};
-	     `INPT4: Dout <= {latchedInputsValue[0], 7'b0000000};
-	     `INPT5: Dout <= {latchedInputsValue[1], 7'b0000000};
+	     `INPT0, `INPT0_7800: Dout <= {Idump[0], 7'b0000000};
+	     `INPT1, `INPT1_7800: Dout <= {Idump[1], 7'b0000000};
+	     `INPT2, `INPT2_7800: Dout <= {Idump[2], 7'b0000000};
+	     `INPT3, `INPT3_7800: Dout <= {Idump[3], 7'b0000000};
+	     `INPT4, `INPT4_7800: Dout <= {latchedInputsValue[0], 7'b0000000};
+	     `INPT5, `INPT5_7800: Dout <= {latchedInputsValue[1], 7'b0000000};
 	     // Video signals
 	     `VSYNC: VSYNC <= Din[1];
 	     `VBLANK: begin

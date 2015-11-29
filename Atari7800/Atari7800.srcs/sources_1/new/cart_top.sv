@@ -25,8 +25,9 @@
 
 module cart_top(
 `ifndef SIM
-    input  logic       CLOCK_PLL, reset,
+    input  logic       CLOCK_PLL,
 `endif
+
     output logic [3:0] RED, GREEN, BLUE,
     output logic       HSync, VSync,
     
@@ -34,7 +35,10 @@ module cart_top(
     input  logic AC_GPIO1, AC_GPIO2, AC_GPIO3,
     inout  wire AC_SDA,
     
-    output logic [7:0] ld
+    output logic [7:0] ld,
+    
+    input logic [7:0] sw,
+    input logic left, up, down, right, fire
     );
     
     logic [7:0]  cart_data_out;
@@ -47,8 +51,10 @@ module cart_top(
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
+    logic reset;
+    
 `ifdef SIM
-    logic reset, CLOCK_PLL;
+    logic CLOCK_PLL;
     
     initial begin
       #1 reset = 1'b0;
@@ -63,11 +69,35 @@ module cart_top(
        CLOCK_PLL = 1'b0;
        forever #5 CLOCK_PLL = ~CLOCK_PLL;          
     end
-`endif
+`else
+    assign reset = sw[0];
+ `endif
     
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
+    
+    logic [3:0] idump;
+    (* keep = "true" *)
+    logic [1:0] ilatch;
+    logic [7:0] PAin, PBin;
+    
+    assign PAin[7:4] = {~right, ~left, ~down, ~up};
+    assign PAin[3:0] = 4'b0;
+    
+    assign PBin[7] = sw[7]; // RDiff
+    assign PBin[6] = sw[6]; // LDiff
+    assign PBin[5] = sw[5]; // Unused
+    assign PBin[4] = 1'b0;
+    assign PBin[3] = sw[3]; // Pause
+    assign PBin[2] = sw[2]; // 2 Button mode
+    assign PBin[1] = sw[1]; // Select
+    assign PBin[0] = ~sw[4]; // Reset 
+    
+    assign ilatch[0] = ~fire;
+    assign ilatch[1] = ~fire;
+    
+    assign idump = 4'b0;
     
     CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
@@ -88,7 +118,10 @@ module cart_top(
        .AB(AB),
        .RW(RW),
        .pclk_0(pclk_0),
-       .ld(ld)
+       .ld(ld),
+       
+       .idump(idump), .ilatch(ilatch),
+       .PAin(PAin), .PBin(PBin)
     );
     
     

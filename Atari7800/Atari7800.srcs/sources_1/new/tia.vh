@@ -64,3 +64,18 @@ Header file that contains useful definitions for the TIA module.
 `define HMOVE 7'h2A
 `define HMCLR 7'h2B
 `define CXCLR 7'h2C
+
+`define CXM0P_7800 7'h40
+`define CXM1P_7800 7'h41
+`define CXP0FB_7800 7'h42
+`define CXP1FB_7800 7'h43
+`define CXM0FB_7800 7'h44
+`define CXM1FB_7800 7'h45
+`define CXBLPF_7800 7'h46
+`define CXPPMM_7800 7'h47
+`define INPT0_7800 7'h48
+`define INPT1_7800 7'h49
+`define INPT2_7800 7'h4A
+`define INPT3_7800 7'h4B
+`define INPT4_7800 7'h4C
+`define INPT5_7800 7'h4D

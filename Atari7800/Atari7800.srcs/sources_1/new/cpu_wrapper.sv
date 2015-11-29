@@ -46,14 +46,18 @@ end*/
      DB_hold <= DB_IN;
 end*/
 
-always_ff @(posedge clk, posedge reset)
+/*always_ff @(posedge clk, posedge reset)
     if (reset)
         holding <= 1'b0;
     else
-        holding <= ~rdy_in;
+        holding <= ~rdy_in;*/
+        
+assign holding = ~rdy_in;
 
-always_ff @(negedge clk)
-    if (halt_b && RDY)
+always_ff @(negedge clk, posedge reset)
+    if (reset)
+       rdy_in <= 1'b1;
+    else if (halt_b & RDY)
         rdy_in <= 1'b1;
     else
         rdy_in <= 1'b0;

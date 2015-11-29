@@ -45,11 +45,10 @@ module timing_ctrl (
 
    // Signals to/from line_ram
    output logic       lram_swap,
-  
 
    // VGA Status
    input  logic [9:0] vga_row, vga_col,
-
+   
    // Signals from memory map
    input  logic       deassert_ready, zp_written
 );
@@ -97,7 +96,7 @@ module timing_ctrl (
       VWAIT_COOLDOWN = 'h8,
       HWAIT_COOLDOWN = 'h9
    } state;
-
+   
    assign vga_line_delta = vga_row_prev_prev != vga_row_prev;
 
    // In general, we are on the second row if the row number is odd (vga_row[0])
@@ -204,10 +203,10 @@ module timing_ctrl (
          // Next state logic
          case (state)
            VWAIT: begin
+              raise_dli <= 1'b0;
+              dli_next <= 1'b0;
               if (zp_ready & zp_written) begin
                  halt_b <= 1'b0;
-                 raise_dli <= 1'b0;
-                 dli_next <= 1'b0;
                  state <= ZP_DMA_STARTUP;
                  startup_ctr <= 1;
               end

@@ -1,0 +1,10 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e58a9) [0x7f2b07cde8a9]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(JVM_handle_linux_signal+0xb6) [0x7f2b07ce44f6]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e2523) [0x7f2b07cdb523]
+/lib64/libc.so.6(+0x35670) [0x7f2b3df88670]
+/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/lib/lnx64.o/librdi_labtools.so(Java_ui_data_labtools_lthwdatai_HWIla_1getName+0x17) [0x7f2b12597207]
+[0x7f2afa78c9f1]
