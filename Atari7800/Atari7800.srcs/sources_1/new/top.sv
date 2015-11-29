@@ -233,7 +233,7 @@ module Atari7800(
      .CLOCK_25(clock_25),        // 25 MHz
      .CLOCK_7_143(sysclk_7_143), // 7.143 MHz. Divide to 1.79 MHz
      // Status and control signals
-     .reset(reset),
+     .reset(1'b0),
      .locked(clock_divider_locked)
    );
 

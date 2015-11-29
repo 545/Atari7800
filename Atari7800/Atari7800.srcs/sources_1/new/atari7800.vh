@@ -10,4 +10,4 @@
 
 `define chipselect  logic[3:0]
 
-//`define SIM
+`define SIM

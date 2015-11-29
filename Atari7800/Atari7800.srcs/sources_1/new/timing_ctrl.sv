@@ -203,10 +203,10 @@ module timing_ctrl (
          // Next state logic
          case (state)
            VWAIT: begin
-              raise_dli <= 1'b0;
-              dli_next <= 1'b0;
               if (zp_ready & zp_written) begin
                  halt_b <= 1'b0;
+                 raise_dli <= 1'b0;
+                 dli_next <= 1'b0;
                  state <= ZP_DMA_STARTUP;
                  startup_ctr <= 1;
               end

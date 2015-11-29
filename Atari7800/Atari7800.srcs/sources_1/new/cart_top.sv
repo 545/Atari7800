@@ -25,7 +25,7 @@
 
 module cart_top(
 `ifndef SIM
-    input  logic       CLOCK_PLL,
+    input  logic       CLOCK_PLL, reset,
 `endif
 
     output logic [3:0] RED, GREEN, BLUE,
@@ -37,7 +37,7 @@ module cart_top(
     
     output logic [7:0] ld,
     
-    input logic [7:0] sw,
+    input logic [7:1] sw,
     input logic left, up, down, right, fire
     );
     
@@ -51,10 +51,10 @@ module cart_top(
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     
-    logic reset;
+
     
 `ifdef SIM
-    logic CLOCK_PLL;
+    logic CLOCK_PLL, reset;
     
     initial begin
       #1 reset = 1'b0;
@@ -69,8 +69,6 @@ module cart_top(
        CLOCK_PLL = 1'b0;
        forever #5 CLOCK_PLL = ~CLOCK_PLL;          
     end
-`else
-    assign reset = sw[0];
  `endif
     
     ////////////////////////////////////////////////////////
