@@ -59,13 +59,9 @@ reg  IRHOLD_valid;      // Valid instruction in IRHOLD
 
 reg  [7:0] AXYS[3:0];   // A, X, Y and S register file
 
-(* keep = "true" *)
 wire [7:0] AA;
-(* keep = "true" *)
 wire [7:0] XX;
-(* keep = "true" *)
 wire [7:0] YY;
-(* keep = "true" *)
 wire [7:0] SS;
 assign YY = AXYS[3];
 assign XX = AXYS[2];

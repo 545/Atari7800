@@ -285,13 +285,9 @@ module TIA(A, // Address bus input
      end
    assign RDY = ~wSync;
    // Latched input registers and update
-   (* keep = "true" *)
    wire [1:0] latchedInputsValue;
-   (* keep = "true" *)
    reg 	      inputLatchEnabled;
-   (* keep = "true" *)
    reg inputLatchReset;
-   (* keep = "true" *)
    reg [1:0]  latchedInputs;
    
    /*always_ff @(Ilatch, inputLatchReset)

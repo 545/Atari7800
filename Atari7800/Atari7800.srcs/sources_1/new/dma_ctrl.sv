@@ -18,11 +18,10 @@ module dma_ctrl(
 
    input logic         sysclk, reset, last_line
 );
-   (* keep = "true" *)
    logic [15:0]        DP;
-   (* keep = "true" *)
    logic [15:0]        DP_saved;
-   logic [15:0]        PP, ZP_saved, ZP_saved_next;
+   logic [15:0]        PP; 
+   logic [15:0]        ZP_saved, ZP_saved_next;
    logic [15:0]         CHAR_PTR;
    logic [1:0]         char_ptr_cycles;
    logic               char_bytes_fetched;
@@ -66,7 +65,7 @@ module dma_ctrl(
    assign drive_AB = (state != waiting);
 
    assign ZP_saved_next = ZP_saved + 1;
-
+   
    logic [15:0] PP_plus_offset;
    assign PP_plus_offset = PP + {4'b0, OFFSET, 8'b0};
 

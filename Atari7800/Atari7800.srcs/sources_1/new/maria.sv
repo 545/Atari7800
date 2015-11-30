@@ -65,7 +65,6 @@ module maria(
    // BC: Border Control: 0=>Background Color. 1=>Black Border.
    // KM: Kangaroo Mode: 0=>Transparency, 1=>No transparency
    // {RM1, RM0}: Read mode.
-   (* keep = "true" *)
    logic [7:0]       ctrl;
    logic [24:0][7:0] color_map;
    logic [7:0]       char_base;

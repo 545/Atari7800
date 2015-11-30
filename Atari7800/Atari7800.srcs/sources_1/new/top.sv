@@ -24,7 +24,7 @@ module Atari7800(
   input  logic [1:0] ilatch,
   
   // Riot inputs
-  logic [7:0] PAin, PBin
+  input logic [7:0] PAin, PBin
 );
 
    assign ld[0] = lock_ctrl;

@@ -42,7 +42,6 @@ module cart_top(
     );
     
     logic [7:0]  cart_data_out;
-    (* keep = "true" *)
     logic [15:0] AB;
     logic        RW;
     logic        pclk_0;
@@ -76,19 +75,18 @@ module cart_top(
     ////////////////////////////////////////////////////////
     
     logic [3:0] idump;
-    (* keep = "true" *)
     logic [1:0] ilatch;
     logic [7:0] PAin, PBin;
     
     assign PAin[7:4] = {~right, ~left, ~down, ~up};
-    assign PAin[3:0] = 4'b0;
+    assign PAin[3:0] = 4'b1111;
     
     assign PBin[7] = sw[7]; // RDiff
     assign PBin[6] = sw[6]; // LDiff
     assign PBin[5] = sw[5]; // Unused
     assign PBin[4] = 1'b0;
     assign PBin[3] = sw[3]; // Pause
-    assign PBin[2] = sw[2]; // 2 Button mode
+    assign PBin[2] = 1'b0; // 2 Button mode
     assign PBin[1] = sw[1]; // Select
     assign PBin[0] = ~sw[4]; // Reset 
     

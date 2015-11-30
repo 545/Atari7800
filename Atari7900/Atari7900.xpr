@@ -416,4 +416,15 @@
     <MsgAttr Name="StringIsRegExp" Val="0"/>
     <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-152] case item 8&apos;b1x001000 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v:1040]"/>
   </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-327"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-327] inferring latch for variable &apos;wSync_reg&apos; [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/new/tia.v:282]"/>
+  </MsgRule>
 </Project>
