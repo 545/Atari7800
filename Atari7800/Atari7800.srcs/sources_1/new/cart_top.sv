@@ -87,7 +87,7 @@ module cart_top(
     assign PBin[4] = 1'b0;
     assign PBin[3] = sw[3]; // Pause
     assign PBin[2] = 1'b0; // 2 Button mode
-    assign PBin[1] = sw[1]; // Select
+    assign PBin[1] = ~sw[1]; // Select
     assign PBin[0] = ~sw[4]; // Reset 
     
     assign ilatch[0] = ~fire;
