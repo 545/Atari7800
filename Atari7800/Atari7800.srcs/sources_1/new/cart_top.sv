@@ -21,7 +21,8 @@
 
 `include "atari7800.vh"
 
-
+`define ROBOTRON 1'b0
+`define    MSPAC 1'b1
 
 module cart_top(
 `ifndef SIM
@@ -83,7 +84,7 @@ module cart_top(
     
     assign PBin[7] = sw[7]; // RDiff
     assign PBin[6] = sw[6]; // LDiff
-    assign PBin[5] = sw[5]; // Unused
+    assign PBin[5] = 1'b0;  // Unused
     assign PBin[4] = 1'b0;
     assign PBin[3] = sw[3]; // Pause
     assign PBin[2] = 1'b0; // 2 Button mode
@@ -95,10 +96,24 @@ module cart_top(
     
     assign idump = 4'b0;
     
+    logic [7:0] robo_dout, mspac_dout;
+    logic sel_robo, sel_mspac;
+    
+    assign sel_robo = (sw[5] == `ROBOTRON);
+    assign sel_mspac = (sw[5] == `MSPAC);
+    
+    assign cart_data_out = sel_robo ? robo_dout : mspac_dout;
+    
     CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
-      .douta(cart_data_out)  // output wire [7 : 0] douta
+      .douta(robo_dout)  // output wire [7 : 0] douta
+    );
+    
+    MSPAC_ROM mspac (
+      .clka(pclk_0),
+      .addra(AB[13:0]),
+      .douta(mspac_dout)
     );
     
     Atari7800 console(
