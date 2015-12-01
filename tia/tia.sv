@@ -37,8 +37,8 @@ module TIA(A, // Address bus input
    output 	RDY;
    input 	MASTERCLK;
    input 	CLK2;
-   input [1:0] 	Ilatch;
-   inout [3:0] 	Idump;
+   input [1:0] 	Ilatch; //Fire buttons
+   inout [3:0] 	Idump; //Paddle buttons
    output 	HSYNC, HBLANK;
    output 	VSYNC, VBLANK;
    output [7:0] COLOROUT;

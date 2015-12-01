@@ -1464,3 +1464,322 @@ selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 477, 100); // H:bj (JPanel:J
 selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 505, 97); // H:bj (JPanel:JComponent, cl:JFrame)
 // Elapsed time: 17 seconds
 selectCodeEditor("maria.sv", 528, 175); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 86 seconds
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 506, 76); // H:bj (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 114 seconds
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 195, 40); // H:bj (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 57 seconds
+selectCodeEditor(PAResourceItoN.LogMonitor_MONITOR, 1123, 40); // H:bj (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 40 seconds
+selectCodeEditor("maria.sv", 446, 193); // bj:J (JPanel:JComponent, cl:JFrame)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "maria.sv", 3); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "top.sv", 2); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("line_ram.sv", 250, 451); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("line_ram.sv", 362, 297); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 18 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "line_ram.sv", 3); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("top.sv", 305, 306); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 521, 251); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 208, 383); // bj:J (JPanel:JComponent, cl:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 17, false); // w:Y (v:H, cl:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// cp:P (cl:JFrame):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// cp:P (cl:JFrame):  Starting Design Runs : addNotify
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// Tcl Message: [Sun Oct 18 22:31:02 2015] Launched synth_1... Run output will be captured here: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // cp:P (cl:JFrame)
+// TclEventType: RUN_COMPLETED
+// Q:ap (cl:JFrame): Synthesis Completed: addNotify
+// Elapsed time: 209 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_REPORTS_WINDOW, "View Reports"); // a:JRadioButton (JPanel:JComponent, Q:ap)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, Q:ap)
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+dismissDialog("Synthesis Completed"); // Q:ap (cl:JFrame)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, cl:JFrame)
+// Elapsed time: 17 seconds
+selectCheckBox(PAResourceItoN.MsgView_WARNING_MESSAGES, (String) null, true); // h:JCheckBox (JPanel:JComponent, cl:JFrame): TRUE
+// Elapsed time: 35 seconds
+selectCheckBox(PAResourceItoN.MsgView_WARNING_MESSAGES, (String) null, false); // h:JCheckBox (JPanel:JComponent, cl:JFrame): FALSE
+selectCheckBox(PAResourceItoN.MsgView_WARNING_MESSAGES, (String) null, true); // h:JCheckBox (JPanel:JComponent, cl:JFrame): TRUE
+// Elapsed time: 16 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3331] design Atari7800 has unconnected port ld[7]. ]", 7); // ae:k (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 19 seconds
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3331] design Atari7800 has unconnected port ld[7]. ]", 7); // ae:k (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/dll_img_ram/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd:4793]. ]", 4); // ae:k (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 15 seconds
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/dll_img_ram/blk_mem_gen_v8_2/hdl/blk_mem_gen_v8_2_vhsyn_rfs.vhd:4793]. ]", 4); // ae:k (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3295] tying undriven pin timing_ctrl_inst:enable to constant 0. ]", 9); // ae:k (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 41 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 21, false); // w:Y (v:H, cl:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// cp:P (cl:JFrame):  Starting Design Runs : addNotify
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// Tcl Message: [Sun Oct 18 22:37:14 2015] Launched impl_1... Run output will be captured here: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // cp:P (cl:JFrame)
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// Q:ap (cl:JFrame): Implementation Completed: addNotify
+// Elapsed time: 62 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_RUN_BITGEN, "Generate Bitstream"); // a:JRadioButton (JPanel:JComponent, Q:ap)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, Q:ap)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+dismissDialog("Implementation Completed"); // Q:ap (cl:JFrame)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// Tcl Message: [Sun Oct 18 22:38:18 2015] Launched impl_1... Run output will be captured here: /afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.runs/impl_1/runme.log 
+// Elapsed time: 21 seconds
+selectCodeEditor("top.sv", 221, 383); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 226, 359); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 233, 344); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 244, 318); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 252, 307); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 506, 293); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 503, 283); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 516, 249); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("top.sv", 309, 201); // bj:J (JPanel:JComponent, cl:JFrame)
+// TclEventType: RUN_COMPLETED
+// Elapsed time: 73 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 26, true); // w:Y (v:H, cl:JFrame) - Node
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// TclEventType: LOAD_FEATURE
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw 
+selectButton(PAResourceOtoP.ProgramDebugTab_OPEN_TARGET, "Open target"); // i:l (JPanel:JComponent, cl:JFrame)
+selectMenu(PAResourceOtoP.ProgramDebugTab_OPEN_RECENTLY_OPENED_TARGET, "Recent Targets"); // X:JMenu (ai:JPopupMenu, cl:JFrame)
+selectMenu(PAResourceOtoP.ProgramDebugTab_OPEN_RECENTLY_OPENED_TARGET, "Recent Targets"); // X:JMenu (ai:JPopupMenu, cl:JFrame)
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ab:JMenuItem (ai:JPopupMenu, cl:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: connect_hw_server 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// Tcl Message: open_hw_target [lindex [get_hw_targets -of_objects [get_hw_servers localhost]] 0] 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210248686179 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.runs/impl_1/Atari7800.bit} [lindex [get_hw_devices] 1] 
+// Tcl Message: current_hw_device [lindex [get_hw_devices] 1] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 1] 
+// Tcl Message: INFO: [Labtools 27-1435] Device xc7z020 (JTAG device index = 1) is not programmed (DONE status = 0). 
+// HMemoryUtils.trashcanNow. Engine heap size: 5,150 MB. GUI used memory: 44 MB. Current time: 10/18/15 10:40:06 PM EDT
+// Elapsed time: 20 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Open Synthesized Design]", 18, true); // w:Y (v:H, cl:JFrame) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_NETLIST_DESIGN
+// cp:P (cl:JFrame):  Open Synthesized Design : addNotify
+// Tcl Message: open_run synth_1 -name synth_1 
+// Tcl Message: Design is defaulting to impl run constrset: constrs_1 Design is defaulting to synth run part: xc7z020clg484-1 
+// HMemoryUtils.trashcanNow. Engine heap size: 5,212 MB. GUI used memory: 40 MB. Current time: 10/18/15 10:40:26 PM EDT
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: POWER_CNS_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// [Engine Memory]: 5,427 MB (+86919kb) [02:34:34]
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 5,850 MB. GUI used memory: 40 MB. Current time: 10/18/15 10:40:38 PM EDT
+// [Engine Memory]: 5,850 MB (+158464kb) [02:34:39]
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// Xgd.load filename: /afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2015.2/Vivado/2015.2/data/parts/xilinx/zynq/zynq/xc7z020/xc7z020.xgd; ZipEntry: xc7z020_detail.xgd elapsed time: 0.6s
+// TclEventType: DESIGN_NEW
+// Schematic: addNotify
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2015.2 INFO: [Device 21-403] Loading part xc7z020clg484-1 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_board.xdc] for cell 'divider/inst' Finished Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider_board.xdc] for cell 'divider/inst' Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc] for cell 'divider/inst' 
+// Tcl Message: INFO: [Timing 38-35] Done setting XDC timing constraints. [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc:56] INFO: [Timing 38-2] Deriving generated clocks [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc:56] 
+// Tcl Message: get_clocks: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 6789.434 ; gain = 464.523 ; free physical = 3974 ; free virtual = 17452 
+// Tcl Message: Finished Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/sources_1/ip/clock_divider/clock_divider.xdc] for cell 'divider/inst' Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/constrs_1/new/constraints.xdc] Finished Parsing XDC File [/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/maria/maria.srcs/constrs_1/new/constraints.xdc] 
+// Tcl Message: INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). INFO: [Project 1-111] Unisim Transformation Summary: No Unisim elements were transformed.  
+// Tcl Message: open_run: Time (s): cpu = 00:00:24 ; elapsed = 00:00:17 . Memory (MB): peak = 6868.055 ; gain = 778.383 ; free physical = 3879 ; free virtual = 17348 
+// 'dm' command handler elapsed time: 17 seconds
+// Elapsed time: 17 seconds
+dismissDialog("Open Synthesized Design"); // cp:P (cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, Nets (68)]", 1); // ba:bm (JViewport:JComponent, cl:JFrame)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, cl:JFrame)
+// Elapsed time: 29 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "timing_ctrl.sv", 6); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 523, 293); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 18 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "maria.sv", 4); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("maria.sv", 368, 374); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 25 seconds
+selectCodeEditor("maria.sv", 157, 252); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("maria.sv", 225, 255); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("maria.sv", 224, 245); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 21 seconds
+selectCodeEditor("maria.sv", 224, 416); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 23 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, cl:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tb (tb.sv), console - Atari7800 (top.sv), maria_inst - maria (maria.sv), dma_ctrl_inst - dma_ctrl (dma_ctrl.sv)]", 10, false); // A:k (H:JPanel, cl:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tb (tb.sv), console - Atari7800 (top.sv), maria_inst - maria (maria.sv), dma_ctrl_inst - dma_ctrl (dma_ctrl.sv)]", 10, false, false, false, false, false, true); // A:k (H:JPanel, cl:JFrame) - Double Click
+selectCodeEditor("dma_ctrl.sv", 400, 224); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 59 seconds
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "d"); // o:ao (f:JComboBox, cl:JFrame)
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli", true); // o:ao (f:JComboBox, cl:JFrame)
+applyEnter(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli"); // o:ao (f:JComboBox, cl:JFrame)
+applyEnter(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli"); // o:ao (f:JComboBox, cl:JFrame)
+applyEnter(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli"); // o:ao (f:JComboBox, cl:JFrame)
+applyEnter(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli"); // o:ao (f:JComboBox, cl:JFrame)
+applyEnter(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "dli"); // o:ao (f:JComboBox, cl:JFrame)
+// Elapsed time: 11 seconds
+selectTab((HResource) null, (HResource) null, "Netlist", 1); // FrameContainer:JideTabbedPane (ContainerContainer:JideSplitPane, cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria)]", 24); // ba:bm (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria), dma_ctrl_inst (dma_ctrl)]", 27); // ba:bm (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria), dma_ctrl_inst (dma_ctrl), Nets (407)]", 28); // ba:bm (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 46 seconds
+selectCodeEditor("dma_ctrl.sv", 265, 507); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 306, 505); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 326, 504); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 301, 262); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 370, 261); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 293, 262); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("dma_ctrl.sv", 377, 261); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 10 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3295] tying undriven pin timing_ctrl_inst:enable to constant 0. , [Synth 8-3295] tying undriven pin timing_ctrl_inst:slow_clock to constant 0. ]", 10, false); // ae:k (JViewport:JComponent, cl:JFrame)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3295] tying undriven pin timing_ctrl_inst:enable to constant 0. ]", 9, true); // ae:k (JViewport:JComponent, cl:JFrame) - Node
+// Elapsed time: 12 seconds
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3295] tying undriven pin timing_ctrl_inst:enable to constant 0. ]", 9); // ae:k (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-3295] tying undriven pin timing_ctrl_inst:enable to constant 0. ]", 9); // ae:k (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 33 seconds
+collapseTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria), dma_ctrl_inst (dma_ctrl)]", 27); // ba:bm (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria), timing_ctrl_inst (timing_ctrl)]", 28); // ba:bm (JViewport:JComponent, cl:JFrame)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[Atari7800, maria_inst (maria), timing_ctrl_inst (timing_ctrl), Nets (179)]", 29); // ba:bm (JViewport:JComponent, cl:JFrame)
+// Elapsed time: 66 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "timing_ctrl.sv", 6); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 441, 200); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 16 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "maria.sv", 4); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("maria.sv", 402, 282); // bj:J (JPanel:JComponent, cl:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// Elapsed time: 17 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "top.sv", 3); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("top.sv", 309, 226); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 19 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "maria.sv", 4); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+// [GUI Memory]: 120 MB (+167kb) [02:43:03]
+// Elapsed time: 81 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "top.sv", 3); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "m_en"); // o:ao (f:JComboBox, cl:JFrame)
+selectCodeEditor("top.sv", 157, 24); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 18 seconds
+selectCodeEditor("top.sv", 177, 68); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 10 seconds
+selectCodeEditor("top.sv", 193, 69); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 83 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "timing_ctrl.sv", 6); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 397, 227); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 403, 222); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 394, 256); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 340, 273); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 312, 321); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 317, 377); // bj:J (JPanel:JComponent, cl:JFrame)
+selectCodeEditor("timing_ctrl.sv", 287, 413); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 48 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "maria.sv", 4); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("maria.sv", 324, 410); // bj:J (JPanel:JComponent, cl:JFrame)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "top.sv", 3); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cl:JFrame)
+selectCodeEditor("top.sv", 162, 69); // bj:J (JPanel:JComponent, cl:JFrame)
+// Elapsed time: 36 seconds
+selectCodeEditor("top.sv", 592, 217); // bj:J (JPanel:JComponent, cl:JFrame)
+// [GUI Memory]: 126 MB (+195kb) [02:52:26]
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 68 MB. Current time: 10/18/15 11:10:41 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/18/15 11:40:41 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 12:10:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 12:40:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 1:10:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 1:40:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 2:10:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 2:40:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 3:10:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 3:40:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 4:10:41 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 4:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 5:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 5:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 6:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 6:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 7:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 7:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 8:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 8:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 9:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 9:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 10:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 10:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 11:10:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 11:40:42 AM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 12:10:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 12:40:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 1:10:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 1:40:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 2:10:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 2:40:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 3:10:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 3:40:42 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 4:10:42 PM EDT
+// Tcl Message: ERROR: [Labtools 27-3175] Target jsn-Zed-210248686179 is no longer available. Please use disconnect_hw_server to close the current server connection. Check cable connectivity and that the target board is powered up. Restart the hw_server application running on host localhost, port 3121 and then use connect_hw_server to re-establish connection to target. 
+// Tcl Message: close_hw_target 
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_SYSMON_DELETE
+// TclEventType: HW_TARGET_UPDATE
+// Tcl Message: INFO: [Labtoolstcl 44-464] Closing hw_target localhost/xilinx_tcf/Digilent/210248686179 
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 4:40:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 5:10:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 5:40:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 6:10:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 6:40:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 7:10:43 PM EDT
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 67 MB. Current time: 10/19/15 7:40:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 67 MB. Current time: 10/19/15 8:10:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 8:40:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 9:10:43 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 5,921 MB. GUI used memory: 66 MB. Current time: 10/19/15 9:40:43 PM EDT
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_COMPLETED
+// Q:ap (cl:JFrame): Synthesis Completed: addNotify
+// TclEventType: RUN_COMPLETED
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 138976 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a:JButton (JPanel:JComponent, Q:ap)
+dismissDialog("Synthesis Completed"); // Q:ap (cl:JFrame)
