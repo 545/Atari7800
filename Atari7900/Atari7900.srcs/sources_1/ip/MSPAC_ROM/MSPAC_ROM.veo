@@ -57,7 +57,7 @@
 MSPAC_ROM your_instance_name (
   .clka(clka),    // input wire clka
   .addra(addra),  // input wire [13 : 0] addra
-  .douta(douta)  // output wire [15 : 0] douta
+  .douta(douta)  // output wire [7 : 0] douta
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

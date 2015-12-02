@@ -21,8 +21,10 @@
 
 `include "atari7800.vh"
 
-`define ROBOTRON 1'b0
-`define    MSPAC 1'b1
+`define ROBOTRON 2'b00
+`define    MSPAC 2'b01
+`define   DIGDUG 2'b10
+`define    MARIO 2'b11
 
 module cart_top(
 `ifndef SIM
@@ -89,32 +91,59 @@ module cart_top(
     assign PBin[3] = sw[3]; // Pause
     assign PBin[2] = 1'b0; // 2 Button mode
     assign PBin[1] = ~sw[1]; // Select
-    assign PBin[0] = ~sw[4]; // Reset 
+    assign PBin[0] = ~sw[2]; // Reset 
     
     assign ilatch[0] = ~fire;
     assign ilatch[1] = ~fire;
     
     assign idump = 4'b0;
     
-    logic [7:0] robo_dout, mspac_dout;
-    logic sel_robo, sel_mspac;
+    logic [7:0] robo_dout, mspac_dout, digdug_dout, mario_dout;
+    logic sel_robo, sel_mspac, sel_digdug, sel_mario;
     
-    assign sel_robo = (sw[5] == `ROBOTRON);
-    assign sel_mspac = (sw[5] == `MSPAC);
-    
-    assign cart_data_out = sel_robo ? robo_dout : mspac_dout;
-    
-    CART_ROM robotron (
+    assign sel_robo = ({sw[5],sw[4]} == `ROBOTRON);
+    assign sel_mspac = ({sw[5],sw[4]} == `MSPAC);
+    assign sel_digdug = ({sw[5],sw[4]} == `DIGDUG);
+    assign sel_mario = ({sw[5],sw[4]} == `MARIO);
+    assign cart_data_out = mspac_dout;
+    /*        
+    always_comb 
+        case ({sel_robo,sel_mspac,sel_digdug,sel_mario})
+        4'b1000: cart_data_out = robo_dout;
+        4'b0100: cart_data_out = mspac_dout;
+        4'b0010: cart_data_out = digdug_dout;
+        4'b0001: cart_data_out = mario_dout;
+        default: cart_data_out = 8'hbf;
+        endcase*/
+           
+    /*CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
       .douta(robo_dout)  // output wire [7 : 0] douta
-    );
+    );*/
     
     MSPAC_ROM mspac (
       .clka(pclk_0),
       .addra(AB[13:0]),
       .douta(mspac_dout)
     );
+    
+    /*
+    DIGDUG_ROM digdug (
+      .clka(pclk_0),
+      .addra(AB[13:0]),
+      .douta(digdug_dout)
+    );*/
+    
+    /*
+    MARIO_ROM mario (
+      .clka(pclk_0),
+      .addra(AB[15:0] - 16'h4000),
+      .douta(mario_dout)
+    );*/
+       
+    
+    
     
     Atari7800 console(
        .CLOCK_PLL(CLOCK_PLL),

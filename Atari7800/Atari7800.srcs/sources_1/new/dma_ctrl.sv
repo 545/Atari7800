@@ -36,16 +36,16 @@ module dma_ctrl(
    // states
    enum logic [1:0] {waiting = 2'b00, zp_dma = 2'b01, dp_dma = 2'b10} state;
    enum logic [2:0] {drive_zp_addr = 3'b000, w_offset = 3'b001, w_DPH = 3'b010 ,w_DPL = 3'b100} zp_state;
-   enum logic [3:0] {drive_dp_addr = 4'h0,
-                     w_PPL = 4'h1,
-                     w_PALETTE_WIDTH = 4'h2,
-                     w_PPH = 4'h3,
-                     w_PALETTE_WIDTH_2 = 4'h4,
-                     w_INPUT = 4'h5,
-                     drive_pp_addr = 4'h6,
-                     w_PIXELS = 4'h7,
-                     w_PIXELS_slow = 4'h8,
-                     drive_char_addr = 4'h9,
+   enum logic [4:0] {drive_dp_addr = 4'h00,
+                     w_PPL = 4'h01,
+                     w_PALETTE_WIDTH = 4'h02,
+                     w_PPH = 4'h03,
+                     w_PALETTE_WIDTH_2 = 4'h04,
+                     w_INPUT = 4'h05,
+                     drive_pp_addr = 4'h06,
+                     w_PIXELS = 4'h07,
+                     w_PIXELS_slow = 4'h08,
+                     drive_char_addr = 4'h09,
                      w_CHAR_PTR = 4'ha,
                      w_CHAR_PIXELS = 4'hb,
                      drive_next_zp_addr = 4'hc,
@@ -57,6 +57,12 @@ module dma_ctrl(
    
    logic PP_in_cart;
    assign PP_in_cart = |(PP_plus_offset[15:14]);
+   
+   logic [7:0] CB_plus_offset;
+   assign CB_plus_offset = char_base + {4'b0, OFFSET};
+   
+   logic CB_in_cart;
+   assign CB_in_cart = |(CB_plus_offset[7:6]);
 
    assign null_width = (DataB[4:0] == 5'b0);
    assign null_data = (DataB == 8'b0);
@@ -135,7 +141,7 @@ module dma_ctrl(
               end
 
               w_CHAR_PTR: begin
-                 AddrB = {char_base + OFFSET, DataB};
+                 AddrB = {CB_plus_offset, DataB};
               end
 
               w_CHAR_PIXELS: begin
@@ -334,10 +340,11 @@ module dma_ctrl(
                 end
                 w_CHAR_PTR: begin
                    dp_state <= w_CHAR_PIXELS;
-                   CHAR_PTR <= {char_base + OFFSET, DataB};
-                   char_ptr_cycles <= 2'b00;
+                   CHAR_PTR <= {CB_plus_offset, DataB};
                    char_bytes_fetched <= 2'b0;
+                   char_ptr_cycles <= (CB_in_cart) ? 2'b00 : 2'b11;
                 end
+
                 w_CHAR_PIXELS: begin
                    if (char_ptr_cycles == 2'b11) begin
                       if (~char_bytes_fetched & character_width) begin
