@@ -25,6 +25,8 @@
 
 `define COOLDOWN_CYCLES 1
 
+
+
 module timing_ctrl (
    input  logic       enable,
 
@@ -69,7 +71,10 @@ module timing_ctrl (
    logic              vga_line_delta;
 
    // Clock division
+   `ifndef OVERCLOCK
    logic              fast_ctr;
+   `endif
+   
    logic [1:0]        slow_ctr;
    logic              fast_clk, slow_clk;
 
@@ -132,7 +137,9 @@ module timing_ctrl (
          fast_clk <= 1'b0;
          cooldown_count <= 1'b0;
          slow_clk <= 1'b0;
+         `ifndef OVERCLOCK
          fast_ctr <= 1'b0;
+         `endif
          slow_ctr <= 2'b0;
          int_b_sr <= 6'b111111;
          raise_dli <= 1'b0;
@@ -150,7 +157,10 @@ module timing_ctrl (
          tia_clk <= ~tia_clk;
          core_latch_data <= 1'b0;
          if (sel_slow_clock) begin
+            `ifndef OVERCLOCK
             fast_ctr <= 1'b0;
+            `endif
+            
             fast_clk <= 1'b1; 
             if (slow_ctr == 2'd2) begin
                 slow_ctr <= 2'b0;
@@ -164,12 +174,16 @@ module timing_ctrl (
          else begin
             slow_ctr <= 2'b00;
             slow_clk <= 1'b1;
+            `ifdef OVERCLOCK
+            fast_clk <= ~fast_clk;
+            `else
             fast_ctr <= ~fast_ctr;
             if (fast_ctr) begin
-                fast_clk <= ~fast_clk;
-                if (fast_clk == 1'b0)
-                   core_latch_data <= 1'b1;
+               fast_clk <= ~fast_clk;
+               if (fast_clk == 1'b0)
+                  core_latch_data <= 1'b1;
             end
+            `endif
          end
 
          // Interrupt generation
@@ -244,6 +258,7 @@ module timing_ctrl (
                  cooldown_count <= `COOLDOWN_CYCLES;
               end else if (zp_dma_done) begin
                  state <= HWAIT_COOLDOWN;
+                 raise_dli <= dp_dma_done_dli;
                  raise_dli <= 1'b0;
                  halt_b <= 1'b0;
                  cooldown_count <= `COOLDOWN_CYCLES;
@@ -297,7 +312,7 @@ module timing_ctrl (
                  state <= VWAIT_COOLDOWN;
               end else if (cooldown_count == 0) begin
                  if ((sel_slow_clock && slow_ctr != 2'b10) ||
-                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                     (~sel_slow_clock && fast_clk == 1'b1)) begin
                     halt_b <= 1'b1;
                     raise_dli <= 1'b0;
                     dli_next <= raise_dli;
@@ -312,7 +327,7 @@ module timing_ctrl (
            VWAIT_COOLDOWN: begin
               if (cooldown_count == 0) begin
                  if ((sel_slow_clock && slow_ctr != 2'b10) ||
-                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                     (~sel_slow_clock && fast_clk == 1'b1)) begin
                     halt_b <= 1'b1;
                     raise_dli <= 1'b0;
                     dli_next <= raise_dli;
@@ -325,7 +340,7 @@ module timing_ctrl (
            HWAIT_COOLDOWN: begin
               if (cooldown_count == 0) begin
                  if ((sel_slow_clock && slow_ctr != 2'b10) ||
-                     (~sel_slow_clock && fast_ctr != 1'b1)) begin
+                     (~sel_slow_clock && fast_clk == 1'b1)) begin
                     halt_b <= 1'b1;
                     raise_dli <= 1'b0;
                     dli_next <= raise_dli;

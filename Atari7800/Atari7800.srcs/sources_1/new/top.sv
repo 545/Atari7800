@@ -24,7 +24,8 @@ module Atari7800(
   input  logic [1:0] ilatch,
   
   // Riot inputs
-  input logic [7:0] PAin, PBin
+  input logic [7:0] PAin, PBin,
+  output logic [7:0] PAout, PBout
 );
 
    assign ld[0] = lock_ctrl;
@@ -105,8 +106,6 @@ module Atari7800(
 
    // RIOT Signals
    logic riot_RS_b;
-   logic [7:0] PAout, PBout;
-   
 
    // 6502 Signals
    logic RDY, IRQ_n, CPU_NMI;

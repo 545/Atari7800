@@ -225,6 +225,7 @@ module dma_ctrl(
                    DP[7:0] <= DataB;
                    DP_saved <= {DP[15:8], DataB};
                    zp_dma_done <= 1'b1;
+                   dp_dma_done_dli <= DLIen;
                 end
               endcase // case (zp_state)
            end // case: zp_dma
@@ -257,7 +258,7 @@ module dma_ctrl(
                         dp_state <= drive_dp_addr;
                         state <= waiting;
                         dp_dma_done <= 1;
-                        dp_dma_done_dli <= DLIen;
+                        dp_dma_done_dli <= 1'b0;
                      end else if (zero_offset) begin // Found end of zone, but not end of frame
                         dp_state <= drive_next_zp_addr;
                         state <= dp_dma;
@@ -392,7 +393,7 @@ module dma_ctrl(
                    DP[7:0] <= DataB;
                    DP_saved <= {DP[15:8], DataB};
                    dp_dma_done <= 1;
-                   dp_dma_done_dli <= DLIen_prev;
+                   dp_dma_done_dli <= DLIen;
                 end
               endcase // case (dp_state)
            end // case: dp_dma
