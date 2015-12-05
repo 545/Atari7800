@@ -140,6 +140,9 @@ module cart_top(
     //assign sel_mario = ({sw[5],sw[4]} == `MARIO);
     //assign cart_data_out = digdug_dout;
     
+    assign sel_mspac = sw[4];
+    assign sel_digdug = ~sw[4];
+    
     /*always_comb 
         case (sw[5:4])
         `ROBOTRON: cart_data_out = robo_dout;
@@ -148,17 +151,18 @@ module cart_top(
         `MARIO: cart_data_out = mario_dout;
         default: cart_data_out = 8'hbf;
         endcase*/
-    assign cart_data_out = robo_dout;
+    assign cart_data_out = sel_mspac ? mspac_dout : digdug_dout;
            
-    CART_ROM robotron (
+    /*CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
       .douta(robo_dout)  // output wire [7 : 0] douta
-    );
+    );*/
     
-    /*MSPAC_ROM mspac (
+    MSPAC_ROM mspac (
       .clka(pclk_0),
       .addra(AB[13:0]),
+      .ena(sel_mspac),
       .douta(mspac_dout)
     );
     
@@ -166,11 +170,12 @@ module cart_top(
     DIGDUG_ROM digdug (
       .clka(pclk_0),
       .addra(AB[13:0]),
+      .ena(sel_digdug),
       .douta(digdug_dout)
     );
     
     
-    MARIO_ROM mario (
+    /*MARIO_ROM mario (
       .clka(pclk_0),
       .addra(AB[15:0]),
       .douta(mario_dout)

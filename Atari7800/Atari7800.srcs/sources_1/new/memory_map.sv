@@ -36,6 +36,9 @@ module memory_map (
    logic [7:0]              wait_sync;
    
    logic [7:0]              read_addr_found, write_addr_found;
+   
+   (* KEEP = "true" *)
+   logic [7:0] ctrl_kept;
 
    assign sel_slow_clock = (drive_AB) ? 1'b0 : ((tia_en) ? 1'b1 : ((cs == `CS_TIA) || (cs == `CS_RIOT_IO) || (cs == `CS_RIOT_RAM)));   
 
@@ -117,6 +120,7 @@ module memory_map (
    always_ff @(posedge pclk_0, negedge reset_b) begin
       if (~reset_b) begin
          ctrl <= {1'b0, 2'b10, 1'b0, 1'b0, 1'b0, 2'b00}; // 8'b0
+         ctrl_kept <= 8'b0;
          //color_map <= 200'b0;
          //////// TESTING COLOR MAP /////////
          // Background
@@ -141,6 +145,7 @@ module memory_map (
       end
       
       else begin
+         ctrl_kept <= ctrl;
          deassert_ready <= 1'b0;
          //Handle writes to mem mapped regs
          case(write_addr_found)

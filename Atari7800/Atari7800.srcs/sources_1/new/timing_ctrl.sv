@@ -37,6 +37,7 @@ module timing_ctrl (
 
    // Outputs to 6502
    output logic       halt_b, int_b, ready, core_latch_data,
+   output logic       VBLANK,
 
    // Signals to/from dma_ctrl
    output logic       zp_dma_start, dp_dma_start,
@@ -118,6 +119,8 @@ module timing_ctrl (
                       (col == `ZP_READY_COL));
 
    assign last_line = (row == (`NTSC_SCANLINE_COUNT - 1));
+   
+   assign VBLANK = (row >= 9'd241);
 
    assign pclk_0 = sel_slow_clock ? slow_clk : fast_clk;
    

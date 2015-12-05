@@ -91,7 +91,6 @@ module maria(
    logic             lram_swap;
    
    logic             VBLANK;
-   assign VBLANK = (vga_row > 10'd481) && (vga_row < 10'd523);
    
    line_ram line_ram_inst(
       .SYSCLK(sysclk), .RESET(reset),
@@ -123,6 +122,7 @@ module maria(
       .sel_slow_clock(sel_slow_clock),
       // Outputs to 6502
       .halt_b(halt_b), .int_b(int_b), .ready(ready), .core_latch_data(core_latch_data),
+      .VBLANK(VBLANK),
       // Signals to/from dma_ctrl
       .zp_dma_start(zp_dma_start), .dp_dma_start(dp_dma_start),
       .zp_dma_done(zp_dma_done), .dp_dma_done(dp_dma_done),
