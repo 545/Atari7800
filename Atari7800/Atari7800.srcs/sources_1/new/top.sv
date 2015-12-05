@@ -23,6 +23,8 @@ module Atari7800(
   input  logic [3:0] idump,
   input  logic [1:0] ilatch,
   
+  output logic tia_en,
+  
   // Riot inputs
   input logic [7:0] PAin, PBin,
   output logic [7:0] PAout, PBout
@@ -118,7 +120,7 @@ module Atari7800(
    assign IRQ_n = 1'b1;
 
    //ctrl Signals
-   logic maria_en, tia_en, lock_ctrl, bios_en_b;
+   logic maria_en, lock_ctrl, bios_en_b;
    logic [1:0] ctrl_writes;
 
    // Buses
@@ -192,7 +194,30 @@ module Atari7800(
       AB = (maria_drive_AB) ? maria_AB_out : core_AB_out;
    end
    
-
+   (* ram_style = "distributed" *)
+   reg [7:0] ram0 [2047:0];
+   (* ram_style = "distributed" *)
+   reg [7:0] ram1 [2047:0];  
+   integer cnt;
+   always_ff @(posedge memclk) begin
+     if (reset) begin
+        for (cnt = 0; cnt < 2048;cnt = cnt + 1) begin
+            ram0[cnt] <= 8'b0;
+            ram1[cnt] <= 8'b0;
+        end
+     end
+     else if(ram0_cs)
+        if (RW) 
+            ram0_DB_out <= ram0[AB[10:0]];
+        else
+            ram0[AB[10:0]] <= write_DB;
+     else if (ram1_cs)
+        if (RW) 
+            ram1_DB_out <= ram1[AB[10:0]];
+        else
+            ram1[AB[10:0]] <= write_DB; 
+   end
+   /*
    ram0 ram0_inst(
       .clka(memclk),
       //.ena(~ram0_cs_b),
@@ -211,7 +236,7 @@ module Atari7800(
       .addra(AB[10:0]),
       .dina(write_DB),
       .douta(ram1_DB_out)
-   );
+   );*/
    
   //assign bios_cs_b = ~(AB[15] & ~bios_en_b);
 

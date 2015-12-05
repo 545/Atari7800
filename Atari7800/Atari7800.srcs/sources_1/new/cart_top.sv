@@ -26,6 +26,8 @@
 `define   DIGDUG 2'b10
 `define    MARIO 2'b11
 
+`define    INPUT_CYCLES 5
+
 module cart_top(
 `ifndef SIM
     input  logic       CLOCK_PLL,
@@ -51,39 +53,43 @@ module cart_top(
     logic [15:0] AB;
     logic        RW;
     logic        pclk_0;
+    reg [`INPUT_CYCLES-1:0]    paddleA0SR = {`INPUT_CYCLES{1'b0}};
+    reg [`INPUT_CYCLES-1:0]    paddleB0SR = {`INPUT_CYCLES{1'b0}};
+    reg [`INPUT_CYCLES-1:0]    paddleA1SR = {`INPUT_CYCLES{1'b0}};
+    reg [`INPUT_CYCLES-1:0]    paddleB1SR = {`INPUT_CYCLES{1'b0}}; 
+    
+    always_ff @(posedge pclk_0) begin
+        paddleA0SR <= {paddleA0SR[`INPUT_CYCLES-2:0],ctrl_0_fmc[6]};
+        paddleB0SR <= {paddleB0SR[`INPUT_CYCLES-2:0],ctrl_0_fmc[4]};
+        paddleA1SR <= {paddleA1SR[`INPUT_CYCLES-2:0],ctrl_1_fmc[6]};
+        paddleB1SR <= {paddleB1SR[`INPUT_CYCLES-2:0],ctrl_1_fmc[4]};
+    end
     
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
+    logic [3:0] idump;
+    logic [1:0] ilatch;
+    logic [7:0] PAin, PBin, PAout, PBout;
     
     logic right_0_b, left_0_b, down_0_b, up_0_b, fire_0_b, paddle_A_0, paddle_B_0;
     logic right_1_b, left_1_b, down_1_b, up_1_b, fire_1_b, paddle_A_1, paddle_B_1;
+    logic player1_2bmode, player2_2bmode;
+    
+    assign player1_2bmode = ~PBout[2] & ~tia_en;
+    assign player2_2bmode = ~PBout[4] & ~tia_en;
     
     assign {right_0_b, left_0_b, down_0_b, up_0_b} = ctrl_0_fmc[3:0];
     assign {right_1_b, left_1_b, down_1_b, up_1_b} = ctrl_1_fmc[3:0];
     
-    assign paddle_B_0 = ctrl_0_fmc[4];
-    assign paddle_B_1 = ctrl_1_fmc[4];
-    assign paddle_A_0 = ctrl_0_fmc[6];
-    assign paddle_A_1 = ctrl_1_fmc[6];
+    assign paddle_B_0 = &paddleB0SR;
+    assign paddle_B_1 = &paddleB1SR;
+    assign paddle_A_0 = &paddleA0SR;
+    assign paddle_A_1 = &paddleA1SR;
     
-    assign fire_0_b = ctrl_0_fmc[5];
-    assign fire_1_b = ctrl_1_fmc[5]; 
+    assign fire_0_b = (~paddle_A_0 & ~paddle_B_0);
+    assign fire_1_b = (~paddle_A_1 & ~paddle_B_1); 
     
-    // // TWO BUTTON MODE // //
-    logic two_button_mode_override;
-    logic two_button_mode_or_val;
-    
-    assign two_button_mode_override = sw[6];
-    assign two_button_mode_or_val = sw[7];
-    
-    
-    logic TBM_0, TBM_1;
-    assign TBM_0 = two_button_mode_override ? two_button_mode_or_val : (~PBout[2]);
-    assign TBM_1 = two_button_mode_override ? two_button_mode_or_val : (~PBout[4]);
-    
-    assign ctrl_0_fmc[5] = TBM_0 ? 1'b1 : 'bz;
-    assign ctrl_1_fmc[5] = TBM_1 ? 1'b1 : 'bz;
     
     logic reset;
 `ifdef SIM
@@ -111,6 +117,7 @@ module cart_top(
     logic [3:0] idump;
     logic [1:0] ilatch;
     logic [7:0] PAin, PBin, PAout, PBout;
+    logic tia_en;
     
     assign PAin[7:4] = {right_0_b, left_0_b, down_0_b, up_0_b};
     assign PAin[3:0] = {right_1_b, left_1_b, down_1_b, up_1_b};
@@ -129,9 +136,9 @@ module cart_top(
     assign ilatch[0] = fire_0_b;
     assign ilatch[1] = fire_1_b;
     
-    assign idump = {paddle_B_1, paddle_B_0, paddle_A_1, paddle_A_0};
+    assign idump = {paddle_A_0, paddle_B_0, paddle_A_1, paddle_B_1};
     
-    logic [7:0] robo_dout, mspac_dout, digdug_dout, mario_dout;
+    logic [7:0] robo_dout, mspac_dout, digdug_dout, cent_dout;
     logic sel_robo, sel_mspac, sel_digdug, sel_mario;
     
     //assign sel_robo = ({sw[5],sw[4]} == `ROBOTRON);
@@ -141,7 +148,6 @@ module cart_top(
     //assign cart_data_out = digdug_dout;
     
     assign sel_mspac = sw[4];
-    assign sel_digdug = ~sw[4];
     
     /*always_comb 
         case (sw[5:4])
@@ -151,34 +157,35 @@ module cart_top(
         `MARIO: cart_data_out = mario_dout;
         default: cart_data_out = 8'hbf;
         endcase*/
-    assign cart_data_out = sel_mspac ? mspac_dout : digdug_dout;
+    assign cart_data_out = robo_dout;
            
-    /*CART_ROM robotron (
+    CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
       .douta(robo_dout)  // output wire [7 : 0] douta
+    );
+    
+    /*MSPAC_ROM mspac (
+      .clka(pclk_0),
+      .addra(AB[13:0]),
+      .ena(~sel_mspac),
+      .douta(mspac_dout)
     );*/
     
-    MSPAC_ROM mspac (
+    
+    /*DIGDUG_ROM digdug (
       .clka(pclk_0),
       .addra(AB[13:0]),
-      .ena(sel_mspac),
-      .douta(mspac_dout)
-    );
-    
-    
-    DIGDUG_ROM digdug (
-      .clka(pclk_0),
-      .addra(AB[13:0]),
-      .ena(sel_digdug),
+      .ena(~sel_mspac),
       .douta(digdug_dout)
-    );
+    );*/
     
     
-    /*MARIO_ROM mario (
+    /*centipede_ROM cent (
       .clka(pclk_0),
-      .addra(AB[15:0]),
-      .douta(mario_dout)
+      .addra(AB[13:0]),
+      .ena(~sel_mspac),
+      .douta(cent_dout)
     );*/
        
     
@@ -197,6 +204,7 @@ module cart_top(
        .RW(RW),
        .pclk_0(pclk_0),
        .ld(ld),
+       .tia_en(tia_en),
        
        .idump(idump), .ilatch(ilatch),
        .PAin(PAin), .PBin(PBin),

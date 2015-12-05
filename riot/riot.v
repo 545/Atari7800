@@ -64,8 +64,8 @@ module RIOT(A, // Address bus input
 	if (~RES_n) begin
 	   DRA <= 8'b0;
 	   DDRA <= 8'b0;
-	   DRB <= 8'b0;
-	   DDRB <= 8'b0;
+	   DRB <= 8'b00010100;
+	   DDRB <= 8'b00010100;
 	   Timer_Int_Flag <= 1'b0;
 	   PA7_Int_Flag <= 1'b0;
 	   PA7_Int_Enable <= 1'b0;
