@@ -1,37 +1,186 @@
 `timescale 1ns / 1ps
 
 module dma_ctrl(
+   input logic         sysclk, reset,
+
    output logic [15:0] AddrB,
    output logic        drive_AB,
-   input  logic [7:0]  DataB,
-   // from memory map
-   input logic [15:0]  ZP,
+   input logic [7:0]   DataB,
 
-   output logic        palette_w, input_w, pixels_w,
-   output logic        wm_w,
-
-   input  logic        zp_dma_start, dp_dma_start, dp_dma_kill,
-   output logic        zp_dma_done, dp_dma_done, dp_dma_done_dli,
-
-   input logic         character_width,
+   // Memory mapped registers
+   input logic [15:0]  ZP_head,
    input logic [7:0]   char_base,
+   input logic         character_width, // Part of ctrl register
 
-   input logic         sysclk, reset, last_line
+   // Signals to line_ram indicating whether to load
+   // palette, input, pixels, wm from the DataB
+   output logic        palette_w, input_w,
+   output logic        pixels_w, wm_w,
+
+   // Signals from timing_ctrl
+   input logic         zp_dma_start, // Start zp dma (fetch the first DLL item)
+                       dp_dma_start, // Start dp dma (fetch graphics for DL)
+                       dp_dma_kill, // Stop dp dma (taking too long)
+                       last_line, // Need to fetch next DLL item when DL done
+
+   // Signals to timing_ctrl signaling completion
+   output logic        dma_done,
+                       dli, // Signal to timing_ctrl. Checked when dma_done=1
 );
-   logic [15:0]        DP;
-   logic [15:0]        DP_saved;
-   logic [15:0]        PP; 
-   logic [15:0]        ZP_saved, ZP_saved_next;
-   logic [15:0]         CHAR_PTR;
-   logic [1:0]         char_ptr_cycles;
-   logic               char_bytes_fetched;
-   logic [4:0]         WIDTH;
-   logic [3:0]         OFFSET;
+   logic [15:0]        DP_head, DP_head_next, // Pointer to first DL item
+                       DP, DP_next,           // Point to current DL item
+                       PP, PP_next,           // Pointer to graphics data
+                       CP, CP_next,           // Pointer to character map
+                       ZP, ZP_next;           // Pointer to current DLL item
 
-   logic               INDIRECT_MODE;
+   // When fetching from slower-clocked devices, this keeps track of how long
+   // we've held the address so far
+   logic [1:0]         ADDR_HOLD_CTR, ADDR_HOLD_CTR_next;
 
-   // control regs
-   logic               DLIen, DLIen_prev, A12en, A11en;
+   // When fetching in indirect mode with character_width=1, this keeps track
+   // of whether we've already fetched the first graphics byte (out of 2)
+   logic               FIRST_BYTE_FETCHED, FIRST_BYTE_FETCHED_next;
+
+   // Width of DL item
+   logic [4:0]         WIDTH, WIDTH_next;
+
+   // Offset of DLL item (decrements at the end of each dp dma)
+   logic [3:0]         OFFSET, OFFSET_next;
+
+   // Control registers
+   logic               INDIRECT_MODE, INDIRECT_MODE_next,
+                       DLIen, DLIen_next,
+                       A12en, A12en_next,
+                       A11en, A11en_next;
+
+   logic               done_next, dli_next;
+
+   // Arithmetic nets
+   logic [15:0]        ZP_plus_one;
+   assign ZP_plus_one = ZP + 1;
+
+   // States are mostly named by requested
+   // addresses (req) and received data (rec)
+   enum {
+      idle
+      // ZP DMA States
+      req_offset,
+      req_DPH_rec_offset,
+      req_DPL_rec_DPH,
+      rec_DPL,
+      // DP DMA States
+      req_PPL,
+      req_Byte2_rec_PPL,
+      req_PPH_rec_Byte2,
+      req_INPUT_rec_PPH,
+      req_WIDTH_rec_PPH,
+      req_INPUT_rec_WIDTH,
+      // Direct Mode Graphics States
+      req_PIXEL_rec_INPUT,
+      iter_PIXELS,
+      // Indirect Mode Graphics States
+      req_CP_rec_INPUT,
+      req_iPIXEL_rec_CP,
+      iter_iPIXELS
+   } state, state_next;
+
+   always_ff @(posedge sysclk, posedge reset) begin
+      if (reset) begin
+         state <= idle;
+         done <= 0;
+         dli <= 0;
+      end else begin
+         state <= state_next;
+         DP_head <= DP_head_next;
+         DP <= DP_next;
+         PP <= PP_next;
+         CP <= CP_next;
+         ZP <= ZP_next;
+         ADDR_HOLD_CTR <= ADDR_HOLD_CTR_next;
+         FIRST_BYTE_FETCHED <= FIRST_BYTE_FETCHED_next;
+         WIDTH <= WIDTH_next;
+         OFFSET <= OFFSET_next;
+         INDIRECT_MODE <= INDIRECT_MODE_next;
+         DLIen <= DLIen_next;
+         A12en <= A12en_next;
+         A11en <= A11en_next;
+         done <= done_next;
+         dli <= dli_next;
+      end
+   end
+
+   always_comb begin
+      state_next = state;
+      DP_head_next = DP_head;
+      DP_next = DP;
+      PP_next = PP;
+      CP_next = CP;
+      ZP_next = ZP;
+      ADDR_HOLD_CTR_next = ADDR_HOLD_CTR;
+      FIRST_BYTE_FETCHED_next = FIRST_BYTE_FETCHED;
+      WIDTH_next = WIDTH;
+      OFFSET_next = OFFSET;
+      INDIRECT_MODE_next = INDIRECT_MODE;
+      DLIen_next = DLIen;
+      A12en_next = A12en;
+      A11en_next = A11en;
+      done_next = done;
+      dli_next = dli;
+
+      AddrB = 16'hxxxx;
+      wm_w = 0;
+      palette_w = 0;
+      input_w = 0;
+      pixels_w = 0;
+
+      case (state)
+        idle: begin
+        end
+        // ZP DMA States
+        req_offset: begin
+           AddrB = ZP;
+        end
+        req_DPH_rec_offset: begin
+           AddrB = ZP;
+        end
+        req_DPL_rec_DPH: begin
+           AddrB = ZP;
+        end
+        req_DPL: begin
+           AddrB = ZP;
+        end
+        // DP DMA States
+        req_PPL: begin
+           AddrB = DP;
+        end
+        req_Byte2_rec_PPL: begin
+           AddrB = DP;
+        end
+        req_PPH_rec_Byte2: begin
+           AddrB = DP;
+           if (null_data) begin
+
+           end else begin
+              wm_w = null_width;
+              palette_w = ~null_width;
+           end
+        end
+        req_INPUT_rec_PPH: begin
+           AddrB = DP;
+        end
+        req_WIDTH_rec_PPH: begin
+           AddrB = DP;
+        end
+        req_INPUT_rec_WIDTH: begin
+           AddrB = DP;
+        end
+        // Direct Mode Graphics States
+        req_PIXEL_rec_INPUT: begin
+           AddrB = PP_plus_offset;
+        end
+
+
+   end
 
    // states
    enum logic [1:0] {waiting = 2'b00, zp_dma = 2'b01, dp_dma = 2'b10} state;
@@ -54,13 +203,13 @@ module dma_ctrl(
                      w_next_DPH = 4'hf} dp_state;
 
    logic five_byte_mode, null_width, null_data, zero_offset;
-   
+
    logic PP_in_cart;
    assign PP_in_cart = |(PP_plus_offset[15:14]);
-   
+
    logic [7:0] CB_plus_offset;
    assign CB_plus_offset = char_base + {4'b0, OFFSET};
-   
+
    logic CB_in_cart;
    assign CB_in_cart = |(CB_plus_offset[7:6]);
 
@@ -71,7 +220,7 @@ module dma_ctrl(
    assign drive_AB = (state != waiting);
 
    assign ZP_saved_next = ZP_saved + 1;
-   
+
    logic [15:0] PP_plus_offset;
    assign PP_plus_offset = PP + {4'b0, OFFSET, 8'b0};
 
