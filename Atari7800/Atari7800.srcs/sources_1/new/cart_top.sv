@@ -21,7 +21,7 @@
 
 `include "atari7800.vh"
 
-`define MSPACMAN
+`define GALAGA
 
 `define    INPUT_CYCLES 256
 `define    INPUT_CYCLES_NBITS 9
@@ -170,13 +170,20 @@ module cart_top(
        
    logic [7:0] gal_dout, gal_dout_buf;
    
-   always_ff @(posedge pclk_0)
+   /*always_ff @(posedge pclk_0)
       gal_dout_buf <= gal_dout;
    
    GALAGA_DROM gal_rom (
       .a(AB[14:0]),     
       .spo(gal_dout)    
+   );*/
+   
+   GALAGA_BROM your_instance_name (
+     .clka(pclk_0),    // input wire clka
+     .addra(AB[14:0]),  // input wire [14 : 0] addra
+     .douta(gal_dout_buf)  // output wire [7 : 0] douta
    );
+   
    `endif
            
    `ifdef MSPACMAN
