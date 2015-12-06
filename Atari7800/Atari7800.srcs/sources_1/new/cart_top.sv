@@ -23,7 +23,8 @@
 
 `define FOODFIGHT
 
-`define    INPUT_CYCLES 8
+`define    INPUT_CYCLES 256
+`define    INPUT_CYCLES_NBITS 9
 
 module cart_top(
 `ifndef SIM
@@ -50,16 +51,31 @@ module cart_top(
     logic [15:0] AB;
     logic        RW;
     logic        pclk_0;
-    reg [`INPUT_CYCLES-1:0]    paddleA0SR = {`INPUT_CYCLES{1'b0}};
-    reg [`INPUT_CYCLES-1:0]    paddleB0SR = {`INPUT_CYCLES{1'b0}};
-    reg [`INPUT_CYCLES-1:0]    paddleA1SR = {`INPUT_CYCLES{1'b0}};
-    reg [`INPUT_CYCLES-1:0]    paddleB1SR = {`INPUT_CYCLES{1'b0}}; 
+    reg [`INPUT_CYCLES_NBITS-1:0]    paddleA0_ctr = {`INPUT_CYCLES_NBITS{1'b0}};
+    reg [`INPUT_CYCLES_NBITS-1:0]    paddleB0_ctr = {`INPUT_CYCLES_NBITS{1'b0}};
+    reg [`INPUT_CYCLES_NBITS-1:0]    paddleA1_ctr = {`INPUT_CYCLES_NBITS{1'b0}};
+    reg [`INPUT_CYCLES_NBITS-1:0]    paddleB1_ctr = {`INPUT_CYCLES_NBITS{1'b0}}; 
     
     always_ff @(posedge pclk_0) begin
-        paddleA0SR <= {paddleA0SR[`INPUT_CYCLES-2:0],ctrl_0_fmc[6]};
-        paddleB0SR <= {paddleB0SR[`INPUT_CYCLES-2:0],ctrl_0_fmc[4]};
-        paddleA1SR <= {paddleA1SR[`INPUT_CYCLES-2:0],ctrl_1_fmc[6]};
-        paddleB1SR <= {paddleB1SR[`INPUT_CYCLES-2:0],ctrl_1_fmc[4]};
+        if (~ctrl_0_fmc[6])
+           paddleA0_ctr <= 0;
+        else if (paddleA0_ctr < `INPUT_CYCLES)
+           paddleA0_ctr <= paddleA0_ctr + 1;
+           
+        if (~ctrl_0_fmc[4])
+           paddleB0_ctr <= 0;
+        else if (paddleB0_ctr < `INPUT_CYCLES)
+           paddleB0_ctr <= paddleB0_ctr + 1;
+
+        if (~ctrl_1_fmc[6])
+           paddleA1_ctr <= 0;
+        else if (paddleA1_ctr < `INPUT_CYCLES)
+           paddleA1_ctr <= paddleA1_ctr + 1;
+             
+        if (~ctrl_1_fmc[4])
+           paddleB1_ctr <= 0;
+        else if (paddleB1_ctr < `INPUT_CYCLES)
+           paddleB1_ctr <= paddleB1_ctr + 1;
     end
     
     ////////////////////////////////////////////////////////
@@ -79,10 +95,10 @@ module cart_top(
     assign {right_0_b, left_0_b, down_0_b, up_0_b} = ctrl_0_fmc[3:0];
     assign {right_1_b, left_1_b, down_1_b, up_1_b} = ctrl_1_fmc[3:0];
     
-    assign paddle_B_0 = &paddleB0SR;
-    assign paddle_B_1 = &paddleB1SR;
-    assign paddle_A_0 = &paddleA0SR;
-    assign paddle_A_1 = &paddleA1SR;
+    assign paddle_B_0 = paddleB0_ctr == `INPUT_CYCLES;
+    assign paddle_B_1 = paddleB1_ctr == `INPUT_CYCLES;
+    assign paddle_A_0 = paddleA0_ctr == `INPUT_CYCLES;
+    assign paddle_A_1 = paddleA1_ctr == `INPUT_CYCLES;
     
     assign fire_0_b = (~paddle_A_0 & ~paddle_B_0);
     assign fire_1_b = (~paddle_A_1 & ~paddle_B_1); 
@@ -149,6 +165,7 @@ module cart_top(
    );
    `endif
    
+
    `ifdef FOODFIGHT
    logic [7:0] foodfight_dout;
    assign cart_data_out = foodfight_dout;
@@ -159,23 +176,39 @@ module cart_top(
      .douta(foodfight_dout)
      );
      
+   `endif //  `ifdef FOODFIGHT
+   
+   `ifdef GALAGA
+   assign cart_data_out = gal_dout_buf;
+       
+   logic [7:0] gal_dout, gal_dout_buf;
+   
+   always_ff @(posedge pclk_0)
+      gal_dout_buf <= gal_dout;
+   
+   GALAGA_DROM gal_rom (
+      .a(AB[14:0]),     
+      .spo(gal_dout)    
+   );
    `endif
            
    `ifdef MSPACMAN
+   logic [7:0] mspac_dout, mspac_dout_buf;
    
-   assign cart_data_out = mspac_dout;
+   assign cart_data_out = mspac_dout_buf;
+           
+   /*always_ff @(posedge pclk_0)
+      mspac_dout_buf <= mspac_dout;
            
    MSPAC_DROM your_instance_name (
      .a(AB[13:0]),        // input wire [13 : 0] a
-     .clk(pclk_0),    // input wire clk
-     .qspo(mspac_dout)  // output wire [7 : 0] qspo
-   );    
-   /*MSPAC_ROM mspac (
+     .spo(mspac_dout)  // output wire [7 : 0] qspo
+   );    */
+   MSPAC_ROM mspac (
      .clka(pclk_0),
      .addra(AB[13:0]),
-     .ena(~sel_mspac),
-     .douta(mspac_dout)
-   );*/
+     .douta(mspac_dout_buf)
+   );
    
    `endif
    

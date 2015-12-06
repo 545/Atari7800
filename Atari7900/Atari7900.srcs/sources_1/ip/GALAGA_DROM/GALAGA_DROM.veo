@@ -46,22 +46,24 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: xilinx.com:ip:blk_mem_gen:8.2
-// IP Revision: 6
+// IP VLNV: xilinx.com:ip:dist_mem_gen:8.0
+// IP Revision: 8
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
 // (in parentheses) to your own signal names.
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-MSPAC_ROM your_instance_name (
-  .clka(clka),    // input wire clka
-  .addra(addra),  // input wire [13 : 0] addra
-  .douta(douta)  // output wire [7 : 0] douta
+GALAGA_DROM your_instance_name (
+  .a(a),      // input wire [14 : 0] a
+  .d(d),      // input wire [7 : 0] d
+  .clk(clk),  // input wire clk
+  .we(we),    // input wire we
+  .spo(spo)  // output wire [7 : 0] spo
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 
-// You must compile the wrapper file MSPAC_ROM.v when simulating
-// the core, MSPAC_ROM. When compiling the wrapper file, be sure to
+// You must compile the wrapper file GALAGA_DROM.v when simulating
+// the core, GALAGA_DROM. When compiling the wrapper file, be sure to
 // reference the Verilog simulation library.
 

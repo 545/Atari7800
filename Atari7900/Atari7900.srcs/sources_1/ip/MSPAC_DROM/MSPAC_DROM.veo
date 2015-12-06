@@ -55,9 +55,8 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 MSPAC_DROM your_instance_name (
-  .a(a),        // input wire [13 : 0] a
-  .clk(clk),    // input wire clk
-  .qspo(qspo)  // output wire [7 : 0] qspo
+  .a(a),      // input wire [13 : 0] a
+  .spo(spo)  // output wire [7 : 0] spo
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

@@ -56,16 +56,19 @@ USE ieee.numeric_std.ALL;
 LIBRARY dist_mem_gen_v8_0;
 USE dist_mem_gen_v8_0.dist_mem_gen_v8_0;
 
-ENTITY MSPAC_DROM IS
+ENTITY GALAGA_DROM IS
   PORT (
-    a : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+    a : IN STD_LOGIC_VECTOR(14 DOWNTO 0);
+    d : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    clk : IN STD_LOGIC;
+    we : IN STD_LOGIC;
     spo : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
-END MSPAC_DROM;
+END GALAGA_DROM;
 
-ARCHITECTURE MSPAC_DROM_arch OF MSPAC_DROM IS
+ARCHITECTURE GALAGA_DROM_arch OF GALAGA_DROM IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : string;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF MSPAC_DROM_arch: ARCHITECTURE IS "yes";
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF GALAGA_DROM_arch: ARCHITECTURE IS "yes";
 
   COMPONENT dist_mem_gen_v8_0 IS
     GENERIC (
@@ -103,9 +106,9 @@ ARCHITECTURE MSPAC_DROM_arch OF MSPAC_DROM IS
       C_PARSER_TYPE : INTEGER
     );
     PORT (
-      a : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+      a : IN STD_LOGIC_VECTOR(14 DOWNTO 0);
       d : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      dpra : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+      dpra : IN STD_LOGIC_VECTOR(14 DOWNTO 0);
       clk : IN STD_LOGIC;
       we : IN STD_LOGIC;
       i_ce : IN STD_LOGIC;
@@ -123,20 +126,20 @@ ARCHITECTURE MSPAC_DROM_arch OF MSPAC_DROM IS
     );
   END COMPONENT dist_mem_gen_v8_0;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF MSPAC_DROM_arch: ARCHITECTURE IS "dist_mem_gen_v8_0,Vivado 2015.2";
+  ATTRIBUTE X_CORE_INFO OF GALAGA_DROM_arch: ARCHITECTURE IS "dist_mem_gen_v8_0,Vivado 2015.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF MSPAC_DROM_arch : ARCHITECTURE IS "MSPAC_DROM,dist_mem_gen_v8_0,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF GALAGA_DROM_arch : ARCHITECTURE IS "GALAGA_DROM,dist_mem_gen_v8_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF MSPAC_DROM_arch: ARCHITECTURE IS "MSPAC_DROM,dist_mem_gen_v8_0,{x_ipProduct=Vivado 2015.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dist_mem_gen,x_ipVersion=8.0,x_ipCoreRevision=8,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_ADDR_WIDTH=14,C_DEFAULT_DATA=0,C_DEPTH=16384,C_HAS_CLK=0,C_HAS_D=0,C_HAS_DPO=0,C_HAS_DPRA=0,C_HAS_I_CE=0,C_HAS_QDPO=0,C_HAS_QDPO_CE=0,C_HAS_QDPO_CLK=0,C_HAS_QDPO_RST=0,C_HAS_QDPO_SRST=0,C_HAS_QSPO=0,C_HAS_QSPO_CE=0,C_HAS_QSPO_RST=0,C_HAS_QSPO_SRST=0,C_HAS_SPO=1,C_HAS_WE=0,C_MEM_INIT_FILE=MSPAC_DROM.mif,C_ELABORATION_DIR=./,C_MEM_TYPE=0,C_PIPELINE_STAGES=0,C_QCE_JOINED=0,C_QUALIFY_WE=0,C_READ_MIF=1,C_REG_A_D_INPUTS=0,C_REG_DPRA_INPUT=0,C_SYNC_ENABLE=1,C_WIDTH=8,C_PARSER_TYPE=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF GALAGA_DROM_arch: ARCHITECTURE IS "GALAGA_DROM,dist_mem_gen_v8_0,{x_ipProduct=Vivado 2015.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dist_mem_gen,x_ipVersion=8.0,x_ipCoreRevision=8,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_ADDR_WIDTH=15,C_DEFAULT_DATA=0,C_DEPTH=32768,C_HAS_CLK=1,C_HAS_D=1,C_HAS_DPO=0,C_HAS_DPRA=0,C_HAS_I_CE=0,C_HAS_QDPO=0,C_HAS_QDPO_CE=0,C_HAS_QDPO_CLK=0,C_HAS_QDPO_RST=0,C_HAS_QDPO_SRST=0,C_HAS_QSPO=0,C_HAS_QSPO_CE=0,C_HAS_QSPO_RST=0,C_HAS_QSPO_SRST=0,C_HAS_SPO=1,C_HAS_WE=1,C_MEM_INIT_FILE=no_coe_file_loaded,C_ELABORATION_DIR=./,C_MEM_TYPE=1,C_PIPELINE_STAGES=0,C_QCE_JOINED=0,C_QUALIFY_WE=0,C_READ_MIF=0,C_REG_A_D_INPUTS=0,C_REG_DPRA_INPUT=0,C_SYNC_ENABLE=1,C_WIDTH=8,C_PARSER_TYPE=1}";
 BEGIN
   U0 : dist_mem_gen_v8_0
     GENERIC MAP (
       C_FAMILY => "zynq",
-      C_ADDR_WIDTH => 14,
+      C_ADDR_WIDTH => 15,
       C_DEFAULT_DATA => "0",
-      C_DEPTH => 16384,
-      C_HAS_CLK => 0,
-      C_HAS_D => 0,
+      C_DEPTH => 32768,
+      C_HAS_CLK => 1,
+      C_HAS_D => 1,
       C_HAS_DPO => 0,
       C_HAS_DPRA => 0,
       C_HAS_I_CE => 0,
@@ -150,14 +153,14 @@ BEGIN
       C_HAS_QSPO_RST => 0,
       C_HAS_QSPO_SRST => 0,
       C_HAS_SPO => 1,
-      C_HAS_WE => 0,
-      C_MEM_INIT_FILE => "MSPAC_DROM.mif",
+      C_HAS_WE => 1,
+      C_MEM_INIT_FILE => "no_coe_file_loaded",
       C_ELABORATION_DIR => "./",
-      C_MEM_TYPE => 0,
+      C_MEM_TYPE => 1,
       C_PIPELINE_STAGES => 0,
       C_QCE_JOINED => 0,
       C_QUALIFY_WE => 0,
-      C_READ_MIF => 1,
+      C_READ_MIF => 0,
       C_REG_A_D_INPUTS => 0,
       C_REG_DPRA_INPUT => 0,
       C_SYNC_ENABLE => 1,
@@ -166,10 +169,10 @@ BEGIN
     )
     PORT MAP (
       a => a,
-      d => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
-      dpra => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 14)),
-      clk => '0',
-      we => '0',
+      d => d,
+      dpra => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 15)),
+      clk => clk,
+      we => we,
       i_ce => '1',
       qspo_ce => '1',
       qdpo_ce => '1',
@@ -180,4 +183,4 @@ BEGIN
       qdpo_srst => '0',
       spo => spo
     );
-END MSPAC_DROM_arch;
+END GALAGA_DROM_arch;
