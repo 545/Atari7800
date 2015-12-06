@@ -55,20 +55,18 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module MSPAC_DROM (
   a,
-  clk,
-  qspo
+  spo
 );
 
 input wire [13 : 0] a;
-input wire clk;
-output wire [7 : 0] qspo;
+output wire [7 : 0] spo;
 
   dist_mem_gen_v8_0 #(
     .C_FAMILY("zynq"),
     .C_ADDR_WIDTH(14),
     .C_DEFAULT_DATA("0"),
     .C_DEPTH(16384),
-    .C_HAS_CLK(1),
+    .C_HAS_CLK(0),
     .C_HAS_D(0),
     .C_HAS_DPO(0),
     .C_HAS_DPRA(0),
@@ -78,11 +76,11 @@ output wire [7 : 0] qspo;
     .C_HAS_QDPO_CLK(0),
     .C_HAS_QDPO_RST(0),
     .C_HAS_QDPO_SRST(0),
-    .C_HAS_QSPO(1),
+    .C_HAS_QSPO(0),
     .C_HAS_QSPO_CE(0),
     .C_HAS_QSPO_RST(0),
     .C_HAS_QSPO_SRST(0),
-    .C_HAS_SPO(0),
+    .C_HAS_SPO(1),
     .C_HAS_WE(0),
     .C_MEM_INIT_FILE("MSPAC_DROM.mif"),
     .C_ELABORATION_DIR("./"),
@@ -100,7 +98,7 @@ output wire [7 : 0] qspo;
     .a(a),
     .d(8'B0),
     .dpra(14'B0),
-    .clk(clk),
+    .clk(1'D0),
     .we(1'D0),
     .i_ce(1'D1),
     .qspo_ce(1'D1),
@@ -110,9 +108,9 @@ output wire [7 : 0] qspo;
     .qdpo_rst(1'D0),
     .qspo_srst(1'D0),
     .qdpo_srst(1'D0),
-    .spo(),
+    .spo(spo),
     .dpo(),
-    .qspo(qspo),
+    .qspo(),
     .qdpo()
   );
 endmodule

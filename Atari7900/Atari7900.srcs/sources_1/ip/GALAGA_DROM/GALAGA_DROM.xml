@@ -2,7 +2,7 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>customized_ip</spirit:library>
-  <spirit:name>MSPAC_DROM</spirit:name>
+  <spirit:name>GALAGA_DROM</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:model>
     <spirit:views>
@@ -17,7 +17,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>5b42b059</spirit:value>
+            <spirit:value>5d6038bc</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -25,7 +25,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -33,7 +33,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:36 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -52,7 +52,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>5b42b059</spirit:value>
+            <spirit:value>5d6038bc</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -60,7 +60,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -68,7 +68,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:38 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -87,7 +87,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>5b42b059</spirit:value>
+            <spirit:value>5d6038bc</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -95,7 +95,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -103,7 +103,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:38 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -123,7 +123,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>90386b1b</spirit:value>
+            <spirit:value>1d1fc012</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -131,7 +131,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -139,7 +139,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:38 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -158,7 +158,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>90386b1b</spirit:value>
+            <spirit:value>1d1fc012</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -166,7 +166,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -174,7 +174,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:38 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -192,7 +192,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>5b42b059</spirit:value>
+            <spirit:value>5d6038bc</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -200,7 +200,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>2de03d77</spirit:value>
+            <spirit:value>86c7e246</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -208,7 +208,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Dec 06 20:21:38 UTC 2015</spirit:value>
+            <spirit:value>Sun Dec 06 21:53:29 UTC 2015</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>StaleAtRelink</spirit:name>
@@ -223,7 +223,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADDR_WIDTH&apos;))-1)">13</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADDR_WIDTH&apos;))-1)">14</spirit:left>
             <spirit:right spirit:format="long" spirit:resolve="immediate">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -269,7 +269,7 @@
           <xilinx:portInfo>
             <xilinx:enablement>
               <xilinx:presence>optional</xilinx:presence>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_D&apos;)) = 1">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_D&apos;)) = 1">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -279,7 +279,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADDR_WIDTH&apos;))-1">13</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADDR_WIDTH&apos;))-1">14</spirit:left>
             <spirit:right spirit:format="long" spirit:resolve="immediate">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -321,7 +321,7 @@
           <xilinx:portInfo>
             <xilinx:enablement>
               <xilinx:presence>optional</xilinx:presence>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_CLK&apos;)) = 1">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_CLK&apos;)) = 1">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -345,7 +345,7 @@
           <xilinx:portInfo>
             <xilinx:enablement>
               <xilinx:presence>optional</xilinx:presence>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_WE&apos;)) = 1">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_WE&apos;)) = 1">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -650,7 +650,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ADDR_WIDTH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADDR_WIDTH">14</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ADDR_WIDTH">15</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_DEFAULT_DATA</spirit:name>
@@ -658,15 +658,15 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEPTH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEPTH">16384</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEPTH">32768</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_CLK</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_CLK">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_CLK">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_D</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_D">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_D">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_DPO</spirit:name>
@@ -722,11 +722,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_WE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_WE">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_WE">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_MEM_INIT_FILE</spirit:name>
-        <spirit:value spirit:format="string" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM_INIT_FILE">MSPAC_DROM.mif</spirit:value>
+        <spirit:value spirit:format="string" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM_INIT_FILE">no_coe_file_loaded</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_ELABORATION_DIR</spirit:name>
@@ -734,7 +734,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_MEM_TYPE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM_TYPE">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM_TYPE">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PIPELINE_STAGES</spirit:name>
@@ -750,7 +750,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_READ_MIF</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_READ_MIF">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_READ_MIF">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_REG_A_D_INPUTS</spirit:name>
@@ -824,22 +824,18 @@
     <spirit:fileSet>
       <spirit:name>xilinx_veriloginstantiationtemplate_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>MSPAC_DROM.veo</spirit:name>
+        <spirit:name>GALAGA_DROM.veo</spirit:name>
         <spirit:userFileType>verilogTemplate</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>MSPAC_DROM_ooc.xdc</spirit:name>
+        <spirit:name>GALAGA_DROM_ooc.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>MSPAC_DROM.mif</spirit:name>
-        <spirit:userFileType>mif</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>dist_mem_gen_v8_0/hdl/dist_mem_gen_v8_0_vhsyn_rfs.vhd</spirit:name>
@@ -855,17 +851,13 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>synth/MSPAC_DROM.vhd</spirit:name>
+        <spirit:name>synth/GALAGA_DROM.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>MSPAC_DROM.mif</spirit:name>
-        <spirit:userFileType>mif</spirit:userFileType>
-      </spirit:file>
       <spirit:file>
         <spirit:name>dist_mem_gen_v8_0/simulation/dist_mem_gen_v8_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
@@ -876,7 +868,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>sim/MSPAC_DROM.v</spirit:name>
+        <spirit:name>sim/GALAGA_DROM.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -894,7 +886,7 @@
     <spirit:parameter>
       <spirit:name>depth</spirit:name>
       <spirit:displayName>Depth</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.depth" spirit:order="2" spirit:minimum="16" spirit:maximum="65536">16384</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.depth" spirit:order="2" spirit:minimum="16" spirit:maximum="65536">32768</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>data_width</spirit:name>
@@ -904,12 +896,12 @@
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:displayName>Component Name</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="4">MSPAC_DROM</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="4">GALAGA_DROM</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>memory_type</spirit:name>
       <spirit:displayName>Memory Type</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.memory_type" spirit:choiceRef="choices_0" spirit:order="5">rom</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.memory_type" spirit:choiceRef="choices_0" spirit:order="5">single_port_ram</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>input_options</spirit:name>
@@ -974,7 +966,7 @@
     <spirit:parameter>
       <spirit:name>coefficient_file</spirit:name>
       <spirit:displayName>Coefficients File</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.coefficient_file" spirit:order="18">../../../../../hex/mspac.coe</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.coefficient_file" spirit:order="18">no_coe_file_loaded</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>default_data_radix</spirit:name>
@@ -1039,9 +1031,6 @@
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.depth" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.data_width" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.memory_type" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.output_options" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.coefficient_file" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
