@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7900/Atari7900.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7900/Atari7900.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="286e3fc6cdea4b9a912787a4edd9a2dd"/>
@@ -195,7 +195,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/ip/MSPAC_DROM/MSPAC_DROM.xci">
+      <File Path="$PSRCDIR/sources_1/ip/FOODFIGHT_ROM/FOODFIGHT_ROM.xci">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -211,6 +211,30 @@
       </File>
       <File Path="$PPRDIR/../Atari7800/Atari7800.srcs/sources_1/new/cart_top.sv">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/CHOPLIFTER/CHOPLIFTER.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/CHOPLIFTER_DROM/CHOPLIFTER_DROM.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/MSPAC_DROM/MSPAC_DROM.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -352,6 +376,32 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/ip/JOUST_ROM/JOUST_ROM.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../hex/joust.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../hex/Choplifter.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../hex/foodf.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="cart_top"/>
@@ -439,94 +489,6 @@
     <MsgAttr Name="RuleSource" Val="8"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
     <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[4] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[5] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-152"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-152] case item 8&apos;b1x001000 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v:1040]"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[3] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-327"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-327] inferring latch for variable &apos;wSync_reg&apos; [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/new/tia.v:282]"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[7] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[6] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:PALETTE[0] to constant 0"/>
-  </MsgRule>
-  <MsgRule>
-    <MsgAttr Name="RuleType" Val="0"/>
-    <MsgAttr Name="Limit" Val="-1"/>
-    <MsgAttr Name="NewSeverity" Val="ANY"/>
-    <MsgAttr Name="Id" Val="Synth 8-3295"/>
-    <MsgAttr Name="Severity" Val="ANY"/>
-    <MsgAttr Name="ShowRule" Val="1"/>
-    <MsgAttr Name="RuleSource" Val="8"/>
-    <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[1] to constant 0"/>
   </MsgRule>
   <MsgRule>
     <MsgAttr Name="RuleType" Val="0"/>
@@ -644,6 +606,17 @@
     <MsgAttr Name="RuleType" Val="0"/>
     <MsgAttr Name="Limit" Val="-1"/>
     <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[5] to constant 0"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
     <MsgAttr Name="Id" Val="Synth 8-312"/>
     <MsgAttr Name="Severity" Val="ANY"/>
     <MsgAttr Name="ShowRule" Val="1"/>
@@ -671,5 +644,82 @@
     <MsgAttr Name="RuleSource" Val="8"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
     <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-152] case item 8&apos;b100x1x10 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v:1040]"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-152"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-152] case item 8&apos;b1x001000 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v:1040]"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[3] to constant 0"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-327"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-327] inferring latch for variable &apos;wSync_reg&apos; [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/new/tia.v:282]"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[7] to constant 0"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[6] to constant 0"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:PALETTE[0] to constant 0"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="Synth 8-3295"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-3295] tying undriven pin line_ram_inst:INPUT_ADDR[1] to constant 0"/>
   </MsgRule>
 </Project>

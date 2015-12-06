@@ -21,9 +21,9 @@
 
 `include "atari7800.vh"
 
-`define MSPACMAN
+`define FOODFIGHT
 
-`define    INPUT_CYCLES 5
+`define    INPUT_CYCLES 8
 
 module cart_top(
 `ifndef SIM
@@ -148,6 +148,18 @@ module cart_top(
       .spo(ast_dout)     // output wire [7 : 0] spo
    );
    `endif
+   
+   `ifdef FOODFIGHT
+   logic [7:0] foodfight_dout;
+   assign cart_data_out = foodfight_dout;
+   
+   FOODFIGHT_ROM food (
+     .clka(pclk_0),
+     .addra(AB[14:0]),
+     .douta(foodfight_dout)
+     );
+     
+   `endif
            
    `ifdef MSPACMAN
    
@@ -166,6 +178,36 @@ module cart_top(
    );*/
    
    `endif
+   
+   `ifdef JOUST
+   logic [7:0] joust dout;
+   assign cart_data_out = joust_dout;
+   JOUST_ROM joust (
+    .clka(pclk_0),    // input wire clka
+    .addra(AB[14:0]),  // input wire [14 : 0] addra
+    .douta(joust_dout)  // output wire [7 : 0] douta
+       );
+    `endif
+    
+    `ifdef CHOPLIFTER
+    
+    logic [7:0] choplifter_dout, choplifter_dout_buf;
+    assign cart_data_out = choplifter_dout_buf;
+    
+    CHOPLIFTER your_instance_name (
+      .clka(pclk_0),    // input wire clka
+      .addra(AB[14:0]),  // input wire [14 : 0] addra
+      .douta(choplifter_dout_buf)  // output wire [7 : 0] douta
+    );
+    
+    /*always_ff @(posedge pclk_0)
+          choplifter_dout_buf <= choplifter_dout;
+    
+    CHOPLIFTER_DROM chop (
+      .a(AB[14:0]),      // input wire [14 : 0] a
+      .spo(choplifter_dout)  // output wire [7 : 0] spo
+    );*/
+    `endif
           
     `ifdef ROBOTRON 
     logic [7:0] robo_dout;

@@ -132,3 +132,4 @@ set_property IOSTANDARD LVCMOS25 [get_ports {ctrl_1_fmc[1]}]
 set_property IOSTANDARD LVCMOS25 [get_ports {ctrl_1_fmc[0]}]
 
 
+
