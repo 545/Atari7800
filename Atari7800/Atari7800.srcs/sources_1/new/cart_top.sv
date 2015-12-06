@@ -21,10 +21,7 @@
 
 `include "atari7800.vh"
 
-`define ROBOTRON 2'b00
-`define    MSPAC 2'b01
-`define   DIGDUG 2'b10
-`define    MARIO 2'b11
+`define MSPACMAN
 
 `define    INPUT_CYCLES 5
 
@@ -137,58 +134,70 @@ module cart_top(
     assign ilatch[1] = fire_1_b;
     
     assign idump = {paddle_A_0, paddle_B_0, paddle_A_1, paddle_B_1};
-    
-    logic [7:0] robo_dout, mspac_dout, digdug_dout, cent_dout;
-    logic sel_robo, sel_mspac, sel_digdug, sel_mario;
-    
-    //assign sel_robo = ({sw[5],sw[4]} == `ROBOTRON);
-    //assign sel_mspac = ({sw[5],sw[4]} == `MSPAC);
-    //assign sel_digdug = ({sw[5],sw[4]} == `DIGDUG);
-    //assign sel_mario = ({sw[5],sw[4]} == `MARIO);
-    //assign cart_data_out = digdug_dout;
-    
-    assign sel_mspac = sw[4];
-    
-    /*always_comb 
-        case (sw[5:4])
-        `ROBOTRON: cart_data_out = robo_dout;
-        `MSPAC: cart_data_out = mspac_dout;
-        `DIGDUG: cart_data_out = digdug_dout;
-        `MARIO: cart_data_out = mario_dout;
-        default: cart_data_out = 8'hbf;
-        endcase*/
-    assign cart_data_out = robo_dout;
+   
+   `ifdef ASTEROIDS
+   assign cart_data_out = ast_dout_buf;
+       
+   logic [7:0] ast_dout, ast_dout_buf;
+   
+   always_ff @(posedge pclk_0)
+      ast_dout_buf <= ast_dout;
+   
+   AST_ROM ast_rom (
+      .a(AB[13:0]),      // input wire [13 : 0] a
+      .spo(ast_dout)     // output wire [7 : 0] spo
+   );
+   `endif
            
+   `ifdef MSPACMAN
+   
+   assign cart_data_out = mspac_dout;
+           
+   MSPAC_DROM your_instance_name (
+     .a(AB[13:0]),        // input wire [13 : 0] a
+     .clk(pclk_0),    // input wire clk
+     .qspo(mspac_dout)  // output wire [7 : 0] qspo
+   );    
+   /*MSPAC_ROM mspac (
+     .clka(pclk_0),
+     .addra(AB[13:0]),
+     .ena(~sel_mspac),
+     .douta(mspac_dout)
+   );*/
+   
+   `endif
+          
+    `ifdef ROBOTRON 
+    logic [7:0] robo_dout;
+    assign cart_data_out = robo_dout;
     CART_ROM robotron (
       .clka(pclk_0),    // input wire clka
       .addra(AB[14:0]),  // input wire [14 : 0] addra
       .douta(robo_dout)  // output wire [7 : 0] douta
     );
+    `endif
     
-    /*MSPAC_ROM mspac (
-      .clka(pclk_0),
-      .addra(AB[13:0]),
-      .ena(~sel_mspac),
-      .douta(mspac_dout)
-    );*/
-    
-    
-    /*DIGDUG_ROM digdug (
+    `ifdef DIGDUG
+    logic [7:0] digdug_dout;
+    assign cart_data_out = digdug_dout;
+    DIGDUG_ROM digdug (
       .clka(pclk_0),
       .addra(AB[13:0]),
       .ena(~sel_mspac),
       .douta(digdug_dout)
-    );*/
+    );
+    `endif
     
-    
-    /*centipede_ROM cent (
+    `ifdef CENTIPEDE
+    logic [7:0] cent_dout;
+    assign cart_data_out = cent_dout;
+    centipede_ROM cent (
       .clka(pclk_0),
       .addra(AB[13:0]),
       .ena(~sel_mspac),
       .douta(cent_dout)
-    );*/
-       
-    
+    );
+    `endif
     
     Atari7800 console(
        .CLOCK_PLL(CLOCK_PLL),
