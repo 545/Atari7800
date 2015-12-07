@@ -36,7 +36,7 @@ module top(
     logic RW, pclk_0;
     assign RW = ~PB_UP;
     
-    assign ld = cart_db;
+    //assign ld = cart_db;
     
     // CARTRIDGE PINOUT
     // http://www.atarihq.com/danb/7800cart/a7800cart.shtml

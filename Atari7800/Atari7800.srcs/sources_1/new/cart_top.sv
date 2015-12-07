@@ -21,7 +21,7 @@
 
 `include "atari7800.vh"
 
-`define FOODFIGHT
+`define DEFENDER
 
 `define    INPUT_CYCLES 256
 `define    INPUT_CYCLES_NBITS 9
@@ -210,6 +210,17 @@ module cart_top(
      .douta(mspac_dout_buf)
    );
    
+   `endif
+   
+   `ifdef DEFENDER
+   logic [7:0] def_dout;
+   assign cart_data_out = def_dout;
+   
+   DEFENDER_BROM defender_rom (
+     .clka(pclk_0),    // input wire clka
+     .addra(AB[11:0]),  // input wire [11 : 0] addra
+     .douta(def_dout)  // output wire [7 : 0] douta
+   );
    `endif
    
    `ifdef JOUST
