@@ -167,13 +167,21 @@ module cart_top(
    
 
    `ifdef FOODFIGHT
-   logic [7:0] foodfight_dout;
-   assign cart_data_out = foodfight_dout;
+   logic [7:0] foodfight_dout, foodfight_dout_buf;
+   assign cart_data_out = foodfight_dout_buf;
+   /*
+   always_ff @(posedge pclk_0)
+      foodfight_dout_buf <= foodfight_dout;
+   
+   FOODFIGHT_DROM food(
+     .a(AB[14:0]),
+     .spo(foodfight_dout)
+   );*/
    
    FOODFIGHT_ROM food (
      .clka(pclk_0),
      .addra(AB[14:0]),
-     .douta(foodfight_dout)
+     .douta(foodfight_dout_buf)
      );
      
    `endif //  `ifdef FOODFIGHT
