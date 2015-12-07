@@ -68,6 +68,11 @@ assign XX = AXYS[2];
 assign SS = AXYS[1];
 assign AA = AXYS[0];
 
+(* keep = "true" *)
+wire [15:0] pc_temp_kept;
+
+assign pc_temp_kept = PC_temp;
+
 reg  C = 0;             // carry flag (init at zero to avoid X's in ALU sim)
 reg  Z = 0;             // zero flag
 reg  I = 0;             // interrupt flag

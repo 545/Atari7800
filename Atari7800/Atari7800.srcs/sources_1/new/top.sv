@@ -387,6 +387,8 @@ module Atari7800(
   
   /// DEBUG  ///////////////////////////////////////////
   `ifndef SIM
+  
+  (* keep = "true" *)
   logic [15:0] pc_temp;
   
   assign ld[1] = pc_reached_230a;
