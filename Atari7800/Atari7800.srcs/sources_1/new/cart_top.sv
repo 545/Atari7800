@@ -21,7 +21,7 @@
 
 `include "atari7800.vh"
 
-`define DEFENDER
+`define POLE
 
 `define    INPUT_CYCLES 256
 `define    INPUT_CYCLES_NBITS 9
@@ -165,6 +165,29 @@ module cart_top(
    );
    `endif
    
+   `ifdef XEVIOUS
+    logic [7:0] xevious_dout;
+    assign cart_data_out = xevious_dout;
+    
+    XEVIOUS_BROM xevious(
+       .clka(pclk_0),
+       .addra(AB[14:0]),
+       .douta(xevious_dout)
+       );
+    `endif
+   
+   `ifdef KUNGFU
+    logic [7:0] kungfu_dout;
+    assign cart_data_out = kungfu_dout;
+    
+    KUNGFUMASTER_BROM kungfu (
+         .clka(pclk_0),
+         .addra(AB[14:0]),
+         .douta(kungfu_dout)
+         );
+    
+   `endif
+   
 
    `ifdef FOODFIGHT
    logic [7:0] foodfight_dout, foodfight_dout_buf;
@@ -185,6 +208,19 @@ module cart_top(
      );
      
    `endif //  `ifdef FOODFIGHT
+   
+   `ifdef POLE
+    logic [7:0] pole_dout;
+    assign cart_data_out = pole_dout;
+    
+    POLE_BROM pole (
+      .clka(pclk_0),
+      .addra(AB[14:0]),
+      .douta(pole_dout)
+      );
+      
+   
+   `endif
    
    `ifdef GALAGA
    assign cart_data_out = gal_dout_buf;
