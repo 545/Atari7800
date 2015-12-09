@@ -29,6 +29,7 @@ module line_ram(
 );
 
    logic [159:0][4:0]          lram_in, lram_out;
+   logic rm_in, rm_out;
 
    logic [7:0]                 input_addr;
    logic [2:0]                 palette;
@@ -73,7 +74,7 @@ module line_ram(
       playback_cell = lram_out[lram_ix];
       playback_palette = playback_cell[4:2]; // Default to 160A/B
       playback_color = playback_cell[1:0];
-      casex (READ_MODE)
+      casex (rm_out)
         2'b0x: begin
             // 160A is read as four double-pixels per byte:
             //      <P2 P1 P0> <D7 D6>
@@ -181,9 +182,11 @@ module line_ram(
          if (LRAM_SWAP) begin
             lram_in <= 800'd0; // All background color
             lram_out <= lram_in;
+            rm_out <= rm_in;
          end
          if (PIXELS_W) begin
             // Load PIXELS byte into lram_in
+            rm_in <= READ_MODE;
             case (wm)
             1'b0: begin
                 // "When wm = 0, each byte specifies four pixel cells
