@@ -25,7 +25,7 @@
 
 `define COOLDOWN_CYCLES 1
 
-`define OVERCLOCK
+//`define OVERCLOCK
 
 
 

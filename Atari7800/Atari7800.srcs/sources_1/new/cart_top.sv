@@ -165,6 +165,28 @@ module cart_top(
    );
    `endif
    
+   `ifdef COMBAT
+   logic [7:0] combat_dout;
+   assign cart_data_out = combat_dout;
+   
+   COMBAT_BROM combat (
+      .clka(pclk_0),
+      .addra(AB[10:0]),
+      .douta(combat_dout)
+      );
+      `endif
+   
+   `ifdef KUNGFU
+    logic [7:0] kungfu_dout;
+    assign cart_data_out = kungfu_dout;
+    KUNGFUMASTER_BROM kungfu (
+    .clka(pclk_0),
+    .addra(AB[14:0]),
+    .douta(kungfu_dout)
+    );
+    
+   `endif
+   
 
    `ifdef FOODFIGHT
    logic [7:0] foodfight_dout, foodfight_dout_buf;

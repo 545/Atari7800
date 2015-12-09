@@ -43,6 +43,17 @@ module Atari7800(
 
    // VGA Signals
    logic [9:0]             vga_row, vga_col;
+   logic tia_hsync, tia_vsync, vga_hsync, vga_vsync;
+   
+   (* keep = "true" *) logic tia_hsync_kept;
+   (* keep = "true" *) logic tia_vsync_kept;
+   (* keep = "true" *) logic vga_hsync_kept;
+   (* keep = "true" *) logic vga_vsync_kept;
+   
+   assign tia_hsync_kept = ~tia_hsync;
+   assign tia_vsync_kept = ~tia_vsync;
+   assign vga_hsync_kept = vga_hsync;
+   assign vga_vsync_kept = vga_vsync;
 
    // MARIA Signals
    logic                   m_int_b, maria_RDY;
@@ -260,6 +271,9 @@ module Atari7800(
      .reset(1'b0),
      .locked(clock_divider_locked)
    );
+   
+   assign VSync = vga_vsync;
+   assign HSync = vga_hsync;
 
    // VGA
    uv_to_vga vga_out(
@@ -267,7 +281,11 @@ module Atari7800(
       .uv_in(uv_display),
       .row(vga_row), .col(vga_col),
       .RED(RED), .GREEN(GREEN), .BLUE(BLUE),
-      .HSync(HSync), .VSync(VSync)
+      .HSync(vga_hsync), .VSync(vga_vsync),
+      .tia_en(tia_en),
+      .tia_hblank(hblank_tia),
+      .tia_vsync(tia_vsync),
+      .tia_clk(tia_clk)
    );
 
    // VIDEO
@@ -324,9 +342,9 @@ module Atari7800(
       .CLK2(pclk_0), // 1.19 Mhz bus clock input
       .idump_in(idump), // Dumped I/O
       .Ilatch(ilatch), // Latched I/O
-      .HSYNC(),        // Video horizontal sync output
+      .HSYNC(tia_hsync),        // Video horizontal sync output
       .HBLANK(hblank_tia), // Video horizontal blank output
-      .VSYNC(),        // Video vertical sync output
+      .VSYNC(tia_vsync),        // Video vertical sync output
       .VBLANK(vblank_tia), // Video vertical sync output
       .COLOROUT(uv_tia), // Indexed color output
       .RES_n(~reset), // Active low reset input
