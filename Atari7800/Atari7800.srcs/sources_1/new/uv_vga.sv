@@ -27,7 +27,7 @@ module uv_to_vga (
     
     input logic tia_en, tia_clk,
     input logic tia_hblank,
-    input logic tia_vsync
+    input logic tia_vblank
 );
  
    
@@ -39,12 +39,54 @@ module uv_to_vga (
    logic [255:0][3:0]  red_palette, green_palette, blue_palette;
    
    logic [7:0] rbuf, gbuf, bbuf;
-   logic [7:0] uv;
+   logic [7:0] uv;   
    
-   logic [7:0] buf_col;
-   assign buf_col = (col >= 10'd640) ? 8'd159 : col[9:2];
+   logic visible, tia_visible;
+   assign visible = (row < 10'd480) & (col < 10'd640);
+   assign tia_visible = (row >= 10'd48) & (row <10'd432) & (col >= 10'd160) & (col < 10'd480); 
    
-   assign uv = (~tia_en) ? uv_in : (write_buf1 ? tia_buf2[buf_col] : tia_buf1[buf_col]);
+   logic [9:0] tia_row, tia_col;
+   assign tia_row = row - 10'd48;
+   assign tia_col = col - 10'd160;
+   
+   logic [7:0] tia_uv;
+   assign tia_uv = (~tia_visible) ? 8'd0 : tia_fb[tia_row[8:1]][tia_col[8:1]];
+   
+   (* ram_style = "block" *)
+   logic [7:0] tia_fb [191:0][159:0];
+   
+   logic [7:0] tia_write_row;
+   logic [7:0] tia_write_col;
+   
+   logic tia_hblank_buf, tia_vblank_buf;
+   
+   always_ff @(posedge tia_clk, posedge reset) begin
+      if (reset) begin
+         tia_write_row <= 0;
+         tia_write_col <= 0;
+         tia_hblank_buf <= 0;
+         tia_vblank_buf <= 0;
+      end else begin
+         tia_hblank_buf <= tia_hblank;
+         tia_vblank_buf <= tia_vblank;
+         if (tia_hblank) begin
+            tia_write_col <= 8'b0;
+            if (~tia_hblank_buf & ~tia_vblank) begin
+               tia_write_row <= tia_write_row + 1;
+            end
+         end else begin
+            tia_write_col <= tia_write_col + 1;
+         end
+         
+         if (tia_vblank)
+            tia_write_row <= 9'd0;
+         
+         if (~tia_hblank & ~tia_vblank & (tia_write_row < 8'd192) & (tia_write_col < 8'd160))
+            tia_fb[tia_write_row][tia_write_col] <= uv_in;
+      end
+   end
+   
+   assign uv = tia_en ? tia_uv : (visible ? uv_in : 8'd0);
    assign RED = rbuf;
    assign GREEN = gbuf;
    assign BLUE = bbuf;
@@ -66,21 +108,10 @@ module uv_to_vga (
    //     count of 490 - 491 is VS=0 pulse width
    //     count of 492 - 525 is back porch
 
-   logic tia_vsync_prev, tia_vsync_prev_prev;
-   logic tia_vsync_delta;
-   always @(posedge clk)
-      tia_vsync_prev <= tia_vsync;
-   always @(posedge clk)
-      tia_vsync_prev_prev <= tia_vsync_prev;
-      
-   assign tia_vsync_delta = (tia_vsync_prev & ~tia_vsync_prev_prev);
-
    always @(posedge clk, posedge reset)
-     if (reset)
+     if (reset) begin
        row <= 10'd519;
-     else if (tia_en & tia_vsync_delta)
-       row <= 10'd490;
-     else if (row_clear)
+     end else if (row_clear)
        row <= 10'd0;
      else 
        row <= row + row_enable;
@@ -101,10 +132,10 @@ module uv_to_vga (
      else
        col <= col + col_enable;
        
-   logic [7:0] tia_buf_col;
+   /*logic [7:0] tia_buf_col;
    logic write_buf1;
-   logic [7:0] tia_buf1 [159:0];
-   logic [7:0] tia_buf2 [159:0];
+   logic [7:0][159:0] tia_buf1;
+   logic [7:0][159:0] tia_buf2;
    integer i;
    
    always @(posedge tia_hblank)
@@ -113,10 +144,8 @@ module uv_to_vga (
    always @(posedge tia_clk, posedge reset) begin
       if (reset) begin
          tia_buf_col <= 7'b0;
-         for (i=0;i<160;i=i+1) begin
-            tia_buf1[i] <= 8'b0;
-            tia_buf2[i] <= 8'b0;
-         end
+         tia_buf1 <= 1280'b0;
+         tia_buf2 <= 1280'b0;
       end else if (tia_en & tia_vsync_delta) begin
          tia_buf_col <= 7'b0;
          for (i=0;i<160;i=i+1) begin
@@ -134,7 +163,7 @@ module uv_to_vga (
          else
             tia_buf2[tia_buf_col] <= uv_in;
       end
-   end
+   end*/
 
    assign col_clear  = row_enable;
    assign col_enable = 1'b1;

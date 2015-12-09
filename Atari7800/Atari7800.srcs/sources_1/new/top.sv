@@ -284,7 +284,7 @@ module Atari7800(
       .HSync(vga_hsync), .VSync(vga_vsync),
       .tia_en(tia_en),
       .tia_hblank(hblank_tia),
-      .tia_vsync(tia_vsync),
+      .tia_vblank(vblank_tia),
       .tia_clk(tia_clk)
    );
 

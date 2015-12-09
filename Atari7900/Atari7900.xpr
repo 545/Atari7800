@@ -216,6 +216,14 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/ip/centipede_ROM/centipede_ROM.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/ip/COMBAT_BROM/COMBAT_BROM.xci">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -281,14 +289,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/ip/DIGDUG_ROM_2/DIGDUG_ROM.xci">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/ip/centipede_ROM/centipede_ROM.xci">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -447,7 +447,7 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" SynthRun="synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
         <Step Id="init_design"/>
@@ -460,7 +460,6 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
   </Runs>
   <MsgRule>
@@ -628,6 +627,19 @@
     <MsgAttr Name="RuleSource" Val="8"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
     <MsgAttr Name="StringsToMatch" Val="WARNING: [Synth 8-152] case item 8&apos;b100x1x10 overlaps with previous case item(s) [/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/cpu.v:1040]"/>
+  </MsgRule>
+  <MsgRule>
+    <MsgAttr Name="RuleType" Val="0"/>
+    <MsgAttr Name="Limit" Val="-1"/>
+    <MsgAttr Name="NewSeverity" Val="ANY"/>
+    <MsgAttr Name="Id" Val="filemgmt 20-1318"/>
+    <MsgAttr Name="Severity" Val="ANY"/>
+    <MsgAttr Name="ShowRule" Val="1"/>
+    <MsgAttr Name="RuleSource" Val="8"/>
+    <MsgAttr Name="StringIsRegExp" Val="0"/>
+    <MsgAttr Name="StringsToMatch" Val="WARNING: [filemgmt 20-1318] Duplicate Design Unit &apos;ALU&apos; found in library &apos;xil_defaultlib&apos;
+	(Active) Duplicate found at line 22 of file /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.srcs/sources_1/imports/NMOS/ALU.v
+	Duplicate found at line 22 of file /afs/ece.cmu.edu/usr/rmrobert/Private/18545/Atari7800/Atari7800/Atari7800.srcs/sources_1/new/ALU.v"/>
   </MsgRule>
   <MsgRule>
     <MsgAttr Name="RuleType" Val="0"/>

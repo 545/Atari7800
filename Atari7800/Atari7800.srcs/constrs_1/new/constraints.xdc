@@ -133,61 +133,42 @@ set_property IOSTANDARD LVCMOS25 [get_ports {ctrl_1_fmc[0]}]
 
 
 
+
 create_debug_core u_ila_0 ila
 set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0]
 set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
-set_property C_DATA_DEPTH 32768 [get_debug_cores u_ila_0]
-set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property C_DATA_DEPTH 65536 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0]
 set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
 set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
 set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
 set_property port_width 1 [get_debug_ports u_ila_0/clk]
 connect_debug_port u_ila_0/clk [get_nets [list console/divider/inst/CLOCK_100]]
-set_property port_width 8 [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {console/cpu_inst/core/DI[0]} {console/cpu_inst/core/DI[1]} {console/cpu_inst/core/DI[2]} {console/cpu_inst/core/DI[3]} {console/cpu_inst/core/DI[4]} {console/cpu_inst/core/DI[5]} {console/cpu_inst/core/DI[6]} {console/cpu_inst/core/DI[7]}]]
+set_property port_width 10 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {console/vga_row[0]} {console/vga_row[1]} {console/vga_row[2]} {console/vga_row[3]} {console/vga_row[4]} {console/vga_row[5]} {console/vga_row[6]} {console/vga_row[7]} {console/vga_row[8]} {console/vga_row[9]}]]
 create_debug_port u_ila_0 probe
-set_property port_width 16 [get_debug_ports u_ila_0/probe1]
-connect_debug_port u_ila_0/probe1 [get_nets [list {console/cpu_inst/core/pc_temp_kept[0]} {console/cpu_inst/core/pc_temp_kept[1]} {console/cpu_inst/core/pc_temp_kept[2]} {console/cpu_inst/core/pc_temp_kept[3]} {console/cpu_inst/core/pc_temp_kept[4]} {console/cpu_inst/core/pc_temp_kept[5]} {console/cpu_inst/core/pc_temp_kept[6]} {console/cpu_inst/core/pc_temp_kept[7]} {console/cpu_inst/core/pc_temp_kept[8]} {console/cpu_inst/core/pc_temp_kept[9]} {console/cpu_inst/core/pc_temp_kept[10]} {console/cpu_inst/core/pc_temp_kept[11]} {console/cpu_inst/core/pc_temp_kept[12]} {console/cpu_inst/core/pc_temp_kept[13]} {console/cpu_inst/core/pc_temp_kept[14]} {console/cpu_inst/core/pc_temp_kept[15]}]]
+set_property port_width 10 [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {console/vga_col[0]} {console/vga_col[1]} {console/vga_col[2]} {console/vga_col[3]} {console/vga_col[4]} {console/vga_col[5]} {console/vga_col[6]} {console/vga_col[7]} {console/vga_col[8]} {console/vga_col[9]}]]
 create_debug_port u_ila_0 probe
-set_property port_width 6 [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list {console/vga_out/tia_buf_col[0]} {console/vga_out/tia_buf_col[1]} {console/vga_out/tia_buf_col[2]} {console/vga_out/tia_buf_col[3]} {console/vga_out/tia_buf_col[4]} {console/vga_out/tia_buf_col[5]}]]
+set_property port_width 8 [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list {console/uv_tia[0]} {console/uv_tia[1]} {console/uv_tia[2]} {console/uv_tia[3]} {console/uv_tia[4]} {console/uv_tia[5]} {console/uv_tia[6]} {console/uv_tia[7]}]]
 create_debug_port u_ila_0 probe
-set_property port_width 16 [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list {console/core_AB_out[0]} {console/core_AB_out[1]} {console/core_AB_out[2]} {console/core_AB_out[3]} {console/core_AB_out[4]} {console/core_AB_out[5]} {console/core_AB_out[6]} {console/core_AB_out[7]} {console/core_AB_out[8]} {console/core_AB_out[9]} {console/core_AB_out[10]} {console/core_AB_out[11]} {console/core_AB_out[12]} {console/core_AB_out[13]} {console/core_AB_out[14]} {console/core_AB_out[15]}]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list console/tia_hsync_kept]]
 create_debug_port u_ila_0 probe
-set_property port_width 10 [get_debug_ports u_ila_0/probe4]
-connect_debug_port u_ila_0/probe4 [get_nets [list {console/vga_row[0]} {console/vga_row[1]} {console/vga_row[2]} {console/vga_row[3]} {console/vga_row[4]} {console/vga_row[5]} {console/vga_row[6]} {console/vga_row[7]} {console/vga_row[8]} {console/vga_row[9]}]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list console/tia_vsync_kept]]
 create_debug_port u_ila_0 probe
-set_property port_width 10 [get_debug_ports u_ila_0/probe5]
-connect_debug_port u_ila_0/probe5 [get_nets [list {console/vga_col[0]} {console/vga_col[1]} {console/vga_col[2]} {console/vga_col[3]} {console/vga_col[4]} {console/vga_col[5]} {console/vga_col[6]} {console/vga_col[7]} {console/vga_col[8]} {console/vga_col[9]}]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe5]
+connect_debug_port u_ila_0/probe5 [get_nets [list console/vga_hsync_kept]]
 create_debug_port u_ila_0 probe
-set_property port_width 8 [get_debug_ports u_ila_0/probe6]
-connect_debug_port u_ila_0/probe6 [get_nets [list {console/uv_tia[0]} {console/uv_tia[1]} {console/uv_tia[2]} {console/uv_tia[3]} {console/uv_tia[4]} {console/uv_tia[5]} {console/uv_tia[6]} {console/uv_tia[7]}]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe6]
+connect_debug_port u_ila_0/probe6 [get_nets [list console/vga_vsync_kept]]
 create_debug_port u_ila_0 probe
 set_property port_width 1 [get_debug_ports u_ila_0/probe7]
-connect_debug_port u_ila_0/probe7 [get_nets [list console/ctrl/bios_en_out]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe8]
-connect_debug_port u_ila_0/probe8 [get_nets [list console/ctrl/lock_out]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe9]
-connect_debug_port u_ila_0/probe9 [get_nets [list console/ctrl/maria_en_out]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe10]
-connect_debug_port u_ila_0/probe10 [get_nets [list console/cpu_inst/rdy_in]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe11]
-connect_debug_port u_ila_0/probe11 [get_nets [list console/ctrl/tia_en_out]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe12]
-connect_debug_port u_ila_0/probe12 [get_nets [list console/tia_RDY]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe13]
-connect_debug_port u_ila_0/probe13 [get_nets [list console/vga_hsync_kept]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe14]
-connect_debug_port u_ila_0/probe14 [get_nets [list console/vga_vsync_kept]]
+connect_debug_port u_ila_0/probe7 [get_nets [list console/cpu_inst/rdy_in]]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets u_ila_0_CLOCK_100]
