@@ -25,6 +25,8 @@
 
 `define COOLDOWN_CYCLES 1
 
+//`define OVERCLOCK
+
 
 
 module timing_ctrl (

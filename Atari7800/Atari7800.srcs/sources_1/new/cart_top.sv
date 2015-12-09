@@ -165,18 +165,62 @@ module cart_top(
    );
    `endif
    
+   `ifdef XEVIOUS
+    logic [7:0] xevious_dout;
+    assign cart_data_out = xevious_dout;
+    
+    XEVIOUS_BROM xevious(
+       .clka(pclk_0),
+       .addra(AB[14:0]),
+       .douta(xevious_dout)
+       );
+    `endif
+   
+   `ifdef KUNGFU
+    logic [7:0] kungfu_dout;
+    assign cart_data_out = kungfu_dout;
+    
+    KUNGFUMASTER_BROM kungfu (
+         .clka(pclk_0),
+         .addra(AB[14:0]),
+         .douta(kungfu_dout)
+         );
+    
+   `endif
+   
 
    `ifdef FOODFIGHT
-   logic [7:0] foodfight_dout;
-   assign cart_data_out = foodfight_dout;
+   logic [7:0] foodfight_dout, foodfight_dout_buf;
+   assign cart_data_out = foodfight_dout_buf;
+   /*
+   always_ff @(posedge pclk_0)
+      foodfight_dout_buf <= foodfight_dout;
+   
+   FOODFIGHT_DROM food(
+     .a(AB[14:0]),
+     .spo(foodfight_dout)
+   );*/
    
    FOODFIGHT_ROM food (
      .clka(pclk_0),
      .addra(AB[14:0]),
-     .douta(foodfight_dout)
+     .douta(foodfight_dout_buf)
      );
      
    `endif //  `ifdef FOODFIGHT
+   
+   `ifdef POLE
+    logic [7:0] pole_dout;
+    assign cart_data_out = pole_dout;
+    
+    POLE_BROM pole (
+      .clka(pclk_0),
+      .addra(AB[14:0]),
+      .douta(pole_dout)
+      );
+      
+   
+   `endif
    
    `ifdef GALAGA
    assign cart_data_out = gal_dout_buf;

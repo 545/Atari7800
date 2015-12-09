@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/cmbarker/Private/Atari7800/FMCtest/FMCtest.xpr">
+<Project Version="7" Minor="5" Path="/afs/ece.cmu.edu/usr/mwuebben/Private/545/Atari7800/FMCtest/FMCtest.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="732b97fb6d8e449994c5ee86ad2e5e1c"/>
