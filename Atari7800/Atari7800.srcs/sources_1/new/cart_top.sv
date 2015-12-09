@@ -21,7 +21,7 @@
 
 `include "atari7800.vh"
 
-`define DEFENDER
+`define CENTIPEDE
 
 `define    INPUT_CYCLES 256
 `define    INPUT_CYCLES_NBITS 9
@@ -280,7 +280,6 @@ module cart_top(
     centipede_ROM cent (
       .clka(pclk_0),
       .addra(AB[13:0]),
-      .ena(~sel_mspac),
       .douta(cent_dout)
     );
     `endif
