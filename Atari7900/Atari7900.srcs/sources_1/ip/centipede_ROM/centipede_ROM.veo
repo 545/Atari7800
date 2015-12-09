@@ -56,7 +56,6 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 centipede_ROM your_instance_name (
   .clka(clka),    // input wire clka
-  .ena(ena),      // input wire ena
   .addra(addra),  // input wire [13 : 0] addra
   .douta(douta)  // output wire [7 : 0] douta
 );
