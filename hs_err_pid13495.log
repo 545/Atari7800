@@ -1,0 +1,12 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e58a9) [0x7f21e50358a9]
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(JVM_handle_linux_signal+0xb6) [0x7f21e503b4f6]
+/afs/ece/support/xilinx/xilinx.release/Vivado/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x8e2523) [0x7f21e5032523]
+/lib64/libc.so.6(+0x35670) [0x7f221b2df670]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(WaveViewer::WVNameValueTreeModel::getPreviousRowObject(SG_Model::WVDataObject*) const+0x15) [0x7f21eb5d3675]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(WaveViewer::WVWaveViewerWindow::moveUp(int)+0x1d) [0x7f21eb5dbb2d]
+/afs/ece/support/xilinx/xilinx.release/Vivado/lib/lnx64.o/librdi_wavedata.so(Java_ui_views_waveform_waveformi_WVExecutive_1moveUp+0x19) [0x7f21eb5fe3f9]
+[0x7f21d510f6d4]

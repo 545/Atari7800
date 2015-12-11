@@ -278,9 +278,9 @@ module TIA(A, // Address bus input
    reg wSync, wSyncReset;
    always @(hCount, wSyncReset)
      begin
-	if (hCount == 8'd3)
+	if (hCount == 8'd0)
 	  wSync <= 1'b0;
-	else if (wSyncReset && hCount > 8'd5)
+	else if (wSyncReset && hCount > 8'd2)
 	  wSync <= 1'b1;
      end
    assign RDY = ~wSync;

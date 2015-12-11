@@ -21,7 +21,7 @@
 
 `include "atari7800.vh"
 
-`define DEFENDER
+`define COMBAT
 
 `define    INPUT_CYCLES 256
 `define    INPUT_CYCLES_NBITS 9

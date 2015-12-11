@@ -47,11 +47,11 @@ module uv_to_vga (
    assign visible = (row < 10'd480) & (col < 10'd640);
    
    `ifdef FRAMEBUF
-   assign tia_visible = (row >= 10'd48) & (row <10'd432) & (col >= 10'd160) & (col < 10'd480); 
+   assign tia_visible = (row >= 10'd48) & (row <10'd432) & (col < 10'd640); 
    
    logic [9:0] tia_row, tia_col;
    assign tia_row = row - 10'd48;
-   assign tia_col = col - 10'd160;
+   assign tia_col = col;
    
    logic [7:0] fbuf_uv1, fbuf_uv2;
    (* keep = "true" *) logic [7:0] fbuf_uv1_kept, fbuf_uv2_kept;
@@ -61,15 +61,12 @@ module uv_to_vga (
    logic [14:0] buf_w_addr, buf_r_addr; 
    (* keep = "true" *) logic [14:0] buf_w_addr_kept;
    (* keep = "true" *) logic [14:0] buf_r_addr_kept;
-   assign buf_w_addr = tia_write_row*8'd160+tia_write_col;
-   assign buf_r_addr = tia_row[8:1]*8'd160+tia_col[8:1];
+   assign buf_w_addr = tia_write_row*14'd160+tia_write_col;
+   assign buf_r_addr = tia_row[8:1]*14'd160+tia_col[9:2];
    assign buf_w_addr_kept = buf_w_addr;
    assign buf_r_addr_kept = buf_r_addr;
    logic write_buf1;
-   
-   (* ram_style = "block" *)
-   logic [191:0][159:0][7:0] tia_fb;
-   
+
    Frame_Buf frame_buffer1(
      .clka(tia_clk),    // input wire clka
      .ena(~tia_vblank & ~tia_hblank & write_buf1),      // input wire ena
@@ -125,9 +122,6 @@ module uv_to_vga (
          
          if (tia_vblank)
             tia_write_row <= 8'd0;
-         
-         if (~tia_hblank & ~tia_vblank & (tia_write_row < 8'd192) & (tia_write_col < 8'd160))
-            tia_fb[tia_write_row][tia_write_col] <= uv_in;
       end
    end
    
